@@ -1,46 +1,72 @@
 @import url("https://fonts.googleapis.com/css2?family=Amiri:ital@1&family=DM+Sans:opsz,wght@9..40,400&family=Montserrat:wght@300;400&display=swap");
 
-/* ------------------------------
-   GLOBAL RESET & BASE STYLES
-    Grundlæggende styling og reset
-    som skaber et ens udgangspunkt
-    på hele websitet
--------------------------------- */
+/* ==================================================
+   INDHOLDSOVERSIGT
+   1. Design tokens
+   2. Reset og base
+   3. Typografi
+   4. Header, navigation og dropdown
+   5. Forsidens sektioner
+   6. Footer
+   7. Responsive regler
+================================================== */
 
+/* ==================================================
+   1. DESIGN TOKENS
+   Farver, fonte og desktop-typografi samlet øverst.
+================================================== */
+:root {
+  --color-primary: #C27F33;
+  --color-heading: #334C56;
+  --color-text: #666666;
+  --color-white: #ffffff;
+  --color-light-blue: #E2F0F5;
+  --color-section-grey: #f6f6f6;
+  --color-image-placeholder: #d7d7d7;
+  --color-border: #e5e5e5;
 
-/* Sørger for at padding og border
-   tælles med i elementets bredde */
+  --font-heading: "Montserrat", Arial, Helvetica, sans-serif;
+  --font-body: "DM Sans", Arial, Helvetica, sans-serif;
+  --font-quote: "Amiri", Georgia, "Times New Roman", serif;
+
+  --font-eyebrow-desktop: 1rem;
+  --font-h2-desktop: 2.25rem;
+  --font-body-desktop: 1rem;
+  --font-quote-desktop: 2.5rem;
+  --font-salon-quote-desktop: 2rem;
+  --font-quote-author-desktop: 1.5rem;
+
+  --container-max: 1320px;
+  --button-height: 50px;
+}
+
+/* ==================================================
+   2. RESET OG BASE
+   Ens udgangspunkt på tværs af browsere.
+================================================== */
 * {
   box-sizing: border-box;
 }
 
 
-/* Standard styling for hele siden:
-   tekstfarve, baggrund og font */
 html {
-  color: #666666;
-  background: #ffffff;
-  font-family: "DM Sans", Arial, Helvetica, sans-serif;
+  color: var(--color-text);
+  background: var(--color-white);
+  font-family: var(--font-body);
   font-size: 16px;
 }
 
 body {
-  /* Fjerner browserens standard margin
-   omkring hele siden */
   margin: 0;
   padding-top: 113px;
-  background: #ffffff;
+  background: var(--color-white);
 }
 
 img {
-  /* Gør billeder responsive og mere
-   stabile i layouts */
   display: block;
   max-width: 100%;
 }
 
-/* Fjerner standard margins fra
-   typografiske elementer */
 figure,
 blockquote,
 p,
@@ -53,9 +79,6 @@ dd {
 }
 
 
-/* Fjerner standard styling på lister
-   så navigation og custom lister
-   kan styles manuelt */
 ul {
   margin: 0;
   padding: 0;
@@ -63,9 +86,10 @@ ul {
 }
 
 
-/* ------------------------------
-   TYPOGRAPHY
--------------------------------- */
+/* ==================================================
+   3. TYPOGRAFI
+   Globale desktop-størrelser. Mobil overrides nederst.
+================================================== */
 a {
   color: inherit;
   text-decoration: none;
@@ -73,26 +97,26 @@ a {
 
 .eyebrow {
   margin-bottom: 12px;
-  color: #C27F33;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: var(--font-eyebrow-desktop);
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-
+ 
 h2 {
-  color: #334C56;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size: 2.25rem;
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: var(--font-h2-desktop);
   font-weight: 300;
   line-height: 1.1;
 }
 
 p {
-  color: #666666;
-  font-family: "DM Sans", Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-body-desktop);
   font-weight: 400;
   line-height: 1.6;
 }
@@ -106,16 +130,16 @@ h3 {
 }
 
 
-/* ------------------------------
-   HEADER & NAVIGATION
--------------------------------- */
+/* ==================================================
+   4. HEADER, NAVIGATION OG DROPDOWN
+================================================== */
 .header {
   position: fixed;
   z-index: 1000;
   top: 0;
   right: 0;
   left: 0;
-  background: #ffffff;
+  background: var(--color-white);
 }
 
 .top-menu {
@@ -160,8 +184,8 @@ h3 {
 }
 
 .menu-link {
-  color: #334C56;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  color: var(--color-heading);
+  font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.06em;
@@ -240,8 +264,8 @@ h3 {
 
 .menu-dropdown-link,
 .menu-dropdown-product-title {
-  color: #334C56;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  color: var(--color-heading);
+  font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 300;
 }
@@ -251,7 +275,7 @@ h3 {
 }
 
 .menu-dropdown-link:hover {
-  color: #C27F33;
+  color: var(--color-primary);
 }
 
 .menu-dropdown-products {
@@ -286,9 +310,13 @@ h3 {
 }
 
 
+/* ==================================================
+   5. FORSIDENS SEKTIONER
+   Sektionerne ligger i samme rækkefølge som HTML'en.
+================================================== */
 
 /* ------------------------------
-   HERO SECTION
+   Hero
 -------------------------------- */
 .hero {
   display: flex;
@@ -350,19 +378,19 @@ h3 {
 
 
 /* ------------------------------
-   BUTTONS
+   Fælles knapper
 -------------------------------- */
 .button {
   display: inline-flex;
   min-width: 0;
-  height: 50px;
+  height: var(--button-height);
   align-items: center;
   justify-content: center;
   padding: 0 15px;
-  border: 1px solid #334C56;
+  border: 1px solid var(--color-heading);
   border-radius: 2px;
-  color: #334C56;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  color: var(--color-heading);
+  font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.08em;
@@ -370,9 +398,9 @@ h3 {
 }
 
 .button-primary {
-  border-color: #C27F33;
-  color: #ffffff;
-  background: #C27F33;
+  border-color: var(--color-primary);
+  color: var(--color-white);
+  background: var(--color-primary);
 }
 
 .button-secondary {
@@ -380,13 +408,13 @@ h3 {
 }
 
 .button-secondary:hover {
-  color: #ffffff;
-  background: #334C56;
+  color: var(--color-white);
+  background: var(--color-heading);
 }
 
 
 /* ------------------------------
-   ABOUT BELINDA
+   Om Belinda
 -------------------------------- */
 .om-belinda {
   display: grid;
@@ -421,8 +449,8 @@ h3 {
 .behandlinger-sektion p:not(.eyebrow),
 .guide-sektion p:not(.eyebrow) {
   max-width: 470px;
-  color: #666666;
-  font-size: 1rem;
+  color: var(--color-text);
+  font-size: var(--font-body-desktop);
   line-height: 1.6;
 }
 
@@ -437,17 +465,32 @@ h3 {
 
 
 /* ------------------------------
-   MIXLY INTRODUCTION
+   Mixly introduktion
 -------------------------------- */
 .mixly-introduktion {
+  background: var(--color-section-grey);
+}
+
+.mixly-introduktion-indhold {
   display: grid;
-  grid-template-columns: minmax(360px, 1fr) minmax(720px, 1.6fr);
-  align-items: stretch;
-  background: #f6f6f6;
+  grid-template-columns: minmax(360px, 0.75fr) minmax(720px, 1.45fr);
+  align-items: start;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 52px 38px 64px;
+}
+
+@media (min-width: 1181px) {
+  .mixly-introduktion-indhold {
+    max-width: none;
+    margin-left: max(38px, calc((100vw - var(--container-max)) / 2));
+    margin-right: 0;
+    padding-right: 0;
+  }
 }
 
 .mixly-introduktion-tekst {
-  padding: 52px 38px 64px;
+  padding: 0;
 }
 
 .mixly-introduktion-tekst p:not(.eyebrow) {
@@ -461,31 +504,29 @@ h3 {
 .mixly-introduktion-billeder {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  align-self: stretch;
 }
 
 .mixly-introduktion-billede {
   display: grid;
-  min-height: 360px;
+  height: 100%;
+  min-height: 0;
   place-items: center;
-  background: #d7d7d7;
+  background: var(--color-image-placeholder);
+  color: #111111;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
-.mixly-introduktion-billede:nth-child(1) {
-  background: #d8c5b7;
+.mixly-introduktion-billede::before {
+  content: "IMG\A 315 x 370";
+  white-space: pre;
+  text-align: center;
 }
-
-.mixly-introduktion-billede:nth-child(2) {
-  background: #d4d9dc;
-}
-
-.mixly-introduktion-billede:nth-child(3) {
-  background: #e0c8bd;
-}
-
-
 
 /* ------------------------------
-   QUOTE SECTIONS
+   Citater
 -------------------------------- */
 .citat-sektion,
 .salon-citat {
@@ -501,26 +542,26 @@ h3 {
 }
 
 .citat-tekst p {
-  color: #334C56;
-  font-family: "Amiri", Georgia, "Times New Roman", serif;
-  font-size: 2.5rem;
+  color: var(--color-heading);
+  font-family: var(--font-quote);
+  font-size: var(--font-quote-desktop);
   font-style: italic;
   line-height: 1.3;
 }
 
 .salon-citat-tekst p {
-  color: #E2F0F5;
-  font-family: "Amiri", Georgia, "Times New Roman", serif;
-  font-size: 2rem;
+  color: var(--color-light-blue);
+  font-family: var(--font-quote);
+  font-size: var(--font-salon-quote-desktop);
   font-style: italic;
   line-height: 1.3;
 }
 
 .citat-tekst footer {
   margin-top: 34px;
-  color: #334C56;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: var(--font-quote-author-desktop);
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.16em;
@@ -529,9 +570,9 @@ h3 {
 
 .salon-citat-tekst footer {
   margin-top: 34px;
-  color: #E2F0F5;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
+  color: var(--color-light-blue);
+  font-family: var(--font-heading);
+  font-size: var(--font-quote-author-desktop);
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.16em;
@@ -541,7 +582,7 @@ h3 {
 
 
 /* ------------------------------
-   SERVICES SECTION
+   Behandlinger
 -------------------------------- */
 .behandlinger-sektion {
   display: grid;
@@ -599,7 +640,7 @@ h3 {
 
 
 /* ------------------------------
-   anmeldelser ANMELDELSER
+   Anmeldelser
 -------------------------------- */
 .anmeldelser {
   padding: 58px 48px 120px;
@@ -650,7 +691,7 @@ h3 {
 
 
 /* ------------------------------
-   CURL UNIVERSE / GUIDES
+   Krølleunivers, saloncitat og kort
 -------------------------------- */
 .guide-sektion {
   display: grid;
@@ -732,9 +773,9 @@ h3 {
 }
 
 
-/* ------------------------------
-   FOOTER
--------------------------------- */
+/* ==================================================
+   6. FOOTER
+================================================== */
 .footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -804,9 +845,13 @@ h3 {
 }
 
 
+/* ==================================================
+   7. RESPONSIVE REGLER
+================================================== */
+
 /* ------------------------------
-   RESPONSIVE TABLET
-   Holder desktop-udtrykket fleksibelt på smallere skærme.
+   Tablet
+   Bevarer desktop-udtrykket på smallere skærme.
 -------------------------------- */
 @media (max-width: 1180px) {
   .hero-title {
@@ -825,54 +870,47 @@ h3 {
     aspect-ratio: 1;
   }
 
-  /* Mixly-sektionen følger mobilens rækkefølge på tablet. */
+  /* Mixly på tablet: tekst til venstre og billeder helt ud til højre. */
   .mixly-introduktion {
-    display: grid;
-    grid-template-columns: 1fr;
+    background: #f6f6f6;
+  }
+
+  .mixly-introduktion-indhold {
+    grid-template-columns: minmax(300px, 0.75fr) minmax(0, 1.25fr);
+    margin-left: 38px;
+    margin-right: 0;
+    padding: 52px 0 64px 0;
   }
 
   .mixly-introduktion-tekst {
-    display: contents;
-  }
-
-  .mixly-introduktion .eyebrow,
-  .mixly-introduktion-titel,
-  .mixly-introduktion-tekst p:not(.eyebrow) {
-    padding-right: 38px;
-    padding-left: 38px;
+    display: block;
+    padding: 0;
   }
 
   .mixly-introduktion .eyebrow {
-    order: 1;
-    padding-top: 52px;
-  }
-
-  .mixly-introduktion-titel {
-    order: 2;
+    padding-top: 0;
   }
 
   .mixly-introduktion-tekst p:not(.eyebrow) {
-    order: 3;
+    margin-top: 22px;
   }
 
   .mixly-introduktion-billeder {
-    order: 5;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2px;
-    margin-top: 34px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    margin-top: 0;
   }
 
   .mixly-introduktion-billede:nth-child(3) {
-    display: none;
+    display: grid;
   }
 
   .mixly-introduktion-knapper {
-    order: 4;
     width: auto;
     flex-direction: row;
     justify-content: flex-start;
     gap: 14px;
-    margin: 34px 38px 52px;
+    margin: 34px 0 0;
   }
 
   .mixly-introduktion-knapper .button {
@@ -932,7 +970,7 @@ h3 {
 
 
 /* ------------------------------
-   RESPONSIVE MOBILE
+   Mobil
    Aktiveres kun på telefoner, så tablets bevarer desktop-udtrykket.
 -------------------------------- */
 @media (max-width: 767px) {
@@ -1123,9 +1161,13 @@ h3 {
   }
 
   .mixly-introduktion {
+    background: #f6f6f6;
+  }
+
+  .mixly-introduktion-indhold {
     display: grid;
     grid-template-columns: 1fr;
-    background: #f6f6f6;
+    padding: 0;
   }
 
   .mixly-introduktion-tekst {
@@ -1156,7 +1198,7 @@ h3 {
   .mixly-introduktion-billeder {
     order: 4;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2px;
+    gap: 5px;
     margin-top: 22px;
   }
 
@@ -1166,10 +1208,6 @@ h3 {
 
   .mixly-introduktion-billede::before {
     content: "IMG\A 215 x 270";
-    color: #111111;
-    font-weight: 700;
-    white-space: pre;
-    text-align: center;
   }
 
   .mixly-introduktion-billede:nth-child(3) {
