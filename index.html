@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hildebrandt Copenhagen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header med top-menu og hovednavigation -->
+  <header class="header">
+    <div class="top-menu">
+      <a class="book-knap" href="#">Book tid</a>
+
+      <nav class="top-nav" aria-label="Hjælpenavigation">
+        <ul class="top-nav-list">
+          <li class="top-nav-item">
+            <a class="top-nav-link" href="#" aria-label="Kurv">Kurv</a>
+          </li>
+          <li class="top-nav-item">
+            <a class="top-nav-link" href="#" aria-label="Konto">Konto</a>
+          </li>
+          <li class="top-nav-item top-nav-item-menu">
+            <a class="top-nav-link menu-toggle" href="#" aria-label="Menu">Menu</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <nav class="menu" aria-label="Hovednavigation">
+      <ul class="menu-list">
+        <li class="menu-item menu-item-dropdown">
+          <a class="menu-link menu-link-dropdown" href="#" aria-haspopup="true">
+            Produkter
+            <span class="menu-link-arrow" aria-hidden="true">^</span>
+          </a>
+          <div class="menu-dropdown" aria-label="Produktmenu">
+            <div class="menu-dropdown-inner">
+              <nav class="menu-dropdown-column" aria-label="Produktoversigt">
+                <ul class="menu-dropdown-list">
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="#">Startpakke</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="#">S&aelig;t</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="#">Alle produkter</a>
+                  </li>
+                </ul>
+              </nav>
+              <nav class="menu-dropdown-column" aria-label="Produkttyper">
+                <ul class="menu-dropdown-list">
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="#">Shampoo</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="#">Conditioner</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="#">H&aring;rmaske</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="#">Styling</a>
+                  </li>
+                </ul>
+              </nav>
+              <div class="menu-dropdown-products">
+                <a class="menu-dropdown-product" href="#">
+                  <span class="menu-dropdown-product-image">165 x 195</span>
+                  <span class="menu-dropdown-product-title">Klar til at komme i gang?</span>
+                </a>
+                <a class="menu-dropdown-product" href="#">
+                  <span class="menu-dropdown-product-image">165 x 195</span>
+                  <span class="menu-dropdown-product-title">L&aelig;r produkterne at kende</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">Behandlinger</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">Krølleunivers</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">Guides</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">Din Krøllefrisør</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="#">Kontakt</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    <!-- Hero-sektion med titel, billede og CTA-knapper -->
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title" class="hero-title">Hildebrandt Copenhagen</h1>
+      <figure class="hero-image">
+        <img src="#" alt="">
+      </figure>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#">Book en tid</a>
+        <a class="button button-secondary" href="#">Udforsk Mixly</a>
+      </div>
+    </section>
+
+    <!-- Sektion om Belinda og hendes ekspertise -->
+    <section class="om-belinda" aria-labelledby="om-belinda-title">
+      <figure class="om-belinda-billede">
+        <img src="#" alt="Belinda Hildebrandt">
+      </figure>
+      <div class="om-belinda__content">
+        <p class="eyebrow">Frisør Belinda Hildebrandt</p>
+        <h2 id="om-belinda-title" class="om-belinda-titel">Specialiseret i krøller & bølger. Fokuseret på dig</h2>
+        <p>Jeg har arbejdet med krøller og bølger hele mit liv og er i dag Danmarks første anerkendte krøllespecialist.</p>
+        <p>Jeg er forfatter til bogen Fucked up Hair og har delt min viden i blandt andet Go' Morgen Danmark med et mål at gøre krøllet hår mere forståeligt og personligt.</p>
+        <a class="button button-secondary" href="#">Læs mere om mig</a>
+      </div>
+    </section>
+
+    <!-- Introduktion til Mixly-produkterne -->
+    <section class="mixly-introduktion" aria-labelledby="mixly-introduktion-titel">
+      <div class="mixly-introduktion-tekst">
+        <p class="eyebrow">Om Mixly</p>
+        <h2 id="mixly-introduktion-titel" class="mixly-introduktion-titel">Udviklet til krøller og bølger med skiftende behov</h2>
+        <p>Mixly er min egen produktserie skabt ud fra mange års arbejde med krøllet hår i salonen.</p>
+        <p>Produkterne er udviklet til hår der ændrer sig fra dag til dag og har brug for fugt, balance og fleksibilitet fremfor faste regler.</p>
+        <div class="mixly-introduktion-knapper">
+          <a class="button button-primary" href="#">Udforsk produkter</a>
+          <a class="button button-secondary" href="#">Mød Mixly</a>
+        </div>
+      </div>
+      <div class="mixly-introduktion-billeder" aria-label="Mixly produktbilleder">
+        <figure class="mixly-introduktion-billede">
+          <img src="#" alt="">
+        </figure>
+        <figure class="mixly-introduktion-billede">
+          <img src="#" alt="">
+        </figure>
+        <figure class="mixly-introduktion-billede">
+          <img src="#" alt="">
+        </figure>
+      </div>
+    </section>
+
+    <!-- Citatsektion -->
+    <section class="citat-sektion" aria-label="Citat fra Belinda Hildebrandt">
+      <blockquote class="citat-tekst">
+        <p>Når du først forstår dine krøller, bliver det hele meget lettere</p>
+        <footer>Belinda Hildebrandt</footer>
+      </blockquote>
+    </section>
+
+    <!-- Behandlinger og services -->
+    <section class="behandlinger-sektion" aria-labelledby="behandlinger-sektion-titel">
+      <div class="behandlinger-sektion-liste">
+        <article class="forside-behandling-kort">
+          <figure class="forside-behandling-kort-billede">
+            <img src="#" alt="">
+          </figure>
+          <h3 class="forside-behandling-kort-titel">Mixly Curl Cut</h3>
+          <p>Til dig med krøller eller bølger, der ønsker en skræddersyet klipning med balance, form og bevægelse.</p>
+        </article>
+        <article class="forside-behandling-kort">
+          <figure class="forside-behandling-kort-billede">
+            <img src="#" alt="">
+          </figure>
+          <h3 class="forside-behandling-kort-titel">Mixly Curl Cut Pakke</h3>
+          <p>Klip, vask, styling og Mixly-startsæt, så du nemt kan fortsætte rutinen hjemme.</p>
+        </article>
+        <article class="forside-behandling-kort">
+          <figure class="forside-behandling-kort-billede">
+            <img src="#" alt="">
+          </figure>
+          <h3 class="forside-behandling-kort-titel">Farve og Reflekser</h3>
+          <p>Farvebehandlinger med fokus på hårets struktur, sundhed og naturlige udtryk.</p>
+        </article>
+      </div>
+      <div class="behandlinger-sektion-titel">
+        <p class="eyebrow">Behandlinger</p>
+        <h2 id="behandlinger-sektion-titel" class="behandlinger-sektion-titel">Find den behandling der passer til dit hår</h2>
+        <p>Jeg klipper krøller og bølger i tørt hår for at se, hvordan dit hår naturligt falder og bevæger sig.</p>
+        <p>På den måde skaber jeg en klipning, der fungerer bådde i salonen og hjemme hos dig selv.</p>
+        <a class="button button-secondary" href="#">Se behandlinger</a>
+      </div>
+    </section>
+
+    <!-- Kundeanmeldelser -->
+    <section class="anmeldelser" aria-labelledby="anmeldelser-titel">
+      <p class="eyebrow">Kr&oslash;llehistorier</p>
+      <h2 id="anmeldelser-titel" class="anmeldelser-titel">Fortalt af mine kunder</h2>
+      <div class="anmeldelser-liste">
+        <article class="anmeldelse">
+          <blockquote class="anmeldelse-citat">
+            <p>Belinda kender mit hår bedre end jeg selv gør, hvilket gør at jeg 100% kan stole på, at hun ved, hvad hun laver, når jeg siger 'du bestemmer'</p>
+            <footer>Sara</footer>
+          </blockquote>
+          <p class="anmeldelse-stjerner" aria-label="5 ud af 5 stjerner">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        </article>
+        <article class="anmeldelse">
+          <blockquote class="anmeldelse-citat">
+            <p>Virkelig god vejledning og har altid været glad for resultatet jeg er gået derfra. Og hendes produkter er fantastiske til folk med krøller og tykt hår</p>
+            <footer>Zara</footer>
+          </blockquote>
+          <p class="anmeldelse-stjerner" aria-label="5 ud af 5 stjerner">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        </article>
+        <article class="anmeldelse">
+          <blockquote class="anmeldelse-citat">
+            <p>Jeg havde ikke forventet at krøllerne kunne holde en hel dag i mit fine hår. Det gjorde de.</p>
+            <footer>Brandt</footer>
+          </blockquote>
+          <p class="anmeldelse-stjerner" aria-label="5 ud af 5 stjerner">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Krølleunivers med guides og produkter -->
+    <section class="guide-sektion" aria-labelledby="guide-sektion-titel">
+      <div class="guide-sektion-tekst">
+        <p class="eyebrow">Krølleunivers</p>
+        <h2 id="guide-sektion-titel" class="guide-sektion-titel">Lær dine krøller at kende. Et skridt ad gangen</h2>
+        <p>Krøller har ikke de samme behov hver dag. I guideuniverset finder du simple, visuelle guides til styling, rutiner og refresh af dine krøller og bølger.</p>
+        <div class="guide-sektion-knapper">
+          <a class="button button-primary" href="#">Udforsk guides</a>
+          <a class="button button-secondary" href="#">Udforsk produkter</a>
+        </div>
+      </div>
+      <figure class="guide-sektion_-produkt">
+        <img src="#" alt="">
+      </figure>
+      <figure class="guide-sektion-billede">
+        <img src="#" alt="">
+      </figure>
+    </section>
+
+    <!-- Salonens historie og lokation -->
+    <section class="salon-citat" aria-label="Adresse og salonscitat">
+      <blockquote class="salon-citat-tekst">
+        <p>På Nørre Fasanvej 163 på Frederiksberg finder du min lille salon, Hildebrandt Copenhagen. Her mødes frisørfaglighed, ro og nysgerrighed i omgivelser med mere end 100 års frisørhistorie i væggene.</p>
+        <footer>Belinda Hildebrandt</footer>
+      </blockquote>
+    </section>
+
+    <section class="kort-sektion" aria-label="Kort">
+      <figure class="kort-sektion-billede">
+        <img src="#" alt="Kort over Hildebrandt Copenhagen">
+      </figure>
+    </section>
+  </main>
+
+  <!-- Footer med kontakt, åbningstider og links -->
+  <footer class="footer">
+    <section class="footer-kontakt" aria-labelledby="footer-kontakt-titel">
+      <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
+      <address class="footer-kontakt-adresse">
+        Hildebrandt Copenhagen x Mixly<br>
+        +45 30 74 34 30<br>
+        Nørre Fasanvej 163<br>
+        2000 Frederiksberg<br>
+        hej@hildebrandtcopenhagen.dk
+      </address>
+      <a class="book-knap footer-booking" href="#">Book tid</a>
+    </section>
+
+    <section class="footer-tider" aria-labelledby="footer-tider-titel">
+      <h2 id="footer-tider-titel" class="footer-tider-titel">Åbningstider</h2>
+      <dl class="footer-tider-liste">
+        <dt>Mandag</dt>
+        <dd>8:30-14:00</dd>
+        <dt>Tirsdag</dt>
+        <dd>10:00-17:30</dd>
+        <dt>Onsdag</dt>
+        <dd>Lukket</dd>
+        <dt>Torsdag</dt>
+        <dd>10:00-17:30</dd>
+        <dt>Fredag</dt>
+        <dd>10:00-16:00</dd>
+      </dl>
+    </section>
+
+    <nav class="footer-menu" aria-labelledby="footer-menu-titel">
+      <h2 id="footer-menu-titel" class="footer-menu-titel">Udforsk</h2>
+      <ul class="footer-menu-liste">
+        <li class="footer-menu-item">
+          <a class="footer-menu-link" href="#">Book tid</a>
+        </li>
+        <li class="footer-menu-item">
+          <a class="footer-menu-link" href="#">Produkter</a>
+        </li>
+        <li class="footer-menu-item">
+          <a class="footer-menu-link" href="#">Krølleguide</a>
+        </li>
+        <li class="footer-menu-item">
+          <a class="footer-menu-link" href="#">Din krøllefrisør</a>
+        </li>
+        <li class="footer-menu-item">
+          <a class="footer-menu-link" href="#">Handelsbetingelser</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="footer-info">
+      <p class="footer-cvr">CVR 44399973</p>
+      <ul class="footer-socials" aria-label="Sociale medier">
+        <li class="footer-socials-item">
+          <a class="footer-social-link" href="#">Instagram</a>
+        </li>
+        <li class="footer-socials-item">
+          <a class="footer-social-link" href="#">Facebook</a>
+        </li>
+      </ul>
+      <ul class="footer-betaling" aria-label="Betalingsmetoder">
+        <li class="footer-betaling-item">Visa</li>
+        <li class="footer-betaling-item">Mastercard</li>
+        <li class="footer-betaling-item">MobilePay</li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

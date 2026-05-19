@@ -1,0 +1,1435 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital@1&family=DM+Sans:opsz,wght@9..40,400&family=Montserrat:wght@300;400&display=swap");
+
+/* ------------------------------
+   GLOBAL RESET & BASE STYLES
+    Grundlæggende styling og reset
+    som skaber et ens udgangspunkt
+    på hele websitet
+-------------------------------- */
+
+
+/* Sørger for at padding og border
+   tælles med i elementets bredde */
+* {
+  box-sizing: border-box;
+}
+
+
+/* Standard styling for hele siden:
+   tekstfarve, baggrund og font */
+html {
+  color: #666666;
+  background: #ffffff;
+  font-family: "DM Sans", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+body {
+  /* Fjerner browserens standard margin
+   omkring hele siden */
+  margin: 0;
+  padding-top: 113px;
+  background: #ffffff;
+}
+
+img {
+  /* Gør billeder responsive og mere
+   stabile i layouts */
+  display: block;
+  max-width: 100%;
+}
+
+/* Fjerner standard margins fra
+   typografiske elementer */
+figure,
+blockquote,
+p,
+h1,
+h2,
+h3,
+dl,
+dd {
+  margin: 0;
+}
+
+
+/* Fjerner standard styling på lister
+   så navigation og custom lister
+   kan styles manuelt */
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+/* ------------------------------
+   TYPOGRAPHY
+-------------------------------- */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.eyebrow {
+  margin-bottom: 12px;
+  color: #C27F33;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h2 {
+  color: #334C56;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+p {
+  color: #666666;
+  font-family: "DM Sans", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+h3 {
+  color: #d39137;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+
+/* ------------------------------
+   HEADER & NAVIGATION
+-------------------------------- */
+.header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: #ffffff;
+}
+
+.top-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 58px;
+  padding: 0 48px;
+  color: #d4dde0;
+  background: #294a54;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.top-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.top-nav-item-menu {
+  display: none;
+}
+
+.top-menu > .book-knap {
+  font-size: 20px;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  padding: 17px 48px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.menu-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 38px;
+}
+
+.menu-link {
+  color: #334C56;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.menu-link-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.menu-item-dropdown {
+  position: relative;
+}
+
+.menu-item-dropdown::after {
+  position: absolute;
+  top: 100%;
+  right: -24px;
+  left: -24px;
+  height: 32px;
+  content: "";
+}
+
+.menu-link-arrow {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  transition: transform 250ms ease;
+}
+
+/* Desktop dropdown under produkter */
+.menu-dropdown {
+  position: fixed;
+  z-index: 999;
+  top: 113px;
+  left: 0;
+  width: 100%;
+  padding: 58px 48px 38px;
+  background: #eeeeee;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 280ms ease, visibility 280ms ease, transform 280ms ease;
+}
+
+/* Hover ligger på hele parenten, så dropdownen bliver åben ned til links. */
+.menu-item-dropdown:hover .menu-dropdown,
+.menu-item-dropdown:focus-within .menu-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.menu-item-dropdown:hover .menu-link-arrow,
+.menu-item-dropdown:focus-within .menu-link-arrow {
+  transform: rotate(180deg);
+}
+
+.menu-dropdown-inner {
+  display: grid;
+  grid-template-columns: minmax(120px, 160px) minmax(140px, 180px) minmax(360px, 1fr);
+  gap: 72px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.menu-dropdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.menu-dropdown-link,
+.menu-dropdown-product-title {
+  color: #334C56;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.menu-dropdown-link {
+  transition: color 200ms ease;
+}
+
+.menu-dropdown-link:hover {
+  color: #C27F33;
+}
+
+.menu-dropdown-products {
+  display: grid;
+  grid-template-columns: repeat(2, 165px);
+  gap: 60px;
+}
+
+.menu-dropdown-product {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.menu-dropdown-product-image {
+  display: grid;
+  width: 165px;
+  height: 195px;
+  place-items: center;
+  color: #111111;
+  background: #d9d9d9;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.menu-dropdown-product-title {
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+
+
+/* ------------------------------
+   HERO SECTION
+-------------------------------- */
+.hero {
+  display: flex;
+  min-height: 500px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 28px 48px 88px;
+  color: #e5edf0;
+  background: #666666;
+}
+
+.hero-title {
+  font-size: 4.25rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-image {
+  display: grid;
+  width: 140px;
+  height: 60px;
+  place-items: center;
+  margin-top: 175px;
+  color: #1f1f1f;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.hero-image img,
+.om-belinda-billede img,
+.mixly-introduktion-billede img,
+.forside-behandling-kort-billede img,
+.guide-sektion_-produkt img,
+.guide-sektion-billede img,
+.kort-sektion-billede img {
+  display: none;
+}
+
+.hero-image::before {
+  content: "IMG\A 1440 x 460";
+  white-space: pre;
+  text-align: center;
+}
+
+.hero-actions,
+.mixly-introduktion-knapper,
+.guide-sektion-knapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-actions {
+  margin-top: 46px;
+}
+
+
+/* ------------------------------
+   BUTTONS
+-------------------------------- */
+.button {
+  display: inline-flex;
+  min-width: 0;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  border: 1px solid #334C56;
+  border-radius: 2px;
+  color: #334C56;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.button-primary {
+  border-color: #C27F33;
+  color: #ffffff;
+  background: #C27F33;
+}
+
+.button-secondary {
+  background: transparent;
+}
+
+.button-secondary:hover {
+  color: #ffffff;
+  background: #334C56;
+}
+
+
+/* ------------------------------
+   ABOUT BELINDA
+-------------------------------- */
+.om-belinda {
+  display: grid;
+  grid-template-columns: 370px 500px;
+  justify-content: center;
+  gap: 86px;
+  padding: 140px 48px 135px;
+}
+
+.om-belinda-billede {
+  display: grid;
+  width: 370px;
+  height: 370px;
+  place-items: center;
+  background: #111111;
+}
+
+.om-belinda-billede::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #111111, #363636 52%, #161616);
+}
+
+.om-belinda__content {
+  padding-top: 4px;
+}
+
+
+.om-belinda p:not(.eyebrow),
+.mixly-introduktion p:not(.eyebrow),
+.behandlinger-sektion p:not(.eyebrow),
+.guide-sektion p:not(.eyebrow) {
+  max-width: 470px;
+  color: #666666;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.om-belinda p:not(.eyebrow) {
+  margin-top: 26px;
+}
+
+.om-belinda .button {
+  margin-top: 42px;
+}
+
+
+
+/* ------------------------------
+   MIXLY INTRODUCTION
+-------------------------------- */
+.mixly-introduktion {
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(720px, 1.6fr);
+  align-items: stretch;
+  background: #f6f6f6;
+}
+
+.mixly-introduktion-tekst {
+  padding: 52px 38px 64px;
+}
+
+.mixly-introduktion-tekst p:not(.eyebrow) {
+  margin-top: 22px;
+}
+
+.mixly-introduktion-knapper {
+  margin-top: 40px;
+}
+
+.mixly-introduktion-billeder {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.mixly-introduktion-billede {
+  display: grid;
+  min-height: 360px;
+  place-items: center;
+  background: #d7d7d7;
+}
+
+.mixly-introduktion-billede:nth-child(1) {
+  background: #d8c5b7;
+}
+
+.mixly-introduktion-billede:nth-child(2) {
+  background: #d4d9dc;
+}
+
+.mixly-introduktion-billede:nth-child(3) {
+  background: #e0c8bd;
+}
+
+
+
+/* ------------------------------
+   QUOTE SECTIONS
+-------------------------------- */
+.citat-sektion,
+.salon-citat {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.citat-sektion {
+  min-height: 345px;
+  padding: 90px 48px;
+  background: #e5f5f8;
+}
+
+.citat-tekst p {
+  color: #334C56;
+  font-family: "Amiri", Georgia, "Times New Roman", serif;
+  font-size: 2.5rem;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.salon-citat-tekst p {
+  color: #E2F0F5;
+  font-family: "Amiri", Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.citat-tekst footer {
+  margin-top: 34px;
+  color: #334C56;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.salon-citat-tekst footer {
+  margin-top: 34px;
+  color: #E2F0F5;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+
+
+/* ------------------------------
+   SERVICES SECTION
+-------------------------------- */
+.behandlinger-sektion {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 36px;
+  padding: 70px 38px 100px;
+}
+
+.behandlinger-sektion-liste {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.forside-behandling-kort {
+  display: flex;
+  flex-direction: column;
+}
+
+.forside-behandling-kort-billede {
+  display: grid;
+  min-height: 370px;
+  place-items: center;
+  margin-bottom: 22px;
+  color: #111111;
+  background: #d7d7d7;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.forside-behandling-kort-billede::before {
+  content: "IMG\A 315 x 370";
+  white-space: pre;
+  text-align: center;
+}
+
+.forside-behandling-kort p {
+  margin-top: 12px;
+  color: #666666;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.behandlinger-sektion-titel {
+  padding: 8px 0 0 0;
+}
+
+.behandlinger-sektion-titel p:not(.eyebrow) {
+  margin-top: 22px;
+}
+
+.behandlinger-sektion-titel .button {
+  margin-top: 36px;
+}
+
+
+/* ------------------------------
+   anmeldelser ANMELDELSER
+-------------------------------- */
+.anmeldelser {
+  padding: 58px 48px 120px;
+  background: #f5f5f5;
+}
+
+.anmeldelser > .eyebrow,
+.anmeldelser-titel {
+  max-width: 1180px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.anmeldelser-titel {
+  text-transform: uppercase;
+}
+
+.anmeldelser-liste {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 96px;
+  max-width: 1180px;
+  margin: 112px auto 0;
+}
+
+.anmeldelse-citat p {
+  color: #666666;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.anmeldelse-citat footer {
+  margin-top: 28px;
+  color: #4f5d61;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.anmeldelse-stjerner {
+  margin-top: 18px;
+  color: #d39137;
+  letter-spacing: 0.12em;
+}
+
+
+
+/* ------------------------------
+   CURL UNIVERSE / GUIDES
+-------------------------------- */
+.guide-sektion {
+  display: grid;
+  grid-template-columns: 470px 210px minmax(520px, 1fr);
+  align-items: center;
+  gap: 34px;
+  padding: 78px 48px 92px;
+  overflow: hidden;
+}
+
+.guide-sektion-tekst {
+  padding-left: 0;
+}
+
+.guide-sektion-tekst p:not(.eyebrow) {
+  margin-top: 24px;
+}
+
+.guide-sektion-knapper {
+  margin-top: 46px;
+}
+
+.guide-sektion_-produkt {
+  display: grid;
+  height: 270px;
+  place-items: center;
+  background: linear-gradient(90deg, transparent 0 25%, #d2d2d2 25% 100%);
+}
+
+.guide-sektion_-produkt::before {
+  content: "";
+  width: 88px;
+  height: 220px;
+  border-radius: 4px 4px 16px 16px;
+  background: linear-gradient(#121212 0 28%, #e7f2f3 28% 100%);
+}
+
+.guide-sektion-billede {
+  display: grid;
+  min-height: 370px;
+  place-items: center;
+  color: #111111;
+  background: #d7d7d7;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.guide-sektion-billede::before {
+  content: "IMG\A 710 x 370";
+  white-space: pre;
+  text-align: center;
+}
+
+.salon-citat {
+  min-height: 305px;
+  padding: 64px 160px;
+  color: #d9e7eb;
+  background: #294a54;
+}
+
+.salon-citat-tekst {
+  max-width: 1120px;
+}
+
+.kort-sektion-billede {
+  display: grid;
+  min-height: 525px;
+  place-items: center;
+  color: #111111;
+  background: #d7d7d7;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.kort-sektion-billede::before {
+  content: "IMG\A 1140 x 525";
+  white-space: pre;
+  text-align: center;
+}
+
+
+/* ------------------------------
+   FOOTER
+-------------------------------- */
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 110px;
+  padding: 70px 120px 34px;
+  color: #6f7f85;
+  background: #f4f4f4;
+}
+
+.footer h2 {
+  margin-bottom: 26px;
+  color: #6f7f85;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer-kontakt-adresse,
+.footer-tider-liste,
+.footer-menu-link,
+.footer-info {
+  font-size: 0.74rem;
+  font-style: normal;
+  line-height: 2;
+}
+
+.footer-tider-liste {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 12px;
+}
+
+.footer-tider-liste dd {
+  color: #8a979b;
+}
+
+.footer-menu-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-info {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #dedede;
+}
+
+.footer-socials,
+.footer-betaling {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.footer-betaling {
+  justify-content: flex-end;
+}
+
+.footer-booking {
+  display: none;
+}
+
+
+/* ------------------------------
+   RESPONSIVE TABLET
+   Holder desktop-udtrykket fleksibelt på smallere skærme.
+-------------------------------- */
+@media (max-width: 1180px) {
+  .hero-title {
+    font-size: clamp(3rem, 5.5vw, 4.25rem);
+    text-align: center;
+  }
+
+  .om-belinda {
+    grid-template-columns: minmax(280px, 370px) minmax(360px, 500px);
+    gap: 56px;
+  }
+
+  .om-belinda-billede {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  /* Mixly-sektionen følger mobilens rækkefølge på tablet. */
+  .mixly-introduktion {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .mixly-introduktion-tekst {
+    display: contents;
+  }
+
+  .mixly-introduktion .eyebrow,
+  .mixly-introduktion-titel,
+  .mixly-introduktion-tekst p:not(.eyebrow) {
+    padding-right: 38px;
+    padding-left: 38px;
+  }
+
+  .mixly-introduktion .eyebrow {
+    order: 1;
+    padding-top: 52px;
+  }
+
+  .mixly-introduktion-titel {
+    order: 2;
+  }
+
+  .mixly-introduktion-tekst p:not(.eyebrow) {
+    order: 3;
+  }
+
+  .mixly-introduktion-billeder {
+    order: 5;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px;
+    margin-top: 34px;
+  }
+
+  .mixly-introduktion-billede:nth-child(3) {
+    display: none;
+  }
+
+  .mixly-introduktion-knapper {
+    order: 4;
+    width: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 14px;
+    margin: 34px 38px 52px;
+  }
+
+  .mixly-introduktion-knapper .button {
+    width: auto;
+  }
+
+  /* Behandlinger får tekst og CTA før kortene på tablet. */
+  .behandlinger-sektion {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .behandlinger-sektion-titel {
+    display: contents;
+  }
+
+  .behandlinger-sektion-titel .eyebrow {
+    order: 1;
+  }
+
+  .behandlinger-sektion-titel h2 {
+    order: 2;
+  }
+
+  .behandlinger-sektion-titel p:not(.eyebrow) {
+    order: 3;
+  }
+
+  .behandlinger-sektion-titel .button {
+    order: 4;
+    width: auto;
+    justify-self: start;
+    margin-top: 34px;
+  }
+
+  .behandlinger-sektion-liste {
+    order: 5;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 34px;
+  }
+
+  .guide-sektion {
+    grid-template-columns: minmax(280px, 430px) minmax(140px, 180px) minmax(0, 1fr);
+    gap: 24px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .footer {
+    gap: 64px;
+    padding-right: 70px;
+    padding-left: 70px;
+  }
+}
+
+
+/* ------------------------------
+   RESPONSIVE MOBILE
+   Aktiveres kun på telefoner, så tablets bevarer desktop-udtrykket.
+-------------------------------- */
+@media (max-width: 767px) {
+  html {
+    font-size: 15px;
+  }
+
+  body {
+    min-width: 0;
+    padding-top: 32px;
+  }
+
+  .top-menu {
+    min-height: 32px;
+    padding: 0 10px;
+    color: #7a8589;
+    background: #eeeeee;
+    font-size: 0.58rem;
+  }
+
+  .book-knap {
+    display: inline-flex;
+    min-width: 64px;
+    min-height: 20px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #bdc5c8;
+    background: #ffffff;
+  }
+
+  .top-nav-list {
+    gap: 14px;
+  }
+
+  .top-nav-item-menu {
+    display: list-item;
+  }
+
+  .top-nav-link {
+    display: inline-grid;
+    width: 16px;
+    height: 16px;
+    place-items: center;
+    overflow: hidden;
+    color: transparent;
+  }
+
+  .top-nav-link::before {
+    color: #7a8589;
+    font-size: 0.86rem;
+    line-height: 1;
+  }
+
+  .top-nav-item:nth-child(1) .top-nav-link::before {
+    content: "\25C9";
+  }
+
+  .top-nav-item:nth-child(2) .top-nav-link::before {
+    content: "\25CB";
+  }
+
+  .menu-toggle::before {
+    content: "\2630";
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .menu-dropdown {
+    display: none;
+  }
+
+  h2 {
+    font-size: 20px;
+    line-height: 1.12;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  h3 {
+    font-size: 0.74rem;
+    line-height: 1.2;
+  }
+
+  .eyebrow {
+    margin-bottom: 6px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+  }
+
+  .button {
+    width: 100%;
+    height: 50px;
+    min-width: 0;
+    padding: 0 14px;
+    font-size: 0.56rem;
+  }
+
+  .hero {
+    min-height: 445px;
+    padding: 26px 24px 42px;
+    background: #d9d9d9;
+  }
+
+  .hero-title {
+    max-width: 310px;
+    color: #2d3a3e;
+    font-size: 2.04rem;
+    line-height: 1.04;
+    letter-spacing: 0.04em;
+    text-align: left;
+  }
+
+  .hero-image {
+    display: none;
+  }
+
+  .hero-actions {
+    width: 100%;
+    max-width: 290px;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: auto;
+  }
+
+  .om-belinda {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 34px 28px 42px;
+  }
+
+  .om-belinda__content {
+    display: contents;
+  }
+
+  .om-belinda .eyebrow {
+    order: 1;
+  }
+
+  .om-belinda-titel {
+    order: 2;
+  }
+
+  .om-belinda__content p:not(.eyebrow) {
+    order: 3;
+    margin-top: 16px;
+  }
+
+  .om-belinda-billede {
+    order: 4;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 320 / 225;
+    margin-top: 22px;
+    background: #d7d7d7;
+  }
+
+  .om-belinda-billede::before {
+    content: "IMG\A 320 x 225";
+    display: grid;
+    width: auto;
+    height: auto;
+    place-items: center;
+    color: #111111;
+    background: transparent;
+    font-weight: 700;
+    white-space: pre;
+    text-align: center;
+  }
+
+  .om-belinda .button {
+    order: 5;
+    margin-top: 24px;
+  }
+
+  .om-belinda p:not(.eyebrow),
+  .mixly-introduktion p:not(.eyebrow),
+  .behandlinger-sektion p:not(.eyebrow),
+  .guide-sektion p:not(.eyebrow) {
+    max-width: none;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .mixly-introduktion {
+    display: grid;
+    grid-template-columns: 1fr;
+    background: #f6f6f6;
+  }
+
+  .mixly-introduktion-tekst {
+    display: contents;
+  }
+
+  .mixly-introduktion .eyebrow,
+  .mixly-introduktion-titel,
+  .mixly-introduktion-tekst p:not(.eyebrow) {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .mixly-introduktion .eyebrow {
+    order: 1;
+    padding-top: 26px;
+  }
+
+  .mixly-introduktion-titel {
+    order: 2;
+  }
+
+  .mixly-introduktion-tekst p:not(.eyebrow) {
+    order: 3;
+    margin-top: 13px;
+  }
+
+  .mixly-introduktion-billeder {
+    order: 4;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px;
+    margin-top: 22px;
+  }
+
+  .mixly-introduktion-billede {
+    min-height: 270px;
+  }
+
+  .mixly-introduktion-billede::before {
+    content: "IMG\A 215 x 270";
+    color: #111111;
+    font-weight: 700;
+    white-space: pre;
+    text-align: center;
+  }
+
+  .mixly-introduktion-billede:nth-child(3) {
+    display: none;
+  }
+
+  .mixly-introduktion-knapper {
+    order: 5;
+    width: calc(100% - 24px);
+    flex-direction: column;
+    gap: 12px;
+    margin: 22px 12px 32px;
+  }
+
+  .mixly-introduktion-knapper .button {
+    width: 100%;
+  }
+
+  .citat-sektion {
+    min-height: 204px;
+    padding: 46px 34px;
+  }
+
+  .citat-tekst p {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .salon-citat-tekst p {
+    color: #E2F0F5;
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .citat-tekst footer {
+    margin-top: 18px;
+    font-size: 12px;
+  }
+
+  .salon-citat-tekst footer {
+    margin-top: 18px;
+    color: #E2F0F5;
+    font-size: 12px;
+  }
+
+  .behandlinger-sektion {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 30px 12px 44px;
+  }
+
+  .behandlinger-sektion-titel {
+    display: contents;
+  }
+
+  .behandlinger-sektion-titel .eyebrow {
+    order: 1;
+  }
+
+  .behandlinger-sektion-titel h2 {
+    order: 2;
+  }
+
+  .behandlinger-sektion-titel p:not(.eyebrow) {
+    order: 3;
+    margin-top: 13px;
+  }
+
+  .behandlinger-sektion-liste {
+    order: 4;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3px;
+    margin-top: 22px;
+  }
+
+  .forside-behandling-kort:nth-child(3) {
+    display: none;
+  }
+
+  .forside-behandling-kort-billede {
+    min-height: 270px;
+    margin-bottom: 12px;
+  }
+
+  .forside-behandling-kort-billede::before {
+    content: "IMG\A 215 x 270";
+  }
+
+  .forside-behandling-kort p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .behandlinger-sektion-titel .button {
+    order: 5;
+    width: 100%;
+    justify-self: stretch;
+    margin-top: 24px;
+  }
+
+  .anmeldelser {
+    padding: 38px 28px 54px;
+    text-align: center;
+  }
+
+  .anmeldelser-titel {
+    font-size: 20px;
+  }
+
+  .anmeldelser-liste {
+    display: block;
+    margin-top: 14px;
+  }
+
+  .anmeldelse {
+    display: none;
+  }
+
+  .anmeldelse:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .anmeldelse-stjerner {
+    order: 1;
+    margin-top: 0;
+    margin-bottom: 26px;
+    font-size: 0.8rem;
+  }
+
+  .anmeldelse-citat {
+    order: 2;
+  }
+
+  .anmeldelse-citat p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .guide-sektion {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 0 42px;
+    overflow: visible;
+  }
+
+  .guide-sektion_-produkt {
+    order: 1;
+    height: 190px;
+    background: #d7d7d7;
+  }
+
+  .guide-sektion_-produkt::before {
+    width: 92px;
+    height: 150px;
+  }
+
+  .guide-sektion-tekst {
+    order: 2;
+    padding: 22px 28px 0;
+  }
+
+  .guide-sektion-knapper {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .guide-sektion-billede {
+    display: none;
+  }
+
+  .salon-citat {
+    min-height: 250px;
+    padding: 42px 28px;
+  }
+
+  .kort-sektion-billede {
+    min-height: 260px;
+    font-size: 1.4rem;
+  }
+
+  .kort-sektion-billede::before {
+    content: "IMG";
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 30px 18px 34px;
+  }
+
+  .footer h2 {
+    margin-bottom: 12px;
+    font-size: 0.72rem;
+  }
+
+  .footer-kontakt {
+    padding-bottom: 22px;
+  }
+
+  .footer-kontakt-adresse,
+  .footer-tider-liste,
+  .footer-menu-link,
+  .footer-info {
+    font-size: 0.64rem;
+    line-height: 1.9;
+  }
+
+  .footer-booking {
+    display: inline-flex;
+    margin-top: 12px;
+  }
+
+  .footer-tider,
+  .footer-menu {
+    padding: 18px 0;
+    border-top: 1px solid #dddddd;
+  }
+
+  .footer-tider h2,
+  .footer-menu h2 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+
+  .footer-tider h2::after,
+  .footer-menu h2::after {
+    content: "\2304";
+    color: #8a979b;
+  }
+
+  .footer-tider-liste,
+  .footer-menu-liste {
+    display: none;
+  }
+
+  .footer-info {
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    padding-top: 18px;
+  }
+
+  .footer-socials {
+    display: none;
+  }
+
+  .footer-betaling {
+    justify-content: end;
+    gap: 8px;
+  }
+
+  .footer-betaling-item {
+    min-width: 36px;
+    min-height: 16px;
+    overflow: hidden;
+    color: transparent;
+    background: #dedede;
+  }
+}
