@@ -150,6 +150,10 @@
   margin-top: 40px;
 }
 
+.mixly-introduktion-slider {
+  display: contents;
+}
+
 .mixly-introduktion-billeder {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -172,6 +176,10 @@
   content: "IMG\A 315 x 370";
   white-space: pre;
   text-align: center;
+}
+
+.mixly-introduktion-billede-duplicate {
+  display: none;
 }
 
 /* ------------------------------
@@ -442,6 +450,7 @@
   /* Mixly pÃ¥ tablet: tekst til venstre og billeder helt ud til hÃ¸jre. */
   .mixly-introduktion {
     background: #f6f6f6;
+    overflow: hidden;
   }
 
   .mixly-introduktion-indhold {
@@ -534,16 +543,16 @@
 /* Mobil: forside-sektioner */
 @media (max-width: 767px) {
   .hero {
-    min-height: 445px;
-    padding: 26px 24px 42px;
+    min-height: 476px;
+    padding: 43px 34px 66px;
     background: #d9d9d9;
   }
 
   .hero-title {
-    max-width: 310px;
+    max-width: 330px;
     color: #2d3a3e;
-    font-size: 2.04rem;
-    line-height: 1.04;
+    font-size: 40px;
+    line-height: 1.32;
     letter-spacing: 0.04em;
     text-align: left;
   }
@@ -553,10 +562,12 @@
   }
 
   .hero-actions {
-    width: 100%;
-    max-width: 290px;
+    width: 324px;
+    max-width: 100%;
     flex-direction: column;
     gap: 14px;
+    margin-right: auto;
+    margin-left: auto;
     margin-top: auto;
   }
 
@@ -564,7 +575,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 34px 28px 42px;
+    padding: 48px 34px 44px;
   }
 
   .om-belinda__content {
@@ -589,7 +600,7 @@
     width: 100%;
     height: auto;
     aspect-ratio: 320 / 225;
-    margin-top: 22px;
+    margin-top: 30px;
     background: #d7d7d7;
   }
 
@@ -608,7 +619,7 @@
 
   .om-belinda .button {
     order: 5;
-    margin-top: 24px;
+    margin-top: 31px;
   }
 
   .om-belinda p:not(.eyebrow),
@@ -622,6 +633,7 @@
 
   .mixly-introduktion {
     background: #f6f6f6;
+    overflow: hidden;
   }
 
   .mixly-introduktion-indhold {
@@ -634,16 +646,11 @@
     display: contents;
   }
 
-  .mixly-introduktion .eyebrow,
-  .mixly-introduktion-titel,
-  .mixly-introduktion-tekst p:not(.eyebrow) {
-    padding-right: 12px;
-    padding-left: 12px;
-  }
+
 
   .mixly-introduktion .eyebrow {
     order: 1;
-    padding-top: 26px;
+    padding-top: 28px;
   }
 
   .mixly-introduktion-titel {
@@ -655,40 +662,93 @@
     margin-top: 13px;
   }
 
-  .mixly-introduktion-billeder {
+  .mixly-introduktion-slider {
     order: 4;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 5px;
+    display: block;
+    width: 100vw;
+    min-width: 0;
+    margin-right: calc(50% - 50vw);
+    margin-left: calc(50% - 50vw);
     margin-top: 22px;
+    overflow: hidden;
+  }
+
+  .mixly-introduktion-billeder {
+    display: flex;
+    grid-template-columns: none;
+    align-self: stretch;
+    gap: 5px;
+    width: max-content;
+    margin-top: 0;
+    animation: mixly-mobile-slider 60s linear infinite;
+    will-change: transform;
   }
 
   .mixly-introduktion-billede {
-    min-height: 270px;
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 270px;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .mixly-introduktion-billede::before {
-    content: "IMG\A 215 x 270";
+    content: none;
   }
 
-  .mixly-introduktion-billede:nth-child(3) {
-    display: none;
+  .mixly-introduktion-billede-duplicate {
+    display: grid;
+  }
+
+  .mixly-introduktion-billede img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .mixly-introduktion-knapper {
     order: 5;
-    width: calc(100% - 24px);
+    width: 324px;
+    max-width: 100%;
     flex-direction: column;
     gap: 12px;
-    margin: 22px 12px 32px;
+    margin: 30px auto 51px;
   }
 
   .mixly-introduktion-knapper .button {
-    width: 100%;
+    width: 324px;
+    max-width: 100%;
+  }
+
+  @keyframes mixly-mobile-slider {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(calc(-300vw - 15px));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mixly-introduktion-slider {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
+
+    .mixly-introduktion-billeder {
+      animation: none;
+    }
+
+    .mixly-introduktion-billede {
+      scroll-snap-align: start;
+    }
   }
 
   .citat-sektion {
-    min-height: 204px;
-    padding: 46px 34px;
+    min-height: 230px;
+    padding: 58px 34px;
   }
 
   .citat-tekst p {
@@ -717,7 +777,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 30px 12px 44px;
+    padding: 52px 14px 60px;
   }
 
   .behandlinger-sektion-titel {
@@ -739,13 +799,27 @@
 
   .behandlinger-sektion-liste {
     order: 4;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-columns: calc((100vw - 31px) / 2);
+    grid-auto-flow: column;
+    grid-template-columns: none;
     gap: 3px;
-    margin-top: 22px;
+    margin-top: 32px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .behandlinger-sektion-liste::-webkit-scrollbar {
+    display: none;
   }
 
   .forside-behandling-kort:nth-child(3) {
-    display: none;
+    display: flex;
+  }
+
+  .forside-behandling-kort {
+    min-width: 0;
+    scroll-snap-align: start;
   }
 
   .forside-behandling-kort-billede {
@@ -764,13 +838,14 @@
 
   .behandlinger-sektion-titel .button {
     order: 5;
-    width: 100%;
-    justify-self: stretch;
-    margin-top: 24px;
+    width: 324px;
+    max-width: 100%;
+    justify-self: center;
+    margin-top: 32px;
   }
 
   .anmeldelser {
-    padding: 38px 28px 54px;
+    padding: 82px 28px 76px;
     text-align: center;
   }
 
@@ -780,7 +855,7 @@
 
   .anmeldelser-liste {
     display: block;
-    margin-top: 14px;
+    margin-top: 72px;
   }
 
   .anmeldelse {
@@ -829,13 +904,15 @@
 
   .guide-sektion-tekst {
     order: 2;
-    padding: 22px 28px 0;
+    padding: 46px 14px 0;
   }
 
   .guide-sektion-knapper {
+    width: 324px;
+    max-width: 100%;
     flex-direction: column;
     gap: 12px;
-    margin-top: 24px;
+    margin: 32px auto 0;
   }
 
   .guide-sektion-billede {
@@ -843,8 +920,8 @@
   }
 
   .salon-citat {
-    min-height: 250px;
-    padding: 42px 28px;
+    min-height: 305px;
+    padding: 58px 28px;
   }
 
   .kort-sektion-billede {
