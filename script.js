@@ -3,6 +3,7 @@ const menuToggle = document.querySelector(".menu-toggle");
 const menuClose = document.querySelector(".mobile-menu-close");
 const productsToggle = document.querySelector(".mobile-menu-link-products");
 const productsBack = document.querySelector(".mobile-menu-back");
+const mobileMenuScroll = document.querySelector(".mobile-menu-scroll");
 
 function openMobileMenu(event) {
   event.preventDefault();
@@ -20,6 +21,9 @@ function closeMobileMenu() {
 
 function showProductsMenu() {
   mobileMenu.classList.add("is-products");
+  if (mobileMenuScroll) {
+    mobileMenuScroll.scrollTop = 0;
+  }
 }
 
 function showMainMenu() {
