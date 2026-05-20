@@ -1,0 +1,159 @@
+﻿/* Footer CSS: footer-layout, kontaktinfo, åbningstider, navigation og betalingsikoner. */
+/* ==================================================
+   6. FOOTER
+================================================== */
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 110px;
+  padding: 70px 120px 34px;
+  color: #6f7f85;
+  background: #f4f4f4;
+}
+
+.footer h2 {
+  margin-bottom: 26px;
+  color: #6f7f85;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer-kontakt-adresse,
+.footer-tider-liste,
+.footer-menu-link,
+.footer-info {
+  font-size: 0.74rem;
+  font-style: normal;
+  line-height: 2;
+}
+
+.footer-tider-liste {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 12px;
+}
+
+.footer-tider-liste dd {
+  color: #8a979b;
+}
+
+.footer-menu-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-info {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #dedede;
+}
+
+.footer-socials,
+.footer-betaling {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.footer-betaling {
+  justify-content: flex-end;
+}
+
+.footer-booking {
+  display: none;
+}
+
+
+/* Tablet: footer */
+@media (max-width: 1180px) {
+  .footer {
+    gap: 64px;
+    padding-right: 70px;
+    padding-left: 70px;
+  }
+}
+
+/* Mobil: footer */
+@media (max-width: 767px) {
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 30px 18px 34px;
+  }
+
+  .footer h2 {
+    margin-bottom: 12px;
+    font-size: 0.72rem;
+  }
+
+  .footer-kontakt {
+    padding-bottom: 22px;
+  }
+
+  .footer-kontakt-adresse,
+  .footer-tider-liste,
+  .footer-menu-link,
+  .footer-info {
+    font-size: 0.64rem;
+    line-height: 1.9;
+  }
+
+  .footer-booking {
+    display: inline-flex;
+    margin-top: 12px;
+  }
+
+  .footer-tider,
+  .footer-menu {
+    padding: 18px 0;
+    border-top: 1px solid #dddddd;
+  }
+
+  .footer-tider h2,
+  .footer-menu h2 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+
+  .footer-tider h2::after,
+  .footer-menu h2::after {
+    content: "\2304";
+    color: #8a979b;
+  }
+
+  .footer-tider-liste,
+  .footer-menu-liste {
+    display: none;
+  }
+
+  .footer-info {
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    padding-top: 18px;
+  }
+
+  .footer-socials {
+    display: none;
+  }
+
+  .footer-betaling {
+    justify-content: end;
+    gap: 8px;
+  }
+
+  .footer-betaling-item {
+    min-width: 36px;
+    min-height: 16px;
+    overflow: hidden;
+    color: transparent;
+    background: #dedede;
+  }
+}
