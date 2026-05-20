@@ -11,6 +11,35 @@
   background: var(--color-white);
 }
 
+/* Logo i top navigation */
+.top-menu {
+  position: relative;
+}
+
+.top-menu-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.top-menu-logo-image {
+  height: 100%;
+  max-height: 35px;
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .top-menu-logo-image {
+    max-height: 32px;
+  }
+}
+
 .top-menu {
   display: flex;
   align-items: center;
