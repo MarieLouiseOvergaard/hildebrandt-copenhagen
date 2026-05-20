@@ -36,7 +36,7 @@
 
 @media (max-width: 767px) {
   .top-menu-logo-image {
-    max-height: 32px;
+    display: none;
   }
 }
 
@@ -220,11 +220,11 @@
 @media (max-width: 767px) {
   body {
     min-width: 0;
-    padding-top: 32px;
+    padding-top: 50px;
   }
 
   .top-menu {
-    min-height: 32px;
+    min-height: 50px;
     padding: 0 10px;
     color: #7a8589;
     background: #eeeeee;
@@ -232,13 +232,13 @@
   }
 
   .top-menu > .book-knap {
-    font-size: 0.58rem;
+    font-size: 10px;
   }
 
   .book-knap {
     display: inline-flex;
-    min-width: 64px;
-    min-height: 20px;
+    min-width: 106px;
+    min-height: 34px;
     align-items: center;
     justify-content: center;
     border: 1px solid #bdc5c8;

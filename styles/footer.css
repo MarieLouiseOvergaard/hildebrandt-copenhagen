@@ -85,34 +85,39 @@
   .footer {
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 30px 18px 34px;
+    padding: 70px 24px 64px;
   }
 
   .footer h2 {
-    margin-bottom: 12px;
-    font-size: 0.72rem;
+    margin-bottom: 14px;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0;
   }
 
   .footer-kontakt {
-    padding-bottom: 22px;
+    padding-bottom: 24px;
   }
 
   .footer-kontakt-adresse,
   .footer-tider-liste,
   .footer-menu-link,
   .footer-info {
-    font-size: 0.64rem;
-    line-height: 1.9;
+    font-size: 14px;
+    line-height: 2;
   }
 
   .footer-booking {
     display: inline-flex;
+    min-width: 84px;
+    min-height: 40px;
     margin-top: 12px;
+    font-size: 14px;
   }
 
   .footer-tider,
   .footer-menu {
-    padding: 18px 0;
+    padding: 28px 0;
     border-top: 1px solid #dddddd;
   }
 
@@ -137,7 +142,8 @@
   .footer-info {
     grid-template-columns: 1fr auto;
     gap: 16px;
-    padding-top: 18px;
+    padding-top: 38px;
+    font-size: 12px;
   }
 
   .footer-socials {

@@ -130,11 +130,6 @@ h3 {
   text-transform: uppercase;
 }
 
-
-
-/* Fælles knapper */
-}
-
 .hero-actions {
   margin-top: 46px;
 }
@@ -173,9 +168,15 @@ h3 {
 .button-secondary:hover {
   color: var(--color-white);
   background: var(--color-heading);
+}
 
 /* Mobil: global typografi og knapper */
 @media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
   html {
     font-size: 15px;
   }
@@ -201,10 +202,14 @@ h3 {
   }
 
   .button {
-    width: 100%;
+    width: 324px;
     height: 50px;
     min-width: 0;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
     padding: 0 14px;
-    font-size: 0.56rem;
+    font-size: 14px;
+    text-transform: uppercase;
   }
 }
