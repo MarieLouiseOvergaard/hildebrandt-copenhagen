@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="da">
 <head>
   <meta charset="UTF-8">
@@ -13,21 +13,18 @@
   <!-- Header med top-menu og hovednavigation -->
   <header class="header">
     <div class="top-menu">
-      <a class="book-knap" href="kontakt.html">Book tid</a>
-      <a class="menu-logo-link top-menu-logo" href="index.html" aria-label="Forside">
+      <a class="book-knap" href="kontakt.html" aria-label="Book tid">Book tid</a>
+      <a class="menu-logo-link top-menu-logo" href="index.html" aria-label="G&aring; til forsiden">
         <img class="menu-logo top-menu-logo-image" src="img/monogramLysgraa.svg" alt="Hildebrandt Copenhagen monogram">
       </a>
 
-      <nav class="top-nav" aria-label="Hjælpenavigation">
+      <nav class="top-nav" aria-label="HjÃ¦lpenavigation">
         <ul class="top-nav-list">
           <li class="top-nav-item">
-            <a class="top-nav-link" href="#" aria-label="Kurv">Kurv</a>
-          </li>
-          <li class="top-nav-item">
-            <a class="top-nav-link" href="#" aria-label="Konto">Konto</a>
+            <a class="top-nav-link top-nav-link-cart" href="#" aria-label="Kurv"><img class="top-nav-icon top-nav-icon-cart" src="img/kurv.svg" alt=""></a>
           </li>
           <li class="top-nav-item top-nav-item-menu">
-            <a class="top-nav-link menu-toggle" href="#" aria-label="Menu">Menu</a>
+            <button class="top-nav-link menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"></button>
           </li>
         </ul>
       </nav>
@@ -88,13 +85,13 @@
           <a class="menu-link" href="behandlinger.html">Behandlinger</a>
         </li>
         <li class="menu-item">
-          <a class="menu-link" href="kroelleunivers.html">Krølleunivers</a>
+          <a class="menu-link" href="kroelleunivers.html">KrÃ¸lleunivers</a>
         </li>
         <li class="menu-item">
           <a class="menu-link" href="guides.html">Guides</a>
         </li>
         <li class="menu-item">
-          <a class="menu-link" href="omos.html">Din Krøllefrisør</a>
+          <a class="menu-link" href="omos.html">Din KrÃ¸llefrisÃ¸r</a>
         </li>
         <li class="menu-item">
           <a class="menu-link" href="kontakt.html">Kontakt</a>
@@ -103,11 +100,11 @@
     </nav>
   </header>
 
-  <div class="mobile-menu" aria-hidden="true">
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
     <div class="mobile-menu-panel mobile-menu-panel-main" data-mobile-panel="main">
       <div class="mobile-menu-header">
         <p class="mobile-menu-title">Menu</p>
-        <button class="mobile-menu-close" type="button" aria-label="Luk menu">×</button>
+        <button class="mobile-menu-close" type="button" aria-label="Luk menu">Ã—</button>
       </div>
 
       <nav class="mobile-menu-nav" aria-label="Mobilnavigation">
@@ -115,20 +112,20 @@
           <li class="mobile-menu-item">
             <button class="mobile-menu-link mobile-menu-link-products" type="button">
               Produkter
-              <span class="mobile-menu-arrow" aria-hidden="true">›</span>
+              <span class="mobile-menu-arrow" aria-hidden="true">â€º</span>
             </button>
           </li>
           <li class="mobile-menu-item">
             <a class="mobile-menu-link" href="behandlinger.html">Behandlinger</a>
           </li>
           <li class="mobile-menu-item">
-            <a class="mobile-menu-link" href="kroelleunivers.html">Krølleunivers</a>
+            <a class="mobile-menu-link" href="kroelleunivers.html">KrÃ¸lleunivers</a>
           </li>
           <li class="mobile-menu-item">
             <a class="mobile-menu-link" href="guides.html">Guides</a>
           </li>
           <li class="mobile-menu-item">
-            <a class="mobile-menu-link" href="omos.html">Din krøllefrisør</a>
+            <a class="mobile-menu-link" href="omos.html">Din krÃ¸llefrisÃ¸r</a>
           </li>
           <li class="mobile-menu-item">
             <a class="mobile-menu-link" href="kontakt.html">Kontakt</a>
@@ -139,7 +136,7 @@
 
     <div class="mobile-menu-panel mobile-menu-panel-products" data-mobile-panel="products">
       <div class="mobile-menu-header">
-        <button class="mobile-menu-back" type="button" aria-label="Tilbage til menu">‹</button>
+        <button class="mobile-menu-back" type="button" aria-label="Tilbage til menu">â€¹</button>
         <p class="mobile-menu-title">Produkter</p>
       </div>
 
@@ -150,7 +147,7 @@
               <a class="mobile-menu-link" href="produkter.html">Startpakke</a>
             </li>
             <li class="mobile-menu-item">
-              <a class="mobile-menu-link" href="produkter.html">Sæt</a>
+              <a class="mobile-menu-link" href="produkter.html">SÃ¦t</a>
             </li>
             <li class="mobile-menu-item">
               <a class="mobile-menu-link" href="produkter.html">Shampoo</a>
@@ -159,7 +156,7 @@
               <a class="mobile-menu-link" href="produkter.html">Conditioner</a>
             </li>
             <li class="mobile-menu-item">
-              <a class="mobile-menu-link" href="produkter.html">Hårmaske</a>
+              <a class="mobile-menu-link" href="produkter.html">HÃ¥rmaske</a>
             </li>
             <li class="mobile-menu-item">
               <a class="mobile-menu-link" href="produkter.html">Styling</a>
@@ -168,7 +165,7 @@
               <a class="mobile-menu-link" href="produkter.html">Alle produkter</a>
             </li>
             <li class="mobile-menu-item mobile-menu-feature-item">
-              <a class="mobile-menu-link mobile-menu-feature-link" href="produkter.html">Lær produkterne at kende</a>
+              <a class="mobile-menu-link mobile-menu-feature-link" href="produkter.html">LÃ¦r produkterne at kende</a>
             </li>
           </ul>
         </nav>
@@ -184,8 +181,8 @@
     <!-- Kontakt hero -->
     <section class="kontakt-hero" aria-labelledby="kontakt-hero-titel">
       <p class="eyebrow">Hildebrandt Copenhagen</p>
-      <h1 id="kontakt-hero-titel" class="kontakt-hero-titel">Lad os snakke om dine krøller</h1>
-      <p>Har du spørgsmål til booking, produkter eller din hårtype?</p>
+      <h1 id="kontakt-hero-titel" class="kontakt-hero-titel">Lad os snakke om dine krÃ¸ller</h1>
+      <p>Har du spÃ¸rgsmÃ¥l til booking, produkter eller din hÃ¥rtype?</p>
       <div class="kontakt-hero-knapper">
         <a class="button button-primary" href="#kontakt-formular">Book tid</a>
         <a class="button button-secondary" href="#kontakt-formular">Send en besked</a>
@@ -195,13 +192,13 @@
     <!-- Kontakt og formular -->
     <section class="kontakt-intro" aria-labelledby="kontakt-intro-titel">
       <div class="kontakt-info">
-        <h2 id="kontakt-intro-titel">Jeg hjælper gerne</h2>
-        <p>Du er altid velkommen til at kontakte salonen med spørgsmål om booking, produkter eller din hårtype.</p>
+        <h2 id="kontakt-intro-titel">Jeg hjÃ¦lper gerne</h2>
+        <p>Du er altid velkommen til at kontakte salonen med spÃ¸rgsmÃ¥l om booking, produkter eller din hÃ¥rtype.</p>
 
         <div class="kontakt-info-liste">
           <article class="kontakt-info-item">
             <h3>Adresse</h3>
-            <address>Nørre Fasanvej 163, 2000 Frederiksberg</address>
+            <address>NÃ¸rre Fasanvej 163, 2000 Frederiksberg</address>
           </article>
 
           <article class="kontakt-info-item">
@@ -218,7 +215,7 @@
 
       <article class="kontakt-formular" id="kontakt-formular" aria-labelledby="kontakt-formular-titel">
         <h2 id="kontakt-formular-titel">Send en besked</h2>
-        <p>Udfyld formularen nedenfor, så vender jeg tilbage hurtigst muligt.</p>
+        <p>Udfyld formularen nedenfor, sÃ¥ vender jeg tilbage hurtigst muligt.</p>
 
         <form class="kontakt-form" action="#" method="post">
           <div class="kontakt-form-felt">
@@ -242,11 +239,11 @@
       </article>
     </section>
 
-    <!-- Åbningstider og kort -->
-    <section class="kontakt-praktisk" aria-label="Åbningstider og find salonen">
+    <!-- Ã…bningstider og kort -->
+    <section class="kontakt-praktisk" aria-label="Ã…bningstider og find salonen">
       <article class="kontakt-aabningstider" aria-labelledby="kontakt-aabningstider-titel">
-        <h2 id="kontakt-aabningstider-titel">Åbningstider</h2>
-        <p class="kontakt-status">Åben nu</p>
+        <h2 id="kontakt-aabningstider-titel">Ã…bningstider</h2>
+        <p class="kontakt-status">Ã…ben nu</p>
 
         <dl class="kontakt-aabningstider-liste">
           <dt>Mandag</dt>
@@ -259,7 +256,7 @@
           <dd>10:00 - 17:30</dd>
           <dt>Fredag</dt>
           <dd>10:00 - 16:00</dd>
-          <dt>Lørdag - Søndag</dt>
+          <dt>LÃ¸rdag - SÃ¸ndag</dt>
           <dd>Lukket</dd>
         </dl>
       </article>
@@ -269,14 +266,14 @@
         <figure class="kontakt-kort-placeholder">
           <span>Google Maps</span>
         </figure>
-        <p>Ligger tæt på busstoppestedet for linje 4A og kun en kort gåtur fra Fuglebakken Station.</p>
+        <p>Ligger tÃ¦t pÃ¥ busstoppestedet for linje 4A og kun en kort gÃ¥tur fra Fuglebakken Station.</p>
       </article>
     </section>
 
     <!-- Instagram -->
     <section class="kontakt-instagram" aria-labelledby="kontakt-instagram-titel">
       <div class="kontakt-instagram-top">
-        <h2 id="kontakt-instagram-titel">Få inspiration på instagram</h2>
+        <h2 id="kontakt-instagram-titel">FÃ¥ inspiration pÃ¥ instagram</h2>
         <p><a href="https://www.instagram.com/hildebrandtcopenhagen">@hildebrandtcopenhagen</a></p>
       </div>
 
@@ -300,14 +297,14 @@
     </section>
   </main>
 
-  <!-- Footer med kontakt, åbningstider og links -->
+  <!-- Footer med kontakt, Ã¥bningstider og links -->
   <footer class="footer">
     <section class="footer-kontakt" aria-labelledby="footer-kontakt-titel">
       <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
       <address class="footer-kontakt-adresse">
         Hildebrandt Copenhagen x Mixly<br>
         +45 30 74 34 30<br>
-        Nørre Fasanvej 163<br>
+        NÃ¸rre Fasanvej 163<br>
         2000 Frederiksberg<br>
         hej@hildebrandtcopenhagen.dk
       </address>
@@ -315,7 +312,7 @@
     </section>
 
     <section class="footer-tider" aria-labelledby="footer-tider-titel">
-      <h2 id="footer-tider-titel" class="footer-tider-titel">Åbningstider</h2>
+      <h2 id="footer-tider-titel" class="footer-tider-titel">Ã…bningstider</h2>
       <dl class="footer-tider-liste">
         <dt>Mandag</dt>
         <dd>8:30-14:00</dd>
@@ -340,10 +337,10 @@
           <a class="footer-menu-link" href="produkter.html">Produkter</a>
         </li>
         <li class="footer-menu-item">
-          <a class="footer-menu-link" href="guides.html">Krølleguide</a>
+          <a class="footer-menu-link" href="guides.html">KrÃ¸lleguide</a>
         </li>
         <li class="footer-menu-item">
-          <a class="footer-menu-link" href="omos.html">Din krøllefrisør</a>
+          <a class="footer-menu-link" href="omos.html">Din krÃ¸llefrisÃ¸r</a>
         </li>
         <li class="footer-menu-item">
           <a class="footer-menu-link" href="#">Handelsbetingelser</a>
