@@ -151,7 +151,7 @@ h3 {
   color: #d4dde0;
   background: #294a54;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: clamp(10px, 0.9vw, 12px);
   letter-spacing: 0.04em;
 }
 
@@ -166,7 +166,7 @@ h3 {
 }
 
 .top-menu > .book-knap {
-  font-size: 20px;
+  font-size: clamp(11px, 1.25vw, 20px);
 }
 
 .menu {
@@ -180,13 +180,13 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 38px;
+  gap: clamp(10px, 2.2vw, 38px);
 }
 
 .menu-link {
   color: var(--color-heading);
   font-family: var(--font-heading);
-  font-size: 14px;
+  font-size: clamp(9px, 0.9vw, 14px);
   font-weight: 300;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -307,6 +307,14 @@ h3 {
   font-size: 11px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+.is-menu-open {
+  overflow: hidden;
 }
 
 
@@ -991,6 +999,10 @@ h3 {
     font-size: 0.58rem;
   }
 
+  .top-menu > .book-knap {
+    font-size: 0.58rem;
+  }
+
   .book-knap {
     display: inline-flex;
     min-width: 64px;
@@ -1003,6 +1015,10 @@ h3 {
 
   .top-nav-list {
     gap: 14px;
+  }
+
+  .top-nav-item:nth-child(2) {
+    display: none;
   }
 
   .top-nav-item-menu {
@@ -1025,7 +1041,7 @@ h3 {
   }
 
   .top-nav-item:nth-child(1) .top-nav-link::before {
-    content: "\25C9";
+    content: "\25A1";
   }
 
   .top-nav-item:nth-child(2) .top-nav-link::before {
@@ -1042,6 +1058,150 @@ h3 {
 
   .menu-dropdown {
     display: none;
+  }
+
+  /* Full screen mobilmenu */
+  .mobile-menu {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    display: block;
+    visibility: hidden;
+    background: #e9e9e9;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 240ms ease, visibility 240ms ease;
+  }
+
+  .mobile-menu.is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-menu-panel {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    background: #e9e9e9;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(18px);
+    transition: opacity 240ms ease, transform 240ms ease;
+  }
+
+  .mobile-menu.is-open:not(.is-products) .mobile-menu-panel-main,
+  .mobile-menu.is-open.is-products .mobile-menu-panel-products {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  .mobile-menu-header {
+    position: relative;
+    display: grid;
+    min-height: 63px;
+    align-items: center;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .mobile-menu-title {
+    color: #1f2d32;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu-close,
+  .mobile-menu-back,
+  .mobile-menu-link-products {
+    border: 0;
+    background: transparent;
+    font: inherit;
+  }
+
+  .mobile-menu-close,
+  .mobile-menu-back {
+    position: absolute;
+    top: 50%;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    padding: 0;
+    color: #1f2d32;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1;
+    transform: translateY(-50%);
+  }
+
+  .mobile-menu-close {
+    right: 18px;
+  }
+
+  .mobile-menu-back {
+    left: 8px;
+  }
+
+  .mobile-menu-nav {
+    padding: 50px 36px 0;
+  }
+
+  .mobile-menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+  }
+
+  .mobile-menu-link {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    color: #1f2d32;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu-arrow {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .mobile-menu-product-list {
+    gap: 36px;
+  }
+
+  .mobile-menu-product-list .mobile-menu-link {
+    text-transform: none;
+  }
+
+  .mobile-menu-feature {
+    margin-top: 18px;
+    padding: 0 20px 32px;
+  }
+
+  .mobile-menu-feature-link {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu-feature-image {
+    min-height: 328px;
+    background: #b9b9b9;
   }
 
   h2 {

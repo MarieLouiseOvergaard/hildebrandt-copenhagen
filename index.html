@@ -97,6 +97,81 @@
     </nav>
   </header>
 
+  <div class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-panel mobile-menu-panel-main" data-mobile-panel="main">
+      <div class="mobile-menu-header">
+        <p class="mobile-menu-title">Menu</p>
+        <button class="mobile-menu-close" type="button" aria-label="Luk menu">×</button>
+      </div>
+
+      <nav class="mobile-menu-nav" aria-label="Mobilnavigation">
+        <ul class="mobile-menu-list">
+          <li class="mobile-menu-item">
+            <button class="mobile-menu-link mobile-menu-link-products" type="button">
+              Produkter
+              <span class="mobile-menu-arrow" aria-hidden="true">›</span>
+            </button>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Behandlinger</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Krølleunivers</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Guides</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Din krøllefrisør</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Kontakt</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mobile-menu-panel mobile-menu-panel-products" data-mobile-panel="products">
+      <div class="mobile-menu-header">
+        <button class="mobile-menu-back" type="button" aria-label="Tilbage til menu">‹</button>
+        <p class="mobile-menu-title">Produkter</p>
+      </div>
+
+      <nav class="mobile-menu-nav" aria-label="Produktnavigation">
+        <ul class="mobile-menu-list mobile-menu-product-list">
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Startpakke</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Sæt</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Shampoo</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Conditioner</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Hårmaske</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Styling</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="#">Alle produkter</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link mobile-menu-feature-link" href="#">Lær produkterne at kende</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="mobile-menu-feature">
+        <div class="mobile-menu-feature-image" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
   <main class="site-main">
     <!-- Hero-sektion med titel, billede og CTA-knapper -->
     <section class="hero" aria-labelledby="hero-title">
@@ -324,5 +399,6 @@
       </ul>
     </div>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
