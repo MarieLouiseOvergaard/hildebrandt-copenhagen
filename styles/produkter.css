@@ -75,7 +75,7 @@
 
 .product-card,
 .product-promo-card {
-  flex: 0 0 260px;
+  flex: 0 0 315px;
   min-width: 0;
   scroll-snap-align: start;
 }
@@ -160,7 +160,7 @@
 }
 
 .product-meta span:first-child {
-  font-size: var(--font-eyebrow-desktop);
+  font-size: 18px;
 }
 
 .product-meta span:last-child {
@@ -274,7 +274,7 @@
 
   .product-card,
   .product-promo-card {
-    flex-basis: calc((100vw - 32px) / 2);
+    flex-basis: min(82vw, 315px);
   }
 
   .product-content {
@@ -290,7 +290,7 @@
   }
 
   .product-meta span:first-child {
-    font-size: var(--font-eyebrow-mobile);
+    font-size: 16px;
   }
 
   .product-promo-card {
