@@ -182,9 +182,13 @@
 
 .kontakt-status {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
   margin-top: 10px;
   padding-left: 18px;
-  color: #82c98a;
+  color: #777777;
   font-family: var(--font-heading);
   font-size: 0.98rem;
   letter-spacing: 0.08em;
@@ -192,16 +196,41 @@
   text-transform: uppercase;
 }
 
+.kontakt-status--open {
+  color: #3f9f58;
+}
+
+.kontakt-status--closed {
+  color: #c94f45;
+}
+
 .kontakt-status::before {
   position: absolute;
-  top: 50%;
+  top: 0.49em;
   left: 0;
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #82c98a;
+  background: #b8b8b8;
   content: "";
   transform: translateY(-50%);
+}
+
+.kontakt-status--open::before {
+  background: #3f9f58;
+}
+
+.kontakt-status--closed::before {
+  background: #c94f45;
+}
+
+.kontakt-status-detail {
+  color: #777777;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-transform: none;
 }
 
 .kontakt-aabningstider-liste {
@@ -231,18 +260,18 @@
 }
 
 .kontakt-kort-placeholder {
-  display: grid;
-  min-height: 285px;
-  place-items: center;
+  display: block;
+  min-height: 430px;
   margin-top: 28px;
+  overflow: hidden;
   background: var(--color-image-placeholder);
 }
 
-.kontakt-kort-placeholder span {
-  color: #9b9b9b;
-  font-family: var(--font-heading);
-  font-size: 0.98rem;
-  text-transform: uppercase;
+.kontakt-kort-placeholder iframe {
+  display: block;
+  width: 100%;
+  min-height: 430px;
+  border: 0;
 }
 
 .kontakt-kort > p {
@@ -393,6 +422,10 @@
   .kontakt-kort-placeholder {
     min-height: 230px;
     margin-top: 12px;
+  }
+
+  .kontakt-kort-placeholder iframe {
+    min-height: 230px;
   }
 
   .kontakt-kort > p {
