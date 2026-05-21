@@ -78,20 +78,31 @@
   gap: 6px;
 }
 
-.behandlinger-mixly {
+.behandlinger-mixly,
+.behandlinger-pris-grid,
+.behandlinger-permanent {
   max-width: none;
   grid-template-columns: minmax(0, 1.15fr) minmax(380px, 0.85fr);
+}
+
+.behandlinger-mixly {
   padding-left: 0;
 }
 
 .behandlinger-mixly .behandlinger-info-kort {
   grid-template-columns: minmax(0, 0.5fr) repeat(2, minmax(0, 1fr));
   gap: 5px;
+  overflow: hidden;
 }
 
 .behandlinger-mixly .behandlinger-kort-billede,
 .behandlinger-mixly .behandlinger-intro-kort {
   height: 370px;
+}
+
+.behandlinger-mixly .behandlinger-kort-billede:first-child {
+  width: 200%;
+  transform: translateX(-50%);
 }
 
 .behandlinger-mixly .behandlinger-priser {
@@ -176,15 +187,20 @@
 
 .behandlinger-pris-grid {
   padding-top: 40px;
+  padding-right: 40px;
   padding-bottom: 50px;
+  padding-left: 0;
 }
 
 .behandlinger-pris-grid .behandlinger-priser {
   align-self: start;
 }
 
+.behandlinger-pris-grid .behandlinger-priser:first-child {
+  padding-left: 40px;
+}
+
 .behandlinger-permanent {
-  max-width: none;
   padding-top: 44px;
   padding-bottom: 66px;
   padding-left: 0;
@@ -245,7 +261,17 @@
     padding-left: 0;
   }
 
+  .behandlinger-pris-grid {
+    grid-template-columns: minmax(420px, 1.05fr) minmax(320px, 0.95fr);
+    padding-left: 0;
+  }
+
+  .behandlinger-pris-grid .behandlinger-priser:first-child {
+    padding-left: 28px;
+  }
+
   .behandlinger-permanent {
+    grid-template-columns: minmax(420px, 1.05fr) minmax(320px, 0.95fr);
     padding-left: 0;
   }
 
@@ -266,17 +292,40 @@
     padding: 42px 18px;
   }
 
+  /* Hero: billede først, tekst under */
+  .behandlinger-hero {
+    gap: 0;
+    padding: 0 0 42px;
+  }
+
+  .behandlinger-hero-tekst {
+    padding: 18px 18px 0;
+  }
+
   .behandlinger-hero h1 {
     font-size: var(--font-h1-mobile);
   }
 
   .behandlinger-hero .button,
   .behandlinger-konsultation .button {
-    width: 100%;
     margin-top: 30px;
   }
 
-  .behandlinger-hero-billede,
+  .behandlinger-main .button {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .behandlinger-hero-billede {
+    order: -1;
+    min-height: 140px;
+  }
+
+  .behandlinger-hero-billede span {
+    display: none;
+  }
+
   .behandlinger-konsultation-billede {
     min-height: 190px;
   }
@@ -285,18 +334,44 @@
     grid-template-columns: 1fr;
   }
 
+  /* Mixly: kun infokort og priser på mobil */
   .behandlinger-mixly {
     max-width: var(--container-max);
-    padding-left: 18px;
+    gap: 0;
+    padding: 0;
   }
 
+  .behandlinger-mixly .behandlinger-kort-billede {
+    display: none;
+  }
+
+  .behandlinger-mixly .behandlinger-priser {
+    padding: 42px 18px;
+  }
+
+  /* Permanent: priser før billeder */
   .behandlinger-permanent {
     max-width: var(--container-max);
-    padding-left: 18px;
+    gap: 32px;
+    padding: 42px 0 0;
+  }
+
+  .behandlinger-permanent .behandlinger-priser {
+    order: 1;
+    padding: 0 18px;
+  }
+
+  .behandlinger-permanent .behandlinger-billeder {
+    order: 2;
+  }
+
+  .behandlinger-pris-grid .behandlinger-priser:first-child {
+    padding-left: 0;
   }
 
   .behandlinger-mixly .behandlinger-info-kort {
     grid-template-columns: 1fr;
+    overflow: visible;
   }
 
   .behandlinger-mixly .behandlinger-kort-billede,
@@ -304,12 +379,19 @@
     height: auto;
   }
 
+  .behandlinger-mixly .behandlinger-kort-billede:first-child {
+    width: 100%;
+    transform: none;
+  }
+
   .behandlinger-billeder {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3px;
   }
 
   .behandlinger-intro-kort {
-    padding: 34px 24px;
+    padding: 42px 18px;
+    background: var(--color-light-blue);
   }
 
   .behandlinger-intro-kort h2,
@@ -321,8 +403,12 @@
     align-self: stretch;
   }
 
+  .behandlinger-priser h2 {
+    margin-bottom: 20px;
+  }
+
   .behandlinger-pris-liste {
-    gap: 18px;
+    gap: 16px;
   }
 
   .behandlinger-pris-linje {
@@ -340,5 +426,15 @@
 
   .behandlinger-placeholder span::first-line {
     font-size: var(--font-h2-mobile);
+  }
+
+  .behandlinger-konsultation {
+    gap: 28px;
+    padding-top: 42px;
+    padding-bottom: 56px;
+  }
+
+  .behandlinger-konsultation-billede {
+    display: none;
   }
 }
