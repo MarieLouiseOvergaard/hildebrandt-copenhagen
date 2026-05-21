@@ -100,6 +100,10 @@ window.addEventListener("resize", updateMobileNavPosition);
 
 const contactStatus = document.querySelector(".kontakt-status");
 
+if (heroBookingButton) {
+  document.body.classList.add("has-hero-booking-cta");
+}
+
 function getCopenhagenTimeParts() {
   const formatter = new Intl.DateTimeFormat("en-US", {
     timeZone: "Europe/Copenhagen",
@@ -195,9 +199,127 @@ if (contactStatus) {
 }
 
 const productRows = document.querySelectorAll(".product-row");
+const treatmentRows = document.querySelectorAll(".behandlinger-sektion-liste");
 const productCards = document.querySelectorAll(".product-card");
+const reviewSlider = document.querySelector("[data-anmeldelser-slider]");
 
-function setupProductIndicators(row) {
+function setupReviewSlider(slider) {
+  const track = slider.querySelector("[data-anmeldelser-track]");
+  const slides = track ? Array.from(track.querySelectorAll(".anmeldelse")) : [];
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const displayDuration = Number.parseFloat(getComputedStyle(slider.closest(".anmeldelser")).getPropertyValue("--anmeldelse-display-duration")) || 5000;
+  const transitionDuration = Number.parseFloat(getComputedStyle(slider.closest(".anmeldelser")).getPropertyValue("--anmeldelse-transition-duration")) || 600;
+  let activeIndex = 0;
+  let intervalId = null;
+  let visibleCount = 1;
+
+  if (!track || slides.length <= 1) {
+    return;
+  }
+
+  function getVisibleCount() {
+    return window.matchMedia("(max-width: 767px)").matches ? 1 : 3;
+  }
+
+  function updateSlideAccessibility() {
+    Array.from(track.children).forEach((slide) => {
+      const originalIndex = Number(slide.dataset.reviewIndex);
+      const isVisible =
+        !slide.dataset.clone &&
+        originalIndex >= activeIndex &&
+        originalIndex < activeIndex + visibleCount;
+
+      slide.setAttribute("aria-hidden", isVisible ? "false" : "true");
+    });
+  }
+
+  function getSlideStep() {
+    const firstSlide = track.querySelector(".anmeldelse");
+    const secondSlide = firstSlide ? firstSlide.nextElementSibling : null;
+
+    if (firstSlide && secondSlide) {
+      return secondSlide.offsetLeft - firstSlide.offsetLeft;
+    }
+
+    return slider.clientWidth;
+  }
+
+  function setTrackPosition(shouldAnimate = true) {
+    track.style.transition = shouldAnimate ? "" : "none";
+    track.style.transform = `translateX(${-getSlideStep() * activeIndex}px)`;
+    updateSlideAccessibility();
+
+    if (!shouldAnimate) {
+      track.offsetHeight;
+      track.style.transition = "";
+    }
+  }
+
+  function rebuildClones() {
+    track.querySelectorAll("[data-clone='true']").forEach((clone) => clone.remove());
+    visibleCount = getVisibleCount();
+
+    slides.forEach((slide, index) => {
+      slide.dataset.reviewIndex = String(index);
+      slide.removeAttribute("data-clone");
+    });
+
+    slides.slice(0, visibleCount).forEach((slide, index) => {
+      const clone = slide.cloneNode(true);
+      clone.dataset.clone = "true";
+      clone.dataset.reviewIndex = String(index);
+      clone.setAttribute("aria-hidden", "true");
+      track.appendChild(clone);
+    });
+
+    activeIndex = 0;
+    setTrackPosition(false);
+  }
+
+  function setActiveReview(nextIndex) {
+    activeIndex = nextIndex;
+    setTrackPosition();
+
+    if (activeIndex >= slides.length) {
+      window.setTimeout(() => {
+        activeIndex = 0;
+        setTrackPosition(false);
+      }, transitionDuration);
+    }
+  }
+
+  function stopReviews() {
+    window.clearInterval(intervalId);
+    intervalId = null;
+  }
+
+  function startReviews() {
+    if (reduceMotion || intervalId) {
+      return;
+    }
+
+    intervalId = window.setInterval(() => {
+      setActiveReview(activeIndex + 1);
+    }, displayDuration);
+  }
+
+  slider.addEventListener("mouseenter", stopReviews);
+  slider.addEventListener("mouseleave", startReviews);
+  slider.addEventListener("focusin", stopReviews);
+  slider.addEventListener("focusout", startReviews);
+  window.addEventListener("resize", rebuildClones);
+
+  rebuildClones();
+  startReviews();
+}
+
+if (reviewSlider) {
+  setupReviewSlider(reviewSlider);
+}
+
+function setupSliderIndicators(row, options = {}) {
+  const itemSelector = options.itemSelector || ".product-card, .product-promo-card";
+  const label = options.label || "produktgruppe";
   const indicators = row.nextElementSibling;
 
   if (!indicators || !indicators.classList.contains("slider-indicators")) {
@@ -215,10 +337,10 @@ function setupProductIndicators(row) {
 
     indicators.classList.remove("is-hidden");
 
-    const card = row.querySelector(".product-card, .product-promo-card");
+    const card = row.querySelector(itemSelector);
     const cardWidth = card ? card.getBoundingClientRect().width : row.clientWidth;
     const visibleCards = Math.max(1, Math.floor(row.clientWidth / cardWidth));
-    const totalCards = row.querySelectorAll(".product-card, .product-promo-card").length;
+    const totalCards = row.querySelectorAll(itemSelector).length;
     const pages = Math.max(2, totalCards - visibleCards + 1);
 
     if (indicators.children.length !== pages) {
@@ -228,7 +350,7 @@ function setupProductIndicators(row) {
         const indicator = document.createElement("button");
         indicator.className = "indicator";
         indicator.type = "button";
-        indicator.setAttribute("aria-label", `Gå til produktgruppe ${index + 1}`);
+        indicator.setAttribute("aria-label", `Gå til ${label} ${index + 1}`);
 
         indicator.addEventListener("click", () => {
           const targetLeft = pages === 1 ? 0 : (maxScroll / (pages - 1)) * index;
@@ -257,7 +379,19 @@ function setupProductIndicators(row) {
   window.addEventListener("resize", updateIndicators);
 }
 
-productRows.forEach(setupProductIndicators);
+productRows.forEach((row) => {
+  setupSliderIndicators(row, {
+    itemSelector: ".product-card, .product-promo-card",
+    label: "produktgruppe",
+  });
+});
+
+treatmentRows.forEach((row) => {
+  setupSliderIndicators(row, {
+    itemSelector: ".forside-behandling-kort",
+    label: "behandling",
+  });
+});
 
 productCards.forEach((card) => {
   const image = card.querySelector(".product-image");
@@ -279,8 +413,19 @@ productCards.forEach((card) => {
   const addButton = document.createElement("button");
   addButton.className = "product-add-button";
   addButton.type = "button";
-  addButton.textContent = "Tilføj til kurv";
+  addButton.setAttribute("aria-label", "Tilføj til kurv");
+
+  const addButtonText = document.createElement("span");
+  addButtonText.className = "product-add-button-text";
+  addButtonText.textContent = "Tilføj til kurv";
+
+  const addButtonIcon = document.createElement("img");
+  addButtonIcon.className = "product-add-button-icon";
+  addButtonIcon.src = "img/kurv.svg";
+  addButtonIcon.alt = "";
+  addButtonIcon.setAttribute("aria-hidden", "true");
 
   quickViewButton.appendChild(quickViewIcon);
+  addButton.append(addButtonText, addButtonIcon);
   image.append(quickViewButton, addButton);
 });

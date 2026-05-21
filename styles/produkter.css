@@ -229,6 +229,37 @@
   background: #294a54;
 }
 
+.product-add-button .product-add-button-icon {
+  display: none;
+}
+
+@media (min-width: 1181px) {
+  .product-add-button {
+    right: auto;
+    bottom: 34px;
+    left: 50%;
+    display: inline-flex;
+    width: min(82%, 257px);
+    min-height: 52px;
+    padding: 0 22px;
+    border-radius: 0;
+    transform: translate(-50%, 10px);
+  }
+
+  .product-card:hover .product-add-button,
+  .product-card:focus-within .product-add-button {
+    transform: translate(-50%, 0);
+  }
+
+  .product-add-button-text {
+    display: inline;
+  }
+
+  .product-add-button .product-add-button-icon {
+    display: none;
+  }
+}
+
 @media (hover: none) {
   .product-hover-eye,
   .product-add-button {
@@ -241,6 +272,40 @@
 
   .product-add-button {
     transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 1180px) {
+  .product-add-button {
+    right: 14px;
+    bottom: 14px;
+    left: auto;
+    display: grid;
+    width: 46px;
+    min-height: 46px;
+    place-items: center;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--color-heading);
+    opacity: 1;
+    transform: none;
+  }
+
+  .product-card:hover .product-add-button,
+  .product-card:focus-within .product-add-button,
+  .product-add-button {
+    transform: none;
+  }
+
+  .product-add-button-text {
+    display: none;
+  }
+
+  .product-add-button .product-add-button-icon {
+    display: block;
+    width: 22px;
+    height: 22px;
+    filter: invert(1);
   }
 }
 
@@ -350,10 +415,14 @@
 
 /* Mobil */
 @media (max-width: 767px) {
+  .product-hover-eye {
+    display: none;
+  }
+
   .products-hero {
-    align-items: flex-start;
+    align-items: center;
     padding: 46px 14px 54px;
-    text-align: left;
+    text-align: center;
   }
 
   .products-hero h1 {
@@ -412,24 +481,16 @@
     padding-top: 12px;
   }
 
-  .product-hover-eye,
   .product-add-button {
     opacity: 1;
     transform: none;
   }
 
-  .product-hover-eye {
-    top: 14px;
-    right: 14px;
-    width: 38px;
-    height: 38px;
-  }
-
   .product-add-button {
-    bottom: 22px;
-    width: min(82%, 230px);
-    min-height: 46px;
-    transform: translateX(-50%);
+    right: 12px;
+    bottom: 12px;
+    width: 42px;
+    min-height: 42px;
   }
 
   .product-card .product-content h4 {

@@ -193,7 +193,6 @@
 .kroelle-quote footer {
   margin-top: 28px;
   color: var(--color-heading);
-  font-size: 1.5rem;
   font-style: normal;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -486,7 +485,6 @@
 
   .kroelle-quote footer {
     margin-top: 24px;
-    font-size: 0.82rem;
   }
 
   .kroelle-mobile-images {

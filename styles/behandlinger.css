@@ -127,7 +127,7 @@
 }
 
 .behandlinger-intro-kort h2 {
-  margin-bottom: 26px;
+  margin-bottom: 0;
   font-size: var(--font-h3-desktop);
   letter-spacing: 0.03em;
 }
@@ -313,8 +313,16 @@
 
   .behandlinger-main .button {
     display: flex;
+    width: var(--button-width);
+    height: var(--button-height);
+    min-width: 0;
+    max-width: 100%;
     margin-right: auto;
     margin-left: auto;
+    padding: 0 14px;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 
   .behandlinger-hero-billede {
@@ -367,6 +375,10 @@
 
   .behandlinger-pris-grid .behandlinger-priser:first-child {
     padding-left: 0;
+  }
+
+  .behandlinger-pris-grid {
+    gap: 84px;
   }
 
   .behandlinger-mixly .behandlinger-info-kort {
