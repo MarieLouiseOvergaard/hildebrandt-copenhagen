@@ -76,20 +76,13 @@
       padding-left: 66px; 
     } 
     
-    .kontakt-info-item::before { 
+    .kontakt-info-ikon { 
       position: absolute; 
-      top: 2px; 
-      left: 18px; 
-      display: grid; 
-      width: 28px; 
-      height: 28px; 
-      place-items: center; 
-      color: #9b9b9b; 
-      background: var(--color-image-placeholder); 
-      content: "ICON"; 
-      font-family: var(--font-heading); 
-      font-size: 0.52rem; 
-      text-transform: uppercase; 
+      top: -1px; 
+      left: 14px; 
+      width: 36px; 
+      height: 36px; 
+      object-fit: contain; 
     } 
     
     .kontakt-info-item h3 { 
@@ -360,8 +353,10 @@
     padding-left: 48px;
   }
 
-  .kontakt-info-item::before {
+  .kontakt-info-ikon {
     left: 0;
+    width: 32px;
+    height: 32px;
   }
 
   .kontakt-info-item p,
