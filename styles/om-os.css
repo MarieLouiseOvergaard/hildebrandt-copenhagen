@@ -139,45 +139,6 @@
   gap: 28px;
 }
 
-.om-os-instagram {
-  padding: 0 0 70px;
-}
-
-.om-os-instagram-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 40px;
-  padding: 0 40px 18px;
-}
-
-.om-os-instagram-header .om-os-section-title {
-  max-width: 760px;
-}
-
-.om-os-instagram-handle {
-  flex: 0 0 auto;
-  padding-bottom: 8px;
-  color: #222222;
-  font-size: 0.86rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.om-os-instagram-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 5px;
-}
-
-.om-os-instagram-link {
-  display: block;
-}
-
-.om-os-image-placeholder-instagram {
-  aspect-ratio: 1 / 1.16;
-}
-
 /* Mobiltilpasning */
 @media (max-width: 767px) {
   .om-os-main {
@@ -298,39 +259,6 @@
     gap: 16px;
   }
 
-  .om-os-instagram {
-    padding: 0 0 76px;
-  }
-
-  .om-os-instagram-header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 0 14px 20px;
-  }
-
-  .om-os-instagram-header .om-os-section-title {
-    max-width: 260px;
-  }
-
-  .om-os-instagram-handle {
-    align-self: flex-end;
-    padding-bottom: 0;
-    font-size: 0.78rem;
-    line-height: 1.2;
-  }
-
-  .om-os-instagram-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 4px;
-    padding: 0 14px;
-  }
-
-  .om-os-image-placeholder-instagram {
-    aspect-ratio: 1 / 1;
-  }
-
   .om-os-image-placeholder span:first-child {
     font-size: 1.45rem;
   }
@@ -338,4 +266,5 @@
   .om-os-image-placeholder span + span {
     font-size: 0.76rem;
   }
+
 }
