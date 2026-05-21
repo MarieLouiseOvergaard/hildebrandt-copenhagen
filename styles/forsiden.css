@@ -19,10 +19,12 @@
 }
 
 .hero-title {
-  font-size: 4.25rem;
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: 80px;
   font-weight: 300;
   line-height: 1;
-  letter-spacing: 0.08em;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -98,9 +100,6 @@
 .behandlinger-sektion p:not(.eyebrow),
 .guide-sektion p:not(.eyebrow) {
   max-width: 470px;
-  color: var(--color-text);
-  font-size: var(--font-body-desktop);
-  line-height: 1.6;
 }
 
 .om-belinda p:not(.eyebrow) {
@@ -200,40 +199,28 @@
 
 .citat-tekst p {
   color: var(--color-heading);
-  font-family: var(--font-quote);
   font-size: var(--font-quote-desktop);
-  font-style: italic;
   line-height: 1.3;
 }
 
 .salon-citat-tekst p {
   color: var(--color-light-blue);
-  font-family: var(--font-quote);
   font-size: var(--font-salon-quote-desktop);
-  font-style: italic;
   line-height: 1.3;
 }
 
 .citat-tekst footer {
   margin-top: 34px;
   color: var(--color-heading);
-  font-family: var(--font-heading);
-  font-size: var(--font-quote-author-desktop);
   font-style: normal;
-  font-weight: 400;
   letter-spacing: 0.16em;
-  text-transform: uppercase;
 }
 
 .salon-citat-tekst footer {
   margin-top: 34px;
   color: var(--color-light-blue);
-  font-family: var(--font-heading);
-  font-size: var(--font-quote-author-desktop);
   font-style: normal;
-  font-weight: 400;
   letter-spacing: 0.16em;
-  text-transform: uppercase;
 }
 
 
@@ -278,9 +265,6 @@
 
 .forside-behandling-kort p {
   margin-top: 12px;
-  color: #666666;
-  font-size: 1rem;
-  line-height: 1.6;
 }
 
 .behandlinger-sektion-titel {
@@ -324,19 +308,11 @@
 }
 
 .anmeldelse-citat p {
-  color: #666666;
-  font-size: 1rem;
-  font-style: italic;
   line-height: 1.6;
 }
 
 .anmeldelse-citat footer {
   margin-top: 28px;
-  color: #4f5d61;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .anmeldelse-stjerner {
@@ -432,7 +408,7 @@
 /* Tablet: forside-sektioner */
 @media (max-width: 1180px) {
   .hero-title {
-    font-size: clamp(3rem, 5.5vw, 4.25rem);
+    font-size: clamp(44px, 7.6vw, 90px);
     text-align: center;
   }
 
@@ -511,7 +487,7 @@
     order: 1;
   }
 
-  .behandlinger-sektion-titel h2 {
+  .behandlinger-sektion-overskrift {
     order: 2;
   }
 
@@ -551,9 +527,8 @@
   .hero-title {
     max-width: 330px;
     color: #2d3a3e;
-    font-size: 40px;
-    line-height: 1.32;
-    letter-spacing: 0.04em;
+    font-size: 44px;
+    line-height: 1;
     text-align: left;
   }
 
@@ -575,7 +550,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 48px 34px 44px;
+    padding: 48px 14px 44px;
   }
 
   .om-belinda__content {
@@ -597,9 +572,11 @@
 
   .om-belinda-billede {
     order: 4;
-    width: 100%;
+    width: 100vw;
     height: auto;
     aspect-ratio: 320 / 225;
+    margin-right: calc(50% - 50vw);
+    margin-left: calc(50% - 50vw);
     margin-top: 30px;
     background: #d7d7d7;
   }
@@ -627,8 +604,6 @@
   .behandlinger-sektion p:not(.eyebrow),
   .guide-sektion p:not(.eyebrow) {
     max-width: none;
-    font-size: 14px;
-    line-height: 1.6;
   }
 
   .mixly-introduktion {
@@ -639,6 +614,9 @@
   .mixly-introduktion-indhold {
     display: grid;
     grid-template-columns: 1fr;
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
     padding: 0;
   }
 
@@ -650,15 +628,24 @@
 
   .mixly-introduktion .eyebrow {
     order: 1;
+    width: calc(100% - 28px);
+    margin-right: auto;
+    margin-left: auto;
     padding-top: 28px;
   }
 
   .mixly-introduktion-titel {
     order: 2;
+    width: calc(100% - 28px);
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .mixly-introduktion-tekst p:not(.eyebrow) {
     order: 3;
+    width: calc(100% - 28px);
+    margin-right: auto;
+    margin-left: auto;
     margin-top: 13px;
   }
 
@@ -685,8 +672,8 @@
   }
 
   .mixly-introduktion-billede {
-    flex: 0 0 100vw;
-    width: 100vw;
+    flex: 0 0 calc((100vw - 5px) / 2);
+    width: calc((100vw - 5px) / 2);
     height: 270px;
     min-height: 0;
     overflow: hidden;
@@ -727,7 +714,7 @@
     }
 
     100% {
-      transform: translateX(calc(-300vw - 15px));
+      transform: translateX(calc(-150vw - 7.5px));
     }
   }
 
@@ -748,7 +735,7 @@
 
   .citat-sektion {
     min-height: 230px;
-    padding: 58px 34px;
+    padding: 58px 14px;
   }
 
   .citat-tekst p {
@@ -764,13 +751,11 @@
 
   .citat-tekst footer {
     margin-top: 18px;
-    font-size: 12px;
   }
 
   .salon-citat-tekst footer {
     margin-top: 18px;
     color: #E2F0F5;
-    font-size: 12px;
   }
 
   .behandlinger-sektion {
@@ -788,7 +773,7 @@
     order: 1;
   }
 
-  .behandlinger-sektion-titel h2 {
+  .behandlinger-sektion-overskrift {
     order: 2;
   }
 
@@ -831,11 +816,6 @@
     content: "IMG\A 215 x 270";
   }
 
-  .forside-behandling-kort p {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
   .behandlinger-sektion-titel .button {
     order: 5;
     width: 324px;
@@ -845,7 +825,7 @@
   }
 
   .anmeldelser {
-    padding: 82px 28px 76px;
+    padding: 82px 14px 76px;
     text-align: center;
   }
 
@@ -880,7 +860,6 @@
   }
 
   .anmeldelse-citat p {
-    font-size: 14px;
     line-height: 1.6;
   }
 
@@ -921,7 +900,7 @@
 
   .salon-citat {
     min-height: 305px;
-    padding: 58px 28px;
+    padding: 58px 14px;
   }
 
   .kort-sektion-billede {

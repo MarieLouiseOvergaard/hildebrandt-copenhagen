@@ -20,41 +20,23 @@
   padding-top: 2px;
 }
 
-.om-os-eyebrow {
-  margin-bottom: 12px;
-  color: var(--color-primary);
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  line-height: 1.2;
-}
-
 .om-os-hero-title,
 .om-os-section-title {
-  color: var(--color-heading);
-  font-family: var(--font-heading);
-  font-weight: 300;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .om-os-hero-title {
   max-width: 560px;
   margin-bottom: 32px;
-  font-size: 2.12rem;
   line-height: 1.18;
 }
 
-.om-os-hero-content p:not(.om-os-eyebrow),
+.om-os-hero-content p:not(.eyebrow),
 .om-os-mixly-content p {
   max-width: 560px;
-  color: var(--color-text);
-  font-size: 0.96rem;
-  line-height: 1.72;
 }
 
-.om-os-hero-content p + p,
+.om-os-hero-content p:not(.eyebrow) + p,
 .om-os-mixly-content p + p {
   margin-top: 22px;
 }
@@ -112,21 +94,15 @@
 
 .om-os-quote p {
   color: #111111;
-  font-family: var(--font-quote);
   font-size: 2.35rem;
-  font-style: italic;
   line-height: 1.25;
 }
 
 .om-os-quote footer {
   margin-top: 32px;
   color: var(--color-heading);
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
   font-style: normal;
-  font-weight: 400;
   letter-spacing: 0.16em;
-  text-transform: uppercase;
 }
 
 .om-os-mixly {
@@ -149,7 +125,6 @@
 }
 
 .om-os-section-title {
-  font-size: 2.15rem;
   line-height: 1.18;
 }
 
@@ -224,28 +199,19 @@
     width: 100%;
   }
 
-  .om-os-eyebrow {
-    margin-bottom: 8px;
-    font-size: 0.76rem;
-    letter-spacing: 0.12em;
-  }
-
   .om-os-hero-title {
     max-width: 100%;
     margin-bottom: 22px;
-    font-size: 1.32rem;
     line-height: 1.15;
     letter-spacing: 0.02em;
   }
 
-  .om-os-hero-content p:not(.om-os-eyebrow),
+  .om-os-hero-content p:not(.eyebrow),
   .om-os-mixly-content p {
     max-width: 100%;
-    font-size: 0.86rem;
-    line-height: 1.68;
   }
 
-  .om-os-hero-content p + p,
+  .om-os-hero-content p:not(.eyebrow) + p,
   .om-os-mixly-content p + p {
     margin-top: 18px;
   }
@@ -295,7 +261,6 @@
 
   .om-os-quote footer {
     margin-top: 34px;
-    font-size: 0.78rem;
     letter-spacing: 0.16em;
   }
 
@@ -317,7 +282,6 @@
   }
 
   .om-os-section-title {
-    font-size: 1.36rem;
     line-height: 1.18;
     letter-spacing: 0.02em;
   }

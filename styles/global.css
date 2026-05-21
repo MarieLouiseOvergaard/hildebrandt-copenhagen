@@ -30,12 +30,29 @@
   --font-body: "DM Sans", Arial, Helvetica, sans-serif;
   --font-quote: "Amiri", Georgia, "Times New Roman", serif;
 
-  --font-eyebrow-desktop: 1rem;
-  --font-h2-desktop: 2.25rem;
-  --font-body-desktop: 1rem;
-  --font-quote-desktop: 2.5rem;
-  --font-salon-quote-desktop: 2rem;
-  --font-quote-author-desktop: 1.5rem;
+  --font-h1-desktop: 36px;
+  --font-h2-desktop: 36px;
+  --font-h3-desktop: 24px;
+  --font-h4-desktop: 15px;
+  --font-eyebrow-desktop: 16px;
+  --font-body-desktop: 16px;
+  --font-quote-desktop: 32px;
+  --font-salon-quote-desktop: 28px;
+  --font-quote-author-desktop: 24px;
+  --font-review-quote-desktop: 16px;
+  --font-review-author-desktop: 16px;
+
+  --font-h1-mobile: 20px;
+  --font-h2-mobile: 20px;
+  --font-h3-mobile: 16px;
+  --font-h4-mobile: 16px;
+  --font-eyebrow-mobile: 14px;
+  --font-body-mobile: 14px;
+  --font-quote-author-mobile: 12px;
+  --font-review-quote-mobile: 20px;
+  --font-review-author-mobile: 16px;
+
+  --button-width: 324px;
 
   --container-max: 1320px;
   --button-height: 50px;
@@ -74,6 +91,7 @@ p,
 h1,
 h2,
 h3,
+h4,
 dl,
 dd {
   margin: 0;
@@ -97,21 +115,36 @@ a {
 }
 
 .eyebrow {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: var(--color-primary);
   font-family: var(--font-heading);
   font-size: var(--font-eyebrow-desktop);
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
- 
+
+.eyebrow + h1,
+.eyebrow + h2 {
+  margin-top: 0;
+}
+
+h1 {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: var(--font-h1-desktop);
+  font-weight: 300;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
 h2 {
   color: var(--color-heading);
   font-family: var(--font-heading);
   font-size: var(--font-h2-desktop);
   font-weight: 300;
   line-height: 1.1;
+  text-transform: uppercase;
 }
 
 p {
@@ -123,11 +156,61 @@ p {
 }
 
 h3 {
-  color: #d39137;
-  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: var(--font-h3-desktop);
   font-weight: 400;
   line-height: 1.2;
   text-transform: uppercase;
+}
+
+h4 {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: var(--font-h4-desktop);
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+h2 + p {
+  margin-top: 20px;
+}
+
+h3 + p {
+  margin-top: 10px;
+}
+
+blockquote p {
+  font-family: var(--font-quote);
+  font-style: italic;
+}
+
+blockquote footer {
+  font-family: var(--font-heading);
+  font-weight: 400;
+}
+
+.citat-tekst footer,
+.salon-citat-tekst footer,
+.om-os-quote footer {
+  font-size: var(--font-quote-author-desktop);
+  text-transform: uppercase;
+}
+
+.anmeldelse-citat p,
+.anmeldelse-citat p:not(.eyebrow) {
+  color: var(--color-heading);
+  font-family: var(--font-quote);
+  font-size: var(--font-review-quote-desktop);
+  font-style: italic;
+}
+
+.anmeldelse-citat footer {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: var(--font-review-author-desktop);
+  font-weight: 400;
 }
 
 .hero-actions {
@@ -151,7 +234,7 @@ h3 {
   font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -180,29 +263,61 @@ h3 {
   html {
     font-size: 15px;
   }
+
+  h1 {
+    font-size: var(--font-h1-mobile);
+    line-height: 1.12;
+  }
+
   h2 {
-    font-size: 20px;
+    font-size: var(--font-h2-mobile);
     line-height: 1.12;
   }
 
   p {
-    font-size: 14px;
+    font-size: var(--font-body-mobile);
     line-height: 1.6;
   }
 
   h3 {
-    font-size: 0.74rem;
+    font-size: var(--font-h3-mobile);
     line-height: 1.2;
   }
 
+  h4 {
+    font-size: var(--font-h4-mobile);
+  }
+
+  h2 + p {
+    margin-top: 15px;
+  }
+
+  h3 + p {
+    margin-top: 10px;
+  }
+
   .eyebrow {
-    margin-bottom: 6px;
-    font-size: 14px;
+    margin-bottom: 5px;
+    font-size: var(--font-eyebrow-mobile);
     letter-spacing: 0.1em;
   }
 
+  .citat-tekst footer,
+  .salon-citat-tekst footer,
+  .om-os-quote footer {
+    font-size: var(--font-quote-author-mobile);
+  }
+
+  .anmeldelse-citat p {
+    font-size: var(--font-review-quote-mobile);
+  }
+
+  .anmeldelse-citat footer {
+    font-size: var(--font-review-author-mobile);
+  }
+
   .button {
-    width: 324px;
+    width: var(--button-width);
     height: 50px;
     min-width: 0;
     max-width: 100%;
@@ -210,6 +325,7 @@ h3 {
     margin-left: auto;
     padding: 0 14px;
     font-size: 14px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 }

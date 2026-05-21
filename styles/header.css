@@ -130,7 +130,7 @@
 .menu-link {
   color: var(--color-heading);
   font-family: var(--font-heading);
-  font-size: clamp(9px, 0.9vw, 14px);
+  font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -215,6 +215,7 @@
 }
 
 .menu-dropdown-link {
+  text-transform: none;
   transition: color 200ms ease;
 }
 
@@ -544,7 +545,7 @@
     padding: 0;
     color: #1f2d32;
     font-family: var(--font-heading);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 300;
     letter-spacing: 0.04em;
     line-height: 1.2;
