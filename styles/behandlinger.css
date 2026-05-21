@@ -1,0 +1,333 @@
+﻿/* Behandlinger CSS: styling til behandlingssiden. */
+
+.behandlinger-main {
+  background: var(--color-white);
+}
+
+/* Fælles */
+.behandlinger-placeholder {
+  display: grid;
+  min-height: 0;
+  place-items: center;
+  margin: 0;
+  background: var(--color-image-placeholder);
+}
+
+.behandlinger-placeholder span {
+  color: var(--color-heading);
+  font-size: var(--font-body-desktop);
+  line-height: 1.25;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.behandlinger-placeholder span::first-line {
+  font-size: var(--font-h2-desktop);
+  font-weight: 700;
+}
+
+/* Hero */
+.behandlinger-hero {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.45fr) minmax(520px, 1fr);
+  gap: 38px;
+  align-items: start;
+  padding: 36px 36px 56px;
+  background: var(--color-section-grey);
+}
+
+.behandlinger-hero-tekst {
+  max-width: 430px;
+}
+
+.behandlinger-hero h1 {
+  margin-bottom: 20px;
+  font-size: var(--font-h1-desktop);
+}
+
+.behandlinger-hero p + p {
+  margin-top: 18px;
+}
+
+.behandlinger-hero .button,
+.behandlinger-konsultation .button {
+  margin-top: 48px;
+  min-width: 160px;
+}
+
+.behandlinger-hero-billede {
+  aspect-ratio: 950 / 370;
+  min-height: 300px;
+}
+
+/* Intro og priser */
+.behandlinger-grid,
+.behandlinger-pris-grid {
+  display: grid;
+  grid-template-columns: minmax(480px, 1fr) minmax(380px, 0.82fr);
+  gap: 72px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 72px 36px;
+}
+
+.behandlinger-info-kort,
+.behandlinger-billeder {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.behandlinger-mixly {
+  max-width: none;
+  grid-template-columns: minmax(0, 1.15fr) minmax(380px, 0.85fr);
+  padding-left: 0;
+}
+
+.behandlinger-mixly .behandlinger-info-kort {
+  grid-template-columns: minmax(0, 0.5fr) repeat(2, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.behandlinger-mixly .behandlinger-kort-billede,
+.behandlinger-mixly .behandlinger-intro-kort {
+  height: 370px;
+}
+
+.behandlinger-mixly .behandlinger-priser {
+  align-self: start;
+}
+
+.behandlinger-billeder {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.behandlinger-kort-billede {
+  aspect-ratio: 315 / 370;
+}
+
+.behandlinger-intro-kort {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 28px;
+  background: var(--color-image-placeholder);
+}
+
+.behandlinger-intro-kort h2 {
+  margin-bottom: 26px;
+  font-size: var(--font-h3-desktop);
+  letter-spacing: 0.03em;
+}
+
+.behandlinger-intro-kort .button {
+  align-self: flex-start;
+  margin-top: 30px;
+}
+
+.behandlinger-priser {
+  align-self: center;
+}
+
+.behandlinger-priser h2 {
+  margin-bottom: 30px;
+}
+
+.behandlinger-pris-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.behandlinger-pris-linje {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: start;
+}
+
+.behandlinger-pris-linje dt {
+  color: var(--color-text);
+  font-size: var(--font-h3-desktop);
+  line-height: 1.25;
+}
+
+.behandlinger-pris-linje dt span {
+  display: block;
+  color: var(--color-heading);
+}
+
+.behandlinger-pris-linje small {
+  display: block;
+  max-width: 440px;
+  margin-top: 6px;
+  color: var(--color-text);
+  font-size: var(--font-body-desktop);
+  line-height: 1.45;
+}
+
+.behandlinger-pris-linje dd {
+  color: var(--color-text);
+  font-size: var(--font-h3-desktop);
+  line-height: 1.25;
+  text-align: right;
+}
+
+.behandlinger-pris-grid {
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+
+.behandlinger-pris-grid .behandlinger-priser {
+  align-self: start;
+}
+
+.behandlinger-permanent {
+  padding-top: 44px;
+  padding-bottom: 66px;
+}
+
+.behandlinger-permanent .behandlinger-priser {
+  align-self: start;
+}
+
+/* Konsultation */
+.behandlinger-konsultation {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(460px, 1fr);
+  gap: 72px;
+  align-items: center;
+  padding: 92px 40px;
+  background: var(--color-heading);
+}
+
+.behandlinger-konsultation-tekst {
+  max-width: 650px;
+}
+
+.behandlinger-konsultation h2 {
+  max-width: 560px;
+  color: var(--color-light-blue);
+  font-size: var(--font-h2-desktop);
+}
+
+.behandlinger-konsultation p {
+  margin-top: 30px;
+  color: var(--color-white);
+}
+
+.behandlinger-konsultation-billede {
+  aspect-ratio: 670 / 370;
+  min-height: 300px;
+}
+
+/* Tablet */
+@media (max-width: 1180px) {
+  .behandlinger-hero,
+  .behandlinger-grid,
+  .behandlinger-pris-grid,
+  .behandlinger-konsultation {
+    gap: 42px;
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+
+  .behandlinger-grid,
+  .behandlinger-pris-grid {
+    grid-template-columns: minmax(380px, 1fr) minmax(320px, 0.9fr);
+  }
+
+  .behandlinger-mixly {
+    grid-template-columns: minmax(420px, 1.05fr) minmax(320px, 0.95fr);
+    padding-left: 0;
+  }
+
+  .behandlinger-pris-linje dt,
+  .behandlinger-pris-linje dd {
+    font-size: var(--font-body-desktop);
+  }
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+  .behandlinger-hero,
+  .behandlinger-grid,
+  .behandlinger-pris-grid,
+  .behandlinger-konsultation {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 42px 18px;
+  }
+
+  .behandlinger-hero h1 {
+    font-size: var(--font-h1-mobile);
+  }
+
+  .behandlinger-hero .button,
+  .behandlinger-konsultation .button {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .behandlinger-hero-billede,
+  .behandlinger-konsultation-billede {
+    min-height: 190px;
+  }
+
+  .behandlinger-info-kort {
+    grid-template-columns: 1fr;
+  }
+
+  .behandlinger-mixly {
+    max-width: var(--container-max);
+    padding-left: 18px;
+  }
+
+  .behandlinger-mixly .behandlinger-info-kort {
+    grid-template-columns: 1fr;
+  }
+
+  .behandlinger-mixly .behandlinger-kort-billede,
+  .behandlinger-mixly .behandlinger-intro-kort {
+    height: auto;
+  }
+
+  .behandlinger-billeder {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .behandlinger-intro-kort {
+    padding: 34px 24px;
+  }
+
+  .behandlinger-intro-kort h2,
+  .behandlinger-konsultation h2 {
+    font-size: var(--font-h2-mobile);
+  }
+
+  .behandlinger-priser {
+    align-self: stretch;
+  }
+
+  .behandlinger-pris-liste {
+    gap: 18px;
+  }
+
+  .behandlinger-pris-linje {
+    gap: 18px;
+  }
+
+  .behandlinger-pris-linje dt,
+  .behandlinger-pris-linje dd {
+    font-size: var(--font-body-mobile);
+  }
+
+  .behandlinger-pris-linje small {
+    font-size: var(--font-body-mobile);
+  }
+
+  .behandlinger-placeholder span::first-line {
+    font-size: var(--font-h2-mobile);
+  }
+}
