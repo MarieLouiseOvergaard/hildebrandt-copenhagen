@@ -83,12 +83,15 @@ if (heroBookingButton && "IntersectionObserver" in window) {
   handleBookingVisibility();
   window.addEventListener("scroll", handleBookingVisibility, { passive: true });
   window.addEventListener("resize", handleBookingVisibility);
-} else {
-  updateStickyBooking(false);
 }
 
 function updateMobileNavPosition() {
-  document.body.classList.toggle("is-mobile-nav-fixed", window.scrollY > 0);
+  const isFixed = window.scrollY > 0;
+  document.body.classList.toggle("is-mobile-nav-fixed", isFixed);
+
+  if (!heroBookingButton) {
+    updateStickyBooking(!isFixed);
+  }
 }
 
 updateMobileNavPosition();

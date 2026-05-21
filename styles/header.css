@@ -178,7 +178,7 @@
   transition: opacity 280ms ease, visibility 280ms ease, transform 280ms ease;
 }
 
-/* Hover ligger pÃ¥ hele parenten, sÃ¥ dropdownen bliver Ã¥ben ned til links. */
+/* Hover ligger på hele parenten, så dropdownen bliver åben ned til links. */
 .menu-item-dropdown:hover .menu-dropdown,
 .menu-item-dropdown:focus-within .menu-dropdown {
   opacity: 1;

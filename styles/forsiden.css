@@ -1,7 +1,7 @@
 ﻿/* Forsiden CSS: hero, forside-sektioner, citater, previews og forside-responsive regler. */
 /* ==================================================
    5. FORSIDENS SEKTIONER
-   Sektionerne ligger i samme rÃ¦kkefÃ¸lge som HTML'en.
+   Sektionerne ligger i samme rækkefølge som HTML'en.
 ================================================== */
 
 /* ------------------------------
@@ -348,7 +348,7 @@
 
 
 /* ------------------------------
-   KrÃ¸lleunivers, saloncitat og kort
+   Krølleunivers, saloncitat og kort
 -------------------------------- */
 .guide-sektion {
   display: grid;
@@ -447,7 +447,7 @@
     aspect-ratio: 1;
   }
 
-  /* Mixly pÃ¥ tablet: tekst til venstre og billeder helt ud til hÃ¸jre. */
+  /* Mixly på tablet: tekst til venstre og billeder helt ud til højre. */
   .mixly-introduktion {
     background: #f6f6f6;
     overflow: hidden;
@@ -495,7 +495,7 @@
     width: auto;
   }
 
-  /* Behandlinger fÃ¥r tekst og CTA fÃ¸r kortene pÃ¥ tablet. */
+  /* Behandlinger får tekst og CTA før kortene på tablet. */
   .behandlinger-sektion {
     grid-template-columns: 1fr;
     gap: 0;

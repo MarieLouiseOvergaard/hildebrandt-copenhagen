@@ -14,7 +14,7 @@
 
 /* ==================================================
    1. DESIGN TOKENS
-   Farver, fonte og desktop-typografi samlet Ã¸verst.
+   Farver, fonte og desktop-typografi samlet øverst.
 ================================================== */
 :root {
   --color-primary: #C27F33;
@@ -43,7 +43,7 @@
 
 /* ==================================================
    2. RESET OG BASE
-   Ens udgangspunkt pÃ¥ tvÃ¦rs af browsere.
+   Ens udgangspunkt på tværs af browsere.
 ================================================== */
 * {
   box-sizing: border-box;
@@ -89,7 +89,7 @@ ul {
 
 /* ==================================================
    3. TYPOGRAFI
-   Globale desktop-stÃ¸rrelser. Mobil overrides nederst.
+   Globale desktop-størrelser. Mobil overrides nederst.
 ================================================== */
 a {
   color: inherit;
@@ -136,7 +136,7 @@ h3 {
 
 
 /* ------------------------------
-   FÃ¦lles knapper
+   Fælles knapper
 -------------------------------- */
 .button {
   display: inline-flex;

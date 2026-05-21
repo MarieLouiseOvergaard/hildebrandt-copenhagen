@@ -1,4 +1,4 @@
-# AI-dokumentation
+﻿# AI-dokumentation
 
 ## Værktøj
 Vi har brugt Codex i Visual Studio Code som sparringspartner til kodeopsætning, struktur og fejlfinding.
