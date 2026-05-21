@@ -62,6 +62,10 @@
   aspect-ratio: 1 / 1.16;
 }
 
+.om-os-instagram .om-os-image-placeholder span:first-child {
+  font-size: 1.85rem;
+}
+
 @media (max-width: 767px) {
   .om-os-instagram {
     display: flex;
