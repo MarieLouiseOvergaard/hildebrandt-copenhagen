@@ -91,7 +91,7 @@
 }
 
 .om-belinda__content {
-  padding-top: 4px;
+  padding-top: 0;
 }
 
 
@@ -268,7 +268,7 @@
 }
 
 .behandlinger-sektion-titel {
-  padding: 8px 0 0 0;
+  padding: 0;
 }
 
 .behandlinger-sektion-titel p:not(.eyebrow) {
@@ -329,7 +329,7 @@
 .guide-sektion {
   display: grid;
   grid-template-columns: 470px 210px minmax(520px, 1fr);
-  align-items: center;
+  align-items: start;
   gap: 34px;
   padding: 78px 48px 92px;
   overflow: hidden;
