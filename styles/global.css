@@ -1,5 +1,5 @@
 ﻿/* Global CSS: fonte, farver, reset, base-typografi og fælles komponenter. */
-@import url("https://fonts.googleapis.com/css2?family=Amiri:ital@1&family=DM+Sans:opsz,wght@9..40,400&family=Montserrat:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital@1&family=DM+Sans:opsz,wght@9..40,400&family=Montserrat:wght@100;300;400&display=swap");
 
 /* ==================================================
    INDHOLDSOVERSIGT
@@ -36,9 +36,10 @@
   --font-h4-desktop: 15px;
   --font-eyebrow-desktop: 14px;
   --font-body-desktop: 16px;
-  --font-quote-desktop: 32px;
+  --font-quote-desktop: 28px;
   --font-salon-quote-desktop: 28px;
-  --font-quote-author-desktop: 24px;
+  --font-quote-author-desktop: 16px;
+  --font-quote-author-weight: 100;
   --font-review-quote-desktop: 16px;
   --font-review-author-desktop: 16px;
 
@@ -188,13 +189,15 @@ blockquote p {
 
 blockquote footer {
   font-family: var(--font-heading);
-  font-weight: 400;
 }
 
 .citat-tekst footer,
 .salon-citat-tekst footer,
-.om-os-quote footer {
+.om-os-quote footer,
+.kroelle-quote footer,
+.products-quote footer {
   font-size: var(--font-quote-author-desktop);
+  font-weight: var(--font-quote-author-weight) !important;
   text-transform: uppercase;
 }
 
@@ -466,7 +469,9 @@ blockquote footer {
 
   .citat-tekst footer,
   .salon-citat-tekst footer,
-  .om-os-quote footer {
+  .om-os-quote footer,
+  .kroelle-quote footer,
+  .products-quote footer {
     font-size: var(--font-quote-author-mobile);
   }
 
