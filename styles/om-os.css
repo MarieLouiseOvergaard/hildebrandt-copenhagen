@@ -139,49 +139,6 @@
   gap: 28px;
 }
 
-.om-os-instagram {
-  padding: 0 0 70px;
-}
-
-.om-os-instagram-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 40px;
-  padding: 0 40px 18px;
-}
-
-.om-os-instagram-header .om-os-section-title {
-  max-width: 760px;
-}
-
-.om-os-instagram-handle {
-  flex: 0 0 auto;
-  padding-bottom: 8px;
-  color: #222222;
-  font-size: 0.86rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.om-os-instagram-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 5px;
-}
-
-.om-os-instagram-link {
-  display: block;
-}
-
-.om-os-instagram-link-duplicate {
-  display: none;
-}
-
-.om-os-image-placeholder-instagram {
-  aspect-ratio: 1 / 1.16;
-}
-
 /* Mobiltilpasning */
 @media (max-width: 767px) {
   .om-os-main {
@@ -302,65 +259,6 @@
     gap: 16px;
   }
 
-  .om-os-instagram {
-    display: flex;
-    flex-direction: column;
-    padding: 0 0 76px;
-    overflow: hidden;
-  }
-
-  .om-os-instagram-header {
-    display: contents;
-  }
-
-  .om-os-instagram-header .om-os-section-title {
-    order: 1;
-    max-width: 260px;
-    padding: 0 14px 20px;
-  }
-
-  .om-os-instagram-handle {
-    order: 3;
-    align-self: flex-end;
-    margin-top: 16px;
-    padding: 0 14px;
-    padding-bottom: 0;
-    font-size: 0.78rem;
-    line-height: 1.2;
-  }
-
-  .om-os-instagram-grid {
-    order: 2;
-    display: flex;
-    grid-template-columns: none;
-    gap: 5px;
-    width: max-content;
-    margin-right: calc(50% - 50vw);
-    margin-left: calc(50% - 50vw);
-    padding: 0;
-    animation: om-os-instagram-mobile-slider 100s linear infinite;
-    will-change: transform;
-  }
-
-  .om-os-instagram-link {
-    flex: 0 0 calc((100vw - 5px) / 2);
-    width: calc((100vw - 5px) / 2);
-  }
-
-  .om-os-instagram-link-duplicate {
-    display: block;
-  }
-
-  .om-os-instagram-item {
-    height: 270px;
-    overflow: hidden;
-  }
-
-  .om-os-image-placeholder-instagram {
-    height: 100%;
-    aspect-ratio: auto;
-  }
-
   .om-os-image-placeholder span:first-child {
     font-size: 1.45rem;
   }
@@ -369,29 +267,4 @@
     font-size: 0.76rem;
   }
 
-  @keyframes om-os-instagram-mobile-slider {
-    0% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(calc(-250vw - 12.5px));
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .om-os-instagram {
-      overflow: visible;
-    }
-
-    .om-os-instagram-grid {
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      animation: none;
-    }
-
-    .om-os-instagram-link {
-      scroll-snap-align: start;
-    }
-  }
 }
