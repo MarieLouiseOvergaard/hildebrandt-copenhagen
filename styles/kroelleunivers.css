@@ -1,0 +1,557 @@
+/* Krølleunivers CSS: styling til kroelleunivers.html. */
+
+.kroelleunivers-main {
+  --kroelle-hero-offset: max(40px, calc((100vw - 1278px) / 2));
+  background: var(--color-white);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.kroelle-hero,
+.kroelle-community,
+.kroelle-course {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+.kroelle-hero {
+  grid-template-columns: minmax(360px, 560px) minmax(520px, 670px);
+  align-items: start;
+  gap: 48px;
+  padding-top: 28px;
+  padding-bottom: 74px;
+}
+
+.kroelle-hero-text,
+.kroelle-community-text,
+.kroelle-course-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.kroelle-hero h1,
+.kroelle-community h2,
+.kroelle-course h2,
+.kroelle-card h3 {
+  letter-spacing: 0.04em;
+}
+
+.kroelle-hero h1 {
+  max-width: 510px;
+  margin-bottom: 22px;
+  line-height: 1.15;
+}
+
+.kroelle-hero p:not(.eyebrow),
+.kroelle-community p:not(.eyebrow),
+.kroelle-course p:not(.eyebrow) {
+  max-width: 560px;
+}
+
+.kroelle-hero p:not(.eyebrow) + p,
+.kroelle-community p:not(.eyebrow) + p,
+.kroelle-course p:not(.eyebrow) + p {
+  margin-top: 24px;
+}
+
+.kroelle-hero p:last-of-type {
+  margin-bottom: 48px;
+}
+
+.kroelle-button {
+  min-width: 170px;
+}
+
+.kroelle-hero-figure,
+.kroelle-community-figure,
+.kroelle-course figure {
+  margin: 0;
+}
+
+.kroelle-placeholder {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #111111;
+  background: var(--color-image-placeholder);
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.kroelle-placeholder span:first-child {
+  font-size: 2rem;
+}
+
+.kroelle-placeholder span + span {
+  margin-top: 4px;
+  font-size: 0.95rem;
+}
+
+.kroelle-placeholder-hero {
+  aspect-ratio: 670 / 405;
+}
+
+.kroelle-mobile-images {
+  display: none;
+}
+
+/* Sammenligning */
+.kroelle-compare {
+  padding: 0 0 96px;
+}
+
+.kroelle-section-head {
+  padding-right: 40px;
+  padding-left: var(--kroelle-hero-offset);
+}
+
+.kroelle-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 220px;
+  width: 100%;
+}
+
+.kroelle-card h3 {
+  margin-bottom: 28px;
+  padding-right: 40px;
+  padding-left: var(--kroelle-hero-offset);
+  color: var(--color-heading);
+  font-size: 2.1rem;
+  font-weight: 300;
+}
+
+.kroelle-card-list {
+  min-height: 260px;
+  padding: 32px 40px 32px var(--kroelle-hero-offset);
+  border-radius: 0 12px 12px 0;
+  background: var(--color-section-grey);
+}
+
+.kroelle-card:nth-child(2) .kroelle-card-list {
+  padding-right: 28px;
+  padding-left: 40px;
+  border-radius: 12px 0 0 12px;
+}
+
+.kroelle-card:nth-child(2) h3 {
+  padding-right: 28px;
+  padding-left: 40px;
+}
+
+.kroelle-card-list li {
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.kroelle-card-list li + li {
+  margin-top: 24px;
+}
+
+.kroelle-card-list li:first-child {
+  color: var(--color-heading);
+}
+
+/* Citat */
+.kroelle-quote-section {
+  display: grid;
+  min-height: 340px;
+  place-items: center;
+  padding: 74px 40px;
+  background: var(--color-light-blue);
+  text-align: center;
+}
+
+.kroelle-quote {
+  max-width: 1220px;
+}
+
+.kroelle-quote p {
+  color: var(--color-heading);
+  font-size: 2rem;
+  line-height: 1.55;
+}
+
+.kroelle-quote footer {
+  margin-top: 28px;
+  color: var(--color-heading);
+  font-size: 1.5rem;
+  font-style: normal;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Community */
+.kroelle-community {
+  grid-template-columns: minmax(360px, 560px) minmax(520px, 670px);
+  gap: 96px;
+  padding-top: 106px;
+  padding-bottom: 34px;
+}
+
+.kroelle-community h2 {
+  max-width: 560px;
+  margin-bottom: 18px;
+  line-height: 1.14;
+}
+
+.kroelle-placeholder-community {
+  aspect-ratio: 670 / 370;
+}
+
+/* Tilmelding */
+.kroelle-signup {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 770px);
+  align-items: center;
+  gap: 70px;
+  max-width: 1320px;
+  margin: 0 auto 96px;
+  padding: 44px 74px;
+  background: var(--color-section-grey);
+}
+
+.kroelle-signup h2 {
+  color: var(--color-heading);
+  font-family: var(--font-quote);
+  font-size: 2.05rem;
+  font-style: italic;
+  line-height: 1.5;
+  text-transform: none;
+}
+
+.kroelle-form-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(160px, 200px);
+  gap: 20px;
+}
+
+.kroelle-form input[type="text"],
+.kroelle-form input[type="email"] {
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
+  border: 1px solid var(--color-heading);
+  border-radius: 0;
+  color: var(--color-heading);
+  background: transparent;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+
+.kroelle-form input::placeholder {
+  color: var(--color-heading);
+  opacity: 0.8;
+}
+
+.kroelle-form-button {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+}
+
+.kroelle-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 18px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.kroelle-checkbox input {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  appearance: none;
+  border: 1px solid var(--color-heading);
+  background: transparent;
+}
+
+/* Kursus */
+.kroelle-course {
+  grid-template-columns: minmax(450px, 635px) minmax(380px, 560px);
+  align-items: stretch;
+  justify-content: start;
+  gap: 36px;
+  padding-right: 40px;
+  padding-left: 0;
+  padding-top: 48px;
+  padding-bottom: 96px;
+}
+
+.kroelle-course-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.kroelle-placeholder-course {
+  aspect-ratio: 315 / 370;
+}
+
+.kroelle-course h2 {
+  margin-bottom: 26px;
+  line-height: 1.14;
+}
+
+.kroelle-course p:last-of-type {
+  margin-top: auto;
+  margin-bottom: 12px;
+}
+
+.kroelle-course-button {
+  min-width: 250px;
+}
+
+/* Tablet */
+@media (max-width: 1180px) {
+  .kroelle-hero,
+  .kroelle-community,
+  .kroelle-course {
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+  }
+
+  .kroelle-compare-grid {
+    gap: 48px;
+  }
+
+  .kroelle-signup {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-right: 40px;
+    margin-left: 40px;
+    padding: 36px;
+  }
+}
+
+/* Mobiltilpasning */
+@media (max-width: 767px) {
+  .kroelleunivers-main {
+    overflow-x: hidden;
+  }
+
+  .kroelle-hero,
+  .kroelle-community,
+  .kroelle-course {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .kroelle-hero {
+    padding-top: 0;
+    padding-bottom: 44px;
+  }
+
+  .kroelle-hero-text {
+    width: 100%;
+  }
+
+  .kroelle-hero-figure {
+    order: -1;
+    width: calc(100% + 28px);
+    margin-right: -14px;
+    margin-left: -14px;
+    margin-bottom: 22px;
+  }
+
+  .kroelle-hero h1,
+  .kroelle-community h2,
+  .kroelle-course h2 {
+    max-width: 100%;
+    letter-spacing: 0.02em;
+  }
+
+  .kroelle-hero h1 {
+    margin-bottom: 14px;
+  }
+
+  .kroelle-hero p:not(.eyebrow),
+  .kroelle-community p:not(.eyebrow),
+  .kroelle-course p:not(.eyebrow) {
+    max-width: 100%;
+  }
+
+  .kroelle-hero p:not(.eyebrow) + p,
+  .kroelle-community p:not(.eyebrow) + p,
+  .kroelle-course p:not(.eyebrow) + p {
+    margin-top: 18px;
+  }
+
+  .kroelle-hero p:last-of-type {
+    margin-bottom: 22px;
+  }
+
+  .kroelle-button,
+  .kroelle-course-button {
+    width: calc(100% - 42px);
+    min-height: 48px;
+    align-self: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+  }
+
+  .kroelle-placeholder-hero {
+    aspect-ratio: 393 / 175;
+  }
+
+  .kroelle-compare {
+    padding: 0 0 52px;
+  }
+
+  .kroelle-section-head {
+    padding-right: 0;
+    padding-left: 14px;
+  }
+
+  .kroelle-card {
+    width: calc(100% - 44px);
+  }
+
+  .kroelle-card:nth-child(2) {
+    margin-left: auto;
+  }
+
+  .kroelle-compare-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .kroelle-card h3 {
+    margin-bottom: 8px;
+    padding-right: 0;
+    padding-left: 14px;
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+  }
+
+  .kroelle-card:nth-child(2) h3 {
+    padding-left: 14px;
+  }
+
+  .kroelle-card-list {
+    min-height: 0;
+    padding: 24px 18px;
+    border-radius: 0 10px 10px 0;
+  }
+
+  .kroelle-card:nth-child(2) .kroelle-card-list {
+    padding: 24px 18px;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .kroelle-card-list li {
+    font-size: 0.94rem;
+  }
+
+  .kroelle-card-list li + li {
+    margin-top: 16px;
+  }
+
+  .kroelle-quote-section {
+    min-height: 0;
+    padding: 42px 18px;
+  }
+
+  .kroelle-quote p {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .kroelle-quote footer {
+    margin-top: 24px;
+    font-size: 0.82rem;
+  }
+
+  .kroelle-mobile-images {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    padding: 40px 0 30px;
+  }
+
+  .kroelle-mobile-images figure {
+    margin: 0;
+  }
+
+  .kroelle-placeholder-mobile {
+    aspect-ratio: 195 / 244;
+  }
+
+  .kroelle-community {
+    padding-top: 0;
+    padding-bottom: 24px;
+  }
+
+  .kroelle-community-figure {
+    display: none;
+  }
+
+  .kroelle-signup {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 0 14px 54px;
+    padding: 28px 22px 34px;
+  }
+
+  .kroelle-signup h2 {
+    font-size: 1.55rem;
+    line-height: 1.45;
+  }
+
+  .kroelle-form-fields {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .kroelle-form-button {
+    width: 100%;
+  }
+
+  .kroelle-checkbox {
+    font-size: 0.82rem;
+  }
+
+  .kroelle-course {
+    padding-top: 0;
+    padding-bottom: 72px;
+  }
+
+  .kroelle-course-images {
+    display: none;
+  }
+
+  .kroelle-placeholder span:first-child {
+    font-size: 1.45rem;
+  }
+
+  .kroelle-placeholder span + span {
+    font-size: 0.76rem;
+  }
+}
