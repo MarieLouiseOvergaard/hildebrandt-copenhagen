@@ -97,3 +97,99 @@ function updateMobileNavPosition() {
 updateMobileNavPosition();
 window.addEventListener("scroll", updateMobileNavPosition, { passive: true });
 window.addEventListener("resize", updateMobileNavPosition);
+
+const contactStatus = document.querySelector(".kontakt-status");
+
+function getCopenhagenTimeParts() {
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Europe/Copenhagen",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  });
+
+  return formatter.formatToParts(new Date()).reduce((parts, part) => {
+    parts[part.type] = part.value;
+    return parts;
+  }, {});
+}
+
+function formatOpeningTime(minutes) {
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  return `${String(hours).padStart(2, "0")}:${String(remainingMinutes).padStart(2, "0")}`;
+}
+
+function getNextOpening(schedule, currentDayIndex, currentMinutes) {
+  for (let offset = 0; offset < schedule.length; offset += 1) {
+    const dayIndex = (currentDayIndex + offset) % schedule.length;
+    const day = schedule[dayIndex];
+
+    if (!day.open) {
+      continue;
+    }
+
+    if (offset === 0 && currentMinutes >= day.open) {
+      continue;
+    }
+
+    return {
+      dayLabel: offset === 0 ? "i dag" : day.name,
+      time: formatOpeningTime(day.open),
+    };
+  }
+
+  return null;
+}
+
+function updateContactOpeningStatus() {
+  if (!contactStatus) {
+    return;
+  }
+
+  const statusLabel = contactStatus.querySelector(".kontakt-status-label");
+  const statusDetail = contactStatus.querySelector(".kontakt-status-detail");
+
+  if (!statusLabel || !statusDetail) {
+    return;
+  }
+
+  const schedule = [
+    { name: "mandag", weekday: "Mon", open: 8 * 60 + 30, close: 14 * 60 },
+    { name: "tirsdag", weekday: "Tue", open: 10 * 60, close: 17 * 60 + 30 },
+    { name: "onsdag", weekday: "Wed", open: null, close: null },
+    { name: "torsdag", weekday: "Thu", open: 10 * 60, close: 17 * 60 + 30 },
+    { name: "fredag", weekday: "Fri", open: 10 * 60, close: 16 * 60 },
+    { name: "lørdag", weekday: "Sat", open: null, close: null },
+    { name: "søndag", weekday: "Sun", open: null, close: null },
+  ];
+
+  const timeParts = getCopenhagenTimeParts();
+  const currentDayIndex = schedule.findIndex((day) => day.weekday === timeParts.weekday);
+
+  if (currentDayIndex === -1) {
+    return;
+  }
+
+  const currentMinutes = Number(timeParts.hour) * 60 + Number(timeParts.minute);
+  const today = schedule[currentDayIndex];
+  const isOpen = Boolean(today && today.open !== null && currentMinutes >= today.open && currentMinutes < today.close);
+
+  contactStatus.classList.toggle("kontakt-status--open", isOpen);
+  contactStatus.classList.toggle("kontakt-status--closed", !isOpen);
+  statusLabel.textContent = isOpen ? "ÅBEN NU" : "LUKKET NU";
+
+  if (isOpen) {
+    statusDetail.textContent = `Lukker kl. ${formatOpeningTime(today.close)}`;
+    return;
+  }
+
+  const nextOpening = getNextOpening(schedule, currentDayIndex, currentMinutes);
+  statusDetail.textContent = nextOpening ? `Åbner igen ${nextOpening.dayLabel} kl. ${nextOpening.time}` : "";
+}
+
+if (contactStatus) {
+  updateContactOpeningStatus();
+  window.setInterval(updateContactOpeningStatus, 60000);
+}

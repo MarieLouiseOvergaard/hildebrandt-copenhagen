@@ -271,7 +271,10 @@
     <section class="kontakt-praktisk" aria-label="Åbningstider og find salonen">
       <article class="kontakt-aabningstider" aria-labelledby="kontakt-aabningstider-titel">
         <h2 id="kontakt-aabningstider-titel">Åbningstider</h2>
-        <p class="kontakt-status">Åben nu</p>
+        <p class="kontakt-status" aria-live="polite">
+          <span class="kontakt-status-label">Tjekker status</span>
+          <span class="kontakt-status-detail"></span>
+        </p>
 
         <dl class="kontakt-aabningstider-liste">
           <dt>Mandag</dt>
@@ -284,7 +287,9 @@
           <dd>10:00 - 17:30</dd>
           <dt>Fredag</dt>
           <dd>10:00 - 16:00</dd>
-          <dt>Lørdag - Søndag</dt>
+          <dt>Lørdag</dt>
+          <dd>Lukket</dd>
+          <dt>Søndag</dt>
           <dd>Lukket</dd>
         </dl>
       </article>
@@ -292,7 +297,13 @@
       <article class="kontakt-kort" aria-labelledby="kontakt-kort-titel">
         <h2 id="kontakt-kort-titel">Find salonen</h2>
         <figure class="kontakt-kort-placeholder">
-          <span>Google Maps</span>
+          <iframe
+            title="Google Maps kort til Hildebrandt Copenhagen"
+            src="https://www.google.com/maps?q=Hildebrandt%20Copenhagen%2C%20Nordre%20Fasanvej%20163%2C%202000%20Frederiksberg&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
         </figure>
         <p>Ligger tæt på busstoppestedet for linje 4A og kun en kort gåtur fra Fuglebakken Station.</p>
       </article>
