@@ -184,8 +184,10 @@
 }
 
 .behandlinger-permanent {
+  max-width: none;
   padding-top: 44px;
   padding-bottom: 66px;
+  padding-left: 0;
 }
 
 .behandlinger-permanent .behandlinger-priser {
@@ -243,6 +245,10 @@
     padding-left: 0;
   }
 
+  .behandlinger-permanent {
+    padding-left: 0;
+  }
+
   .behandlinger-pris-linje dt,
   .behandlinger-pris-linje dd {
     font-size: var(--font-body-desktop);
@@ -280,6 +286,11 @@
   }
 
   .behandlinger-mixly {
+    max-width: var(--container-max);
+    padding-left: 18px;
+  }
+
+  .behandlinger-permanent {
     max-width: var(--container-max);
     padding-left: 18px;
   }
