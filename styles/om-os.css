@@ -174,6 +174,10 @@
   display: block;
 }
 
+.om-os-instagram-link-duplicate {
+  display: none;
+}
+
 .om-os-image-placeholder-instagram {
   aspect-ratio: 1 / 1.16;
 }
@@ -299,36 +303,62 @@
   }
 
   .om-os-instagram {
+    display: flex;
+    flex-direction: column;
     padding: 0 0 76px;
+    overflow: hidden;
   }
 
   .om-os-instagram-header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 0 14px 20px;
+    display: contents;
   }
 
   .om-os-instagram-header .om-os-section-title {
+    order: 1;
     max-width: 260px;
+    padding: 0 14px 20px;
   }
 
   .om-os-instagram-handle {
+    order: 3;
     align-self: flex-end;
+    margin-top: 16px;
+    padding: 0 14px;
     padding-bottom: 0;
     font-size: 0.78rem;
     line-height: 1.2;
   }
 
   .om-os-instagram-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 4px;
-    padding: 0 14px;
+    order: 2;
+    display: flex;
+    grid-template-columns: none;
+    gap: 5px;
+    width: max-content;
+    margin-right: calc(50% - 50vw);
+    margin-left: calc(50% - 50vw);
+    padding: 0;
+    animation: om-os-instagram-mobile-slider 100s linear infinite;
+    will-change: transform;
+  }
+
+  .om-os-instagram-link {
+    flex: 0 0 calc((100vw - 5px) / 2);
+    width: calc((100vw - 5px) / 2);
+  }
+
+  .om-os-instagram-link-duplicate {
+    display: block;
+  }
+
+  .om-os-instagram-item {
+    height: 270px;
+    overflow: hidden;
   }
 
   .om-os-image-placeholder-instagram {
-    aspect-ratio: 1 / 1;
+    height: 100%;
+    aspect-ratio: auto;
   }
 
   .om-os-image-placeholder span:first-child {
@@ -337,5 +367,31 @@
 
   .om-os-image-placeholder span + span {
     font-size: 0.76rem;
+  }
+
+  @keyframes om-os-instagram-mobile-slider {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(calc(-250vw - 12.5px));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .om-os-instagram {
+      overflow: visible;
+    }
+
+    .om-os-instagram-grid {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      animation: none;
+    }
+
+    .om-os-instagram-link {
+      scroll-snap-align: start;
+    }
   }
 }
