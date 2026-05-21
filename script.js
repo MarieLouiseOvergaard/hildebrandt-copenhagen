@@ -193,3 +193,94 @@ if (contactStatus) {
   updateContactOpeningStatus();
   window.setInterval(updateContactOpeningStatus, 60000);
 }
+
+const productRows = document.querySelectorAll(".product-row");
+const productCards = document.querySelectorAll(".product-card");
+
+function setupProductIndicators(row) {
+  const indicators = row.nextElementSibling;
+
+  if (!indicators || !indicators.classList.contains("slider-indicators")) {
+    return;
+  }
+
+  function updateIndicators() {
+    const maxScroll = row.scrollWidth - row.clientWidth;
+
+    if (maxScroll <= 1) {
+      indicators.classList.add("is-hidden");
+      indicators.replaceChildren();
+      return;
+    }
+
+    indicators.classList.remove("is-hidden");
+
+    const card = row.querySelector(".product-card, .product-promo-card");
+    const cardWidth = card ? card.getBoundingClientRect().width : row.clientWidth;
+    const visibleCards = Math.max(1, Math.floor(row.clientWidth / cardWidth));
+    const totalCards = row.querySelectorAll(".product-card, .product-promo-card").length;
+    const pages = Math.max(2, totalCards - visibleCards + 1);
+
+    if (indicators.children.length !== pages) {
+      indicators.replaceChildren();
+
+      for (let index = 0; index < pages; index += 1) {
+        const indicator = document.createElement("button");
+        indicator.className = "indicator";
+        indicator.type = "button";
+        indicator.setAttribute("aria-label", `Gå til produktgruppe ${index + 1}`);
+
+        indicator.addEventListener("click", () => {
+          const targetLeft = pages === 1 ? 0 : (maxScroll / (pages - 1)) * index;
+
+          row.scrollTo({
+            left: targetLeft,
+            behavior: "smooth",
+          });
+        });
+
+        indicators.appendChild(indicator);
+      }
+    }
+
+    const activeIndex = Math.round((row.scrollLeft / maxScroll) * (pages - 1));
+
+    Array.from(indicators.children).forEach((indicator, index) => {
+      const isActive = index === activeIndex;
+      indicator.classList.toggle("active", isActive);
+      indicator.setAttribute("aria-current", isActive ? "true" : "false");
+    });
+  }
+
+  updateIndicators();
+  row.addEventListener("scroll", updateIndicators, { passive: true });
+  window.addEventListener("resize", updateIndicators);
+}
+
+productRows.forEach(setupProductIndicators);
+
+productCards.forEach((card) => {
+  const image = card.querySelector(".product-image");
+
+  if (!image || image.querySelector(".product-add-button")) {
+    return;
+  }
+
+  const quickViewButton = document.createElement("button");
+  quickViewButton.className = "product-hover-eye";
+  quickViewButton.type = "button";
+  quickViewButton.setAttribute("aria-label", "Se produkt");
+
+  const quickViewIcon = document.createElement("img");
+  quickViewIcon.src = "img/Eye-icon.svg";
+  quickViewIcon.alt = "";
+  quickViewIcon.setAttribute("aria-hidden", "true");
+
+  const addButton = document.createElement("button");
+  addButton.className = "product-add-button";
+  addButton.type = "button";
+  addButton.textContent = "Tilføj til kurv";
+
+  quickViewButton.appendChild(quickViewIcon);
+  image.append(quickViewButton, addButton);
+});
