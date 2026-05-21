@@ -241,6 +241,42 @@
   gap: 8px;
 }
 
+.behandlinger-slider-indicators {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.behandlinger-slider-indicators:empty,
+.behandlinger-slider-indicators.is-hidden {
+  display: none;
+}
+
+.behandlinger-slider-indicators .indicator {
+  width: 18px;
+  height: 3px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #d9dee1;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: width 260ms ease, opacity 260ms ease, background 260ms ease;
+}
+
+.behandlinger-slider-indicators .indicator:hover,
+.behandlinger-slider-indicators .indicator:focus-visible {
+  opacity: 0.85;
+}
+
+.behandlinger-slider-indicators .indicator.active {
+  width: 30px;
+  background: #8b989d;
+  opacity: 1;
+}
+
 .forside-behandling-kort {
   display: flex;
   flex-direction: column;
@@ -284,8 +320,11 @@
    Anmeldelser
 -------------------------------- */
 .anmeldelser {
+  --anmeldelse-display-duration: 5000ms;
+  --anmeldelse-transition-duration: 600ms;
   padding: 58px 48px 120px;
   background: #f5f5f5;
+  text-align: center;
 }
 
 .anmeldelser > .eyebrow,
@@ -300,11 +339,26 @@
 }
 
 .anmeldelser-liste {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 96px;
+  position: relative;
   max-width: 1180px;
-  margin: 112px auto 0;
+  margin: 96px auto 0;
+  overflow: hidden;
+}
+
+.anmeldelser-track {
+  display: flex;
+  gap: 96px;
+  transition: transform var(--anmeldelse-transition-duration) ease;
+  will-change: transform;
+}
+
+.anmeldelse {
+  display: flex;
+  flex: 0 0 calc((100% - 192px) / 3);
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .anmeldelse-citat p {
@@ -316,9 +370,17 @@
 }
 
 .anmeldelse-stjerner {
+  order: -1;
   margin-top: 18px;
+  margin-bottom: 26px;
   color: #d39137;
   letter-spacing: 0.12em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anmeldelser-track {
+    transition: none;
+  }
 }
 
 
@@ -508,11 +570,27 @@
     margin-top: 34px;
   }
 
+  .behandlinger-slider-indicators {
+    order: 6;
+  }
+
   .guide-sektion {
     grid-template-columns: minmax(280px, 430px) minmax(140px, 180px) minmax(0, 1fr);
     gap: 24px;
     padding-right: 30px;
     padding-left: 30px;
+  }
+
+  .anmeldelser-liste {
+    max-width: 100%;
+  }
+
+  .anmeldelser-track {
+    gap: 48px;
+  }
+
+  .anmeldelse {
+    flex-basis: calc((100% - 96px) / 3);
   }
 }
 
@@ -794,6 +872,10 @@
     scrollbar-width: none;
   }
 
+  .behandlinger-slider-indicators {
+    order: 5;
+  }
+
   .behandlinger-sektion-liste::-webkit-scrollbar {
     display: none;
   }
@@ -817,7 +899,7 @@
   }
 
   .behandlinger-sektion-titel .button {
-    order: 5;
+    order: 6;
     width: 324px;
     max-width: 100%;
     justify-self: center;
@@ -834,29 +916,23 @@
   }
 
   .anmeldelser-liste {
-    display: block;
+    max-width: 100%;
     margin-top: 72px;
   }
 
-  .anmeldelse {
-    display: none;
+  .anmeldelser-track {
+    gap: 0;
   }
 
-  .anmeldelse:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .anmeldelse {
+    flex-basis: 100%;
+    padding: 0 8px;
   }
 
   .anmeldelse-stjerner {
-    order: 1;
     margin-top: 0;
     margin-bottom: 26px;
     font-size: 0.8rem;
-  }
-
-  .anmeldelse-citat {
-    order: 2;
   }
 
   .anmeldelse-citat p {
