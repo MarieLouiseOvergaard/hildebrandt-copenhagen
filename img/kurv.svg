@@ -1,5 +1,21 @@
-<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M6.25 10.4141C6.25 6.76823 8.85417 4.16406 12.5 4.16406C16.1458 4.16406 18.75 6.76823 18.75 10.4141" stroke="black" stroke-width="0.816667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M4.16602 10.4141L5.72852 20.8307C5.83268 21.3516 6.24935 21.8724 6.77018 21.8724H18.2285C18.7493 21.8724 19.166 21.3516 19.2702 20.8307L20.8327 10.4141H4.16602Z" stroke="black" stroke-width="0.816667" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M8.33398 13.5391L8.85482 18.7474M12.5007 13.5391V18.7474M16.6673 13.5391L16.1465 18.7474" stroke="black" stroke-width="0.816667" stroke-linecap="round" stroke-linejoin="round"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 113.3 106.3">
+  <!-- Generator: Adobe Illustrator 30.3.0, SVG Export Plug-In . SVG Version: 2.1.3 Build 182)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #f7f7f7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <polygon class="st0" points="12.08 38.88 101.22 38.88 90.4 102.29 22.6 102.29 12.08 38.88"/>
+  <path class="st0" d="M56.65,4.01s29.57-1.01,34.01,34.87"/>
+  <path class="st0" d="M55.81,4.01s-29.57-1.01-34.01,34.87"/>
+  <line class="st0" x1="34.39" y1="55.29" x2="37.08" y2="84.18"/>
+  <line class="st0" x1="78.95" y1="55.29" x2="76.21" y2="83.71"/>
+  <line class="st0" x1="56.46" y1="55.29" x2="56.65" y2="83.71"/>
 </svg>

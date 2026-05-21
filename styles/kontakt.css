@@ -36,74 +36,74 @@
   min-width: 150px;
 }
 
-/* Kontakt og formular */
-.kontakt-intro {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.82fr) minmax(420px, 1.38fr);
-  gap: 64px;
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 68px 36px 78px;
-}
-
-.kontakt-info {
-  padding-top: 20px;
-}
-
-.kontakt-info h2,
-.kontakt-formular h2,
-.kontakt-aabningstider h2,
-.kontakt-kort h2 {
-  letter-spacing: 0.02em;
-}
-
-.kontakt-info > p {
-  max-width: 430px;
-  margin-top: 24px;
-  color: #333333;
-}
-
-.kontakt-info-liste {
-  display: flex;
-  flex-direction: column;
-  gap: 38px;
-  margin-top: 44px;
-}
-
-.kontakt-info-item {
-  position: relative;
-  min-height: 44px;
-  padding-left: 66px;
-}
-
-.kontakt-info-item::before {
-  position: absolute;
-  top: 2px;
-  left: 18px;
-  display: grid;
-  width: 28px;
-  height: 28px;
-  place-items: center;
-  color: #9b9b9b;
-  background: var(--color-image-placeholder);
-  content: "ICON";
-  font-family: var(--font-heading);
-  font-size: 0.52rem;
-  text-transform: uppercase;
-}
-
-.kontakt-info-item h3 {
-  margin-bottom: 6px;
-}
-
-.kontakt-info-item p,
-.kontakt-info-item address {
-  color: #777777;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-style: normal;
-  line-height: 1.5;
-}
+/* Kontakt og formular */ 
+.kontakt-intro { 
+  display: grid; 
+  grid-template-columns: minmax(260px, 0.82fr) minmax(420px, 1.38fr); 
+  gap: 64px; 
+  max-width: var(--container-max); 
+  margin: 0 auto; 
+  padding: 68px 36px 78px; 
+} 
+  
+  .kontakt-info { 
+    padding-top: 20px; 
+  } 
+  
+  .kontakt-info h2, 
+  .kontakt-formular h2, 
+  .kontakt-aabningstider h2, 
+  .kontakt-kort h2 {
+  letter-spacing: 0.02em; 
+} 
+  
+  .kontakt-info > p {
+     max-width: 430px; 
+     margin-top: 24px; 
+     color: #333333; 
+    } 
+    
+    .kontakt-info-liste { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 38px; 
+      margin-top: 44px; 
+    } 
+    
+    .kontakt-info-item { 
+      position: relative; 
+      min-height: 44px; 
+      padding-left: 66px; 
+    } 
+    
+    .kontakt-info-item::before { 
+      position: absolute; 
+      top: 2px; 
+      left: 18px; 
+      display: grid; 
+      width: 28px; 
+      height: 28px; 
+      place-items: center; 
+      color: #9b9b9b; 
+      background: var(--color-image-placeholder); 
+      content: "ICON"; 
+      font-family: var(--font-heading); 
+      font-size: 0.52rem; 
+      text-transform: uppercase; 
+    } 
+    
+    .kontakt-info-item h3 { 
+      margin-bottom: 6px; 
+    } 
+    
+    .kontakt-info-item p, 
+    .kontakt-info-item address { 
+      color: #777777; 
+      font-family: var(--font-body); 
+      font-size: 0.95rem; 
+      font-style: normal; 
+      line-height: 1.5; 
+    }
 
 .kontakt-formular {
   padding: 18px 42px 16px;
