@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="styles/footer.css">
   <link rel="stylesheet" href="styles/produkt-skabelon.css">
 </head>
-<body>
+<body class="produkt-skabelon-page">
   <!-- Header med top-menu og hovednavigation -->
   <header class="header">
     <div class="top-menu">
@@ -373,7 +373,7 @@
               </div>
             </fieldset>
 
-            <button class="button button-secondary produkt-skabelon-buy" type="button">Køb</button>
+            <button class="button button-secondary produkt-skabelon-buy" type="button">Tilføj til kurv</button>
 
             <ul class="produkt-skabelon-tags" aria-label="Produkt-tags">
               ${product.tags.map((tag) => `<li>${tag}</li>`).join("")}
@@ -419,7 +419,13 @@
           <h2 id="produkt-skabelon-details-title" class="produkt-skabelon-visually-hidden">Produktdetaljer</h2>
 
           <div class="produkt-skabelon-image produkt-skabelon-image-secondary" aria-label="Sekundært produktbillede">
-            <span>IMG</span>
+            <span class="produkt-skabelon-image-label">IMG</span>
+            <div class="produkt-skabelon-ingredient-map" aria-hidden="true">
+              <span class="produkt-skabelon-ingredient produkt-skabelon-ingredient-aloe">Aloe vera</span>
+              <span class="produkt-skabelon-ingredient produkt-skabelon-ingredient-almond">Mandel-ekstrakt</span>
+              <span class="produkt-skabelon-ingredient produkt-skabelon-ingredient-oat">Havreekstrakt</span>
+              <span class="produkt-skabelon-ingredient-bottle">Mixly</span>
+            </div>
           </div>
 
           <dl class="produkt-skabelon-specs">
@@ -440,7 +446,27 @@
           <p class="eyebrow produkt-skabelon-section-label">Forstå forskellen</p>
           <h2 id="produkt-skabelon-low-rich-title">Low & Rich</h2>
           <div class="produkt-skabelon-low-rich-placeholder">
-            Low & Rich billede indsættes her
+            <div class="produkt-skabelon-low-rich-visual" aria-hidden="true">
+              <div class="produkt-skabelon-low-rich-row produkt-skabelon-low-rich-row-low">
+                <div class="produkt-skabelon-low-rich-product produkt-skabelon-low-rich-product-low"></div>
+                <div>
+                  <span>Mere low</span>
+                  <p>Til tunge, flade eller overplejede krøller</p>
+                </div>
+              </div>
+              <div class="produkt-skabelon-low-rich-balance">
+                <span>Balance</span>
+                <i></i>
+                <p>Til hverdag og stabil rutine</p>
+              </div>
+              <div class="produkt-skabelon-low-rich-row produkt-skabelon-low-rich-row-rich">
+                <div>
+                  <span>Mere rich</span>
+                  <p>Til tørre, krusede eller trætte krøller</p>
+                </div>
+                <div class="produkt-skabelon-low-rich-product produkt-skabelon-low-rich-product-rich"></div>
+              </div>
+            </div>
           </div>
           <div class="produkt-skabelon-low-rich-actions">
             <a class="button button-primary produkt-skabelon-low-rich-cta" href="kroelleunivers.html">
