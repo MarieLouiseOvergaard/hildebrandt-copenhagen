@@ -406,7 +406,7 @@ productCards.forEach((card) => {
   quickViewButton.setAttribute("aria-label", "Se produkt");
 
   const quickViewIcon = document.createElement("img");
-  quickViewIcon.src = "img/Eye-icon.svg";
+  quickViewIcon.src = "img/eye.svg";
   quickViewIcon.alt = "";
   quickViewIcon.setAttribute("aria-hidden", "true");
 
