@@ -336,7 +336,7 @@
 
   .produkt-skabelon-page .top-menu-logo::before {
     height: 25px;
-    background-image: url("../img/monogramLysgraa.svg");
+    background-image: url("../img/logo/monogramLysgraa.svg");
     filter: brightness(0) invert(1);
   }
 

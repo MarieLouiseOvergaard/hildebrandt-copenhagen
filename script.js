@@ -406,7 +406,7 @@ productCards.forEach((card) => {
   quickViewButton.setAttribute("aria-label", "Se produkt");
 
   const quickViewIcon = document.createElement("img");
-  quickViewIcon.src = "img/eye.svg";
+  quickViewIcon.src = "img/ikoner/eye.svg";
   quickViewIcon.alt = "";
   quickViewIcon.setAttribute("aria-hidden", "true");
 
@@ -421,7 +421,7 @@ productCards.forEach((card) => {
 
   const addButtonIcon = document.createElement("img");
   addButtonIcon.className = "product-add-button-icon";
-  addButtonIcon.src = "img/kurv.svg";
+  addButtonIcon.src = "img/ikoner/kurv.svg";
   addButtonIcon.alt = "";
   addButtonIcon.setAttribute("aria-hidden", "true");
 
