@@ -149,6 +149,14 @@
   content: none;
 }
 
+.product-image > a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
 .product-image img {
   width: 80%;
   height: 80%;
@@ -413,6 +421,220 @@
   text-transform: uppercase;
 }
 
+.is-quick-view-open {
+  overflow: hidden;
+}
+
+.quick-view[hidden] {
+  display: none;
+}
+
+.quick-view {
+  position: fixed;
+  z-index: 3000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.quick-view-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.quick-view-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1060px);
+  max-height: min(88dvh, 760px);
+  overflow: auto;
+  background: var(--color-white);
+  box-shadow: 0 18px 50px rgba(51, 76, 86, 0.22);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.quick-view-close {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  right: 20px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #9a9a9a;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.quick-view-close:focus-visible,
+.quick-view-size:focus-visible,
+.quick-view-read-more:focus-visible {
+  outline: 2px solid var(--color-heading);
+  outline-offset: 3px;
+}
+
+.quick-view-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.92fr);
+}
+
+.quick-view-media {
+  display: grid;
+  background: var(--color-light-blue);
+}
+
+.quick-view-detail-image {
+  display: grid;
+  place-items: center;
+}
+
+.quick-view-detail-image {
+  min-height: 560px;
+  padding: 36px;
+}
+
+.quick-view-detail-image img {
+  width: min(100%, 430px);
+  max-height: 480px;
+  object-fit: contain;
+}
+
+.quick-view-summary {
+  display: flex;
+  flex-direction: column;
+  min-height: 560px;
+  padding: 34px 40px 24px;
+}
+
+.quick-view-summary h2 {
+  max-width: 480px;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.16;
+}
+
+.quick-view-price {
+  margin-top: 28px;
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.1;
+}
+
+.quick-view-size-label {
+  margin: 0 0 12px;
+  padding: 0;
+  color: #9a9a9a;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.quick-view-sizes {
+  margin: 28px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.quick-view-size-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.quick-view-size {
+  position: relative;
+  padding: 0 0 5px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 14px;
+}
+
+.quick-view-size::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--color-primary);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease;
+}
+
+.quick-view-size:hover::after,
+.quick-view-size:focus-visible::after,
+.quick-view-size.is-active::after {
+  transform: scaleX(1);
+}
+
+.quick-view-size.is-active {
+  color: var(--color-heading);
+}
+
+.quick-view-buy {
+  width: auto;
+  min-width: 190px;
+  margin-top: 26px;
+  white-space: nowrap;
+}
+
+.quick-view-guide {
+  display: grid;
+  margin-top: 42px;
+}
+
+.quick-view-guide-item {
+  padding: 13px 0;
+  border-bottom: 1px solid #9aa8ad;
+}
+
+.quick-view-guide-item:first-child {
+  border-top: 1px solid #9aa8ad;
+}
+
+.quick-view-guide-item h3 {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.quick-view-guide-item p {
+  margin-top: 6px;
+  color: #333333;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.quick-view-read-more {
+  display: flex;
+  width: 100%;
+  min-height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: auto;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
 /* Mobil */
 @media (max-width: 767px) {
   .product-hover-eye {
@@ -529,5 +751,9 @@
 
   .products-quote footer {
     margin-top: 24px;
+  }
+
+  .quick-view {
+    display: none;
   }
 }

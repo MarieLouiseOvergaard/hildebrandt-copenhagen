@@ -400,6 +400,17 @@ productCards.forEach((card) => {
     return;
   }
 
+  const productLink = card.querySelector("h4 a");
+  const productImage = image.querySelector("img");
+
+  if (productLink && productImage && !productImage.closest("a")) {
+    const imageLink = document.createElement("a");
+    imageLink.href = productLink.getAttribute("href");
+    imageLink.setAttribute("aria-label", `Se ${productLink.textContent.trim()}`);
+    productImage.before(imageLink);
+    imageLink.appendChild(productImage);
+  }
+
   const quickViewButton = document.createElement("button");
   quickViewButton.className = "product-hover-eye";
   quickViewButton.type = "button";
@@ -409,6 +420,9 @@ productCards.forEach((card) => {
   quickViewIcon.src = "img/ikoner/eye.svg";
   quickViewIcon.alt = "";
   quickViewIcon.setAttribute("aria-hidden", "true");
+  quickViewButton.addEventListener("click", () => {
+    openQuickView(card);
+  });
 
   const addButton = document.createElement("button");
   addButton.className = "product-add-button";
@@ -428,4 +442,298 @@ productCards.forEach((card) => {
   quickViewButton.appendChild(quickViewIcon);
   addButton.append(addButtonText, addButtonIcon);
   image.append(quickViewButton, addButton);
+});
+
+const quickViewCatalog = {
+  "rich repair cleansing shampoo": {
+    tags: ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    description:
+      "Giver mere næring og ro til krøller, der føles tørre, frizzede eller medtagne.",
+    sizes: [
+      { label: "100 ml", price: "110 kr.", image: "img/produktbilleder/MIXLY-Rich-Repair-Shampoo-100.png" },
+      { label: "250 ml", price: "299 kr.", image: "img/produktbilleder/Rich-Shampoo-1.png" },
+      { label: "1000 ml", price: "379 kr.", image: "img/produktbilleder/MIXLY-Rich-Repair-Shampoo-1000ml.png" },
+    ],
+    detailsImage: "img/produktbilleder/MIXLY-Rich-Repair-Shampoo-1000ml.png",
+    fullLink: "products/shampoo/rich-repair-cleansing-shampoo.html",
+    guide: [
+      ["Brug", "Fordel i vådt hår, massér og skyl grundigt."],
+      ["God til", "Tørre, krusede eller medtagne krøller."],
+      ["Effekt", "Mere næring, styrke og mindre frizz."],
+    ],
+  },
+  "low refresh cleansing shampoo": {
+    tags: ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    description:
+      "Renser skånsomt og hjælper krøller med at bevare fugt, lethed og spændstighed.",
+    sizes: [
+      { label: "100 ml", price: "110 kr.", image: "img/produktbilleder/MIXLY-Low-Refresh-Shampoo-100.png" },
+      { label: "1000 ml", price: "379 kr.", image: "img/produktbilleder/MIXLY-Low-Refresh-Shampoo-1000.png" },
+    ],
+    detailsImage: "img/produktbilleder/MIXLY-Low-Refresh-Shampoo-1000.png",
+    fullLink: "products/shampoo/low-refresh-cleansing-shampoo.html",
+    guide: [
+      ["Brug", "Massér i vådt hår og skyl grundigt."],
+      ["God til", "Fint hår, bølger og krøller der let tynges."],
+      ["Effekt", "Renser let og bevarer bevægelse."],
+    ],
+  },
+  "low conditioner": {
+    tags: ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    description:
+      "Let conditioner, der hjælper krøller med styrke og bevægelse uden at tynge.",
+    sizes: [
+      { label: "250 ml", price: "159 kr.", image: "img/produktbilleder/Low-Conditioner-1.png", link: "products/conditioner/mixly-low-conditioner.html" },
+      { label: "1000 ml", price: "399 kr.", image: "img/produktbilleder/MIXLY-Low-Conditioner-1000.png", link: "products/conditioner/mixly-low-conditioner.html" },
+    ],
+    detailsImage: "img/ingredienser/Ingrediens-MIXLY-Low-Conditioner-1000.png",
+    fullLink: "products/conditioner/mixly-low-conditioner.html",
+    guide: [
+      ["Brug", "Fordel i nyvasket, vådt hår og skyl grundigt."],
+      ["God til", "Fine krøller, bølger eller hår der let bliver tynget."],
+      ["Effekt", "Fugt, styrke og naturlig lethed."],
+    ],
+  },
+  "rich deep drink conditioner": {
+    tags: ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    description:
+      "Conditioner med intens fugt, der hjælper tørre krøller med mere blødhed og ro.",
+    sizes: [
+      { label: "200 ml", price: "159 kr.", image: "img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-200.png" },
+      { label: "1000 ml", price: "399 kr.", image: "img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-1000.png" },
+    ],
+    detailsImage: "img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-1000.png",
+    fullLink: "products/conditioner/rich-deep-drink-conditioner.html",
+    guide: [
+      ["Brug", "Fordel i længderne efter shampoo og skyl."],
+      ["God til", "Tørre krøller der mangler fugt og ro."],
+      ["Effekt", "Blødhed, glans og mindre frizz."],
+    ],
+  },
+};
+
+const productPageSizeButtons = document.querySelectorAll(".produkt-skabelon-size[data-product-price]");
+
+if (productPageSizeButtons.length) {
+  const productPagePrice = document.querySelector("[data-product-page-price]");
+
+  productPageSizeButtons.forEach((button, index) => {
+    const isActive = index === 0;
+    button.classList.toggle("produkt-skabelon-size-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+
+    if (isActive && productPagePrice) {
+      productPagePrice.textContent = button.dataset.productPrice;
+    }
+
+    button.addEventListener("click", () => {
+      productPageSizeButtons.forEach((sizeButton) => {
+        sizeButton.classList.remove("produkt-skabelon-size-active");
+        sizeButton.setAttribute("aria-pressed", "false");
+      });
+
+      button.classList.add("produkt-skabelon-size-active");
+      button.setAttribute("aria-pressed", "true");
+
+      if (productPagePrice) {
+        productPagePrice.textContent = button.dataset.productPrice;
+      }
+    });
+  });
+}
+
+let quickViewModal = null;
+let lastQuickViewTrigger = null;
+
+function normalizeProductTitle(title) {
+  return title.trim().toLowerCase();
+}
+
+function getQuickViewData(card) {
+  const title = card.querySelector("h4")?.textContent.trim() || "Produkt";
+  const key = normalizeProductTitle(title);
+  const catalogData = quickViewCatalog[key] || {};
+  const image = card.querySelector(".product-image img");
+  const price = card.querySelector(".product-meta span:first-child")?.textContent.trim() || "";
+  const description = card.querySelector(".product-content p")?.textContent.trim() || "";
+  const fullLink = card.querySelector("h4 a")?.getAttribute("href") || catalogData.fullLink || "#";
+  const fallbackImage = image?.getAttribute("src") || "";
+
+  return {
+    title,
+    description: catalogData.description || description,
+    tags: catalogData.tags || ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    sizes: catalogData.sizes || [{ label: "", price, image: fallbackImage, link: fullLink }],
+    detailsImage: catalogData.detailsImage || fallbackImage,
+    fullLink,
+    // TODO: Eksisterende quick view-tekster til Brug, God til og Effekt mangler for produkter uden catalogData.guide.
+    guide: catalogData.guide || [],
+  };
+}
+
+function createQuickViewModal() {
+  const modal = document.createElement("div");
+  modal.className = "quick-view";
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-modal", "true");
+  modal.setAttribute("aria-labelledby", "quick-view-title");
+  modal.hidden = true;
+  modal.innerHTML = `
+    <div class="quick-view-backdrop" data-quick-view-close></div>
+    <article class="quick-view-panel">
+      <button class="quick-view-close" type="button" aria-label="Luk quick view" data-quick-view-close>×</button>
+      <div class="quick-view-body">
+        <section class="quick-view-intro">
+          <div class="quick-view-media">
+            <div class="quick-view-detail-image">
+              <img alt="">
+            </div>
+          </div>
+          <div class="quick-view-summary">
+            <h2 id="quick-view-title"></h2>
+            <fieldset class="quick-view-sizes">
+              <legend class="quick-view-size-label">Vælg størrelse</legend>
+              <div class="quick-view-size-options"></div>
+            </fieldset>
+            <p class="quick-view-price" aria-live="polite"></p>
+            <button class="button button-primary quick-view-buy" type="button">Tilføj til kurv</button>
+            <div class="quick-view-guide" aria-label="Kort produktinformation"></div>
+            <a class="quick-view-read-more" href="#">
+              <span>Læs mere om produktet</span>
+              <span aria-hidden="true">›</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </article>
+  `;
+
+  modal.addEventListener("click", (event) => {
+    if (event.target.closest("[data-quick-view-close]")) {
+      closeQuickView();
+    }
+  });
+
+  document.body.appendChild(modal);
+  return modal;
+}
+
+function setQuickViewSize(modal, data, selectedIndex) {
+  const selectedSize = data.sizes[selectedIndex];
+  const price = modal.querySelector(".quick-view-price");
+  const readMore = modal.querySelector(".quick-view-read-more");
+
+  price.textContent = selectedSize.price;
+  readMore.href = selectedSize.link || data.fullLink;
+
+  modal.querySelectorAll(".quick-view-size").forEach((button, index) => {
+    const isActive = index === selectedIndex;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function renderQuickView(card) {
+  const data = getQuickViewData(card);
+  const modal = quickViewModal || createQuickViewModal();
+  quickViewModal = modal;
+
+  modal.querySelector("#quick-view-title").textContent = data.title;
+
+  const sizes = modal.querySelector(".quick-view-size-options");
+  const sizeFieldset = modal.querySelector(".quick-view-sizes");
+  const hasMultipleSizes = data.sizes.length > 1;
+
+  sizeFieldset.hidden = !hasMultipleSizes;
+  sizes.replaceChildren(...(hasMultipleSizes ? data.sizes.map((size, index) => {
+    const button = document.createElement("button");
+    button.className = "quick-view-size";
+    button.type = "button";
+    button.textContent = size.label;
+    button.setAttribute("aria-label", `Vælg ${size.label}`);
+    button.addEventListener("click", () => {
+      setQuickViewSize(modal, data, index);
+    });
+    return button;
+  }) : []));
+
+  const detailImage = modal.querySelector(".quick-view-detail-image img");
+  detailImage.src = data.detailsImage;
+  detailImage.alt = `${data.title} produktvisual`;
+
+  const guide = modal.querySelector(".quick-view-guide");
+  guide.replaceChildren(...data.guide.map(([title, text]) => {
+    const item = document.createElement("div");
+    item.className = "quick-view-guide-item";
+
+    const itemTitle = document.createElement("h3");
+    itemTitle.textContent = title;
+
+    const itemText = document.createElement("p");
+    itemText.textContent = text;
+
+    item.append(itemTitle, itemText);
+    return item;
+  }));
+
+  setQuickViewSize(modal, data, 0);
+  return modal;
+}
+
+function openQuickView(card) {
+  lastQuickViewTrigger = document.activeElement;
+  const modal = renderQuickView(card);
+  modal.hidden = false;
+  document.body.classList.add("is-quick-view-open");
+
+  window.setTimeout(() => {
+    modal.querySelector(".quick-view-close").focus();
+  }, 0);
+}
+
+function closeQuickView() {
+  if (!quickViewModal || quickViewModal.hidden) {
+    return;
+  }
+
+  quickViewModal.hidden = true;
+  document.body.classList.remove("is-quick-view-open");
+
+  if (lastQuickViewTrigger && typeof lastQuickViewTrigger.focus === "function") {
+    lastQuickViewTrigger.focus();
+  }
+}
+
+document.addEventListener("keydown", (event) => {
+  if (!quickViewModal || quickViewModal.hidden) {
+    return;
+  }
+
+  if (event.key === "Escape") {
+    closeQuickView();
+    return;
+  }
+
+  if (event.key !== "Tab") {
+    return;
+  }
+
+  const focusable = Array.from(
+    quickViewModal.querySelectorAll("a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex='-1'])")
+  ).filter((item) => item.offsetParent !== null);
+
+  if (!focusable.length) {
+    return;
+  }
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
 });

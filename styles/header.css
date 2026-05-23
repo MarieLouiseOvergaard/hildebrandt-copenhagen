@@ -128,6 +128,9 @@
 }
 
 .menu-link {
+  position: relative;
+  display: inline-flex;
+  padding-bottom: 5px;
   color: var(--color-heading);
   font-family: var(--font-heading);
   font-size: 14px;
@@ -136,8 +139,26 @@
   text-transform: uppercase;
 }
 
+.menu-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--color-primary);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease;
+}
+
+.menu-link:hover::after,
+.menu-link:focus-visible::after,
+.menu-link-active::after {
+  transform: scaleX(1);
+}
+
 .menu-link-dropdown {
-  display: inline-flex;
   align-items: center;
   gap: 6px;
 }
