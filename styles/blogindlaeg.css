@@ -1,0 +1,226 @@
+/* Blogindlæg: side-specifik layout til indholdsfortegnelse og artikel. */
+
+.blog-post-page {
+  scroll-behavior: smooth;
+}
+
+.blog-page .indlaeg-hero {
+  padding: 24px 24px 34px;
+  background: var(--color-section-grey);
+}
+
+.blog-page .indlaeg-hero-tekst {
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.blog-page .indlaeg-hero .blog-post-back {
+  margin: 0 0 22px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.blog-page .indlaeg-hero h1 {
+  max-width: 520px;
+  text-transform: none;
+}
+
+.blog-page .indlaeg-hero p:not(.eyebrow) {
+  margin-top: 24px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.blog-page .indlaeg-billede {
+  display: flex;
+  width: min(100% - 48px, 1040px);
+  aspect-ratio: 730 / 320;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: #111111;
+  background: var(--color-image-placeholder);
+  font-family: var(--font-heading);
+  font-size: 32px;
+  line-height: 1.05;
+}
+
+.blog-page .indlaeg-billede span {
+  margin-top: 4px;
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+.blog-page .indlaeg-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 600px);
+  gap: 120px;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 30px 24px 112px;
+}
+
+.blog-page .indlaeg-menu {
+  position: sticky;
+  top: 145px;
+  align-self: start;
+}
+
+.blog-page .indlaeg-menu h2 {
+  margin-bottom: 28px;
+  color: var(--color-heading);
+  font-size: 21px;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.blog-page .indlaeg-menu-liste {
+  position: relative;
+  display: grid;
+  gap: 28px;
+  margin: 0;
+  padding: 0 0 0 32px;
+  list-style: none;
+}
+
+.blog-page .indlaeg-menu-liste::before {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 8px;
+  width: 1px;
+  background: #c9d1d4;
+  content: "";
+  pointer-events: none;
+}
+
+.blog-page .indlaeg-menu-punkt {
+  position: relative;
+}
+
+.blog-page .indlaeg-menu-punkt::before {
+  position: absolute;
+  top: 3px;
+  left: -31px;
+  z-index: 1;
+  width: 17px;
+  height: 17px;
+  border: 1px solid var(--color-heading);
+  border-radius: 50%;
+  background: var(--color-white);
+  content: "";
+  pointer-events: none;
+}
+
+.blog-page .indlaeg-menu-punkt.aktiv::before,
+.blog-page .indlaeg-menu-punkt:hover::before,
+.blog-page .indlaeg-menu-punkt:focus-within::before {
+  background: var(--color-heading);
+}
+
+.blog-page .indlaeg-menu-link {
+  display: block;
+  min-height: 22px;
+  margin-left: -32px;
+  padding-left: 32px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.blog-page .indlaeg-menu-link:hover,
+.blog-page .indlaeg-menu-link:focus-visible,
+.blog-page .indlaeg-menu-link.aktiv {
+  color: var(--color-heading);
+}
+
+.blog-page .indlaeg-menu-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.blog-page .indlaeg-tekst {
+  max-width: 600px;
+}
+
+.blog-page .indlaeg-tekst > p,
+.blog-page .indlaeg-afsnit p {
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.blog-page .indlaeg-afsnit {
+  margin-top: 30px;
+}
+
+.blog-page .indlaeg-afsnit h2 {
+  scroll-margin-top: 140px;
+  margin-bottom: 8px;
+  color: var(--color-heading);
+  font-size: 24px;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.blog-page .indlaeg-afsnit p + p {
+  margin-top: 8px;
+}
+
+@media (max-width: 767px) {
+  .blog-page .indlaeg-hero {
+    padding: 28px 18px 34px;
+  }
+
+  .blog-page .indlaeg-hero-tekst {
+    max-width: none;
+  }
+
+  .blog-page .indlaeg-hero .blog-post-back {
+    margin-bottom: 24px;
+    font-size: var(--font-body-mobile);
+  }
+
+  .blog-page .indlaeg-hero h1 {
+    font-size: var(--font-h1-mobile);
+  }
+
+  .blog-page .indlaeg-hero p:not(.eyebrow) {
+    font-size: var(--font-body-mobile);
+  }
+
+  .blog-page .indlaeg-billede {
+    width: 100%;
+    font-size: 30px;
+  }
+
+  .blog-page .indlaeg-layout {
+    grid-template-columns: 1fr;
+    gap: 42px;
+    padding: 30px 18px 70px;
+  }
+
+  .blog-page .indlaeg-menu {
+    position: static;
+  }
+
+  .blog-page .indlaeg-menu h2 {
+    font-size: var(--font-h2-mobile);
+  }
+
+  .blog-page .indlaeg-menu-liste {
+    gap: 22px;
+  }
+
+  .blog-page .indlaeg-menu-link,
+  .blog-page .indlaeg-tekst > p,
+  .blog-page .indlaeg-afsnit p {
+    font-size: var(--font-body-mobile);
+  }
+
+  .blog-page .indlaeg-afsnit h2 {
+    scroll-margin-top: 24px;
+    font-size: var(--font-h2-mobile);
+  }
+}

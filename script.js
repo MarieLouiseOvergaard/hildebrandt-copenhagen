@@ -198,6 +198,88 @@ if (contactStatus) {
   window.setInterval(updateContactOpeningStatus, 60000);
 }
 
+const postMenu = document.querySelector(".indlaeg-menu");
+
+if (postMenu) {
+  const postMenuLinks = Array.from(postMenu.querySelectorAll(".indlaeg-menu-link"));
+  const postSections = postMenuLinks
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+  let shouldIgnorePostScrollSpy = false;
+  let postScrollTimeoutId = null;
+
+  function setActivePostMenuItem(id) {
+    postMenuLinks.forEach((link) => {
+      const item = link.closest(".indlaeg-menu-punkt");
+      const isActive = link.getAttribute("href") === `#${id}`;
+
+      link.classList.toggle("aktiv", isActive);
+      link.toggleAttribute("aria-current", isActive);
+
+      if (item) {
+        item.classList.toggle("aktiv", isActive);
+      }
+    });
+  }
+
+  function getPostHeaderOffset() {
+    const header = document.querySelector(".header");
+    return header && getComputedStyle(header).position === "fixed" ? header.offsetHeight + 24 : 24;
+  }
+
+  function updateActivePostMenuFromScroll() {
+    if (shouldIgnorePostScrollSpy || postSections.length === 0) {
+      return;
+    }
+
+    const headerOffset = getPostHeaderOffset();
+    const activeSection = postSections.reduce((currentSection, section) => {
+      const sectionTop = section.getBoundingClientRect().top - headerOffset - 20;
+
+      if (sectionTop <= 0) {
+        return section;
+      }
+
+      return currentSection;
+    }, postSections[0]);
+
+    setActivePostMenuItem(activeSection.id);
+  }
+
+  postMenuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      const targetId = link.getAttribute("href").slice(1);
+      const target = document.getElementById(targetId);
+
+      if (!target) {
+        return;
+      }
+
+      shouldIgnorePostScrollSpy = true;
+      setActivePostMenuItem(targetId);
+
+      window.clearTimeout(postScrollTimeoutId);
+      postScrollTimeoutId = window.setTimeout(() => {
+        shouldIgnorePostScrollSpy = false;
+        updateActivePostMenuFromScroll();
+      }, 500);
+    });
+  });
+
+  if (window.location.hash) {
+    setActivePostMenuItem(window.location.hash.slice(1));
+  }
+
+  updateActivePostMenuFromScroll();
+  window.addEventListener("scroll", updateActivePostMenuFromScroll, { passive: true });
+  window.addEventListener("resize", updateActivePostMenuFromScroll);
+  window.addEventListener("hashchange", () => {
+    if (window.location.hash) {
+      setActivePostMenuItem(window.location.hash.slice(1));
+    }
+  });
+}
+
 const productRows = document.querySelectorAll(".product-row");
 const treatmentRows = document.querySelectorAll(".behandlinger-sektion-liste");
 const productCards = document.querySelectorAll(".product-card");
