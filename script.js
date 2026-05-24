@@ -6,6 +6,40 @@ const productsBack = document.querySelector(".mobile-menu-back");
 const mobileMenuScroll = document.querySelector(".mobile-menu-scroll");
 const heroBookingButton = document.querySelector(".hero .button-primary");
 
+function setActiveMainNavigation() {
+  const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
+  const isProductPage =
+    /\/produkter(?:-[^/]*)?\.html$/.test(currentPath) ||
+    currentPath.includes("/products/");
+  const isCurlUniversePage =
+    /\/(?:kroelleunivers|guides|blog)\.html$/.test(currentPath) ||
+    currentPath.includes("/blog/");
+
+  document.querySelectorAll(".menu-link").forEach((link) => {
+    const href = link.getAttribute("href");
+
+    if (!href || href === "#") {
+      return;
+    }
+
+    const linkPath = new URL(href, window.location.href).pathname.replace(/\/index\.html$/, "/");
+    const isActive =
+      (isProductPage && /\/produkter\.html$/.test(linkPath)) ||
+      (isCurlUniversePage && /\/kroelleunivers\.html$/.test(linkPath)) ||
+      (!isProductPage && !isCurlUniversePage && currentPath === linkPath);
+
+    link.classList.toggle("menu-link-active", isActive);
+
+    if (isActive) {
+      link.setAttribute("aria-current", "page");
+    } else if (link.getAttribute("aria-current") === "page") {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+setActiveMainNavigation();
+
 function openMobileMenu(event) {
   mobileMenu.classList.add("is-open");
   mobileMenu.classList.remove("is-products");
@@ -349,6 +383,7 @@ if (postMenu) {
 const productRows = document.querySelectorAll(".product-row");
 const treatmentRows = document.querySelectorAll(".behandlinger-sektion-liste");
 const productCards = document.querySelectorAll(".product-card");
+const relatedProductCards = document.querySelectorAll(".produkt-skabelon-related-card");
 const reviewSlider = document.querySelector("[data-anmeldelser-slider]");
 const productSections = Array.from(document.querySelectorAll("[data-product-section]"));
 const productFilterLinks = Array.from(document.querySelectorAll("[data-product-filter]"));
@@ -441,10 +476,62 @@ function setProductFilter(filter) {
   });
 }
 
+function centerActiveProductFilter() {
+  const filterBar = document.querySelector(".product-filter");
+  const activeFilter = filterBar?.querySelector(".product-filter-link.is-active");
+  const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+  if (!filterBar || !activeFilter || !isMobile) {
+    return;
+  }
+
+  const targetLeft = activeFilter.offsetLeft - (filterBar.clientWidth - activeFilter.offsetWidth) / 2;
+
+  filterBar.scrollTo({
+    left: Math.max(0, targetLeft),
+    behavior: "smooth",
+  });
+}
+
 organizeProductSets();
 
 if (productSections.length) {
   setProductFilter(document.body.dataset.productPageFilter || "all");
+  window.setTimeout(centerActiveProductFilter, 0);
+  window.addEventListener("resize", centerActiveProductFilter);
+  productFilterLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      window.setTimeout(centerActiveProductFilter, 0);
+    });
+  });
+}
+
+function getCardTitle(card) {
+  return card.querySelector("h4, h3")?.textContent.trim() || "Mixly produkt";
+}
+
+function getCardDescription(card) {
+  return card.querySelector(".product-content p")?.textContent.trim() ||
+    card.querySelector(".produkt-skabelon-related-card > a > p")?.textContent.trim() ||
+    card.querySelector("p")?.textContent.trim() ||
+    "";
+}
+
+function getCardImage(card) {
+  return card.querySelector(".product-image img, .produkt-skabelon-related-image img");
+}
+
+function getCardLink(card) {
+  return card.querySelector("h4 a, h3 a, .produkt-skabelon-related-card > a, a")?.getAttribute("href") || "#";
+}
+
+function getCardImageFrame(card) {
+  return card.querySelector(".product-image, .produkt-skabelon-related-image");
+}
+
+function getInterfaceIconUrl(iconName) {
+  const cartIcon = document.querySelector(".top-nav-icon-cart")?.getAttribute("src") || "img/ikoner/kurv.svg";
+  return cartIcon.replace(/kurv\.svg$/i, `${iconName}.svg`);
 }
 
 function setupReviewSlider(slider) {
@@ -640,14 +727,14 @@ treatmentRows.forEach((row) => {
 });
 
 productCards.forEach((card) => {
-  const image = card.querySelector(".product-image");
+  const image = getCardImageFrame(card);
 
   if (!image || image.querySelector(".product-add-button")) {
     return;
   }
 
   const productLink = card.querySelector("h4 a");
-  const productImage = image.querySelector("img");
+  const productImage = getCardImage(card);
 
   if (productLink && productImage && !productImage.closest("a")) {
     const imageLink = document.createElement("a");
@@ -663,7 +750,7 @@ productCards.forEach((card) => {
   quickViewButton.setAttribute("aria-label", "Se produkt");
 
   const quickViewIcon = document.createElement("img");
-  quickViewIcon.src = "img/ikoner/eye.svg";
+  quickViewIcon.src = getInterfaceIconUrl("eye");
   quickViewIcon.alt = "";
   quickViewIcon.setAttribute("aria-hidden", "true");
   quickViewButton.addEventListener("click", (event) => {
@@ -681,7 +768,49 @@ productCards.forEach((card) => {
 
   const addButtonIcon = document.createElement("img");
   addButtonIcon.className = "product-add-button-icon";
-  addButtonIcon.src = "img/ikoner/kurv.svg";
+  addButtonIcon.src = getInterfaceIconUrl("kurv");
+  addButtonIcon.alt = "";
+  addButtonIcon.setAttribute("aria-hidden", "true");
+
+  quickViewButton.appendChild(quickViewIcon);
+  addButton.append(addButtonText, addButtonIcon);
+  image.append(quickViewButton, addButton);
+});
+
+relatedProductCards.forEach((card) => {
+  const image = getCardImageFrame(card);
+
+  if (!image || image.querySelector(".product-add-button")) {
+    return;
+  }
+
+  const quickViewButton = document.createElement("button");
+  quickViewButton.className = "product-hover-eye";
+  quickViewButton.type = "button";
+  quickViewButton.setAttribute("aria-label", "Se produkt");
+
+  const quickViewIcon = document.createElement("img");
+  quickViewIcon.src = getInterfaceIconUrl("eye");
+  quickViewIcon.alt = "";
+  quickViewIcon.setAttribute("aria-hidden", "true");
+  quickViewButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    openQuickView(card, event);
+  });
+
+  const addButton = document.createElement("button");
+  addButton.className = "product-add-button";
+  addButton.type = "button";
+  addButton.setAttribute("aria-label", "Tilføj til kurv");
+
+  const addButtonText = document.createElement("span");
+  addButtonText.className = "product-add-button-text";
+  addButtonText.textContent = "Tilføj til kurv";
+
+  const addButtonIcon = document.createElement("img");
+  addButtonIcon.className = "product-add-button-icon";
+  addButtonIcon.src = getInterfaceIconUrl("kurv");
   addButtonIcon.alt = "";
   addButtonIcon.setAttribute("aria-hidden", "true");
 
@@ -874,16 +1003,17 @@ function escapeCartText(value) {
 }
 
 function getProductFromCard(card) {
-  const title = card.querySelector("h4")?.textContent.trim() || "Mixly produkt";
+  const title = getCardTitle(card);
   const catalogData = quickViewCatalog[normalizeProductTitle(title)];
   const defaultSize = catalogData?.sizes?.[0];
   const meta = Array.from(card.querySelectorAll(".product-meta span")).map((item) => item.textContent.trim());
-  const image = defaultSize?.image || card.querySelector(".product-image img")?.getAttribute("src") || "";
+  const relatedPrice = card.classList.contains("produkt-skabelon-related-card") ? card.querySelector("p")?.textContent.trim() : "";
+  const image = defaultSize?.image || getCardImage(card)?.getAttribute("src") || "";
 
   return {
     name: title,
     size: defaultSize?.label || meta[1] || "",
-    price: parsePrice(defaultSize?.price || meta[0]),
+    price: parsePrice(defaultSize?.price || meta[0] || relatedPrice),
     image: getAbsoluteAssetUrl(image),
   };
 }
@@ -1152,14 +1282,16 @@ document.querySelectorAll(".top-nav-link-cart").forEach((cartLink) => {
   });
 });
 
-productCards.forEach((card) => {
+document.querySelectorAll(".product-card, .produkt-skabelon-related-card").forEach((card) => {
   const addButton = card.querySelector(".product-add-button");
 
   if (!addButton) {
     return;
   }
 
-  addButton.addEventListener("click", () => {
+  addButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     addToCart(getProductFromCard(card));
   });
 });
@@ -1181,13 +1313,15 @@ function normalizeProductTitle(title) {
 }
 
 function getQuickViewData(card) {
-  const title = card.querySelector("h4")?.textContent.trim() || "Produkt";
+  const title = getCardTitle(card);
   const key = normalizeProductTitle(title);
   const catalogData = quickViewCatalog[key] || {};
-  const image = card.querySelector(".product-image img");
-  const price = card.querySelector(".product-meta span:first-child")?.textContent.trim() || "";
-  const description = card.querySelector(".product-content p")?.textContent.trim() || "";
-  const fullLink = card.querySelector("h4 a")?.getAttribute("href") || catalogData.fullLink || "#";
+  const image = getCardImage(card);
+  const price = card.querySelector(".product-meta span:first-child")?.textContent.trim() ||
+    (card.classList.contains("produkt-skabelon-related-card") ? card.querySelector("p")?.textContent.trim() : "") ||
+    "";
+  const description = getCardDescription(card);
+  const fullLink = getCardLink(card) || catalogData.fullLink || "#";
   const fallbackImage = image?.getAttribute("src") || "";
 
   return {
