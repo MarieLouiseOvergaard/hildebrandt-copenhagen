@@ -66,38 +66,36 @@
 .produkt-skabelon-size-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 12px;
 }
 
 .produkt-skabelon-size {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 5px;
-  border: 0;
+  display: inline-flex;
+  min-width: 96px;
+  min-height: var(--button-height);
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  border: 1px solid var(--color-heading);
+  border-radius: 2px;
   background: transparent;
-  color: inherit;
+  color: var(--color-heading);
   cursor: pointer;
   font-family: var(--font-heading);
-  font-size: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: background 220ms ease, color 220ms ease;
 }
 
-.produkt-skabelon-size::after {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  background: var(--color-primary);
-  content: "";
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 220ms ease;
-}
-
-.produkt-skabelon-size:hover::after,
-.produkt-skabelon-size:focus-visible::after,
-.produkt-skabelon-size-active::after {
-  transform: scaleX(1);
+.produkt-skabelon-size:hover,
+.produkt-skabelon-size:focus-visible,
+.produkt-skabelon-size-active,
+.produkt-skabelon-size:has(input:checked) {
+  color: var(--color-white);
+  background: var(--color-heading);
 }
 
 .produkt-skabelon-size input {
@@ -109,21 +107,8 @@
   display: inline-block;
 }
 
-.produkt-skabelon-size-active {
-  color: var(--color-heading);
-}
-
-.produkt-skabelon-size input:checked + span {
-  color: var(--color-heading);
-}
-
-.produkt-skabelon-size:has(input:checked)::after {
-  transform: scaleX(1);
-}
-
 .produkt-skabelon-size input:focus-visible + span {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
+  outline: none;
 }
 
 .produkt-skabelon-buy {
@@ -472,10 +457,11 @@
   }
 
   .produkt-skabelon-size-options {
-    gap: 48px;
+    gap: 10px;
   }
 
   .produkt-skabelon-size {
+    min-width: 86px;
     font-size: 12px;
   }
 
