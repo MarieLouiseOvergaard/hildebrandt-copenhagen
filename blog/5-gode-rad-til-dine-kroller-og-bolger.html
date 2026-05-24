@@ -225,7 +225,20 @@
     <!-- Indlæg med indholdsfortegnelse -->
     <section class="indlaeg-layout" aria-label="Blogindlæg">
       <nav class="indlaeg-menu" aria-label="Indholdsfortegnelse">
+        <a class="indlaeg-mobile-back" href="../blog.html">← Blog</a>
+        <button class="indlaeg-menu-toggle" type="button" aria-expanded="false">
+          <span class="indlaeg-menu-progress" aria-hidden="true">
+            <span class="indlaeg-menu-step aktiv"></span>
+            <span class="indlaeg-menu-step"></span>
+            <span class="indlaeg-menu-step"></span>
+            <span class="indlaeg-menu-step"></span>
+            <span class="indlaeg-menu-step"></span>
+            <span class="indlaeg-menu-step"></span>
+          </span>
+          <span class="indlaeg-menu-toggle-text">I dette indlæg</span>
+        </button>
         <h2>I dette indlæg</h2>
+        <p class="indlaeg-menu-help">Tryk på et punkt for at hoppe til afsnittet</p>
         <ol class="indlaeg-menu-liste">
           <li class="indlaeg-menu-punkt aktiv">
             <a class="indlaeg-menu-link aktiv" href="#kroller-er-mere-levende" aria-current="true">Krøller er mere levende end glat hår</a>
@@ -294,6 +307,41 @@
           <p>Mixly er skabt ud fra netop den tilgang. Ikke som en hurtig løsning, men som et værktøj til at lære sit hår bedre at kende.</p>
         </section>
       </article>
+    </section>
+
+    <!-- Relaterede indlæg -->
+    <section class="indlaeg-laes-ogsa" aria-labelledby="indlaeg-laes-ogsa-titel">
+      <h2 id="indlaeg-laes-ogsa-titel">Læs også</h2>
+      <div class="indlaeg-laes-ogsa-grid blog-grid">
+        <article class="blog-card">
+          <figure class="blog-card-image" aria-label="Placeholder billede">IMG<span>360 x 215</span></figure>
+          <p class="blog-card-category">Krølleviden</p>
+          <h3 class="blog-card-title">Sådan får du dine naturlige krøller frem</h3>
+          <a class="blog-card-link" href="sadan-far-du-dine-naturlige-kroller-frem.html">Læs indlæg →</a>
+        </article>
+        <article class="blog-card">
+          <figure class="blog-card-image" aria-label="Placeholder billede">IMG<span>360 x 215</span></figure>
+          <p class="blog-card-category">Guides</p>
+          <h3 class="blog-card-title">Sådan får du dine skandinaviske krøller frem - uden spildte penge</h3>
+          <a class="blog-card-link" href="sadan-far-du-dine-skandinaviske-kroller-frem.html">Læs indlæg →</a>
+        </article>
+        <article class="blog-card">
+          <figure class="blog-card-image" aria-label="Placeholder billede">IMG<span>360 x 215</span></figure>
+          <p class="blog-card-category">Krølleviden</p>
+          <h3 class="blog-card-title">5 vaner du bør undgå, hvis du har fint krøllet eller bølget hår</h3>
+          <a class="blog-card-link" href="5-vaner-du-bor-undga.html">Læs indlæg →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Produkt CTA -->
+    <section class="indlaeg-produkt-cta" aria-labelledby="indlaeg-produkt-cta-titel">
+      <figure class="indlaeg-produkt-cta-billede" aria-label="Placeholder billede">IMG<span>670 x 370</span></figure>
+      <div class="indlaeg-produkt-cta-tekst">
+        <h2 id="indlaeg-produkt-cta-titel">Vil du lære dit hår bedre at kende?</h2>
+        <p>Hvis du kan genkende følelsen af, at dit hår aldrig helt passer ind i faste systemer, kan en mere fleksibel tilgang være et godt sted at starte. Mixlys startpakker er udviklet til at give dig ro til at eksperimentere og justere i dit eget tempo. Ikke for at ændre dit hår, men for at forstå det.</p>
+        <a class="button button-primary" href="../produkter.html">Se produkter</a>
+      </div>
     </section>
   </main>
   <footer class="footer">

@@ -202,24 +202,46 @@ const postMenu = document.querySelector(".indlaeg-menu");
 
 if (postMenu) {
   const postMenuLinks = Array.from(postMenu.querySelectorAll(".indlaeg-menu-link"));
+  const postMenuToggle = postMenu.querySelector(".indlaeg-menu-toggle");
+  const postMenuSteps = Array.from(postMenu.querySelectorAll(".indlaeg-menu-step"));
+  const postMenuLayout = postMenu.closest(".indlaeg-layout");
   const postSections = postMenuLinks
     .map((link) => document.querySelector(link.getAttribute("href")))
     .filter(Boolean);
   let shouldIgnorePostScrollSpy = false;
   let postScrollTimeoutId = null;
+  let postMenuStartTop = 0;
 
   function setActivePostMenuItem(id) {
     postMenuLinks.forEach((link) => {
       const item = link.closest(".indlaeg-menu-punkt");
       const isActive = link.getAttribute("href") === `#${id}`;
+      const linkIndex = postMenuLinks.indexOf(link);
 
       link.classList.toggle("aktiv", isActive);
-      link.toggleAttribute("aria-current", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
 
       if (item) {
         item.classList.toggle("aktiv", isActive);
       }
+
+      if (postMenuSteps[linkIndex]) {
+        postMenuSteps[linkIndex].classList.toggle("aktiv", isActive);
+      }
     });
+  }
+
+  function setPostMenuOpen(isOpen) {
+    postMenu.classList.toggle("is-open", isOpen);
+
+    if (postMenuToggle) {
+      postMenuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
   }
 
   function getPostHeaderOffset() {
@@ -246,6 +268,36 @@ if (postMenu) {
     setActivePostMenuItem(activeSection.id);
   }
 
+  function updatePostMenuFixedPosition() {
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+    if (!isMobile) {
+      postMenu.classList.remove("is-mobile-fixed");
+
+      if (postMenuLayout) {
+        postMenuLayout.classList.remove("is-menu-fixed");
+      }
+
+      return;
+    }
+
+    const isFixed = window.scrollY >= postMenuStartTop;
+    postMenu.classList.toggle("is-mobile-fixed", isFixed);
+
+    if (postMenuLayout) {
+      postMenuLayout.classList.toggle("is-menu-fixed", isFixed);
+    }
+  }
+
+  function setPostMenuStartTop() {
+    const wasFixed = postMenu.classList.contains("is-mobile-fixed");
+
+    postMenu.classList.remove("is-mobile-fixed");
+    postMenuStartTop = postMenu.getBoundingClientRect().top + window.scrollY;
+    postMenu.classList.toggle("is-mobile-fixed", wasFixed);
+    updatePostMenuFixedPosition();
+  }
+
   postMenuLinks.forEach((link) => {
     link.addEventListener("click", () => {
       const targetId = link.getAttribute("href").slice(1);
@@ -257,6 +309,7 @@ if (postMenu) {
 
       shouldIgnorePostScrollSpy = true;
       setActivePostMenuItem(targetId);
+      setPostMenuOpen(false);
 
       window.clearTimeout(postScrollTimeoutId);
       postScrollTimeoutId = window.setTimeout(() => {
@@ -266,13 +319,26 @@ if (postMenu) {
     });
   });
 
-  if (window.location.hash) {
-    setActivePostMenuItem(window.location.hash.slice(1));
+  if (postMenuToggle) {
+    postMenuToggle.addEventListener("click", () => {
+      setPostMenuOpen(!postMenu.classList.contains("is-open"));
+    });
   }
 
-  updateActivePostMenuFromScroll();
+  if (window.location.hash) {
+    setActivePostMenuItem(window.location.hash.slice(1));
+  } else {
+    updateActivePostMenuFromScroll();
+  }
+
+  setPostMenuStartTop();
   window.addEventListener("scroll", updateActivePostMenuFromScroll, { passive: true });
-  window.addEventListener("resize", updateActivePostMenuFromScroll);
+  window.addEventListener("scroll", updatePostMenuFixedPosition, { passive: true });
+  window.addEventListener("load", setPostMenuStartTop);
+  window.addEventListener("resize", () => {
+    setPostMenuStartTop();
+    updateActivePostMenuFromScroll();
+  });
   window.addEventListener("hashchange", () => {
     if (window.location.hash) {
       setActivePostMenuItem(window.location.hash.slice(1));
