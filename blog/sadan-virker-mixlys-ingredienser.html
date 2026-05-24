@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../styles/header.css">
   <link rel="stylesheet" href="../styles/footer.css">
   <link rel="stylesheet" href="../styles/blog.css">
+  <link rel="stylesheet" href="../styles/blogindlaeg.css">
 </head>
 <body class="blog-page blog-post-page">
   <header class="header">
@@ -208,19 +209,135 @@
   </div>
 
 
-  <main class="blog-post-main">
-    <article class="blog-post">
-      <a class="blog-post-back" href="../blog.html">← Tilbage til blog</a>
+<main class="blog-post-main">
+  <!-- Indlæggets intro -->
+  <section class="indlaeg-hero" aria-labelledby="indlaeg-titel">
+    <a class="blog-post-back" href="../blog.html">← Blog</a>
+    <div class="indlaeg-hero-tekst">
       <p class="eyebrow blog-post-category">Mixly</p>
-      <h1>Sådan vil Mixlys ingredienser virke i dit fine krøllede eller bølgede hår</h1>
-      <figure class="blog-post-image" aria-label="Placeholder billede">IMG<span>360 x 215</span></figure>
-      <section class="blog-post-content">
-        <p>Ingredienserne i en rutine skal støtte hårets form uden at tynge det, især når håret er fint eller let bliver fladt.</p>
-        <p>Derfor er balancen mellem fugt, definition og lethed central, når du vælger produkter.</p>
-        <p>Denne side er oprettet som blogindlæggets plads, så indholdet kan udbygges med den endelige tekst.</p>
+      <h1 id="indlaeg-titel">Sådan vil Mixlys ingredienser virke i dit fine krøllede eller bølgede hår</h1>
+      <p>Ingredienserne i en rutine skal støtte hårets form uden at tynge det, især når håret er fint eller let bliver fladt.</p>
+    </div>
+  </section>
+
+  <figure class="indlaeg-billede" aria-label="Placeholder billede">IMG<span>730 x 320</span></figure>
+
+  <!-- Indlæg med indholdsfortegnelse -->
+  <section class="indlaeg-layout" aria-label="Blogindlæg">
+    <nav class="indlaeg-menu" aria-label="Indholdsfortegnelse">
+      <a class="indlaeg-mobile-back" href="../blog.html">← Blog</a>
+      <button class="indlaeg-menu-toggle" type="button" aria-expanded="false">
+        <span class="indlaeg-menu-progress" aria-hidden="true">
+          <span class="indlaeg-menu-step aktiv"></span>
+          <span class="indlaeg-menu-step"></span>
+          <span class="indlaeg-menu-step"></span>
+          <span class="indlaeg-menu-step"></span>
+          <span class="indlaeg-menu-step"></span>
+          <span class="indlaeg-menu-step"></span>
+        </span>
+        <span class="indlaeg-menu-toggle-text">I dette indlæg</span>
+      </button>
+      <h2>I dette indlæg</h2>
+      <p class="indlaeg-menu-help">Tryk på et punkt for at hoppe til afsnittet</p>
+      <ol class="indlaeg-menu-liste">
+        <li class="indlaeg-menu-punkt aktiv">
+          <a class="indlaeg-menu-link aktiv" href="#afsnit-1" aria-current="true">Indsæt overskrift 1</a>
+        </li>
+        <li class="indlaeg-menu-punkt">
+          <a class="indlaeg-menu-link" href="#afsnit-2">Indsæt overskrift 2</a>
+        </li>
+        <li class="indlaeg-menu-punkt">
+          <a class="indlaeg-menu-link" href="#afsnit-3">Indsæt overskrift 3</a>
+        </li>
+        <li class="indlaeg-menu-punkt">
+          <a class="indlaeg-menu-link" href="#afsnit-4">Indsæt overskrift 4</a>
+        </li>
+        <li class="indlaeg-menu-punkt">
+          <a class="indlaeg-menu-link" href="#afsnit-5">Indsæt overskrift 5</a>
+        </li>
+        <li class="indlaeg-menu-punkt">
+          <a class="indlaeg-menu-link" href="#afsnit-6">Indsæt overskrift 6</a>
+        </li>
+      </ol>
+    </nav>
+
+    <article class="indlaeg-tekst">
+      <p>Derfor er balancen mellem fugt, definition og lethed central, når du vælger produkter.</p>
+      <p>Udskift denne tekst med den endelige introduktion til blogindlægget.</p>
+
+      <section class="indlaeg-afsnit">
+        <h2 id="afsnit-1">Indsæt overskrift 1</h2>
+        <p>Indsæt brødtekst til første afsnit her.</p>
+        <p>Tilføj flere afsnit efter behov.</p>
+      </section>
+
+      <section class="indlaeg-afsnit">
+        <h2 id="afsnit-2">Indsæt overskrift 2</h2>
+        <p>Indsæt brødtekst til andet afsnit her.</p>
+        <p>Tilføj flere afsnit efter behov.</p>
+      </section>
+
+      <section class="indlaeg-afsnit">
+        <h2 id="afsnit-3">Indsæt overskrift 3</h2>
+        <p>Indsæt brødtekst til tredje afsnit her.</p>
+        <p>Tilføj flere afsnit efter behov.</p>
+      </section>
+
+      <section class="indlaeg-afsnit">
+        <h2 id="afsnit-4">Indsæt overskrift 4</h2>
+        <p>Indsæt brødtekst til fjerde afsnit her.</p>
+        <p>Tilføj flere afsnit efter behov.</p>
+      </section>
+
+      <section class="indlaeg-afsnit">
+        <h2 id="afsnit-5">Indsæt overskrift 5</h2>
+        <p>Indsæt brødtekst til femte afsnit her.</p>
+        <p>Tilføj flere afsnit efter behov.</p>
+      </section>
+
+      <section class="indlaeg-afsnit">
+        <h2 id="afsnit-6">Indsæt overskrift 6</h2>
+        <p>Indsæt brødtekst til sjette afsnit her.</p>
+        <p>Tilføj flere afsnit efter behov.</p>
       </section>
     </article>
-  </main>
+  </section>
+
+  <!-- Relaterede indlæg -->
+  <section class="indlaeg-laes-ogsa" aria-labelledby="indlaeg-laes-ogsa-titel">
+    <h2 id="indlaeg-laes-ogsa-titel">Læs også</h2>
+    <div class="indlaeg-laes-ogsa-grid blog-grid" data-related-posts>
+      <article class="blog-card">
+        <figure class="blog-card-image" aria-label="Placeholder billede">IMG<span>360 x 215</span></figure>
+        <p class="blog-card-category">Krølleviden</p>
+        <h3 class="blog-card-title">Sådan får du dine naturlige krøller frem</h3>
+        <a class="blog-card-link" href="sadan-far-du-dine-naturlige-kroller-frem.html">Læs indlæg →</a>
+      </article>
+      <article class="blog-card">
+        <figure class="blog-card-image" aria-label="Placeholder billede">IMG<span>360 x 215</span></figure>
+        <p class="blog-card-category">Guides</p>
+        <h3 class="blog-card-title">Sådan får du dine skandinaviske krøller frem - uden spildte penge</h3>
+        <a class="blog-card-link" href="sadan-far-du-dine-skandinaviske-kroller-frem.html">Læs indlæg →</a>
+      </article>
+      <article class="blog-card">
+        <figure class="blog-card-image" aria-label="Placeholder billede">IMG<span>360 x 215</span></figure>
+        <p class="blog-card-category">Krølleviden</p>
+        <h3 class="blog-card-title">5 vaner du bør undgå, hvis du har fint krøllet eller bølget hår</h3>
+        <a class="blog-card-link" href="5-vaner-du-bor-undga.html">Læs indlæg →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Produkt CTA -->
+  <section class="indlaeg-produkt-cta" aria-labelledby="indlaeg-produkt-cta-titel">
+    <figure class="indlaeg-produkt-cta-billede" aria-label="Placeholder billede">IMG<span>670 x 370</span></figure>
+    <div class="indlaeg-produkt-cta-tekst">
+      <h2 id="indlaeg-produkt-cta-titel">Vil du lære dit hår bedre at kende?</h2>
+      <p>Indsæt CTA-tekst her. Brug denne sektion til at sende læseren videre til produkter, guides eller en anden relevant side.</p>
+      <a class="button button-primary" href="../produkter.html">Se produkter</a>
+    </div>
+  </section>
+</main>
   <footer class="footer">
     <section class="footer-kontakt" aria-labelledby="footer-kontakt-titel">
       <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
@@ -288,5 +405,6 @@
       </ul>
     </div>
   </footer>
+  <script src="../script.js"></script>
 </body>
 </html>
