@@ -1177,7 +1177,7 @@ function renderCartDrawer() {
     </div>
     <!-- TODO: Link til eksisterende checkout-route, når den bliver oprettet. -->
     <a class="side-cart-checkout" href="#" aria-label="Gå til kassen">Gå til kassen</a>
-    <p>Fri fragt over 1000 kr · 1-2 hverdages levering<br>4.7 på Trustpilot</p>
+    <p>Fri fragt over 1000 kr · 1-2 hverdages levering</p>
   `;
 }
 
