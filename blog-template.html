@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogindlæg template | Hildebrandt Copenhagen</title>
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <link rel="stylesheet" href="styles/blog.css">
+  <link rel="stylesheet" href="styles/blogindlaeg.css">
+</head>
+<body class="blog-page blog-post-page blog-template-page">
+  <header class="header">
+    <div class="top-menu">
+      <a class="book-knap" href="kontakt.html" aria-label="Book tid">Book tid</a>
+      <a class="menu-logo-link top-menu-logo" href="index.html" aria-label="Gå til forsiden">
+        <img class="menu-logo top-menu-logo-image" src="img/logo/monogramLysgraa.svg" alt="Hildebrandt Copenhagen monogram">
+      </a>
+
+      <nav class="top-nav" aria-label="Hjælpenavigation">
+        <ul class="top-nav-list">
+          <li class="top-nav-item">
+            <a class="top-nav-link top-nav-link-cart" href="#" aria-label="Kurv"><img class="top-nav-icon top-nav-icon-cart" src="img/ikoner/kurv.svg" alt=""></a>
+          </li>
+          <li class="top-nav-item top-nav-item-menu">
+            <button class="top-nav-link menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"></button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <nav class="menu" aria-label="Hovednavigation">
+      <ul class="menu-list">
+        <li class="menu-item menu-item-dropdown">
+          <a class="menu-link menu-link-dropdown" href="produkter.html" aria-haspopup="true">
+            Produkter
+            <span class="menu-link-arrow" aria-hidden="true">⌄</span>
+          </a>
+          <div class="menu-dropdown" aria-label="Produktmenu">
+            <div class="menu-dropdown-inner">
+              <nav class="menu-dropdown-column" aria-label="Produktoversigt">
+                <ul class="menu-dropdown-list">
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="produkter.html">Startpakke</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="produkter.html">Sæt</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="produkter.html">Alle produkter</a>
+                  </li>
+                </ul>
+              </nav>
+              <nav class="menu-dropdown-column" aria-label="Produkttyper">
+                <ul class="menu-dropdown-list">
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="produkter.html">Shampoo</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="produkter.html">Conditioner</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="produkter.html">Hårmaske</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="produkter.html">Styling</a>
+                  </li>
+                </ul>
+              </nav>
+              <div class="menu-dropdown-products">
+                <a class="menu-dropdown-product" href="produkter.html">
+                  <span class="menu-dropdown-product-image">165 x 195</span>
+                  <span class="menu-dropdown-product-title">Klar til at komme i gang?</span>
+                </a>
+                <a class="menu-dropdown-product" href="produkter.html">
+                  <span class="menu-dropdown-product-image">165 x 195</span>
+                  <span class="menu-dropdown-product-title">Lær produkterne at kende</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="behandlinger.html">Behandlinger</a>
+        </li>
+        <li class="menu-item menu-item-dropdown">
+          <a class="menu-link menu-link-dropdown" href="kroelleunivers.html" aria-haspopup="true">
+            Krølleunivers
+            <span class="menu-link-arrow" aria-hidden="true">⌄</span>
+          </a>
+          <div class="menu-dropdown" aria-label="Krølleuniversmenu">
+            <div class="menu-dropdown-inner">
+              <nav class="menu-dropdown-column" aria-label="Krølleunivers">
+                <ul class="menu-dropdown-list">
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="kroelleunivers.html">Krøllefilosofi</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="guides.html">Guides</a>
+                  </li>
+                  <li class="menu-dropdown-item">
+                    <a class="menu-dropdown-link" href="blog.html">Blog</a>
+                  </li>
+                </ul>
+              </nav>
+              <div class="menu-dropdown-column" aria-hidden="true"></div>
+              <div class="menu-dropdown-products">
+                <a class="menu-dropdown-product" href="kroelleunivers.html">
+                  <span class="menu-dropdown-product-image">165 x 195</span>
+                  <span class="menu-dropdown-product-title">Lær dine krøller at kende</span>
+                </a>
+                <a class="menu-dropdown-product" href="guides.html">
+                  <span class="menu-dropdown-product-image">165 x 195</span>
+                  <span class="menu-dropdown-product-title">Udforsk guides</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="omos.html">Din Krøllefrisør</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" href="kontakt.html">Kontakt</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-panel mobile-menu-panel-main" data-mobile-panel="main">
+      <div class="mobile-menu-header">
+        <p class="mobile-menu-title">Menu</p>
+        <button class="mobile-menu-close" type="button" aria-label="Luk menu">×</button>
+      </div>
+
+      <nav class="mobile-menu-nav" aria-label="Mobilnavigation">
+        <ul class="mobile-menu-list">
+          <li class="mobile-menu-item">
+            <button class="mobile-menu-link mobile-menu-link-products" type="button">
+              Produkter
+              <span class="mobile-menu-arrow" aria-hidden="true">›</span>
+            </button>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="behandlinger.html">Behandlinger</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="kroelleunivers.html">Krølleunivers</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="guides.html">Guides</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="blog.html">Blog</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="omos.html">Din krøllefrisør</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a class="mobile-menu-link" href="kontakt.html">Kontakt</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mobile-menu-panel mobile-menu-panel-products" data-mobile-panel="products">
+      <div class="mobile-menu-header">
+        <button class="mobile-menu-back" type="button" aria-label="Tilbage til menu">‹</button>
+        <p class="mobile-menu-title">Produkter</p>
+      </div>
+
+      <div class="mobile-menu-scroll">
+        <nav class="mobile-menu-nav" aria-label="Produktnavigation">
+          <ul class="mobile-menu-list mobile-menu-product-list">
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="produkter.html">Startpakke</a>
+            </li>
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="produkter.html">Sæt</a>
+            </li>
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="produkter.html">Shampoo</a>
+            </li>
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="produkter.html">Conditioner</a>
+            </li>
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="produkter.html">Hårmaske</a>
+            </li>
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="produkter.html">Styling</a>
+            </li>
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="produkter.html">Alle produkter</a>
+            </li>
+            <li class="mobile-menu-item mobile-menu-feature-item">
+              <a class="mobile-menu-link mobile-menu-feature-link" href="produkter.html">Lær produkterne at kende</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="mobile-menu-feature">
+          <div class="mobile-menu-feature-image" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <main class="blog-post-main">
+    <!-- Indlæggets intro -->
+    <section class="indlaeg-hero" aria-labelledby="indlaeg-titel">
+      <a class="blog-post-back" href="blog.html">← Blog</a>
+      <div class="indlaeg-hero-tekst">
+        <p class="eyebrow blog-post-category">Kategori</p>
+        <h1 id="indlaeg-titel">Indsæt blogindlæggets titel her</h1>
+        <p>Indsæt en kort introtekst her. Brug dette felt til at forklare, hvad læseren får ud af indlægget, og hvorfor emnet er relevant.</p>
+      </div>
+    </section>
+
+    <figure class="indlaeg-billede" aria-label="Placeholder billede">IMG<span>730 x 320</span></figure>
+
+    <!-- Indlæg med indholdsfortegnelse -->
+    <section class="indlaeg-layout" aria-label="Blogindlæg">
+      <nav class="indlaeg-menu" aria-label="Indholdsfortegnelse">
+        <a class="indlaeg-mobile-back" href="blog.html">← Blog</a>
+        <button class="indlaeg-menu-toggle" type="button" aria-expanded="false">
+          <span class="indlaeg-menu-progress" aria-hidden="true">
+            <span class="indlaeg-menu-step aktiv"></span>
+            <span class="indlaeg-menu-step"></span>
+            <span class="indlaeg-menu-step"></span>
+            <span class="indlaeg-menu-step"></span>
+            <span class="indlaeg-menu-step"></span>
+            <span class="indlaeg-menu-step"></span>
+          </span>
+          <span class="indlaeg-menu-toggle-text">I dette indlæg</span>
+        </button>
+        <h2>I dette indlæg</h2>
+        <p class="indlaeg-menu-help">Tryk på et punkt for at hoppe til afsnittet</p>
+        <ol class="indlaeg-menu-liste">
+          <li class="indlaeg-menu-punkt aktiv">
+            <a class="indlaeg-menu-link aktiv" href="#afsnit-1" aria-current="true">Indsæt overskrift 1</a>
+          </li>
+          <li class="indlaeg-menu-punkt">
+            <a class="indlaeg-menu-link" href="#afsnit-2">Indsæt overskrift 2</a>
+          </li>
+          <li class="indlaeg-menu-punkt">
+            <a class="indlaeg-menu-link" href="#afsnit-3">Indsæt overskrift 3</a>
+          </li>
+          <li class="indlaeg-menu-punkt">
+            <a class="indlaeg-menu-link" href="#afsnit-4">Indsæt overskrift 4</a>
+          </li>
+          <li class="indlaeg-menu-punkt">
+            <a class="indlaeg-menu-link" href="#afsnit-5">Indsæt overskrift 5</a>
+          </li>
+          <li class="indlaeg-menu-punkt">
+            <a class="indlaeg-menu-link" href="#afsnit-6">Indsæt overskrift 6</a>
+          </li>
+        </ol>
+      </nav>
+
+      <article class="indlaeg-tekst">
+        <p>Indsæt en kort åbning til artiklen her. Brug et eller to afsnit til at sætte scenen, før de enkelte afsnit begynder.</p>
+        <p>Udskift denne tekst med den endelige introduktion til blogindlægget.</p>
+
+        <section class="indlaeg-afsnit">
+          <h2 id="afsnit-1">Indsæt overskrift 1</h2>
+          <p>Indsæt brødtekst til første afsnit her.</p>
+          <p>Tilføj flere afsnit efter behov.</p>
+        </section>
+
+        <section class="indlaeg-afsnit">
+          <h2 id="afsnit-2">Indsæt overskrift 2</h2>
+          <p>Indsæt brødtekst til andet afsnit her.</p>
+          <p>Tilføj flere afsnit efter behov.</p>
+        </section>
+
+        <section class="indlaeg-afsnit">
+          <h2 id="afsnit-3">Indsæt overskrift 3</h2>
+          <p>Indsæt brødtekst til tredje afsnit her.</p>
+          <p>Tilføj flere afsnit efter behov.</p>
+        </section>
+
+        <section class="indlaeg-afsnit">
+          <h2 id="afsnit-4">Indsæt overskrift 4</h2>
+          <p>Indsæt brødtekst til fjerde afsnit her.</p>
+          <p>Tilføj flere afsnit efter behov.</p>
+        </section>
+
+        <section class="indlaeg-afsnit">
+          <h2 id="afsnit-5">Indsæt overskrift 5</h2>
+          <p>Indsæt brødtekst til femte afsnit her.</p>
+          <p>Tilføj flere afsnit efter behov.</p>
+        </section>
+
+        <section class="indlaeg-afsnit">
+          <h2 id="afsnit-6">Indsæt overskrift 6</h2>
+          <p>Indsæt brødtekst til sjette afsnit her.</p>
+          <p>Tilføj flere afsnit efter behov.</p>
+        </section>
+      </article>
+    </section>
+
+    <!-- Relaterede indlæg -->
+    <section class="indlaeg-laes-ogsa" aria-labelledby="indlaeg-laes-ogsa-titel">
+      <h2 id="indlaeg-laes-ogsa-titel">Læs også</h2>
+      <div class="indlaeg-laes-ogsa-grid blog-grid" data-related-posts>
+        <article class="blog-card">
+          <figure class="blog-card-image" aria-label="Placeholder billede">IMG<span>360 x 215</span></figure>
+          <p class="blog-card-category">Krølleviden</p>
+          <h3 class="blog-card-title">Sådan får du dine naturlige krøller frem</h3>
+          <a class="blog-card-link" href="blog/sadan-far-du-dine-naturlige-kroller-frem.html">Læs indlæg →</a>
+        </article>
+        <article class="blog-card">
+          <figure class="blog-card-image" aria-label="Placeholder billede">IMG<span>360 x 215</span></figure>
+          <p class="blog-card-category">Guides</p>
+          <h3 class="blog-card-title">Sådan får du dine skandinaviske krøller frem - uden spildte penge</h3>
+          <a class="blog-card-link" href="blog/sadan-far-du-dine-skandinaviske-kroller-frem.html">Læs indlæg →</a>
+        </article>
+        <article class="blog-card">
+          <figure class="blog-card-image" aria-label="Placeholder billede">IMG<span>360 x 215</span></figure>
+          <p class="blog-card-category">Krølleviden</p>
+          <h3 class="blog-card-title">5 vaner du bør undgå, hvis du har fint krøllet eller bølget hår</h3>
+          <a class="blog-card-link" href="blog/5-vaner-du-bor-undga.html">Læs indlæg →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Produkt CTA -->
+    <section class="indlaeg-produkt-cta" aria-labelledby="indlaeg-produkt-cta-titel">
+      <figure class="indlaeg-produkt-cta-billede" aria-label="Placeholder billede">IMG<span>670 x 370</span></figure>
+      <div class="indlaeg-produkt-cta-tekst">
+        <h2 id="indlaeg-produkt-cta-titel">Indsæt CTA-overskrift her</h2>
+        <p>Indsæt CTA-tekst her. Brug denne sektion til at sende læseren videre til produkter, guides eller en anden relevant side.</p>
+        <a class="button button-primary" href="produkter.html">Se produkter</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <section class="footer-kontakt" aria-labelledby="footer-kontakt-titel">
+      <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
+      <address class="footer-kontakt-adresse">
+        Hildebrandt Copenhagen x Mixly<br>
+        +45 30 74 34 30<br>
+        Nørre Fasanvej 163<br>
+        2000 Frederiksberg<br>
+        hej@hildebrandtcopenhagen.dk
+      </address>
+      <a class="book-knap footer-booking" href="kontakt.html">Book tid</a>
+    </section>
+
+    <section class="footer-tider" aria-labelledby="footer-tider-titel">
+      <h2 id="footer-tider-titel" class="footer-tider-titel">Åbningstider</h2>
+      <dl class="footer-tider-liste">
+        <dt>Mandag</dt>
+        <dd>8:30-14:00</dd>
+        <dt>Tirsdag</dt>
+        <dd>10:00-17:30</dd>
+        <dt>Onsdag</dt>
+        <dd>Lukket</dd>
+        <dt>Torsdag</dt>
+        <dd>10:00-17:30</dd>
+        <dt>Fredag</dt>
+        <dd>10:00-16:00</dd>
+      </dl>
+    </section>
+
+    <nav class="footer-menu" aria-labelledby="footer-menu-titel">
+      <h2 id="footer-menu-titel" class="footer-menu-titel">Udforsk</h2>
+      <ul class="footer-menu-liste">
+        <li class="footer-menu-item">
+          <a class="footer-menu-link" href="kontakt.html">Book tid</a>
+        </li>
+        <li class="footer-menu-item">
+          <a class="footer-menu-link" href="produkter.html">Produkter</a>
+        </li>
+        <li class="footer-menu-item">
+          <a class="footer-menu-link" href="guides.html">Krølleguide</a>
+        </li>
+        <li class="footer-menu-item">
+          <a class="footer-menu-link" href="omos.html">Din krøllefrisør</a>
+        </li>
+        <li class="footer-menu-item">
+          <a class="footer-menu-link" href="#">Handelsbetingelser</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="footer-info">
+      <p class="footer-cvr">CVR 44399973</p>
+      <ul class="footer-socials" aria-label="Sociale medier">
+        <li class="footer-socials-item">
+          <a class="footer-social-link" href="#">Instagram</a>
+        </li>
+        <li class="footer-socials-item">
+          <a class="footer-social-link" href="#">Facebook</a>
+        </li>
+      </ul>
+      <ul class="footer-betaling" aria-label="Betalingsmetoder">
+        <li class="footer-betaling-item">Visa</li>
+        <li class="footer-betaling-item">Mastercard</li>
+        <li class="footer-betaling-item">MobilePay</li>
+      </ul>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

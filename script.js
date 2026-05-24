@@ -885,3 +885,90 @@ document.addEventListener("keydown", (event) => {
     first.focus();
   }
 });
+
+const relatedPostsContainer = document.querySelector("[data-related-posts]");
+
+if (relatedPostsContainer) {
+  const blogPosts = [
+    {
+      category: "Krølleviden",
+      title: "Hvorfor krøllet og bølget hår kræver en anden tilgang end glat hår",
+      href: "hvorfor-kroellet-og-bolget-har-kraever-en-anden-tilgang.html",
+    },
+    {
+      category: "Guides",
+      title: "5 gode råd til at få det bedste ud af dine krøller og bølger",
+      href: "5-gode-rad-til-dine-kroller-og-bolger.html",
+    },
+    {
+      category: "Mixly",
+      title: "Derfor virker dine krølleprodukter ikke og hvad du skal gøre i stedet",
+      href: "derfor-virker-dine-krolleprodukter-ikke.html",
+    },
+    {
+      category: "Krølleviden",
+      title: "Sådan får du dine naturlige krøller frem",
+      href: "sadan-far-du-dine-naturlige-kroller-frem.html",
+    },
+    {
+      category: "Guides",
+      title: "Sådan får du dine skandinaviske krøller frem - uden spildte penge",
+      href: "sadan-far-du-dine-skandinaviske-kroller-frem.html",
+    },
+    {
+      category: "Krølleviden",
+      title: "5 vaner du bør undgå, hvis du har fint krøllet eller bølget hår",
+      href: "5-vaner-du-bor-undga.html",
+    },
+    {
+      category: "Guides",
+      title: "Sådan vælger du din Mixly startpakke - kom godt i gang",
+      href: "sadan-vaelger-du-din-mixly-startpakke.html",
+    },
+    {
+      category: "Mixly",
+      title: "Sådan vil Mixlys ingredienser virke i dit fine krøllede eller bølgede hår",
+      href: "sadan-virker-mixlys-ingredienser.html",
+    },
+  ];
+
+  const currentFile = window.location.pathname.split("/").pop();
+  const isBlogFolderPage = window.location.pathname.includes("/blog/");
+  const currentPostIndex = blogPosts.findIndex((post) => post.href === currentFile);
+  const orderedPosts = currentPostIndex === -1
+    ? blogPosts
+    : blogPosts.slice(currentPostIndex + 1).concat(blogPosts.slice(0, currentPostIndex));
+  const relatedPosts = orderedPosts
+    .filter((post) => post.href !== currentFile)
+    .slice(0, 3);
+
+  relatedPostsContainer.replaceChildren(...relatedPosts.map((post) => {
+    const card = document.createElement("article");
+    card.className = "blog-card";
+
+    const image = document.createElement("figure");
+    image.className = "blog-card-image";
+    image.setAttribute("aria-label", "Placeholder billede");
+    image.append("IMG");
+
+    const imageSize = document.createElement("span");
+    imageSize.textContent = "360 x 215";
+    image.append(imageSize);
+
+    const category = document.createElement("p");
+    category.className = "blog-card-category";
+    category.textContent = post.category;
+
+    const title = document.createElement("h3");
+    title.className = "blog-card-title";
+    title.textContent = post.title;
+
+    const link = document.createElement("a");
+    link.className = "blog-card-link";
+    link.href = `${isBlogFolderPage ? "" : "blog/"}${post.href}`;
+    link.textContent = "Læs indlæg →";
+
+    card.append(image, category, title, link);
+    return card;
+  }));
+}
