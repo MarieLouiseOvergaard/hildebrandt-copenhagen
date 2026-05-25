@@ -353,74 +353,123 @@
   </main>
 
   <!-- Footer med kontakt, åbningstider og links -->
-  <footer class="footer">
-    <section class="footer-kontakt" aria-labelledby="footer-kontakt-titel">
-      <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
-      <address class="footer-kontakt-adresse">
-        Hildebrandt Copenhagen x Mixly<br>
-        +45 30 74 34 30<br>
-        Nordre Fasanvej 163<br>
-        2000 Frederiksberg<br>
-        hej@hildebrandtcopenhagen.dk
-      </address>
-      <a class="book-knap footer-booking" href="kontakt.html">Book tid</a>
-    </section>
+<footer class="footer footer--frontpage">
+  <section class="footer-tider" aria-labelledby="footer-tider-titel">
+    <h2 id="footer-tider-titel" class="footer-tider-titel">Åbningstider</h2>
+    <p class="kontakt-status footer-status" aria-live="polite">
+      <span class="kontakt-status-label">Tjekker status</span>
+      <span class="kontakt-status-detail"></span>
+    </p>
+    <dl class="footer-tider-liste">
+      <dt>Mandag</dt>
+      <dd>8.30-14.00</dd>
+      <dt>Tirsdag</dt>
+      <dd>10.00-17.30</dd>
+      <dt>Onsdag</dt>
+      <dd>Lukket</dd>
+      <dt>Torsdag</dt>
+      <dd>10.00-17.30</dd>
+      <dt>Fredag</dt>
+      <dd>10.00-16.00</dd>
+    </dl>
+  </section>
 
-    <section class="footer-tider" aria-labelledby="footer-tider-titel">
-      <h2 id="footer-tider-titel" class="footer-tider-titel">Åbningstider</h2>
-      <dl class="footer-tider-liste">
-        <dt>Mandag</dt>
-        <dd>8:30-14:00</dd>
-        <dt>Tirsdag</dt>
-        <dd>10:00-17:30</dd>
-        <dt>Onsdag</dt>
-        <dd>Lukket</dd>
-        <dt>Torsdag</dt>
-        <dd>10:00-17:30</dd>
-        <dt>Fredag</dt>
-        <dd>10:00-16:00</dd>
-      </dl>
-    </section>
+  <section class="footer-kontakt" aria-labelledby="footer-kontakt-titel">
+    <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
+    <address class="footer-kontakt-adresse">
+      <span class="footer-kontakt-brand">Hildebrandt Copenhagen x Mixly</span>
+      <span>Nørre Fasanvej 163</span><br>
+      <span class="footer-kontakt-city">2000 Frederiksberg</span>
+      <a href="tel:+4530741430">+45 30 74 14 30</a><br>
+      <a href="mailto:hej@hildebrandtcopenhagen.dk">hej@hildebrandtcopenhagen.dk</a>
+    </address>
+  </section>
 
-    <nav class="footer-menu" aria-labelledby="footer-menu-titel">
-      <h2 id="footer-menu-titel" class="footer-menu-titel">Udforsk</h2>
-      <ul class="footer-menu-liste">
-        <li class="footer-menu-item">
-          <a class="footer-menu-link" href="kontakt.html">Book tid</a>
-        </li>
-        <li class="footer-menu-item">
-          <a class="footer-menu-link" href="produkter.html">Produkter</a>
-        </li>
-        <li class="footer-menu-item">
-          <a class="footer-menu-link" href="guides.html">Krølleguide</a>
-        </li>
-        <li class="footer-menu-item">
-          <a class="footer-menu-link" href="omos.html">Din krøllefrisør</a>
-        </li>
-        <li class="footer-menu-item">
-          <a class="footer-menu-link" href="#">Handelsbetingelser</a>
-        </li>
-      </ul>
-    </nav>
+  <nav class="footer-menu" aria-labelledby="footer-menu-titel">
+    <h2 id="footer-menu-titel" class="footer-menu-titel">Udforsk</h2>
+    <ul class="footer-menu-liste">
+      <li class="footer-menu-item">
+        <a class="footer-menu-link" href="behandlinger.html">Behandlinger</a>
+      </li>
+      <li class="footer-menu-item">
+        <a class="footer-menu-link" href="produkter.html">Produkter</a>
+      </li>
+      <li class="footer-menu-item">
+        <a class="footer-menu-link" href="guides.html">Krølleguide</a>
+      </li>
+      <li class="footer-menu-item">
+        <a class="footer-menu-link" href="omos.html">Din krøllefrisør</a>
+      </li>
+    </ul>
+    <a class="button button-primary footer-booking" href="kontakt.html">Book tid</a>
+  </nav>
 
-    <div class="footer-info">
+  <section class="footer-newsletter" aria-labelledby="footer-newsletter-titel">
+    <h2 id="footer-newsletter-titel" class="footer-newsletter-titel">Få tips til dine krøller</h2>
+    <form class="footer-newsletter-form" action="#" method="post">
+      <label class="footer-newsletter-label" for="footer-newsletter-name">Navn</label>
+      <input id="footer-newsletter-name" class="footer-newsletter-input" type="text" name="name" placeholder="Navn" autocomplete="name">
+
+      <label class="footer-newsletter-label" for="footer-newsletter-email">E-mail</label>
+      <input id="footer-newsletter-email" class="footer-newsletter-input" type="email" name="email" placeholder="E-mail" autocomplete="email">
+
+      <label class="footer-newsletter-consent">
+        <input class="footer-newsletter-checkbox" type="checkbox" name="consent">
+        <span>Jeg accepterer, at HCM Community må gemme og dele min data jf. vores privatlivspolitik.</span>
+      </label>
+
+      <button class="button button-secondary footer-newsletter-submit" type="submit">Tilmeld dig</button>
+    </form>
+  </section>
+
+  <div class="footer-info">
+    <div class="footer-legal">
+      <a class="footer-terms" href="handelsbetingelser.html">Handelsbetingelser</a>
       <p class="footer-cvr">CVR 44399973</p>
-      <ul class="footer-socials" aria-label="Sociale medier">
-        <li class="footer-socials-item">
-          <a class="footer-social-link" href="#">Instagram</a>
-        </li>
-        <li class="footer-socials-item">
-          <a class="footer-social-link" href="#">Facebook</a>
-        </li>
-      </ul>
-      <ul class="footer-betaling" aria-label="Betalingsmetoder">
-        <li class="footer-betaling-item">Visa</li>
-        <li class="footer-betaling-item">Mastercard</li>
-        <li class="footer-betaling-item">MobilePay</li>
-      </ul>
     </div>
-  </footer>
-
+    <ul class="footer-socials" aria-label="Sociale medier">
+      <li class="footer-socials-item">
+        <a class="footer-social-link" href="#" aria-label="Instagram">
+          <svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="5" y="5" width="14" height="14" rx="4"></rect>
+            <circle cx="12" cy="12" r="3.2"></circle>
+            <circle cx="16.5" cy="7.5" r="1"></circle>
+          </svg>
+        </a>
+      </li>
+      <li class="footer-socials-item">
+        <a class="footer-social-link" href="#" aria-label="Facebook">
+          <svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M14.3 8.1h2.1V5h-2.6c-3 0-4.5 1.8-4.5 4.4v2H7v3.1h2.3V20h3.4v-5.5h2.8l.4-3.1h-3.2V9.7c0-1 .4-1.6 1.6-1.6Z"></path>
+          </svg>
+        </a>
+      </li>
+    </ul>
+    <ul class="footer-betaling" aria-label="Betalingsmetoder">
+      <li class="footer-betaling-item" aria-label="Visa">
+        <svg class="footer-payment-icon footer-payment-icon-visa" viewBox="0 0 92 30" aria-hidden="true" focusable="false">
+          <text x="1" y="23">VISA</text>
+        </svg>
+      </li>
+      <li class="footer-betaling-item" aria-label="Mastercard">
+        <svg class="footer-payment-icon footer-payment-icon-mastercard" viewBox="0 0 56 36" aria-hidden="true" focusable="false">
+          <circle class="footer-payment-mastercard-red" cx="22" cy="16" r="14"></circle>
+          <circle class="footer-payment-mastercard-orange" cx="34" cy="16" r="14"></circle>
+          <text x="8" y="33">mastercard</text>
+        </svg>
+      </li>
+      <li class="footer-betaling-item" aria-label="PensoPay">
+        <svg class="footer-payment-icon footer-payment-icon-pensopay" viewBox="0 0 146 36" aria-hidden="true" focusable="false">
+          <g class="footer-payment-pensopay-mark">
+            <rect x="3" y="4" width="28" height="28" rx="3" transform="rotate(-18 17 18)"></rect>
+            <path d="M24 14h17l-5 5 5 5H24Z"></path>
+          </g>
+          <text x="52" y="24">PENSOPAY</text>
+        </svg>
+      </li>
+    </ul>
+  </div>
+</footer>
   <script src="script.js"></script>
 </body>
 </html>
