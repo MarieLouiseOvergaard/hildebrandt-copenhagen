@@ -30,8 +30,7 @@
   grid-template-columns: minmax(360px, 560px) minmax(520px, 670px);
   align-items: start;
   gap: 48px;
-  padding-top: 28px;
-  padding-bottom: 74px;
+  padding: 58px 40px 96px;
 }
 
 .kroelle-hero-text,
@@ -201,6 +200,7 @@
 /* Community */
 .kroelle-community {
   grid-template-columns: minmax(360px, 560px) minmax(520px, 670px);
+  align-items: start;
   gap: 96px;
   padding-top: 106px;
   padding-bottom: 34px;
