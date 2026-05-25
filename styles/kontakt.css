@@ -60,7 +60,6 @@
   .kontakt-info > p {
      max-width: 430px; 
      margin-top: 24px; 
-     color: #333333; 
     } 
     
     .kontakt-info-liste { 
@@ -93,7 +92,7 @@
     .kontakt-info-item address { 
       color: #777777; 
       font-family: var(--font-body); 
-      font-size: 0.95rem; 
+      font-size: var(--font-body-desktop);
       font-style: normal; 
       line-height: 1.5; 
     }
@@ -270,7 +269,7 @@
 .kontakt-kort > p {
   margin-top: 26px;
   color: #777777;
-  font-size: 0.9rem;
+  font-size: var(--font-body-desktop);
 }
 
 /* Tablet: desktop-layout med mindre luft */
@@ -341,7 +340,6 @@
 
   .kontakt-info > p {
     margin-top: 18px;
-    color: #111111;
   }
 
   .kontakt-info-liste {
@@ -361,7 +359,7 @@
 
   .kontakt-info-item p,
   .kontakt-info-item address {
-    font-size: 0.86rem;
+    font-size: var(--font-body-mobile);
   }
 
   .kontakt-formular {
@@ -370,7 +368,7 @@
 
   .kontakt-formular > p {
     margin-bottom: 18px;
-    font-size: 0.82rem;
+    font-size: var(--font-body-mobile);
   }
 
   .kontakt-form {
@@ -425,7 +423,7 @@
 
   .kontakt-kort > p {
     margin-top: 14px;
-    font-size: 0.82rem;
+    font-size: var(--font-body-mobile);
   }
 
 }

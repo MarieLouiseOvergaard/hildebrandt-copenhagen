@@ -169,7 +169,7 @@
 
 .blog-page .indlaeg-tekst > p,
 .blog-page .indlaeg-afsnit p {
-  font-size: 14px;
+  font-size: var(--font-body-desktop);
   line-height: 1.75;
 }
 
