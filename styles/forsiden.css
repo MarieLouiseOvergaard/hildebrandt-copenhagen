@@ -137,16 +137,17 @@
 .mixly-introduktion-indhold {
   display: grid;
   grid-template-columns: minmax(360px, 0.75fr) minmax(720px, 1.45fr);
+  column-gap: 60px;
   align-items: start;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 52px 38px 64px;
+  padding: 52px 48px 64px;
 }
 
 @media (min-width: 1181px) {
   .mixly-introduktion-indhold {
     max-width: none;
-    margin-left: max(38px, calc((100vw - var(--container-max)) / 2));
+    margin-left: 0;
     margin-right: 0;
     padding-right: 0;
   }
@@ -508,7 +509,8 @@
 
   .mixly-introduktion-indhold {
     grid-template-columns: minmax(300px, 0.75fr) minmax(0, 1.25fr);
-    margin-left: 38px;
+    column-gap: 60px;
+    margin-left: 30px;
     margin-right: 0;
     padding: 52px 0 64px 0;
   }
@@ -711,6 +713,7 @@
   .mixly-introduktion-indhold {
     display: grid;
     grid-template-columns: 1fr;
+    column-gap: 0;
     width: 100%;
     margin-right: 0;
     margin-left: 0;
