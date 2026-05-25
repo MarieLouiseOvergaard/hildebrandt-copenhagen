@@ -866,7 +866,7 @@ const quickViewCatalog = {
       { label: "250 ml", price: "159 kr.", image: "img/produktbilleder/Low-Conditioner-1.png", link: "products/conditioner/mixly-low-conditioner.html" },
       { label: "1000 ml", price: "399 kr.", image: "img/produktbilleder/MIXLY-Low-Conditioner-1000.png", link: "products/conditioner/mixly-low-conditioner.html" },
     ],
-    detailsImage: "img/ingredienser/Ingrediens-MIXLY-Low-Conditioner-1000.png",
+    detailsImage: "img/ingredienser/Ingrediens-Low-Conditioner-1000.png",
     fullLink: "products/conditioner/mixly-low-conditioner.html",
     guide: [
       ["Brug", "Fordel i nyvasket, vådt hår og skyl grundigt."],
