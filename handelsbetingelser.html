@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handelsbetingelser | Hildebrandt Copenhagen</title>
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <link rel="stylesheet" href="styles/blog.css">
+  <link rel="stylesheet" href="styles/blogindlaeg.css">
+</head>
+<body class="blog-page blog-post-page">
+  <header class="header">
+    <div class="top-menu">
+      <a class="book-knap" href="kontakt.html" aria-label="Book tid">Book tid</a>
+      <a class="menu-logo-link top-menu-logo" href="index.html" aria-label="Gå til forsiden">
+        <img class="menu-logo top-menu-logo-image" src="img/logo/monogramLysgraa.svg" alt="Hildebrandt Copenhagen monogram">
+      </a>
+
+      <nav class="top-nav" aria-label="Hjælpenavigation">
+        <ul class="top-nav-list">
+          <li class="top-nav-item">
+            <a class="top-nav-link top-nav-link-cart" href="#" aria-label="Kurv"><img class="top-nav-icon top-nav-icon-cart" src="img/ikoner/kurv.svg" alt=""></a>
+          </li>
+          <li class="top-nav-item top-nav-item-menu">
+            <button class="top-nav-link menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"></button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <nav class="menu" aria-label="Hovednavigation">
+      <ul class="menu-list">
+        <li class="menu-item menu-item-dropdown">
+          <a class="menu-link menu-link-dropdown" href="produkter.html" aria-haspopup="true">
+            Produkter
+            <span class="menu-link-arrow" aria-hidden="true">⌄</span>
+          </a>
+          <div class="menu-dropdown" aria-label="Produktmenu">
+            <div class="menu-dropdown-inner">
+              <nav class="menu-dropdown-column" aria-label="Produktoversigt">
+                <ul class="menu-dropdown-list">
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-startpakker.html">Startpakke</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-saet.html">Sæt</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter.html">Alle produkter</a></li>
+                </ul>
+              </nav>
+              <nav class="menu-dropdown-column" aria-label="Produkttyper">
+                <ul class="menu-dropdown-list">
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-shampoo.html">Shampoo</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-conditioner.html">Conditioner</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-haarmasker.html">Hårmaske</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-styling.html">Styling</a></li>
+                </ul>
+              </nav>
+              <div class="menu-dropdown-products">
+                <a class="menu-dropdown-product" href="produkter.html">
+                  <span class="menu-dropdown-product-image">165 x 195</span>
+                  <span class="menu-dropdown-product-title">Klar til at komme i gang?</span>
+                </a>
+                <a class="menu-dropdown-product" href="produkter.html">
+                  <span class="menu-dropdown-product-image">165 x 195</span>
+                  <span class="menu-dropdown-product-title">Lær produkterne at kende</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item"><a class="menu-link" href="behandlinger.html">Behandlinger</a></li>
+        <li class="menu-item menu-item-dropdown">
+          <a class="menu-link menu-link-dropdown" href="kroelleunivers.html" aria-haspopup="true">
+            Krølleunivers
+            <span class="menu-link-arrow" aria-hidden="true">⌄</span>
+          </a>
+          <div class="menu-dropdown" aria-label="Krølleuniversmenu">
+            <div class="menu-dropdown-inner">
+              <nav class="menu-dropdown-column" aria-label="Krølleunivers">
+                <ul class="menu-dropdown-list">
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="kroelleunivers.html">Krøllefilosofi</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="guides.html">Guides</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="blog.html">Blog</a></li>
+                </ul>
+              </nav>
+              <div class="menu-dropdown-column" aria-hidden="true"></div>
+              <div class="menu-dropdown-products">
+                <a class="menu-dropdown-product" href="kroelleunivers.html">
+                  <span class="menu-dropdown-product-image">165 x 195</span>
+                  <span class="menu-dropdown-product-title">Lær dine krøller at kende</span>
+                </a>
+                <a class="menu-dropdown-product" href="guides.html">
+                  <span class="menu-dropdown-product-image">165 x 195</span>
+                  <span class="menu-dropdown-product-title">Udforsk guides</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item"><a class="menu-link" href="omos.html">Din Krøllefrisør</a></li>
+        <li class="menu-item"><a class="menu-link" href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-panel mobile-menu-panel-main" data-mobile-panel="main">
+      <div class="mobile-menu-header">
+        <p class="mobile-menu-title">Menu</p>
+        <button class="mobile-menu-close" type="button" aria-label="Luk menu">×</button>
+      </div>
+
+      <nav class="mobile-menu-nav" aria-label="Mobilnavigation">
+        <ul class="mobile-menu-list">
+          <li class="mobile-menu-item">
+            <button class="mobile-menu-link mobile-menu-link-products" type="button">
+              Produkter
+              <span class="mobile-menu-arrow" aria-hidden="true">›</span>
+            </button>
+          </li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="behandlinger.html">Behandlinger</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="kroelleunivers.html">Krølleunivers</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="guides.html">Guides</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="blog.html">Blog</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="omos.html">Din krøllefrisør</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mobile-menu-panel mobile-menu-panel-products" data-mobile-panel="products">
+      <div class="mobile-menu-header">
+        <button class="mobile-menu-back" type="button" aria-label="Tilbage til menu">‹</button>
+        <p class="mobile-menu-title">Produkter</p>
+      </div>
+
+      <div class="mobile-menu-scroll">
+        <nav class="mobile-menu-nav" aria-label="Produktnavigation">
+          <ul class="mobile-menu-list mobile-menu-product-list">
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-startpakker.html">Startpakke</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-saet.html">Sæt</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-shampoo.html">Shampoo</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-conditioner.html">Conditioner</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-haarmasker.html">Hårmaske</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-styling.html">Styling</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter.html">Alle produkter</a></li>
+            <li class="mobile-menu-item mobile-menu-feature-item"><a class="mobile-menu-link mobile-menu-feature-link" href="produkter.html">Lær produkterne at kende</a></li>
+          </ul>
+        </nav>
+
+        <div class="mobile-menu-feature">
+          <div class="mobile-menu-feature-image" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="blog-post-main">
+    <article class="blog-post">
+      <p class="eyebrow blog-post-category">Mixly ApS</p>
+      <h1>Handelsbetingelser</h1>
+
+      <div class="blog-post-content">
+        <p>Mixly ApS<br>Stensgårdsvej 4<br>4920 Søllested<br>Tlf: <a href="tel:+4530741430">+45 30741430</a><br>Mail: <a href="mailto:hej@mixly.dk">hej@mixly.dk</a><br>CVR: 44129973</p>
+
+        <section>
+          <h2>Betaling</h2>
+          <p>Mixly modtager online betalinger med Visa/Dankort, Mobilepay Online.</p>
+          <p>Betaling vil først blive trukket på din konto, når den fysiske vare afsendes eller det virtuelle produkt er oprettet med mindre andet er aftalt eller fremgår af din ordre. Dette gælder også for abonnementer.</p>
+          <p>Alle beløb på hjemmesiden er inklusiv moms. Hjemmesiden bruger følgende valutaer til prissætning: Danske kroner (DKK).</p>
+          <p>Mixly benytter en sikker betalingsserver, der krypterer alle oplysninger med SSL protokol hvilket betyder din data er sikker og ikke kan læses af andre udefrakommende.</p>
+          <p>Mixly's egen hjemmeside bruger ligeledes kryptering med SSL protokol.</p>
+        </section>
+
+        <section>
+          <h2>Levering</h2>
+          <p>Leveringstiden for din ordre er 1-3 hverdage, gælder også for abonnementer v. abonnementsfornyelser.</p>
+          <p>Mixly afsender varer med følgende: GLS - Privat, GLS - Pakkeshop.</p>
+          <p>Fragten bliver beregnet ud fra vægt og starter ved 48 kr. Gratis fragt på alle ordre over 1.000 kr.</p>
+          <p>Du vil kunne vælge i mellem at få pakken sendt "uden omdeling" eller "med omdeling".</p>
+          <p>Du vil altid modtage et track and trace nr. så du kan følge din pakke, fra vores lager og hjem til dig.</p>
+          <p>Forkert adresse eller ikke afhentet pakke: Skrives en forkert adresse eller undlader oplysninger, der gør at GLS ikke kan levere din pakke, eller at du ikke afhenter den på dit posthus inden for den angivne tid, så den bliver sendt retur til os, vil du komme til at hæfte for et ekspeditions- /fragtgebyr på kr. 50,-, hvis vi skal sende varen til dig igen.</p>
+          <p>Hvis du ikke ønsker varen sendt tilbage igen, returnere vi kun pengene for produkterne og ikke fragten. Det er din pligt som kunde at tjekke og sikre dig at du har indtastet de korrekte oplysninger, så GLS har mulighed for at aflevere din pakke.</p>
+        </section>
+
+        <section>
+          <h2>Fortrydelsesret</h2>
+          <p>Mixly yder 14 dages fuld fortrydelsesret, gældende fra den dag du modtager dine varer. Fortryder du købet har du 14 dage efter den dag, du modtog dine varer, til at returnere varen.</p>
+          <p>Du har pligt til at returnere varen i væsentlig samme stand og mængde, som den er modtaget. Varer der returneres må ikke være brugte eller beskadigede, og skal returneres i original emballage.</p>
+          <p>Du skal selv afholde de omkostninger, der er forbundet med at returnere varen, det vil sige både da du modtog varen og når du returnere den. Du bedes vedlægge information om dit navn, fakturanummer, og at du ønsker pengene tilbage, gerne skrevet på en kopi af faktura.</p>
+          <p>Vi gør opmærksom på at pengene kun returneres til samme konto som blev benyttet ved køb.</p>
+          <p>Ønske om brug af fortrydelsesret skal gives sendes på mail <a href="mailto:hej@mixly.dk">hej@mixly.dk</a>. I meddelelsen skal der gøres tydeligt opmærksom på dit ønske om brugen af fortrydelsesret.</p>
+
+          <h2>Varens stand ved returnering</h2>
+          <p>Du hæfter for den forringelse af varens værdi, som skyldes anden håndtering, end hvad der er nødvendigt for at fastslå varens art, egenskaber og funktion. Dette betyder at du må prøve varen på samme måde som hvis du handlede i en fysisk butik.</p>
+          <p>Hvis varen er prøvet udover, hvad der er beskrevet ovenfor, betragtes den som brugt og af forringet værdi. Dette betyder, at du ved fortrydelse af købet får en mindre del eller intet af købsbeløbet retur. Det er op til Mixly at vurdere varens stand.</p>
+        </section>
+
+        <section>
+          <h2>Opsigelse (for abonnementer)</h2>
+          <p>Et abonnement kan til enhver tid opsiges. Det skal dog ske inden 5 dage før abonnementsfornyelse, hvis næste levering ikke ønskes. Opsig derfor gerne i god tid eller et giv besked om et bestemt antal ønskede leveringer.</p>
+          <p>Opsigelser kan modtages på skrift, telefon eller chat. Afvisning af betalinger i banken er ikke gyldige, da vi ikke får besked herom før varen er sendt og pengene derfor aldrig modtages.</p>
+        </section>
+
+        <section>
+          <h2>Reklamationsret</h2>
+          <p>Der gives 2 års reklamationsret på produkter i henhold til den danske købelov. Reklamationsretten gælder for alle fejl i software, materiale og fabrikation.</p>
+          <p>Reklamation vedr. fejl og mangler skal meddeles til Mixly i rimelig tid efter varens modtagelse. Her anses max. to måneder som rimelig tid, med mindre andet er aftalt. Vi refunderer rimelige fragtomkostninger.</p>
+          <p>Reklamationen frafalder ved forkert eller ualmindelig betjening af produktet.</p>
+          <p>Mixly dækker returneringsomkostningerne i rimeligt omfang.</p>
+          <p>Ved returnering kontaktes virksomheden:</p>
+          <p>Mixly ApS<br>Mail: <a href="mailto:hej@mixly.dk">hej@mixly.dk</a><br>Tlf: <a href="tel:+4530741430">+45 30741430</a></p>
+          <p>Reklamationer modtages ikke hvis disse er sendt på efterkrav.</p>
+        </section>
+
+        <section>
+          <h2>Kunde- & Privatlivspolitik</h2>
+          <p>Vi videresælger ikke personlige oplysninger og videregiver ikke dine personlige oplysninger til andre, de er kun registreret i vores kundekartotek. Du kan til enhver tid få slettet dine oplysninger.</p>
+          <p>For at du kan indgå aftale med Mixly, har vi brug for følgende oplysninger:<br>. Navn<br>. Adresse<br>. Telefonnummer<br>. E-mail adresse</p>
+          <p>Vi foretager registreringen af dine personoplysninger med det formål, at kunne levere varen til dig.</p>
+          <p>Personoplysningerne registreres hos Mixly og opbevares i op til fem år, hvorefter oplysningerne slettes.</p>
+          <p>Når der indsamles personoplysninger via vores hjemmeside, sikrer vi, at det altid sker ved afgivelse af dit udtrykkelige samtykke, således at du er informeret om præcis, hvilke oplysninger, der indsamles og hvorfor.</p>
+          <p>Direktøren og de ansatte for Mixly har adgang til de oplysninger, der registreres om dig.</p>
+          <p>Den dataansvarlige i Mixly er: Belinda Hildebrandt.</p>
+          <p>Vi opbevarer og transmitterer ikke kundeoplysninger krypteret.</p>
+          <p>Som registreret hos Mixly har du altid ret til at gøre indsigelse mod registreringen. Du har også ret til indsigt i, hvilke oplysninger, der er registreret om dig. Disse rettigheder har du efter Persondataloven og henvendelse i forbindelse hermed rettes til <a href="mailto:hej@mixly.dk">hej@mixly.dk</a>.</p>
+
+          <h2>Cookies</h2>
+          <p>På <a href="https://mixly.dk">https://mixly.dk</a> anvendes cookies med det formål at optimere hjemmesiden og dets funktionalitet, og dermed gøre besøget så nemt som muligt for dig.</p>
+
+          <h2>Log-statistik</h2>
+          <p>Vi bruger en log-statistik på <a href="https://mixly.dk">https://mixly.dk</a>, hvilket betyder, at et statistik-system opsamler information, som kan give et statistisk billede af, hvor mange besøgende vi har, hvor de kommer fra og hvor på websitet det forlades mv.</p>
+          <p>Logstatistikken anvendes kun med det formål, at optimere Mixly's hjemmeside.</p>
+        </section>
+
+        <section>
+          <h2>Forbrugerbeskyttelse</h2>
+          <p>Læs mere om din beskyttelse som forbruger når du køber via en PensoPay betalingsløsning: <a href="https://pensopay.com/mere/forbrugerbeskyttelse/">https://pensopay.com/mere/forbrugerbeskyttelse/</a></p>
+        </section>
+
+        <section>
+          <h2>Klagemuligheder</h2>
+          <p>En klage over en vare eller tjenesteydelse kan indgives til Nævnenes Hus, Mæglingsteamet for Forbrugerklager, Toldboden 2, 8800 Viborg via Klageportalen for Nævnenes Hus. Mæglingsteamet vil forsøge at løse tvisten ved mediation, og hvis det ikke lykkes at finde en løsning, kan du indbringe klagen for Forbrugerklagenævnet.</p>
+          <p>Det er som udgangspunkt en forudsætning for at klage, at varen eller ydelsen, som du vil klage over, har kostet mindst 1.110 kr. og højst 100.000 kr. For klager over tøj og sko skal prisen som udgangspunkt være mindst 720 kr. Beløbsgrænserne kan blive ændret. Du skal betale et gebyr for at få klagen behandlet.</p>
+          <p>EU-Kommissionens online klageportal kan også anvendes ved indgivelse af en klage. Det er særlig relevant, hvis du er forbruger med bopæl i et andet EU-land. Klage indgives her: <a href="http://ec.europa.eu/odr">http://ec.europa.eu/odr</a></p>
+          <p>Ved indgivelse af en klage skal du angive vores e-mail adresse <a href="mailto:hej@mixly.dk">hej@mixly.dk</a>.</p>
+        </section>
+
+        <section>
+          <h2>Presse og pressefotos</h2>
+          <p>Ved brug af billeder til presse eller anden omtale, kan vi sende pressebilleder i originale versioner. Kontakt os på <a href="mailto:hej@mixly.dk">hej@mixly.dk</a> for nærmere info.</p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <section class="footer-kontakt" aria-labelledby="footer-kontakt-titel">
+      <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
+      <address class="footer-kontakt-adresse">
+        Hildebrandt Copenhagen x Mixly<br>
+        +45 30 74 34 30<br>
+        Nørre Fasanvej 163<br>
+        2000 Frederiksberg<br>
+        hej@hildebrandtcopenhagen.dk
+      </address>
+      <a class="book-knap footer-booking" href="kontakt.html">Book tid</a>
+    </section>
+
+    <section class="footer-tider" aria-labelledby="footer-tider-titel">
+      <h2 id="footer-tider-titel" class="footer-tider-titel">Åbningstider</h2>
+      <dl class="footer-tider-liste">
+        <dt>Mandag</dt>
+        <dd>8:30-14:00</dd>
+        <dt>Tirsdag</dt>
+        <dd>10:00-17:30</dd>
+        <dt>Onsdag</dt>
+        <dd>Lukket</dd>
+        <dt>Torsdag</dt>
+        <dd>10:00-17:30</dd>
+        <dt>Fredag</dt>
+        <dd>10:00-16:00</dd>
+      </dl>
+    </section>
+
+    <nav class="footer-menu" aria-labelledby="footer-menu-titel">
+      <h2 id="footer-menu-titel" class="footer-menu-titel">Udforsk</h2>
+      <ul class="footer-menu-liste">
+        <li class="footer-menu-item"><a class="footer-menu-link" href="kontakt.html">Book tid</a></li>
+        <li class="footer-menu-item"><a class="footer-menu-link" href="produkter.html">Produkter</a></li>
+        <li class="footer-menu-item"><a class="footer-menu-link" href="guides.html">Krølleguide</a></li>
+        <li class="footer-menu-item"><a class="footer-menu-link" href="omos.html">Din krøllefrisør</a></li>
+        <li class="footer-menu-item"><a class="footer-menu-link" href="handelsbetingelser.html">Handelsbetingelser</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-info">
+      <p class="footer-cvr">CVR 44399973</p>
+      <ul class="footer-socials" aria-label="Sociale medier">
+        <li class="footer-socials-item"><a class="footer-social-link" href="#">Instagram</a></li>
+        <li class="footer-socials-item"><a class="footer-social-link" href="#">Facebook</a></li>
+      </ul>
+      <ul class="footer-betaling" aria-label="Betalingsmetoder">
+        <li class="footer-betaling-item">Visa</li>
+        <li class="footer-betaling-item">Mastercard</li>
+        <li class="footer-betaling-item">MobilePay</li>
+      </ul>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
