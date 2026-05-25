@@ -123,7 +123,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 40px 28px;
-  background: var(--color-image-placeholder);
+  background: var(--color-light-blue);
 }
 
 .behandlinger-intro-kort h2 {
@@ -355,6 +355,18 @@
 
   .behandlinger-mixly .behandlinger-priser {
     padding: 42px 18px;
+  }
+
+  .behandlinger-mixly .behandlinger-info-kort {
+    display: contents;
+  }
+
+  .behandlinger-mixly .behandlinger-priser {
+    order: 1;
+  }
+
+  .behandlinger-mixly .behandlinger-intro-kort {
+    order: 2;
   }
 
   /* Permanent: priser før billeder */

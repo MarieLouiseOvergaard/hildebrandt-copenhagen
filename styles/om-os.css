@@ -83,23 +83,23 @@
   display: grid;
   min-height: 345px;
   place-items: center;
-  padding: 88px 40px;
-  background: #e2f0f5;
+  padding: 90px 48px;
+  background: #e5f5f8;
   text-align: center;
 }
 
 .om-os-quote {
-  max-width: 880px;
+  max-width: 1120px;
 }
 
 .om-os-quote p {
-  color: #111111;
-  font-size: 2.35rem;
-  line-height: 1.25;
+  color: var(--color-heading);
+  font-size: var(--font-quote-desktop);
+  line-height: 1.3;
 }
 
 .om-os-quote footer {
-  margin-top: 32px;
+  margin-top: 34px;
   color: var(--color-heading);
   font-style: normal;
   letter-spacing: 0.16em;
@@ -210,18 +210,17 @@
   }
 
   .om-os-quote-section {
-    min-height: 0;
-    padding: 70px 26px 68px;
+    min-height: 230px;
+    padding: 58px 14px;
   }
 
   .om-os-quote p {
-    color: #111111;
-    font-size: 1.38rem;
-    line-height: 1.32;
+    font-size: 20px;
+    line-height: 1.3;
   }
 
   .om-os-quote footer {
-    margin-top: 34px;
+    margin-top: 18px;
     letter-spacing: 0.16em;
   }
 
