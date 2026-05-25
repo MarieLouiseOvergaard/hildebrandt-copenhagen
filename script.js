@@ -1249,6 +1249,7 @@ const productPageSizeButtons = document.querySelectorAll(".produkt-skabelon-size
 
 if (productPageSizeButtons.length) {
   const productPagePrice = document.querySelector("[data-product-page-price]");
+  const productPageImage = document.querySelector(".produkt-skabelon-image-hero img");
 
   productPageSizeButtons.forEach((button, index) => {
     const isActive = index === 0;
@@ -1257,6 +1258,10 @@ if (productPageSizeButtons.length) {
 
     if (isActive && productPagePrice) {
       productPagePrice.textContent = button.dataset.productPrice;
+    }
+
+    if (isActive && productPageImage && button.dataset.productImage) {
+      productPageImage.src = button.dataset.productImage;
     }
 
     button.addEventListener("click", () => {
@@ -1270,6 +1275,10 @@ if (productPageSizeButtons.length) {
 
       if (productPagePrice) {
         productPagePrice.textContent = button.dataset.productPrice;
+      }
+
+      if (productPageImage && button.dataset.productImage) {
+        productPageImage.src = button.dataset.productImage;
       }
     });
   });
