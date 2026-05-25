@@ -28,6 +28,21 @@
   text-transform: uppercase;
 }
 
+.hero-title-logo {
+  display: block;
+  width: min(1044px, 90vw);
+  height: auto;
+  align-self: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.hero-title-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .hero-image {
   display: grid;
   width: 140px;
@@ -608,6 +623,10 @@
     font-size: 44px;
     line-height: 1;
     text-align: left;
+  }
+
+  .hero-title-logo {
+    width: min(390px, 100%);
   }
 
   .hero-image {
