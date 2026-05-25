@@ -141,7 +141,7 @@
   min-height: 260px;
   padding: 32px 40px 32px var(--kroelle-hero-offset);
   border-radius: 0 12px 12px 0;
-  background: var(--color-section-grey);
+  background: var(--color-heading);
 }
 
 .kroelle-card:nth-child(2) .kroelle-card-list {
@@ -156,7 +156,7 @@
 }
 
 .kroelle-card-list li {
-  color: var(--color-text);
+  color: var(--color-white);
   font-family: var(--font-body);
   font-size: var(--font-body-desktop);
   line-height: 1.55;
@@ -167,7 +167,7 @@
 }
 
 .kroelle-card-list li:first-child {
-  color: var(--color-heading);
+  color: var(--color-light-blue);
 }
 
 /* Citat */
