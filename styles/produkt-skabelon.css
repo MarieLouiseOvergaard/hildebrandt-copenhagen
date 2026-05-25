@@ -182,7 +182,69 @@
 }
 
 .produkt-skabelon-accordion-panel {
-  padding-bottom: 22px;
+  padding: 0 0 22px 40px;
+}
+
+.produkt-skabelon-accordion[open] .produkt-skabelon-accordion-panel {
+  padding: 0 0 22px 40px;
+}
+
+.produkt-skabelon-accordion-panel p {
+  margin: 0;
+}
+
+.produkt-skabelon-accordion-panel p + p {
+  margin-top: 14px;
+}
+
+.produkt-skabelon-panel-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.produkt-skabelon-panel-list li {
+  line-height: 1.55;
+}
+
+.produkt-skabelon-product-info {
+  padding: 0;
+  background: transparent;
+  color: #111111;
+}
+
+.produkt-skabelon-info-row {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid #7f9299;
+}
+
+.produkt-skabelon-info-label {
+  color: #111111;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.produkt-skabelon-info-value {
+  color: #111111;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.produkt-skabelon-info-value strong {
+  display: inline-block;
+  margin: 10px 0 2px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.produkt-skabelon-info-value strong:first-child {
+  margin-top: 0;
 }
 
 .produkt-skabelon-details {
@@ -250,14 +312,20 @@
 
 .produkt-skabelon-low-rich-placeholder {
   display: grid;
-  min-height: 250px;
   margin-top: 42px;
   place-items: center;
-  border: 1px solid var(--color-border);
-  background: var(--color-section-grey);
+  border: 0;
+  background: transparent;
   color: var(--color-heading);
   font-family: var(--font-heading);
   text-align: center;
+}
+
+.produkt-skabelon-low-rich-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 .produkt-skabelon-low-rich-visual,
@@ -828,6 +896,32 @@
     font-size: 13px;
   }
 
+  .produkt-skabelon-accordion-panel,
+  .produkt-skabelon-accordion[open] .produkt-skabelon-accordion-panel {
+    padding-left: 40px;
+  }
+
+  .produkt-skabelon-panel-list {
+    font-size: 13px;
+  }
+
+  .produkt-skabelon-product-info {
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .produkt-skabelon-info-row {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 18px;
+    padding: 11px 0;
+  }
+
+  .produkt-skabelon-info-label,
+  .produkt-skabelon-info-value {
+    font-size: 13px;
+  }
+
   .produkt-skabelon-spec-row {
     grid-template-columns: 1fr;
     gap: 5px;
@@ -866,14 +960,7 @@
   }
 
   .produkt-skabelon-low-rich-placeholder {
-    min-height: 470px;
     margin-top: 30px;
-    border: 0;
-    background: transparent;
-  }
-
-  .produkt-skabelon-low-rich-placeholder > :not(.produkt-skabelon-low-rich-visual) {
-    display: none;
   }
 
   .produkt-skabelon-low-rich-visual {
