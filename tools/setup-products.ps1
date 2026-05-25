@@ -391,7 +391,7 @@ $relatedMarkup
   <footer class="footer">
     <section class="footer-kontakt" aria-labelledby="footer-kontakt-titel">
       <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
-      <address class="footer-kontakt-adresse">Hildebrandt Copenhagen x Mixly<br>+45 30 74 34 30<br>Nørre Fasanvej 163<br>2000 Frederiksberg<br>hej@hildebrandtcopenhagen.dk</address>
+      <address class="footer-kontakt-adresse">Hildebrandt Copenhagen x Mixly<br>+45 30 74 34 30<br>Nordre Fasanvej 163<br>2000 Frederiksberg<br>hej@hildebrandtcopenhagen.dk</address>
       <a class="book-knap footer-booking" href="${prefix}kontakt.html">Book tid</a>
     </section>
     <section class="footer-tider" aria-labelledby="footer-tider-titel"><h2 id="footer-tider-titel" class="footer-tider-titel">Åbningstider</h2><dl class="footer-tider-liste"><dt>Mandag</dt><dd>8:30-14:00</dd><dt>Tirsdag</dt><dd>10:00-17:30</dd><dt>Onsdag</dt><dd>Lukket</dd><dt>Torsdag</dt><dd>10:00-17:30</dd><dt>Fredag</dt><dd>10:00-16:00</dd></dl></section>
