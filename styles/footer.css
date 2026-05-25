@@ -143,10 +143,27 @@
   }
 
   .footer h2 {
-    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
     font-size: 20px;
     font-weight: 300;
     letter-spacing: 0;
+    cursor: pointer;
+  }
+
+  .footer h2::after {
+    content: "\2304";
+    color: #8a979b;
+    transition: transform 180ms ease;
+  }
+
+  .footer-accordion-open h2::after {
+    transform: rotate(180deg);
+  }
+
+  .footer-accordion-open h2 {
+    margin-bottom: 14px;
   }
 
   .footer-kontakt {
@@ -175,26 +192,34 @@
     border-top: 1px solid #dddddd;
   }
 
-  .footer-tider h2,
-  .footer-menu h2 {
+  .has-footer-accordion .footer > section:not(.footer-accordion-open) > :not(h2),
+  .has-footer-accordion .footer > nav:not(.footer-accordion-open) > :not(h2) {
+    display: none;
+  }
+
+  .footer-accordion-open .footer-kontakt-adresse,
+  .footer-accordion-open .footer-newsletter-form {
+    display: block;
+  }
+
+  .footer-accordion-open .footer-newsletter-form {
+    display: grid;
+  }
+
+  .footer-accordion-open .footer-tider-liste {
+    display: grid;
+  }
+
+  .footer-accordion-open .footer-menu-liste {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 0;
   }
 
-  .footer-tider h2::after,
-  .footer-menu h2::after {
-    content: "\2304";
-    color: #8a979b;
+  .footer-accordion-open .footer-booking {
+    display: inline-flex;
   }
 
-  .footer-tider-liste,
-  .footer-menu-liste {
-    display: none;
-  }
-
-  .footer .kontakt-status {
-    display: none;
+  .footer.footer--frontpage .footer-accordion-open .kontakt-status {
+    display: flex;
   }
 
   .footer-info {
@@ -551,6 +576,10 @@
     margin-bottom: 0;
     font-size: 16px;
     letter-spacing: 0.02em;
+  }
+
+  .footer--frontpage .footer-accordion-open h2 {
+    margin-bottom: 0;
   }
 
   .footer--frontpage .footer-kontakt {

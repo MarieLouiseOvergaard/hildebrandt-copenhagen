@@ -93,6 +93,65 @@ if (mobileMenu && menuToggle && menuClose && productsToggle && productsBack) {
   });
 }
 
+const footerAccordionItems = Array.from(document.querySelectorAll(".footer > section, .footer > nav"));
+const footerAccordionMedia = window.matchMedia("(max-width: 767px)");
+
+if (footerAccordionItems.length > 0) {
+  footerAccordionItems.forEach((item) => {
+    const heading = item.querySelector("h2");
+
+    if (!heading) {
+      return;
+    }
+
+    function toggleFooterItem() {
+      if (!footerAccordionMedia.matches) {
+        return;
+      }
+
+      const isOpen = item.classList.toggle("footer-accordion-open");
+      heading.setAttribute("aria-expanded", String(isOpen));
+    }
+
+    heading.addEventListener("click", toggleFooterItem);
+    heading.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") {
+        return;
+      }
+
+      event.preventDefault();
+      toggleFooterItem();
+    });
+  });
+
+  function updateFooterAccordionState() {
+    document.body.classList.toggle("has-footer-accordion", footerAccordionMedia.matches);
+
+    footerAccordionItems.forEach((item) => {
+      const heading = item.querySelector("h2");
+
+      if (!heading) {
+        return;
+      }
+
+      if (footerAccordionMedia.matches) {
+        heading.setAttribute("role", "button");
+        heading.setAttribute("tabindex", "0");
+        heading.setAttribute("aria-expanded", String(item.classList.contains("footer-accordion-open")));
+        return;
+      }
+
+      item.classList.remove("footer-accordion-open");
+      heading.removeAttribute("role");
+      heading.removeAttribute("tabindex");
+      heading.removeAttribute("aria-expanded");
+    });
+  }
+
+  updateFooterAccordionState();
+  footerAccordionMedia.addEventListener("change", updateFooterAccordionState);
+}
+
 function updateStickyBooking(isHeroBookingVisible) {
   document.body.classList.toggle("is-sticky-booking-visible", !isHeroBookingVisible);
 }
