@@ -317,11 +317,6 @@ body[data-product-page-filter="all"] .product-promo-card {
   box-shadow: 0 6px 18px rgba(51, 76, 86, 0.18);
 }
 
-.product-add-button:hover,
-.product-add-button:focus-visible {
-  background: #294a54;
-}
-
 .product-add-button .product-add-button-icon {
   display: none;
 }

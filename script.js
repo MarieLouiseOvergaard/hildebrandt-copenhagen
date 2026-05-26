@@ -95,6 +95,15 @@ if (mobileMenu && menuToggle && menuClose && productsToggle && productsBack) {
 
 const footerAccordionItems = Array.from(document.querySelectorAll(".footer > section, .footer > nav"));
 const footerAccordionMedia = window.matchMedia("(max-width: 767px)");
+const salonbookUrl = "https://salonbook.one/?henriksencopenhagen#/";
+
+document.querySelectorAll(".footer-booking").forEach((link) => {
+  link.href = salonbookUrl;
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.location.href = salonbookUrl;
+  });
+});
 
 if (footerAccordionItems.length > 0) {
   footerAccordionItems.forEach((item) => {

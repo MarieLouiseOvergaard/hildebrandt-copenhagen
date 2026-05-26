@@ -121,6 +121,13 @@
   white-space: nowrap;
 }
 
+.produkt-skabelon-buy:hover,
+.produkt-skabelon-buy:focus-visible {
+  border-color: var(--color-primary);
+  color: var(--color-white);
+  background: var(--color-primary);
+}
+
 .produkt-skabelon-tags {
   display: flex;
   flex-wrap: wrap;
@@ -444,11 +451,6 @@
 .produkt-skabelon-related-card:hover .product-add-button,
 .produkt-skabelon-related-card:focus-within .product-add-button {
   transform: translate(-50%, 0);
-}
-
-.product-add-button:hover,
-.product-add-button:focus-visible {
-  background: #294a54;
 }
 
 .product-add-button .product-add-button-icon {

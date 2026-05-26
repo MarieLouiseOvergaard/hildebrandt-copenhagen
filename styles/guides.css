@@ -68,9 +68,6 @@
 
 .guide-hero h1 {
   max-width: 520px;
-  letter-spacing: 0.04em;
-  line-height: 1.28;
-  text-transform: none;
 }
 
 .guide-hero-lead {
@@ -107,8 +104,6 @@
 
 .guide-compare .guide-section-heading h4 {
   color: var(--color-primary);
-  font-size: var(--font-eyebrow-desktop);
-  letter-spacing: 0.1em;
 }
 
 .guide-compare-grid {
@@ -124,14 +119,11 @@
   min-width: 0;
 }
 
-.guide-compare-card h3 {
+.guide-compare-card h2 {
   margin-bottom: 22px;
   padding-right: 42px;
   padding-left: var(--guide-page-offset);
   color: var(--color-heading);
-  font-size: 2.1rem;
-  font-weight: 300;
-  letter-spacing: 0.04em;
 }
 
 .guide-compare-body {
@@ -151,12 +143,11 @@
   background: #af7f3a;
 }
 
-.guide-compare-rich h3 {
+.guide-compare-rich h2 {
   padding-right: var(--guide-page-offset);
   padding-left: 8px;
 }
 
-.guide-compare-copy h3,
 .guide-compare-copy h4,
 .guide-compare-copy p,
 .guide-compare-copy li {
@@ -182,7 +173,8 @@
 .guide-compare-copy li {
   font-family: var(--font-body);
   font-size: var(--font-body-desktop);
-  line-height: 1.45;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .guide-compare-placeholder {
@@ -225,21 +217,12 @@
   margin-bottom: 18px;
 }
 
-.guide-step-number {
-  color: var(--color-heading);
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  line-height: 1;
-}
-
 .guide-step-card h4 {
   margin-top: 8px;
 }
 
 .guide-step-card p:last-child {
   margin-top: 8px;
-  font-size: var(--font-body-desktop);
-  line-height: 1.55;
 }
 
 .guide-editorial,
@@ -354,17 +337,13 @@
 
 .guide-feeling-item p {
   color: #333333;
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  line-height: 1.35;
 }
 
 .guide-feeling-item span {
   display: block;
   margin-top: 8px;
   color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: var(--font-body-desktop);
 }
 
 .guide-feeling-mobile {
@@ -484,7 +463,6 @@
 
 .guide-styling-copy p {
   margin-top: 12px;
-  font-size: var(--font-body-desktop);
 }
 
 @media (min-width: 700px) {
@@ -575,11 +553,6 @@
 }
 
 @media (max-width: 699px) {
-  .guide-hero h1,
-  .guide-section h2 {
-    text-transform: none;
-  }
-
   .guide-hero {
     display: flex;
     flex-direction: column;
@@ -598,7 +571,6 @@
 
   .guide-hero h1 {
     max-width: 100%;
-    letter-spacing: 0.02em;
   }
 
   .guide-section {
@@ -651,8 +623,7 @@
   }
 
   .guide-compare-copy li,
-  .guide-step-card p:last-child,
-  .guide-styling-copy p {
+  .guide-feeling-item span {
     font-size: var(--font-body-mobile);
   }
 
@@ -681,10 +652,7 @@
 
   .guide-feeling-mobile-text {
     color: #111111;
-    font-family: var(--font-heading);
-    font-size: 0.95rem;
-    font-weight: 600;
-    line-height: 1.45;
+    font-size: var(--font-body-mobile);
   }
 
   .guide-feeling-mobile-text-low {
@@ -727,13 +695,12 @@
   }
 
   .guide-feeling-mobile .guide-feeling-item p {
-    font-size: 0.86rem;
-    line-height: 1.35;
+    font-size: var(--font-body-mobile);
   }
 
   .guide-feeling-mobile .guide-feeling-item span {
     margin-top: 14px;
-    font-size: 0.82rem;
+    font-size: var(--font-body-mobile);
   }
 
   .guide-section.guide-styling {
@@ -849,14 +816,13 @@
     margin-left: auto;
   }
 
-  .guide-compare-card h3 {
-    font-size: 1.35rem;
+  .guide-compare-card h2 {
     margin-bottom: 8px;
     padding-right: 18px;
     padding-left: 18px;
   }
 
-  .guide-compare-rich h3 {
+  .guide-compare-rich h2 {
     padding-left: 18px;
   }
 
