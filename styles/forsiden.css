@@ -14,18 +14,11 @@
   align-items: center;
   justify-content: flex-start;
   padding: 28px 48px 88px;
-  color: #e5edf0;
   background: #666666;
 }
 
 .hero-title {
-  color: var(--color-heading);
-  font-family: var(--font-heading);
-  font-size: 80px;
-  font-weight: 300;
-  line-height: 1;
   text-align: center;
-  text-transform: uppercase;
 }
 
 .hero-title-logo {
@@ -49,9 +42,6 @@
   height: 60px;
   place-items: center;
   margin-top: 175px;
-  color: #1f1f1f;
-  font-size: 1rem;
-  font-weight: 700;
 }
 
 .hero-image img,
@@ -182,9 +172,6 @@
   min-height: 0;
   place-items: center;
   background: var(--color-image-placeholder);
-  color: #111111;
-  font-size: 1rem;
-  font-weight: 700;
 }
 
 .mixly-introduktion-billede::before {
@@ -216,13 +203,11 @@
 .citat-tekst p {
   color: var(--color-heading);
   font-size: var(--font-quote-desktop);
-  line-height: 1.3;
 }
 
 .salon-citat-tekst p {
   color: var(--color-light-blue);
   font-size: var(--font-salon-quote-desktop);
-  line-height: 1.3;
 }
 
 .citat-tekst footer {
@@ -303,10 +288,7 @@
   min-height: 370px;
   place-items: center;
   margin-bottom: 22px;
-  color: #111111;
   background: #d7d7d7;
-  font-size: 1rem;
-  font-weight: 700;
 }
 
 .forside-behandling-kort-billede::before {
@@ -377,10 +359,6 @@
   justify-content: flex-start;
 }
 
-.anmeldelse-citat p {
-  line-height: 1.6;
-}
-
 .anmeldelse-citat footer {
   margin-top: 28px;
 }
@@ -389,7 +367,7 @@
   order: -1;
   margin-top: 18px;
   margin-bottom: 26px;
-  color: #d39137;
+  color: var(--color-primary);
   letter-spacing: 0.12em;
 }
 
@@ -444,10 +422,7 @@
   display: grid;
   min-height: 370px;
   place-items: center;
-  color: #111111;
   background: #d7d7d7;
-  font-size: 1rem;
-  font-weight: 700;
 }
 
 .guide-sektion-billede::before {
@@ -459,7 +434,6 @@
 .salon-citat {
   min-height: 305px;
   padding: 64px 160px;
-  color: #d9e7eb;
   background: #294a54;
 }
 
@@ -471,10 +445,7 @@
   display: grid;
   min-height: 525px;
   place-items: center;
-  color: #111111;
   background: #d7d7d7;
-  font-size: 1rem;
-  font-weight: 700;
 }
 
 .kort-sektion-billede::before {
@@ -486,7 +457,6 @@
 /* Tablet: forside-sektioner */
 @media (max-width: 1180px) {
   .hero-title {
-    font-size: clamp(44px, 7.6vw, 90px);
     text-align: center;
   }
 
@@ -621,9 +591,6 @@
 
   .hero-title {
     max-width: 330px;
-    color: #2d3a3e;
-    font-size: 44px;
-    line-height: 1;
     text-align: left;
   }
 
@@ -686,9 +653,7 @@
     width: auto;
     height: auto;
     place-items: center;
-    color: #111111;
     background: transparent;
-    font-weight: 700;
     white-space: pre;
     text-align: center;
   }
@@ -839,14 +804,12 @@
   }
 
   .citat-tekst p {
-    font-size: 20px;
-    line-height: 1.3;
+    font-size: var(--font-review-quote-mobile);
   }
 
   .salon-citat-tekst p {
-    color: #E2F0F5;
-    font-size: 20px;
-    line-height: 1.3;
+    color: var(--color-light-blue);
+    font-size: var(--font-review-quote-mobile);
   }
 
   .citat-tekst footer {
@@ -855,7 +818,7 @@
 
   .salon-citat-tekst footer {
     margin-top: 18px;
-    color: #E2F0F5;
+    color: var(--color-light-blue);
   }
 
   .behandlinger-sektion {
@@ -934,7 +897,7 @@
   }
 
   .anmeldelser-titel {
-    font-size: 20px;
+    font-size: var(--font-h2-mobile);
   }
 
   .anmeldelser-liste {
@@ -954,11 +917,6 @@
   .anmeldelse-stjerner {
     margin-top: 0;
     margin-bottom: 26px;
-    font-size: 0.8rem;
-  }
-
-  .anmeldelse-citat p {
-    line-height: 1.6;
   }
 
   .guide-sektion {
@@ -1003,7 +961,6 @@
 
   .kort-sektion-billede {
     min-height: 260px;
-    font-size: 1.4rem;
   }
 
   .kort-sektion-billede::before {
