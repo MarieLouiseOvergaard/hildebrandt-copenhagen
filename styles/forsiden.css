@@ -38,10 +38,11 @@
 
 .hero-image {
   display: grid;
-  width: 140px;
-  height: 60px;
+  width: min(1110px, 100%);
+  aspect-ratio: 1110 / 460;
   place-items: center;
-  margin-top: 175px;
+  margin-top: 32px;
+  overflow: hidden;
 }
 
 .hero-image img,
@@ -51,6 +52,19 @@
 .guide-sektion_-produkt img,
 .guide-sektion-billede img,
 .kort-sektion-billede img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-image img[src="#"],
+.om-belinda-billede img[src="#"],
+.mixly-introduktion-billede img[src="#"],
+.forside-behandling-kort-billede img[src="#"],
+.guide-sektion_-produkt img[src="#"],
+.guide-sektion-billede img[src="#"],
+.kort-sektion-billede img[src="#"] {
   display: none;
 }
 
@@ -58,6 +72,16 @@
   content: "IMG\A 1440 x 460";
   white-space: pre;
   text-align: center;
+}
+
+.hero-image:has(img:not([src="#"]))::before,
+.om-belinda-billede:has(img:not([src="#"]))::before,
+.mixly-introduktion-billede:has(img:not([src="#"]))::before,
+.forside-behandling-kort-billede:has(img:not([src="#"]))::before,
+.guide-sektion_-produkt:has(img:not([src="#"]))::before,
+.guide-sektion-billede:has(img:not([src="#"]))::before,
+.kort-sektion-billede:has(img:not([src="#"]))::before {
+  display: none;
 }
 
 .hero-actions,
@@ -384,9 +408,9 @@
 -------------------------------- */
 .guide-sektion {
   display: grid;
-  grid-template-columns: 470px 210px minmax(520px, 1fr);
+  grid-template-columns: 470px 150px minmax(520px, 1fr);
   align-items: start;
-  gap: 34px;
+  gap: 0;
   padding: 78px 48px 92px;
   overflow: hidden;
 }
@@ -405,17 +429,25 @@
 
 .guide-sektion_-produkt {
   display: grid;
-  height: 270px;
+  height: 300px;
   place-items: center;
-  background: linear-gradient(90deg, transparent 0 25%, #d2d2d2 25% 100%);
+  align-self: center;
+  justify-self: end;
+  z-index: 2;
+  width: 215px;
+  background: transparent;
+  transform: translateX(68px);
 }
 
 .guide-sektion_-produkt::before {
-  content: "";
-  width: 88px;
-  height: 220px;
-  border-radius: 4px 4px 16px 16px;
-  background: linear-gradient(#121212 0 28%, #e7f2f3 28% 100%);
+  display: none;
+}
+
+.guide-sektion_-produkt img {
+  width: auto;
+  max-width: 100%;
+  height: 285px;
+  object-fit: contain;
 }
 
 .guide-sektion-billede {
@@ -928,13 +960,15 @@
 
   .guide-sektion_-produkt {
     order: 1;
-    height: 190px;
-    background: #d7d7d7;
+    height: 215px;
+    justify-self: center;
+    width: 150px;
+    background: transparent;
+    transform: none;
   }
 
-  .guide-sektion_-produkt::before {
-    width: 92px;
-    height: 150px;
+  .guide-sektion_-produkt img {
+    height: 195px;
   }
 
   .guide-sektion-tekst {
