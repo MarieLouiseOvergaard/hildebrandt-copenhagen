@@ -17,12 +17,22 @@
 }
 
 .kontakt-hero .eyebrow {
-  color: var(--color-heading);
+  color: var(--color-light-blue);
 }
 
 .kontakt-hero-titel {
   margin-bottom: 18px;
+  color: var(--color-light-blue);
+  font-family: var(--font-quote);
+  font-size: clamp(32px, 3.2vw, 46px);
+  font-style: italic;
+  font-weight: 400;
   line-height: 1.1;
+  text-transform: none;
+}
+
+.kontakt-hero > p:not(.eyebrow) {
+  color: var(--color-light-blue);
 }
 
 .kontakt-hero-knapper {
@@ -100,6 +110,7 @@
 .kontakt-formular {
   padding: 18px 42px 16px;
   border: 1px solid var(--color-border);
+  background: var(--color-light-blue);
 }
 
 .kontakt-formular > p {
@@ -130,7 +141,7 @@
 .kontakt-form textarea {
   width: 100%;
   border: 1px solid var(--color-border);
-  background: var(--color-white);
+  background: var(--color-light-blue);
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 1rem;
@@ -297,12 +308,13 @@
   }
 
   .kontakt-hero .eyebrow {
-    color: var(--color-heading);
+    color: var(--color-light-blue);
   }
 
   .kontakt-hero-titel {
     max-width: 330px;
     margin-bottom: 30px;
+    font-size: 34px;
   }
 
   .kontakt-hero > p:not(.eyebrow) {
