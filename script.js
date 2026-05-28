@@ -4,7 +4,9 @@ const menuClose = document.querySelector(".mobile-menu-close");
 const productsToggle = document.querySelector(".mobile-menu-link-products");
 const productsBack = document.querySelector(".mobile-menu-back");
 const mobileMenuScroll = document.querySelector(".mobile-menu-scroll");
-const heroBookingButton = document.querySelector(".hero .button-primary");
+const mobileBookingMedia = window.matchMedia("(max-width: 767px)");
+const mainContent = document.querySelector("main");
+const mobileBookingTrigger = mainContent?.querySelector(":scope > section, :scope > article, :scope > div") || mainContent;
 
 function setActiveMainNavigation() {
   const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
@@ -161,50 +163,38 @@ if (footerAccordionItems.length > 0) {
   footerAccordionMedia.addEventListener("change", updateFooterAccordionState);
 }
 
-function updateStickyBooking(isHeroBookingVisible) {
-  document.body.classList.toggle("is-sticky-booking-visible", !isHeroBookingVisible);
-}
+function updateStickyBooking() {
+  if (!mobileBookingMedia.matches) {
+    document.body.classList.remove("is-sticky-booking-visible");
+    return;
+  }
 
-if (heroBookingButton && "IntersectionObserver" in window) {
-  const heroBookingObserver = new IntersectionObserver(
-    ([entry]) => {
-      updateStickyBooking(entry.isIntersecting);
-    },
-    {
-      threshold: 0.08,
-    }
-  );
+  if (!mobileBookingTrigger) {
+    document.body.classList.toggle("is-sticky-booking-visible", window.scrollY > 0);
+    return;
+  }
 
-  heroBookingObserver.observe(heroBookingButton);
-} else if (heroBookingButton) {
-  const handleBookingVisibility = () => {
-    const bounds = heroBookingButton.getBoundingClientRect();
-    updateStickyBooking(bounds.bottom > 0 && bounds.top < window.innerHeight);
-  };
-
-  handleBookingVisibility();
-  window.addEventListener("scroll", handleBookingVisibility, { passive: true });
-  window.addEventListener("resize", handleBookingVisibility);
+  const triggerBounds = mobileBookingTrigger.getBoundingClientRect();
+  document.body.classList.toggle("is-sticky-booking-visible", triggerBounds.bottom <= 0);
 }
 
 function updateMobileNavPosition() {
   const isFixed = window.scrollY > 0;
   document.body.classList.toggle("is-mobile-nav-fixed", isFixed);
-
-  if (!heroBookingButton) {
-    updateStickyBooking(!isFixed);
-  }
+  updateStickyBooking();
 }
 
 updateMobileNavPosition();
 window.addEventListener("scroll", updateMobileNavPosition, { passive: true });
 window.addEventListener("resize", updateMobileNavPosition);
 
-const contactStatus = document.querySelector(".kontakt-status");
-
-if (heroBookingButton) {
-  document.body.classList.add("has-hero-booking-cta");
+if (typeof mobileBookingMedia.addEventListener === "function") {
+  mobileBookingMedia.addEventListener("change", updateMobileNavPosition);
+} else {
+  mobileBookingMedia.addListener(updateMobileNavPosition);
 }
+
+const contactStatus = document.querySelector(".kontakt-status");
 
 function getCopenhagenTimeParts() {
   const formatter = new Intl.DateTimeFormat("en-US", {
@@ -455,6 +445,7 @@ const relatedProductCards = document.querySelectorAll(".produkt-skabelon-related
 const reviewSlider = document.querySelector("[data-anmeldelser-slider]");
 const productSections = Array.from(document.querySelectorAll("[data-product-section]"));
 const productFilterLinks = Array.from(document.querySelectorAll("[data-product-filter]"));
+const phoneMedia = window.matchMedia("(max-width: 767px)");
 
 function getProductSetGroupLabel(card) {
   const title = card.querySelector("h4")?.textContent.trim() || "";
@@ -843,8 +834,12 @@ productCards.forEach((card) => {
 
   quickViewButton.appendChild(quickViewIcon);
   addButton.append(addButtonText, addButtonIcon);
-  image.append(quickViewButton);
-  content.append(addButton);
+  if (!phoneMedia.matches) {
+    image.append(quickViewButton);
+    content.append(addButton);
+  } else {
+    image.append(addButton);
+  }
 });
 
 relatedProductCards.forEach((card) => {
@@ -886,8 +881,47 @@ relatedProductCards.forEach((card) => {
 
   quickViewButton.appendChild(quickViewIcon);
   addButton.append(addButtonText, addButtonIcon);
-  image.append(quickViewButton, addButton);
+  if (!phoneMedia.matches) {
+    image.append(quickViewButton);
+  }
+  image.append(addButton);
 });
+
+function syncProductCardAddButtonPlacement() {
+  productCards.forEach((card) => {
+    const image = getCardImageFrame(card);
+    const content = card.querySelector(".product-content");
+    const addButton = card.querySelector(".product-add-button");
+
+    if (!image || !content || !addButton) {
+      return;
+    }
+
+    if (phoneMedia.matches) {
+      image.append(addButton);
+      return;
+    }
+
+    content.append(addButton);
+  });
+
+  relatedProductCards.forEach((card) => {
+    const image = getCardImageFrame(card);
+    const addButton = card.querySelector(".product-add-button");
+
+    if (image && addButton) {
+      image.append(addButton);
+    }
+  });
+}
+
+syncProductCardAddButtonPlacement();
+
+if (typeof phoneMedia.addEventListener === "function") {
+  phoneMedia.addEventListener("change", syncProductCardAddButtonPlacement);
+} else {
+  phoneMedia.addListener(syncProductCardAddButtonPlacement);
+}
 
 const cartStorageKey = "hildebrandtMixlyCart";
 let cartItems = loadCartItems();
@@ -1315,61 +1349,6 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-function getProductPageSingleSizeLabel() {
-  const infoRows = Array.from(document.querySelectorAll(".produkt-skabelon-info-row"));
-  const amountRow = infoRows.find((row) => row.querySelector(".produkt-skabelon-info-label")?.textContent.trim().toUpperCase().includes("NGDE"));
-  const amountText = amountRow?.querySelector(".produkt-skabelon-info-value")?.textContent.trim();
-
-  if (!amountText) {
-    return "";
-  }
-
-  if (!/\d+\s*(ml|g)\b/i.test(amountText)) {
-    return "";
-  }
-
-  return amountText.split("/")[0].trim();
-}
-
-function ensureProductPageSingleSizeButton() {
-  const summary = document.querySelector(".produkt-skabelon-summary");
-  const buyButton = summary?.querySelector(".produkt-skabelon-buy");
-  const price = summary?.querySelector("[data-product-page-price]")?.textContent.trim() || "";
-
-  if (!summary || !buyButton || summary.querySelector(".produkt-skabelon-size-group")) {
-    return;
-  }
-
-  const sizeLabel = getProductPageSingleSizeLabel();
-
-  if (!sizeLabel) {
-    return;
-  }
-
-  const fieldset = document.createElement("fieldset");
-  fieldset.className = "produkt-skabelon-size-group";
-
-  const legend = document.createElement("legend");
-  legend.className = "produkt-skabelon-visually-hidden";
-  legend.textContent = "Vaelg stoerrelse";
-
-  const options = document.createElement("div");
-  options.className = "produkt-skabelon-size-options";
-
-  const button = document.createElement("button");
-  button.className = "produkt-skabelon-size produkt-skabelon-size-active";
-  button.type = "button";
-  button.dataset.productPrice = price;
-  button.setAttribute("aria-pressed", "true");
-  button.textContent = sizeLabel;
-
-  options.append(button);
-  fieldset.append(legend, options);
-  buyButton.before(fieldset);
-}
-
-ensureProductPageSingleSizeButton();
-
 const productPageSizeButtons = document.querySelectorAll(".produkt-skabelon-size[data-product-price]");
 
 if (productPageSizeButtons.length) {
@@ -1744,6 +1723,10 @@ function renderQuickView(card) {
 }
 
 function openQuickView(card, event) {
+  if (phoneMedia.matches) {
+    return;
+  }
+
   lastQuickViewTrigger = document.activeElement;
   shouldRestoreQuickViewFocus = !event || event.detail === 0;
   const modal = renderQuickView(card);

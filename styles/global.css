@@ -57,6 +57,7 @@
 
   --container-max: 1320px;
   --button-height: 50px;
+  --button-radius: 2px;
 }
 
 /* ==================================================
@@ -232,7 +233,7 @@ blockquote footer {
   justify-content: center;
   padding: 0 15px;
   border: 1px solid var(--color-heading);
-  border-radius: 2px;
+  border-radius: var(--button-radius);
   color: var(--color-heading);
   font-family: var(--font-heading);
   font-size: 14px;
@@ -254,6 +255,32 @@ blockquote footer {
 .button-secondary:hover {
   color: var(--color-white);
   background: var(--color-heading);
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.book-knap,
+.button,
+.top-nav-link,
+.menu-toggle,
+.mobile-menu-close,
+.mobile-menu-back,
+.side-cart-close,
+.side-cart-remove,
+.guide-button,
+.kroelle-button,
+.kroelle-form-button,
+.kroelle-course-button,
+.blog-filter,
+.product-filter-link,
+.side-cart-checkout,
+.product-add-button,
+.product-hover-eye,
+.produkt-skabelon-size,
+.quick-view-size {
+  border-radius: var(--button-radius);
 }
 
 /* ==================================================

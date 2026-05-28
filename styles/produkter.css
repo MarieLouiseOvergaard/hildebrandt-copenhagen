@@ -52,6 +52,7 @@
   justify-content: center;
   padding: 0 16px;
   border: 1px solid var(--color-border);
+  border-radius: var(--button-radius);
   color: var(--color-heading);
   font-family: var(--font-heading);
   font-size: 12px;
@@ -211,6 +212,8 @@ body[data-product-page-filter="all"] .product-promo-card {
   display: flex;
   flex-direction: column;
   background: var(--color-light-blue);
+  border-radius: var(--button-radius);
+  overflow: hidden;
 }
 
 .product-image {
@@ -222,18 +225,20 @@ body[data-product-page-filter="all"] .product-promo-card {
   justify-content: center;
   overflow: visible;
   background: var(--color-light-blue);
+  border-radius: var(--button-radius) var(--button-radius) 0 0;
 }
 
 .product-badge {
   position: absolute;
-  top: 3px;
-  left: 0;
+  top: 12px;
+  left: 6px;
   z-index: 2;
   display: inline-flex;
   min-height: 38px;
   align-items: center;
   justify-content: center;
   padding: 0 18px;
+  border-radius: var(--button-radius);
   color: var(--color-white);
   background: var(--color-turkis);
   font-family: var(--font-heading);
@@ -243,13 +248,13 @@ body[data-product-page-filter="all"] .product-promo-card {
   line-height: 1;
   pointer-events: none;
   text-transform: uppercase;
-  transform: rotate(-18deg);
+  transform: rotate(-10deg);
   transform-origin: center;
 }
 
 .product-row > .product-card:first-child .product-badge,
 .product-row > .product-promo-card + .product-card .product-badge {
-  left: 2px;
+  left: 8px;
 }
 
 .product-image::before {
@@ -302,7 +307,7 @@ body[data-product-page-filter="all"] .product-promo-card {
   height: 42px;
   place-items: center;
   padding: 0;
-  border-radius: 50%;
+  border-radius: var(--button-radius);
   background: var(--color-white);
   box-shadow: 0 4px 14px rgba(51, 76, 86, 0.14);
   transform: translateY(-6px);
@@ -363,7 +368,7 @@ body[data-product-page-filter="all"] .product-promo-card {
     width: min(82%, 257px);
     min-height: 52px;
     padding: 0 22px;
-    border-radius: 0;
+    border-radius: var(--button-radius);
     transform: translate(-50%, 10px);
   }
 
@@ -399,14 +404,15 @@ body[data-product-page-filter="all"] .product-promo-card {
 @media (max-width: 1180px) {
   .product-add-button {
     right: 14px;
-    bottom: 14px;
+    top: 14px;
+    bottom: auto;
     left: auto;
     display: grid;
     width: 46px;
     min-height: 46px;
     place-items: center;
     padding: 0;
-    border-radius: 50%;
+    border-radius: var(--button-radius);
     background: var(--color-heading);
     opacity: 1;
     transform: none;
@@ -427,6 +433,24 @@ body[data-product-page-filter="all"] .product-promo-card {
     width: 22px;
     height: 22px;
     filter: invert(1);
+  }
+}
+
+@media (max-width: 767px) {
+  .product-hover-eye {
+    display: none;
+  }
+
+  .product-add-button {
+    top: 14px;
+    right: 14px;
+    bottom: auto;
+    background: var(--color-heading);
+    box-shadow: 0 4px 14px rgba(51, 76, 86, 0.14);
+  }
+
+  .product-add-button .product-add-button-icon {
+    filter: brightness(0) saturate(100%) invert(93%) sepia(9%) saturate(626%) hue-rotate(164deg) brightness(103%) contrast(92%);
   }
 }
 
@@ -540,6 +564,8 @@ body[data-product-page-filter="all"] .product-promo-card {
   min-height: 304px;
   align-items: center;
   background: var(--color-light-blue);
+  border-radius: var(--button-radius);
+  overflow: hidden;
 }
 
 .product-promo-card .product-content {
@@ -755,7 +781,7 @@ body[data-product-page-filter="all"] .product-promo-card {
   justify-content: center;
   padding: 0 14px;
   border: 1px solid var(--color-heading);
-  border-radius: 2px;
+  border-radius: var(--button-radius);
   background: transparent;
   color: var(--color-heading);
   cursor: pointer;
@@ -1000,9 +1026,16 @@ body[data-product-page-filter="all"] .product-promo-card {
 
   .product-add-button {
     right: 12px;
-    bottom: 12px;
-    width: 42px;
-    min-height: 42px;
+    top: 12px;
+    bottom: auto;
+    width: 50px;
+    min-height: 50px;
+    background: var(--color-heading);
+  }
+
+  .product-add-button .product-add-button-icon {
+    width: 25px;
+    height: 25px;
   }
 
   .product-card .product-content h4 {

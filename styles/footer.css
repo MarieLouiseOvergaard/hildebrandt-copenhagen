@@ -373,7 +373,7 @@
   height: 31px;
   padding: 0 12px;
   border: 1px solid var(--color-heading);
-  border-radius: 0;
+  border-radius: var(--button-radius);
   color: var(--color-heading);
   background: transparent;
   font-family: var(--font-body);
@@ -405,7 +405,7 @@
   height: 19px;
   margin: 0;
   border: 1px solid var(--color-heading);
-  border-radius: 0;
+  border-radius: var(--button-radius);
   appearance: none;
 }
 

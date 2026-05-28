@@ -1,11 +1,12 @@
-﻿/* Scoped layout styles for produkt-skabelon.html. Globale fonte, farver og knapper genbruges fra global.css. */
+/* Scoped layout styles for produkt-skabelon.html. Globale fonte, farver og knapper genbruges fra global.css. */
 
 .produkt-skabelon-main {
-  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--color-white);
 }
 
 .produkt-skabelon-hero,
+.produkt-skabelon-set-buy,
 .produkt-skabelon-low-rich,
 .produkt-skabelon-related {
   max-width: var(--container-max);
@@ -33,15 +34,26 @@
   object-fit: contain;
 }
 
+.produkt-skabelon-image-hero {
+  min-height: 650px;
+  background: transparent;
+  font-size: var(--font-h1-desktop);
+}
+
 .produkt-skabelon-image-hero-large img {
   width: min(94%, 580px);
   max-height: 94%;
 }
 
-.produkt-skabelon-image-hero {
-  min-height: 650px;
-  background: transparent;
-  font-size: var(--font-h1-desktop);
+@media (min-width: 901px) {
+  .produkt-skabelon-image-hero {
+    position: sticky;
+    top: 24px;
+    height: calc(100vh - 48px);
+    min-height: 560px;
+    max-height: 760px;
+    align-self: start;
+  }
 }
 
 .produkt-skabelon-summary {
@@ -82,6 +94,7 @@
   border: 0;
 }
 
+.produkt-skabelon-size-label,
 .produkt-skabelon-size-group .produkt-skabelon-visually-hidden {
   position: static;
   display: block;
@@ -114,7 +127,7 @@
   justify-content: center;
   padding: 0 14px;
   border: 1px solid var(--color-heading);
-  border-radius: 2px;
+  border-radius: var(--button-radius);
   background: transparent;
   color: var(--color-heading);
   cursor: pointer;
@@ -159,6 +172,10 @@
   white-space: nowrap;
 }
 
+.produkt-skabelon-summary:not(:has(.produkt-skabelon-size-group)) .produkt-skabelon-buy {
+  margin-top: 18px;
+}
+
 .produkt-skabelon-buy:hover,
 .produkt-skabelon-buy:focus-visible {
   border-color: var(--color-primary);
@@ -191,6 +208,138 @@
 .produkt-skabelon-accordions {
   order: 7;
   margin-top: 34px;
+}
+
+.produkt-skabelon-set-buy {
+  order: 8;
+  display: grid;
+  width: 100%;
+  max-width: none;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 194px);
+  gap: 24px;
+  align-items: stretch;
+  margin: 34px 0 0;
+  padding: 16px 0 12px;
+  border-top: 1px solid var(--color-heading);
+  border-bottom: 1px solid var(--color-heading);
+}
+
+.produkt-skabelon-set-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.produkt-skabelon-set-copy .eyebrow {
+  color: var(--color-primary);
+}
+
+.produkt-skabelon-set-copy h2 {
+  margin-top: 8px;
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1;
+}
+
+.produkt-skabelon-set-copy p {
+  max-width: 320px;
+  margin-top: auto;
+  padding-top: 40px;
+  line-height: 1.55;
+}
+
+.produkt-skabelon-set-products {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.produkt-skabelon-set-products .product-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  background: var(--color-light-blue);
+  border-radius: var(--button-radius);
+  overflow: hidden;
+}
+
+.produkt-skabelon-set-products .product-image {
+  position: relative;
+  display: flex;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  background: var(--color-light-blue);
+  border-radius: var(--button-radius) var(--button-radius) 0 0;
+}
+
+.produkt-skabelon-set-products .product-image > a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.produkt-skabelon-set-products .product-image img {
+  display: block;
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.produkt-skabelon-set-products .product-content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding-top: 8px;
+  padding-bottom: 10px;
+  border-top: 1px solid var(--color-heading);
+  overflow: hidden;
+}
+
+.produkt-skabelon-set-products .product-content h4 {
+  height: calc(1.2em * 2);
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.produkt-skabelon-set-products .product-content p {
+  height: calc(1.45em * 2);
+  margin-top: 4px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.produkt-skabelon-set-products .product-meta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: calc(1.3em * 1);
+  margin-top: auto;
+  padding-top: 4px;
+  border-top: 1px solid var(--color-heading);
+  color: var(--color-heading);
+  font-family: var(--font-body);
+  line-height: 1.3;
+}
+
+.produkt-skabelon-set-products .product-meta span:first-child {
+  font-size: 11px;
+}
+
+.produkt-skabelon-set-products .product-meta span:last-child {
+  color: var(--color-text);
+  font-size: 9px;
+  text-align: right;
 }
 
 .produkt-skabelon-accordion {
@@ -410,6 +559,11 @@
 
 .produkt-skabelon-related-card a {
   display: block;
+  border-radius: var(--button-radius);
+}
+
+.produkt-skabelon-related-card {
+  border-radius: var(--button-radius);
 }
 
 .produkt-skabelon-related-image {
@@ -422,18 +576,20 @@
   font-family: var(--font-heading);
   font-size: var(--font-h3-desktop);
   overflow: visible;
+  border-radius: var(--button-radius);
 }
 
 .product-badge {
   position: absolute;
-  top: 3px;
-  left: 0;
+  top: 10px;
+  left: 6px;
   z-index: 2;
   display: inline-flex;
   min-height: 34px;
   align-items: center;
   justify-content: center;
   padding: 0 16px;
+  border-radius: var(--button-radius);
   color: var(--color-white);
   background: var(--color-turkis);
   font-family: var(--font-heading);
@@ -443,7 +599,7 @@
   line-height: 1;
   pointer-events: none;
   text-transform: uppercase;
-  transform: rotate(-18deg);
+  transform: rotate(-10deg);
   transform-origin: center;
 }
 
@@ -481,7 +637,7 @@
   height: 42px;
   place-items: center;
   padding: 0;
-  border-radius: 50%;
+  border-radius: var(--button-radius);
   background: var(--color-white);
   box-shadow: 0 4px 14px rgba(51, 76, 86, 0.14);
   transform: translateY(-6px);
@@ -695,7 +851,7 @@
   justify-content: center;
   padding: 0 14px;
   border: 1px solid var(--color-heading);
-  border-radius: 2px;
+  border-radius: var(--button-radius);
   background: transparent;
   color: var(--color-heading);
   cursor: pointer;
@@ -776,8 +932,21 @@
 
 @media (max-width: 900px) {
   .produkt-skabelon-hero,
+  .produkt-skabelon-set-buy,
   .produkt-skabelon-details {
     grid-template-columns: 1fr;
+  }
+
+  .produkt-skabelon-set-buy {
+    align-items: start;
+  }
+
+  .produkt-skabelon-set-copy {
+    position: static;
+  }
+
+  .produkt-skabelon-set-copy p {
+    margin-top: 28px;
   }
 
   .quick-view-intro {
@@ -835,15 +1004,16 @@
   }
 
   .product-add-button {
+    top: 12px;
     right: 12px;
-    bottom: 12px;
+    bottom: auto;
     left: auto;
     display: grid;
     width: 42px;
     min-height: 42px;
     place-items: center;
     padding: 0;
-    border-radius: 50%;
+    border-radius: var(--button-radius);
     transform: none;
   }
 
@@ -866,65 +1036,27 @@
 
 @media (max-width: 767px) {
   .produkt-skabelon-page {
-    padding-bottom: 0;
+    padding-bottom: calc(78px + env(safe-area-inset-bottom));
   }
 
   .produkt-skabelon-page .header {
     background: var(--color-light-blue);
   }
 
-  .produkt-skabelon-page .top-menu {
-    min-height: 36px;
-    padding: 0 8px;
-    color: var(--color-heading);
-    background: var(--color-turkis);
+  .product-hover-eye {
+    display: none;
   }
 
-  .produkt-skabelon-page .top-menu > .book-knap {
-    position: static;
-    width: auto;
-    min-height: 0;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    color: var(--color-heading);
-    font-size: 16px;
-    letter-spacing: 0;
-    transform: none;
+  .product-add-button {
+    top: 12px;
+    right: 12px;
+    bottom: auto;
+    background: var(--color-heading);
+    box-shadow: 0 4px 14px rgba(51, 76, 86, 0.14);
   }
 
-  .produkt-skabelon-page .top-menu-logo {
-    width: 44px;
-    height: 36px;
-  }
-
-  .produkt-skabelon-page .top-menu-logo::before {
-    height: 25px;
-    background-image: url("../img/logo/monogramLysgraa.svg");
-    filter: brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(1010%) hue-rotate(151deg) brightness(93%) contrast(88%);
-  }
-
-  .produkt-skabelon-page .top-nav-link {
-    width: 26px;
-    height: 30px;
-  }
-
-  .produkt-skabelon-page .top-nav-list {
-    justify-content: flex-end;
-    gap: 7px;
-  }
-
-  .produkt-skabelon-page .top-nav-icon-cart {
-    width: 18px;
-    height: 18px;
-    filter: brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(1010%) hue-rotate(151deg) brightness(93%) contrast(88%);
-  }
-
-  .produkt-skabelon-page .menu-toggle::before {
-    width: 17px;
-    height: 13px;
+  .product-add-button .product-add-button-icon {
+    filter: brightness(0) saturate(100%) invert(93%) sepia(9%) saturate(626%) hue-rotate(164deg) brightness(103%) contrast(92%);
   }
 
   .produkt-skabelon-main {
@@ -949,11 +1081,11 @@
   }
 
   .produkt-skabelon-summary {
-    padding: 32px 8px 0;
+    padding: 32px 14px 0;
   }
 
   .produkt-skabelon-summary h1 {
-    max-width: 315px;
+    max-width: none;
     margin-top: 14px;
     padding-bottom: 16px;
     line-height: 1.12;
@@ -979,24 +1111,27 @@
   }
 
   .produkt-skabelon-buy {
-    width: calc(100vw - 44px);
+    width: 100%;
     max-width: 100%;
-    margin-top: 22px;
-    margin-right: 14px;
-    margin-left: 14px;
+    margin-top: 20px;
+    margin-right: 0;
+    margin-left: 0;
     border-color: var(--color-primary);
     color: var(--color-white);
     background: var(--color-primary);
   }
 
+  .produkt-skabelon-summary:not(:has(.produkt-skabelon-size-group)) .produkt-skabelon-buy {
+    margin-top: 16px;
+  }
+
   .produkt-skabelon-tags {
     justify-content: space-between;
-    gap: 10px;
+    gap: 10px 16px;
     margin: 18px 0 0;
     color: var(--color-primary);
     font-size: 10px;
     line-height: 1.2;
-    white-space: nowrap;
   }
 
   .produkt-skabelon-description {
@@ -1072,6 +1207,53 @@
   .produkt-skabelon-related {
     padding-right: 14px;
     padding-left: 14px;
+  }
+
+  .produkt-skabelon-set-buy {
+    gap: 22px;
+    margin-top: 36px;
+    padding: 22px 0 24px;
+  }
+
+  .produkt-skabelon-set-copy h2 {
+    font-size: var(--font-h2-mobile);
+  }
+
+  .produkt-skabelon-set-copy p {
+    max-width: none;
+    margin-top: 0;
+    padding-top: 18px;
+    color: #333333;
+    font-size: 13px;
+  }
+
+  .produkt-skabelon-set-products {
+    grid-template-columns: 1fr;
+    width: min(100%, 260px);
+    justify-self: center;
+  }
+
+  .produkt-skabelon-set-products .product-content {
+    margin-right: 12px;
+    margin-left: 12px;
+    padding-top: 9px;
+    padding-bottom: 12px;
+  }
+
+  .produkt-skabelon-set-products .product-content h4 {
+    font-size: 12px;
+  }
+
+  .produkt-skabelon-set-products .product-content p {
+    font-size: 11px;
+  }
+
+  .produkt-skabelon-set-products .product-meta span:first-child {
+    font-size: 12px;
+  }
+
+  .produkt-skabelon-set-products .product-meta span:last-child {
+    font-size: 10px;
   }
 
   .produkt-skabelon-low-rich {
