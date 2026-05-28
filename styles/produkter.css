@@ -727,10 +727,10 @@ body[data-product-page-filter="all"] .product-promo-card {
 .quick-view-size-label {
   margin: 0 0 12px;
   padding: 0;
-  color: #9a9a9a;
+  color: var(--color-primary);
   font-family: var(--font-heading);
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  font-size: var(--font-eyebrow-desktop);
+  letter-spacing: 0.08em;
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -750,10 +750,10 @@ body[data-product-page-filter="all"] .product-promo-card {
 .quick-view-size {
   display: inline-flex;
   min-width: 96px;
-  min-height: var(--button-height);
+  min-height: 34px;
   align-items: center;
   justify-content: center;
-  padding: 0 15px;
+  padding: 0 14px;
   border: 1px solid var(--color-heading);
   border-radius: 2px;
   background: transparent;

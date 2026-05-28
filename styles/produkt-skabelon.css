@@ -45,11 +45,29 @@
 }
 
 .produkt-skabelon-summary {
+  display: flex;
+  flex-direction: column;
   padding: 32px 40px 52px;
 }
 
+.produkt-skabelon-summary::before {
+  order: 0;
+  display: block;
+  width: 100%;
+  border-top: 1px solid var(--color-heading);
+  content: "";
+}
+
+.produkt-skabelon-summary h1 {
+  order: 2;
+  margin: 16px 0 0;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--color-heading);
+}
+
 .produkt-skabelon-price {
-  margin-top: 38px;
+  order: 3;
+  margin-top: 24px;
   color: var(--color-heading);
   font-family: var(--font-heading);
   font-size: var(--font-h2-desktop);
@@ -58,9 +76,28 @@
 }
 
 .produkt-skabelon-size-group {
+  order: 4;
   margin: 28px 0 0;
   padding: 0;
   border: 0;
+}
+
+.produkt-skabelon-size-group .produkt-skabelon-visually-hidden {
+  position: static;
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0 0 12px;
+  padding: 0;
+  overflow: visible;
+  clip: auto;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: var(--font-eyebrow-desktop);
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: normal;
 }
 
 .produkt-skabelon-size-options {
@@ -72,10 +109,10 @@
 .produkt-skabelon-size {
   display: inline-flex;
   min-width: 96px;
-  min-height: var(--button-height);
+  min-height: 34px;
   align-items: center;
   justify-content: center;
-  padding: 0 15px;
+  padding: 0 14px;
   border: 1px solid var(--color-heading);
   border-radius: 2px;
   background: transparent;
@@ -112,9 +149,10 @@
 }
 
 .produkt-skabelon-buy {
+  order: 5;
   width: auto;
   min-width: 190px;
-  margin-top: 30px;
+  margin-top: 26px;
   border-color: var(--color-primary);
   color: var(--color-white);
   background: var(--color-primary);
@@ -129,22 +167,30 @@
 }
 
 .produkt-skabelon-tags {
+  order: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 28px;
-  margin-top: 86px;
-  color: var(--color-heading);
+  gap: clamp(22px, 4vw, 54px);
+  margin-top: 24px;
+  color: var(--color-primary);
   font-family: var(--font-heading);
+  font-size: var(--font-eyebrow-desktop);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .produkt-skabelon-description {
+  order: 6;
   max-width: 620px;
-  margin-top: 38px;
+  margin-top: 36px;
+  padding: 26px 0 22px;
+  border-top: 1px solid var(--color-heading);
+  border-bottom: 1px solid var(--color-heading);
 }
 
 .produkt-skabelon-accordions {
-  margin-top: 42px;
+  order: 7;
+  margin-top: 34px;
 }
 
 .produkt-skabelon-accordion {
@@ -152,7 +198,7 @@
 }
 
 .produkt-skabelon-accordion:first-child {
-  border-top: 1px solid var(--color-border);
+  border-top: 0;
 }
 
 .produkt-skabelon-accordion h2 {
@@ -621,10 +667,10 @@
 .quick-view-size-label {
   margin: 0 0 12px;
   padding: 0;
-  color: #9a9a9a;
+  color: var(--color-primary);
   font-family: var(--font-heading);
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  font-size: var(--font-eyebrow-desktop);
+  letter-spacing: 0.08em;
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -644,10 +690,10 @@
 .quick-view-size {
   display: inline-flex;
   min-width: 96px;
-  min-height: var(--button-height);
+  min-height: 34px;
   align-items: center;
   justify-content: center;
-  padding: 0 15px;
+  padding: 0 14px;
   border: 1px solid var(--color-heading);
   border-radius: 2px;
   background: transparent;
@@ -908,6 +954,8 @@
 
   .produkt-skabelon-summary h1 {
     max-width: 315px;
+    margin-top: 14px;
+    padding-bottom: 16px;
     line-height: 1.12;
   }
 
@@ -917,7 +965,7 @@
   }
 
   .produkt-skabelon-size-group {
-    margin-top: 20px;
+    margin-top: 18px;
   }
 
   .produkt-skabelon-size-options {
@@ -926,6 +974,7 @@
 
   .produkt-skabelon-size {
     min-width: 86px;
+    min-height: 32px;
     font-size: 12px;
   }
 
@@ -943,15 +992,17 @@
   .produkt-skabelon-tags {
     justify-content: space-between;
     gap: 10px;
-    margin: 22px -8px 0;
-    color: var(--color-heading);
+    margin: 18px 0 0;
+    color: var(--color-primary);
     font-size: 10px;
     line-height: 1.2;
     white-space: nowrap;
   }
 
   .produkt-skabelon-description {
-    margin-top: 30px;
+    margin-top: 28px;
+    padding-top: 20px;
+    padding-bottom: 18px;
     color: #333333;
     font-size: 13px;
     line-height: 1.55;

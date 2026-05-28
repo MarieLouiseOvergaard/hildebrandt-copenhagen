@@ -1315,6 +1315,61 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+function getProductPageSingleSizeLabel() {
+  const infoRows = Array.from(document.querySelectorAll(".produkt-skabelon-info-row"));
+  const amountRow = infoRows.find((row) => row.querySelector(".produkt-skabelon-info-label")?.textContent.trim().toUpperCase().includes("NGDE"));
+  const amountText = amountRow?.querySelector(".produkt-skabelon-info-value")?.textContent.trim();
+
+  if (!amountText) {
+    return "";
+  }
+
+  if (!/\d+\s*(ml|g)\b/i.test(amountText)) {
+    return "";
+  }
+
+  return amountText.split("/")[0].trim();
+}
+
+function ensureProductPageSingleSizeButton() {
+  const summary = document.querySelector(".produkt-skabelon-summary");
+  const buyButton = summary?.querySelector(".produkt-skabelon-buy");
+  const price = summary?.querySelector("[data-product-page-price]")?.textContent.trim() || "";
+
+  if (!summary || !buyButton || summary.querySelector(".produkt-skabelon-size-group")) {
+    return;
+  }
+
+  const sizeLabel = getProductPageSingleSizeLabel();
+
+  if (!sizeLabel) {
+    return;
+  }
+
+  const fieldset = document.createElement("fieldset");
+  fieldset.className = "produkt-skabelon-size-group";
+
+  const legend = document.createElement("legend");
+  legend.className = "produkt-skabelon-visually-hidden";
+  legend.textContent = "Vaelg stoerrelse";
+
+  const options = document.createElement("div");
+  options.className = "produkt-skabelon-size-options";
+
+  const button = document.createElement("button");
+  button.className = "produkt-skabelon-size produkt-skabelon-size-active";
+  button.type = "button";
+  button.dataset.productPrice = price;
+  button.setAttribute("aria-pressed", "true");
+  button.textContent = sizeLabel;
+
+  options.append(button);
+  fieldset.append(legend, options);
+  buyButton.before(fieldset);
+}
+
+ensureProductPageSingleSizeButton();
+
 const productPageSizeButtons = document.querySelectorAll(".produkt-skabelon-size[data-product-price]");
 
 if (productPageSizeButtons.length) {
@@ -1472,13 +1527,27 @@ async function fetchQuickViewDetails(fullLink) {
       const doc = new DOMParser().parseFromString(html, "text/html");
       const heroImage = doc.querySelector(".produkt-skabelon-image-hero img")?.getAttribute("src") || "";
       const detailsImage = doc.querySelector(".produkt-skabelon-ingredient-image")?.getAttribute("src") || "";
-      const sizes = Array.from(doc.querySelectorAll(".produkt-skabelon-size[data-product-price]")).map((button) => ({
+      let sizes = Array.from(doc.querySelectorAll(".produkt-skabelon-size[data-product-price]")).map((button) => ({
         label: button.textContent.trim(),
         price: button.dataset.productPrice || "",
         image: getQuickViewUrl(button.dataset.productImage || heroImage, url),
         detailsImage: getQuickViewUrl(button.dataset.productDetailsImage || "", url),
         link: url,
       }));
+      const amountRow = Array.from(doc.querySelectorAll(".produkt-skabelon-info-row"))
+        .find((row) => row.querySelector(".produkt-skabelon-info-label")?.textContent.trim().toUpperCase().includes("NGDE"));
+      const amountText = amountRow?.querySelector(".produkt-skabelon-info-value")?.textContent.trim() || "";
+      const singleSizeLabel = /\d+\s*(ml|g)\b/i.test(amountText) ? amountText.split("/")[0].trim() : "";
+
+      if (!sizes.length && singleSizeLabel) {
+        sizes = [{
+          label: singleSizeLabel,
+          price: doc.querySelector("[data-product-page-price]")?.textContent.trim() || "",
+          image: getQuickViewUrl(heroImage, url),
+          detailsImage: "",
+          link: url,
+        }];
+      }
       const guide = Array.from(doc.querySelectorAll(".produkt-skabelon-spec-row"))
         .map((row) => {
           const title = row.querySelector("dt")?.textContent.trim() || "";
@@ -1517,10 +1586,11 @@ function mergeQuickViewData(data, details) {
 function renderQuickViewSizes(modal, data) {
   const sizes = modal.querySelector(".quick-view-size-options");
   const sizeFieldset = modal.querySelector(".quick-view-sizes");
-  const hasMultipleSizes = data.sizes.length > 1;
+  const visibleSizes = data.sizes.filter((size) => size.label);
+  const hasSizes = visibleSizes.length > 0;
 
-  sizeFieldset.hidden = !hasMultipleSizes;
-  sizes.replaceChildren(...(hasMultipleSizes ? data.sizes.map((size, index) => {
+  sizeFieldset.hidden = !hasSizes;
+  sizes.replaceChildren(...(hasSizes ? visibleSizes.map((size, index) => {
     const button = document.createElement("button");
     button.className = "quick-view-size";
     button.type = "button";
