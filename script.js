@@ -796,8 +796,9 @@ treatmentRows.forEach((row) => {
 
 productCards.forEach((card) => {
   const image = getCardImageFrame(card);
+  const content = card.querySelector(".product-content");
 
-  if (!image || image.querySelector(".product-add-button")) {
+  if (!image || !content || card.querySelector(".product-add-button")) {
     return;
   }
 
@@ -842,7 +843,8 @@ productCards.forEach((card) => {
 
   quickViewButton.appendChild(quickViewIcon);
   addButton.append(addButtonText, addButtonIcon);
-  image.append(quickViewButton, addButton);
+  image.append(quickViewButton);
+  content.append(addButton);
 });
 
 relatedProductCards.forEach((card) => {
