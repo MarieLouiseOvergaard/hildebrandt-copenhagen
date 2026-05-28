@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 28px 48px 88px;
-  background: #666666;
+  background: var(--color-text);
 }
 
 .hero-title {
@@ -145,7 +145,7 @@
    Mixly introduktion
 -------------------------------- */
 .mixly-introduktion {
-  background: var(--color-section-grey);
+  background: var(--color-light-blue);
 }
 
 .mixly-introduktion-indhold {
@@ -221,22 +221,24 @@
 .citat-sektion {
   min-height: 345px;
   padding: 90px 48px;
-  background: #e5f5f8;
+  background: var(--color-turkis);
 }
 
 .citat-tekst p {
-  color: var(--color-heading);
-  font-size: var(--font-quote-desktop);
+  color: var(--color-light-blue);
+  font-size: clamp(26px, 2.1vw, var(--font-quote-desktop));
+  line-height: 1.3;
 }
 
 .salon-citat-tekst p {
   color: var(--color-light-blue);
-  font-size: var(--font-salon-quote-desktop);
+  font-size: clamp(22px, 1.9vw, var(--font-salon-quote-desktop));
+  line-height: 1.3;
 }
 
 .citat-tekst footer {
   margin-top: 34px;
-  color: var(--color-heading);
+  color: var(--color-light-blue);
   font-style: normal;
   letter-spacing: 0.16em;
 }
@@ -312,7 +314,7 @@
   min-height: 370px;
   place-items: center;
   margin-bottom: 22px;
-  background: #d7d7d7;
+  background: var(--color-image-placeholder);
 }
 
 .forside-behandling-kort-billede::before {
@@ -345,7 +347,7 @@
   --anmeldelse-display-duration: 5000ms;
   --anmeldelse-transition-duration: 600ms;
   padding: 58px 48px 120px;
-  background: #f5f5f5;
+  background: var(--color-light-blue);
   text-align: center;
 }
 
@@ -357,6 +359,7 @@
 }
 
 .anmeldelser-titel {
+  color: var(--color-heading);
   text-transform: uppercase;
 }
 
@@ -454,7 +457,7 @@
   display: grid;
   min-height: 370px;
   place-items: center;
-  background: #d7d7d7;
+  background: var(--color-image-placeholder);
 }
 
 .guide-sektion-billede::before {
@@ -477,7 +480,7 @@
   display: grid;
   min-height: 525px;
   place-items: center;
-  background: #d7d7d7;
+  background: var(--color-image-placeholder);
 }
 
 .kort-sektion-billede::before {
@@ -676,7 +679,7 @@
     margin-right: calc(50% - 50vw);
     margin-left: calc(50% - 50vw);
     margin-top: 30px;
-    background: #d7d7d7;
+    background: var(--color-image-placeholder);
   }
 
   .om-belinda-billede::before {

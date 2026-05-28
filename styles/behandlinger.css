@@ -33,7 +33,7 @@
   gap: 38px;
   align-items: start;
   padding: 36px 36px 56px;
-  background: var(--color-section-grey);
+  background: var(--color-light-blue);
 }
 
 .behandlinger-hero-tekst {
@@ -123,7 +123,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 40px 28px;
-  background: var(--color-light-blue);
+  background: var(--color-turkis);
 }
 
 .behandlinger-intro-kort h2 {
@@ -232,7 +232,7 @@
 
 .behandlinger-konsultation p {
   margin-top: 30px;
-  color: var(--color-white);
+  color: var(--color-light-blue);
 }
 
 .behandlinger-konsultation-billede {
@@ -415,7 +415,7 @@
 
   .behandlinger-intro-kort {
     padding: 42px 18px;
-    background: var(--color-light-blue);
+    background: var(--color-turkis);
   }
 
   .behandlinger-intro-kort h2,

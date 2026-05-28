@@ -1,4 +1,4 @@
-/* Blog CSS: side-specifik desktop-layout for blog.html. */
+﻿/* Blog CSS: side-specifik desktop-layout for blog.html. */
 
 .blog-page .blog-main {
   background: var(--color-white);
@@ -192,7 +192,7 @@
   max-width: 1180px;
   margin: 0 auto 40px;
   padding: 44px 68px 34px;
-  background: var(--color-section-grey);
+  background: var(--color-light-blue);
 }
 
 .blog-page .blog-newsletter-copy {

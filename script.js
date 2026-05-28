@@ -902,7 +902,7 @@ const quickViewCatalog = {
       { label: "250 ml", price: "299 kr.", image: "img/produktbilleder/Rich-Shampoo-1.png" },
       { label: "1000 ml", price: "379 kr.", image: "img/produktbilleder/MIXLY-Rich-Repair-Shampoo-1000ml.png" },
     ],
-    detailsImage: "img/produktbilleder/MIXLY-Rich-Repair-Shampoo-1000ml.png",
+    detailsImage: "img/ingredienser/ingredienser-Rich-Repair-Shampoo-1000ml.png",
     fullLink: "products/shampoo/rich-repair-cleansing-shampoo.html",
     guide: [
       ["Brug", "Fordel i vådt hår, massér og skyl grundigt."],
@@ -918,7 +918,7 @@ const quickViewCatalog = {
       { label: "100 ml", price: "110 kr.", image: "img/produktbilleder/MIXLY-Low-Refresh-Shampoo-100.png" },
       { label: "1000 ml", price: "379 kr.", image: "img/produktbilleder/MIXLY-Low-Refresh-Shampoo-1000.png" },
     ],
-    detailsImage: "img/produktbilleder/MIXLY-Low-Refresh-Shampoo-1000.png",
+    detailsImage: "img/ingredienser/ingredienser-MIXLY-Low-Refresh-Shampoo-100.png",
     fullLink: "products/shampoo/low-refresh-cleansing-shampoo.html",
     guide: [
       ["Brug", "Massér i vådt hår og skyl grundigt."],
@@ -931,7 +931,7 @@ const quickViewCatalog = {
     description:
       "Let conditioner, der hjælper krøller med styrke og bevægelse uden at tynge.",
     sizes: [
-      { label: "250 ml", price: "159 kr.", image: "img/produktbilleder/Low-Conditioner-1.png", link: "products/conditioner/mixly-low-conditioner.html" },
+      { label: "200 ml", price: "159 kr.", image: "img/produktbilleder/Low-Conditioner-1.png", link: "products/conditioner/mixly-low-conditioner.html" },
       { label: "1000 ml", price: "399 kr.", image: "img/produktbilleder/MIXLY-Low-Conditioner-1000.png", link: "products/conditioner/mixly-low-conditioner.html" },
     ],
     detailsImage: "img/ingredienser/Ingrediens-Low-Conditioner-1000.png",
@@ -950,7 +950,7 @@ const quickViewCatalog = {
       { label: "200 ml", price: "159 kr.", image: "img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-200.png" },
       { label: "1000 ml", price: "399 kr.", image: "img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-1000.png" },
     ],
-    detailsImage: "img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-1000.png",
+    detailsImage: "img/ingredienser/ingredienser-Rich-Deep-Drink-Conditioner-1000.png",
     fullLink: "products/conditioner/rich-deep-drink-conditioner.html",
     guide: [
       ["Brug", "Fordel i længderne efter shampoo og skyl."],
@@ -1104,10 +1104,10 @@ function getProductFromPage() {
 
 function getQuickViewSelectedProduct(modal) {
   const title = modal.querySelector("#quick-view-title")?.textContent.trim() || "Mixly produkt";
-  const data = quickViewCatalog[normalizeProductTitle(title)] || {};
+  const data = modal.quickViewData || quickViewCatalog[normalizeProductTitle(title)] || {};
   const selectedIndex = Number(modal.dataset.selectedSizeIndex || 0);
   const selectedSize = data.sizes?.[selectedIndex];
-  const image = selectedSize?.image || modal.querySelector(".quick-view-detail-image img")?.getAttribute("src") || "";
+  const image = selectedSize?.image || modal.querySelector(".quick-view-product-image")?.getAttribute("src") || "";
 
   return {
     name: title,
@@ -1384,6 +1384,7 @@ updateCartBadges();
 let quickViewModal = null;
 let lastQuickViewTrigger = null;
 let shouldRestoreQuickViewFocus = true;
+const quickViewDetailCache = new Map();
 
 function normalizeProductTitle(title) {
   return title.trim().toLowerCase();
@@ -1406,11 +1407,145 @@ function getQuickViewData(card) {
     description: catalogData.description || description,
     tags: catalogData.tags || ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
     sizes: catalogData.sizes || [{ label: "", price, image: fallbackImage, link: fullLink }],
-    detailsImage: catalogData.detailsImage || fallbackImage,
+    detailsImage: catalogData.detailsImage || "",
     fullLink,
-    // TODO: Eksisterende quick view-tekster til Brug, God til og Effekt mangler for produkter uden catalogData.guide.
     guide: catalogData.guide || [],
   };
+}
+
+function getQuickViewUrl(value, baseUrl = window.location.href) {
+  if (!value || value === "#") {
+    return "";
+  }
+
+  try {
+    return new URL(value, baseUrl).href;
+  } catch (error) {
+    return value;
+  }
+}
+
+function getQuickViewGuideLabel(label) {
+  const normalizedLabel = normalizeProductTitle(label);
+
+  if (normalizedLabel === "anvendelse" || normalizedLabel.includes("brug")) {
+    return "Brug";
+  }
+
+  return label;
+}
+
+function getQuickViewFallbackGuide(data) {
+  if (data.guide.length) {
+    return data.guide;
+  }
+
+  return [
+    ["Brug", "Se produktets anvendelse på produktsiden."],
+    ["God til", data.description || "Krøller og bølger med behov for pleje."],
+    ["Effekt", "Pleje tilpasset hårets behov."],
+  ];
+}
+
+async function fetchQuickViewDetails(fullLink) {
+  const url = getQuickViewUrl(fullLink);
+
+  if (!url) {
+    return null;
+  }
+
+  if (quickViewDetailCache.has(url)) {
+    return quickViewDetailCache.get(url);
+  }
+
+  const detailsPromise = fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Produktdata kunne ikke hentes.");
+      }
+
+      return response.text();
+    })
+    .then((html) => {
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const heroImage = doc.querySelector(".produkt-skabelon-image-hero img")?.getAttribute("src") || "";
+      const detailsImage = doc.querySelector(".produkt-skabelon-ingredient-image")?.getAttribute("src") || "";
+      const sizes = Array.from(doc.querySelectorAll(".produkt-skabelon-size[data-product-price]")).map((button) => ({
+        label: button.textContent.trim(),
+        price: button.dataset.productPrice || "",
+        image: getQuickViewUrl(button.dataset.productImage || heroImage, url),
+        detailsImage: getQuickViewUrl(button.dataset.productDetailsImage || "", url),
+        link: url,
+      }));
+      const guide = Array.from(doc.querySelectorAll(".produkt-skabelon-spec-row"))
+        .map((row) => {
+          const title = row.querySelector("dt")?.textContent.trim() || "";
+          const text = row.querySelector("dd")?.textContent.trim() || "";
+          return title && text ? [getQuickViewGuideLabel(title), text] : null;
+        })
+        .filter(Boolean);
+
+      return {
+        sizes,
+        detailsImage: getQuickViewUrl(detailsImage, url),
+        productImage: getQuickViewUrl(heroImage, url),
+        guide,
+      };
+    })
+    .catch(() => null);
+
+  quickViewDetailCache.set(url, detailsPromise);
+  return detailsPromise;
+}
+
+function mergeQuickViewData(data, details) {
+  if (!details) {
+    return data;
+  }
+
+  return {
+    ...data,
+    sizes: details.sizes.length ? details.sizes : data.sizes,
+    detailsImage: details.detailsImage || data.detailsImage,
+    productImage: details.productImage || data.productImage,
+    guide: details.guide.length ? details.guide : data.guide,
+  };
+}
+
+function renderQuickViewSizes(modal, data) {
+  const sizes = modal.querySelector(".quick-view-size-options");
+  const sizeFieldset = modal.querySelector(".quick-view-sizes");
+  const hasMultipleSizes = data.sizes.length > 1;
+
+  sizeFieldset.hidden = !hasMultipleSizes;
+  sizes.replaceChildren(...(hasMultipleSizes ? data.sizes.map((size, index) => {
+    const button = document.createElement("button");
+    button.className = "quick-view-size";
+    button.type = "button";
+    button.textContent = size.label;
+    button.setAttribute("aria-label", `Vælg ${size.label}`);
+    button.addEventListener("click", () => {
+      setQuickViewSize(modal, data, index);
+    });
+    return button;
+  }) : []));
+}
+
+function renderQuickViewGuide(modal, data) {
+  const guide = modal.querySelector(".quick-view-guide");
+  guide.replaceChildren(...getQuickViewFallbackGuide(data).map(([title, text]) => {
+    const item = document.createElement("div");
+    item.className = "quick-view-guide-item";
+
+    const itemTitle = document.createElement("h3");
+    itemTitle.textContent = title;
+
+    const itemText = document.createElement("p");
+    itemText.textContent = text;
+
+    item.append(itemTitle, itemText);
+    return item;
+  }));
 }
 
 function createQuickViewModal() {
@@ -1428,11 +1563,12 @@ function createQuickViewModal() {
         <section class="quick-view-intro">
           <div class="quick-view-media">
             <div class="quick-view-detail-image">
-              <img alt="">
+              <img class="quick-view-product-image" alt="">
+              <img class="quick-view-ingredient-image" alt="">
             </div>
           </div>
           <div class="quick-view-summary">
-            <h2 id="quick-view-title"></h2>
+            <h2><a id="quick-view-title" href="#"></a></h2>
             <fieldset class="quick-view-sizes">
               <legend class="quick-view-size-label">Vælg størrelse</legend>
               <div class="quick-view-size-options"></div>
@@ -1469,10 +1605,29 @@ function setQuickViewSize(modal, data, selectedIndex) {
   const selectedSize = data.sizes[selectedIndex];
   const price = modal.querySelector(".quick-view-price");
   const readMore = modal.querySelector(".quick-view-read-more");
+  const imageWrap = modal.querySelector(".quick-view-detail-image");
+  const productImage = modal.querySelector(".quick-view-product-image");
+  const ingredientImage = modal.querySelector(".quick-view-ingredient-image");
+  const selectedDetailsImage = selectedSize.detailsImage || data.detailsImage || "";
 
   modal.dataset.selectedSizeIndex = String(selectedIndex);
   price.textContent = selectedSize.price;
   readMore.href = selectedSize.link || data.fullLink;
+  productImage.hidden = true;
+  productImage.removeAttribute("src");
+  productImage.alt = "";
+
+  if (selectedDetailsImage) {
+    ingredientImage.hidden = false;
+    ingredientImage.src = getQuickViewUrl(selectedDetailsImage);
+    ingredientImage.alt = `Ingredienser i ${data.title}`;
+    imageWrap.classList.add("quick-view-detail-image-single");
+  } else {
+    ingredientImage.hidden = true;
+    ingredientImage.removeAttribute("src");
+    ingredientImage.alt = "";
+    imageWrap.classList.add("quick-view-detail-image-single");
+  }
 
   modal.querySelectorAll(".quick-view-size").forEach((button, index) => {
     const isActive = index === selectedIndex;
@@ -1486,46 +1641,34 @@ function renderQuickView(card) {
   const modal = quickViewModal || createQuickViewModal();
   quickViewModal = modal;
 
-  modal.querySelector("#quick-view-title").textContent = data.title;
-
-  const sizes = modal.querySelector(".quick-view-size-options");
-  const sizeFieldset = modal.querySelector(".quick-view-sizes");
-  const hasMultipleSizes = data.sizes.length > 1;
-
-  sizeFieldset.hidden = !hasMultipleSizes;
-  sizes.replaceChildren(...(hasMultipleSizes ? data.sizes.map((size, index) => {
-    const button = document.createElement("button");
-    button.className = "quick-view-size";
-    button.type = "button";
-    button.textContent = size.label;
-    button.setAttribute("aria-label", `Vælg ${size.label}`);
-    button.addEventListener("click", () => {
-      setQuickViewSize(modal, data, index);
-    });
-    return button;
-  }) : []));
-
-  const detailImage = modal.querySelector(".quick-view-detail-image img");
-  detailImage.src = data.detailsImage;
-  detailImage.alt = `${data.title} produktvisual`;
-
-  const guide = modal.querySelector(".quick-view-guide");
-  guide.replaceChildren(...data.guide.map(([title, text]) => {
-    const item = document.createElement("div");
-    item.className = "quick-view-guide-item";
-
-    const itemTitle = document.createElement("h3");
-    itemTitle.textContent = title;
-
-    const itemText = document.createElement("p");
-    itemText.textContent = text;
-
-    item.append(itemTitle, itemText);
-    return item;
-  }));
-
+  const titleLink = modal.querySelector("#quick-view-title");
+  titleLink.textContent = data.title;
+  titleLink.href = data.fullLink;
+  const requestId = String(Date.now());
+  modal.dataset.quickViewRequestId = requestId;
+  modal.quickViewData = data;
+  renderQuickViewSizes(modal, data);
+  renderQuickViewGuide(modal, data);
   setQuickViewSize(modal, data, 0);
+
+  fetchQuickViewDetails(data.fullLink).then((details) => {
+    if (!details || modal.dataset.quickViewRequestId !== requestId) {
+      return;
+    }
+
+    const enrichedData = mergeQuickViewData(data, details);
+    const selectedLabel = data.sizes[Number(modal.dataset.selectedSizeIndex || 0)]?.label;
+    const matchingIndex = enrichedData.sizes.findIndex((size) => size.label === selectedLabel);
+    const selectedIndex = matchingIndex >= 0 ? matchingIndex : 0;
+
+    modal.quickViewData = enrichedData;
+    renderQuickViewSizes(modal, enrichedData);
+    renderQuickViewGuide(modal, enrichedData);
+    setQuickViewSize(modal, enrichedData, selectedIndex);
+  });
+
   return modal;
+
 }
 
 function openQuickView(card, event) {

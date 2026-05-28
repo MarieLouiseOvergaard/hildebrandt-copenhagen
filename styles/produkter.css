@@ -1,4 +1,4 @@
-/* Produkter CSS: produktside, produktkort og horisontale produkt-rækker. */
+﻿/* Produkter CSS: produktside, produktkort og horisontale produkt-rÃ¦kker. */
 
 .produkter-main {
   overflow-x: hidden;
@@ -218,7 +218,7 @@ body[data-product-page-filter="all"] .product-promo-card {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #e5f3f6;
+  background: var(--color-light-blue);
 }
 
 .product-image::before {
@@ -466,7 +466,7 @@ body[data-product-page-filter="all"] .product-promo-card {
   display: flex;
   min-height: 304px;
   align-items: center;
-  background: #e5f3f6;
+  background: var(--color-light-blue);
 }
 
 .product-promo-card .product-content {
@@ -495,12 +495,13 @@ body[data-product-page-filter="all"] .product-promo-card {
 }
 
 .products-quote blockquote {
-  max-width: 760px;
+  max-width: 900px;
 }
 
 .products-quote p {
   color: var(--color-light-blue);
   font-family: var(--font-quote);
+  font-size: clamp(22px, 1.9vw, var(--font-quote-desktop));
   line-height: 1.35;
 }
 
@@ -574,22 +575,25 @@ body[data-product-page-filter="all"] .product-promo-card {
 
 .quick-view-intro {
   display: grid;
+  align-items: start;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.92fr);
 }
 
 .quick-view-media {
   display: grid;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  min-height: min(88dvh, 760px);
   background: var(--color-light-blue);
 }
 
 .quick-view-detail-image {
   display: grid;
-  place-items: center;
-}
-
-.quick-view-detail-image {
-  min-height: 560px;
-  padding: 36px;
+  align-items: start;
+  justify-items: center;
+  min-height: min(88dvh, 760px);
+  padding: 24px 36px 36px;
 }
 
 .quick-view-detail-image img {
@@ -598,17 +602,45 @@ body[data-product-page-filter="all"] .product-promo-card {
   object-fit: contain;
 }
 
+.quick-view-product-image {
+  display: none;
+}
+
+.quick-view-ingredient-image {
+  justify-self: center;
+}
+
+.quick-view-detail-image-single {
+  place-items: center;
+}
+
+.quick-view-detail-image-single .quick-view-product-image {
+  max-width: 430px;
+  justify-self: center;
+}
+
 .quick-view-summary {
   display: flex;
   flex-direction: column;
   min-height: 560px;
   padding: 34px 40px 24px;
+  background: var(--color-white);
 }
 
 .quick-view-summary h2 {
   max-width: 480px;
   font-size: clamp(26px, 3vw, 38px);
   line-height: 1.16;
+}
+
+.quick-view-summary h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.quick-view-summary h2 a:hover,
+.quick-view-summary h2 a:focus-visible {
+  text-decoration: none;
 }
 
 .quick-view-price {
@@ -934,6 +966,10 @@ body[data-product-page-filter="all"] .product-promo-card {
 
   .products-quote footer {
     margin-top: 24px;
+  }
+
+  .products-quote p {
+    font-size: var(--font-review-quote-mobile);
   }
 
   .quick-view {

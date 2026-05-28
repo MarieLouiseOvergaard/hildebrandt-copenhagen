@@ -8,7 +8,7 @@
   gap: 110px;
   padding: 70px 120px 34px;
   color: #6f7f85;
-  background: #f4f4f4;
+  background: var(--color-light-blue);
 }
 
 .footer h2 {
@@ -252,8 +252,8 @@
   grid-template-columns: minmax(150px, 1fr) minmax(220px, 1.15fr) minmax(150px, 0.9fr) minmax(240px, 1.1fr);
   gap: clamp(46px, 7vw, 120px);
   padding: 68px clamp(42px, 8.3vw, 120px) 14px;
-  color: #666666;
-  background: #f7f7f7;
+  color: var(--color-text);
+  background: var(--color-light-blue);
 }
 
 .footer--frontpage h2 {
@@ -283,7 +283,7 @@
 .footer--frontpage .kontakt-status,
 .footer--frontpage .kontakt-status-detail,
 .footer--frontpage .footer-newsletter-consent {
-  color: #666666;
+  color: var(--color-text);
   font-size: 14px;
   line-height: 1.85;
 }
@@ -300,7 +300,7 @@
 }
 
 .footer--frontpage .kontakt-status-detail {
-  color: #666666;
+  color: var(--color-text);
   line-height: 1.45;
 }
 
@@ -339,7 +339,7 @@
 }
 
 .footer--frontpage .footer-tider-liste dd {
-  color: #666666;
+  color: var(--color-text);
 }
 
 .footer--frontpage .footer-menu-liste {
@@ -567,7 +567,7 @@
 
 @media (max-width: 767px) {
   html {
-    background: #f7f7f7;
+    background: var(--color-light-blue);
   }
 
   .footer--frontpage {

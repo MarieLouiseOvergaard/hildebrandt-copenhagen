@@ -1,4 +1,4 @@
-/* Guides CSS: editorial krølleunivers, guides og produkt-rækker. */
+﻿/* Guides CSS: editorial krÃ¸lleunivers, guides og produkt-rÃ¦kker. */
 
 .guides-main {
   --guide-page-offset: max(42px, calc((100vw - 1278px) / 2));
@@ -133,7 +133,7 @@
   align-items: center;
   padding: 30px 170px 30px var(--guide-page-offset);
   border-radius: 0 12px 12px 0;
-  background: #77a3b3;
+  background: var(--color-turkis);
 }
 
 .guide-compare-rich .guide-compare-body {
@@ -326,7 +326,7 @@
 }
 
 .guide-line-rich {
-  color: #c27f33;
+  color: var(--color-primary);
 }
 
 .guide-feeling-item img {

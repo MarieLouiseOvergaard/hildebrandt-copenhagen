@@ -84,7 +84,7 @@
   min-height: 345px;
   place-items: center;
   padding: 90px 48px;
-  background: #e5f5f8;
+  background: var(--color-turkis);
   text-align: center;
 }
 
@@ -93,14 +93,14 @@
 }
 
 .om-os-quote p {
-  color: var(--color-heading);
-  font-size: var(--font-quote-desktop);
+  color: var(--color-light-blue);
+  font-size: clamp(22px, 1.9vw, var(--font-quote-desktop));
   line-height: 1.3;
 }
 
 .om-os-quote footer {
   margin-top: 34px;
-  color: var(--color-heading);
+  color: var(--color-light-blue);
   font-style: normal;
   letter-spacing: 0.16em;
 }
@@ -215,7 +215,7 @@
   }
 
   .om-os-quote p {
-    font-size: 20px;
+    font-size: var(--font-review-quote-mobile);
     line-height: 1.3;
   }
 
