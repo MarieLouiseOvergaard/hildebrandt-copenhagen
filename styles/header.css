@@ -56,13 +56,13 @@
     pointer-events: auto;
   }
 
-  .top-menu-logo::before {
+.top-menu-logo::before {
     content: "";
     display: block;
     width: 100%;
     height: 28px;
     background: url("../img/Logo.png") center / contain no-repeat;
-    filter: brightness(0) invert(1);
+    filter: brightness(0) invert(97%);
   }
 
   .top-menu-logo-image {
@@ -76,7 +76,7 @@
   justify-content: space-between;
   min-height: 58px;
   padding: 0 48px;
-  color: var(--color-heading);
+  color: #F7F7F7;
   background: var(--color-turkis);
   text-transform: uppercase;
   font-size: clamp(10px, 0.9vw, 12px);
@@ -131,7 +131,7 @@
   display: block;
   width: 30px;
   height: 30px;
-  filter: brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(1010%) hue-rotate(151deg) brightness(93%) contrast(88%);
+  filter: brightness(0) invert(97%);
 }
 
 .top-nav-item-menu {
@@ -744,7 +744,7 @@
     gap: 10px;
     margin-top: 0;
     padding: 0 14px;
-    color: var(--color-heading);
+    color: #F7F7F7;
     background: var(--color-turkis);
     border-top: 0;
     font-size: 0.58rem;
@@ -776,7 +776,7 @@
     justify-content: center;
     padding: 0 22px;
     border: 1px solid var(--color-primary);
-    border-radius: 2px;
+    border-radius: var(--button-radius);
     color: var(--color-white);
     background: var(--color-primary);
     box-shadow: 0 4px 14px rgba(51, 76, 86, 0.18);
@@ -790,10 +790,10 @@
     text-transform: uppercase;
     transform: none;
     white-space: nowrap;
-    transition: background 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+    transition: opacity 200ms ease, background 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
   }
 
-  .has-hero-booking-cta:not(.is-sticky-booking-visible) .top-menu > .book-knap {
+  body:not(.is-sticky-booking-visible) .top-menu > .book-knap {
     opacity: 0;
     pointer-events: none;
     transform: translateY(8px);
@@ -921,7 +921,7 @@
 
   .top-nav-link::before {
     grid-area: 1 / 1;
-    color: var(--color-heading);
+    color: #F7F7F7;
     font-size: 1.2rem;
     line-height: 1;
   }
@@ -933,7 +933,7 @@
   .top-nav-icon-cart {
     width: 24px;
     height: 24px;
-    filter: brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(1010%) hue-rotate(151deg) brightness(93%) contrast(88%);
+    filter: brightness(0) invert(97%);
   }
 
   .menu-toggle::before {
@@ -941,9 +941,9 @@
     width: 26px;
     height: 17px;
     background:
-      linear-gradient(var(--color-heading), var(--color-heading)) top / 100% 2px no-repeat,
-      linear-gradient(var(--color-heading), var(--color-heading)) center / 100% 2px no-repeat,
-      linear-gradient(var(--color-heading), var(--color-heading)) bottom / 100% 2px no-repeat;
+      linear-gradient(#F7F7F7, #F7F7F7) top / 100% 2px no-repeat,
+      linear-gradient(#F7F7F7, #F7F7F7) center / 100% 2px no-repeat,
+      linear-gradient(#F7F7F7, #F7F7F7) bottom / 100% 2px no-repeat;
   }
 
   .top-menu a:focus-visible,
