@@ -1109,7 +1109,8 @@ function escapeCartText(value) {
 function getProductFromCard(card) {
   const title = getCardTitle(card);
   const catalogData = quickViewCatalog[normalizeProductTitle(title)];
-  const defaultSize = catalogData?.sizes?.[0];
+  const defaultSizeIndex = catalogData?.sizes ? Math.max(getDefaultProductSizeIndex(catalogData.sizes), 0) : 0;
+  const defaultSize = catalogData?.sizes?.[defaultSizeIndex];
   const meta = Array.from(card.querySelectorAll(".product-meta span")).map((item) => item.textContent.trim());
   const relatedPrice = card.classList.contains("produkt-skabelon-related-card") ? card.querySelector("p")?.textContent.trim() : "";
   const image = defaultSize?.image || getCardImage(card)?.getAttribute("src") || "";
@@ -1349,14 +1350,148 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+const productDetailsImageBySize = {
+  "rich repair cleansing shampoo": {
+    "1000 ml": "../../img/ingredienser/ingredienser-Rich-Repair-Shampoo-1000ml.png",
+  },
+  "low refresh cleansing shampoo": {
+    "100 ml": "../../img/ingredienser/ingredienser-MIXLY-Low-Refresh-Shampoo-100.png",
+  },
+  "low conditioner": {
+    "1000 ml": "../../img/ingredienser/Ingrediens-Low-Conditioner-1000.png",
+  },
+  "rich deep drink conditioner": {
+    "1000 ml": "../../img/ingredienser/ingredienser-Rich-Deep-Drink-Conditioner-1000.png",
+  },
+  "curly charcoal calm shampoo": {
+    "200 ml": "../../img/ingredienser/ingredienser-Mixly-Curly-Charcoal-Calm-200-ml.-2.png",
+  },
+  "rich + low shampoo": {
+    "2 x 100 ml": "../../img/ingredienser/sets/ingredienser-Rich-Repair-Low-Refresh-Shampoo-100-Saet.png",
+    "2 x 1000 ml": "../../img/ingredienser/sets/ingredienser-Low-Rich-Shampoo-1000.png",
+  },
+  "low + rich conditioner": {
+    "2 x 200 ml": "../../img/ingredienser/sets/ingredienser-Low-Rich-Deep-Drink-Conditioner-200-Saet-a.png",
+    "2 x 1000 ml": "../../img/ingredienser/sets/ingredienser-Low-Rich-Conditioner-1000-Set.png",
+  },
+};
+
+function getProductPageTitle() {
+  return document.querySelector("#produkt-skabelon-title")?.textContent.trim() || "";
+}
+
+function getProductSizeVolume(label) {
+  const matches = String(label || "").matchAll(/(?:(\d+)\s*x\s*)?(\d+(?:[.,]\d+)?)\s*(ml|g|gr)\b/gi);
+  let volume = 0;
+
+  for (const match of matches) {
+    const count = match[1] ? Number(match[1]) : 1;
+    const amount = Number(match[2].replace(",", "."));
+    const unit = match[3].toLowerCase();
+    const normalizedAmount = unit === "ml" ? amount : amount / 1000;
+    volume = Math.max(volume, count * normalizedAmount);
+  }
+
+  return volume;
+}
+
+function getDefaultProductSizeButton(buttons) {
+  return Array.from(buttons).reduce((bestButton, button) => {
+    if (!bestButton) {
+      return button;
+    }
+
+    const bestVolume = getProductSizeVolume(bestButton.textContent);
+    const buttonVolume = getProductSizeVolume(button.textContent);
+
+    return buttonVolume >= bestVolume ? button : bestButton;
+  }, null);
+}
+
+function getProductDetailsImageForSize(title, label) {
+  const productMap = productDetailsImageBySize[normalizeProductTitle(title)] || {};
+  return productMap[String(label || "").trim()] || "";
+}
+
+function getDefaultProductSizeIndex(sizes) {
+  return sizes.reduce((bestIndex, size, index) => {
+    if (bestIndex < 0) {
+      return index;
+    }
+
+    const bestVolume = getProductSizeVolume(sizes[bestIndex]?.label);
+    const sizeVolume = getProductSizeVolume(size.label);
+
+    return sizeVolume >= bestVolume ? index : bestIndex;
+  }, -1);
+}
+
+function getProductPageAmountLabel() {
+  const rows = Array.from(document.querySelectorAll(".produkt-skabelon-info-row"));
+  const amountRow = rows.find((row) => {
+    const label = row.querySelector(".produkt-skabelon-info-label")?.textContent.trim().toUpperCase() || "";
+    return label.includes("MÆNGDE") || label.includes("STØRRELSE");
+  });
+  const amountText = amountRow?.querySelector(".produkt-skabelon-info-value")?.textContent.trim() || "";
+
+  return /\d+(?:[.,]\d+)?\s*(?:ml|g|gr)\b/i.test(amountText)
+    ? amountText.replace(/\bgr\b/gi, "g")
+    : "";
+}
+
+function ensureSingleProductSizeButton() {
+  const summary = document.querySelector(".produkt-skabelon-summary");
+  const price = document.querySelector("[data-product-page-price]");
+  const heroImage = document.querySelector(".produkt-skabelon-image-hero img");
+  const detailsImage = document.querySelector(".produkt-skabelon-ingredient-image");
+
+  if (!summary || summary.querySelector(".produkt-skabelon-size-group")) {
+    return;
+  }
+
+  const amountLabel = getProductPageAmountLabel();
+
+  if (!amountLabel) {
+    return;
+  }
+
+  const fieldset = document.createElement("fieldset");
+  fieldset.className = "produkt-skabelon-size-group";
+  fieldset.innerHTML = `
+    <legend class="produkt-skabelon-size-label produkt-skabelon-visually-hidden">Størrelse</legend>
+    <div class="produkt-skabelon-size-options"></div>
+  `;
+
+  const button = document.createElement("button");
+  button.className = "produkt-skabelon-size";
+  button.type = "button";
+  button.textContent = amountLabel;
+  button.dataset.productPrice = price?.textContent.trim() || "";
+  button.dataset.productImage = heroImage?.getAttribute("src") || "";
+  button.dataset.productDetailsImage = detailsImage?.getAttribute("src") || "";
+  fieldset.querySelector(".produkt-skabelon-size-options")?.append(button);
+  price?.after(fieldset);
+}
+
+ensureSingleProductSizeButton();
+
 const productPageSizeButtons = document.querySelectorAll(".produkt-skabelon-size[data-product-price]");
 
 if (productPageSizeButtons.length) {
   const productPagePrice = document.querySelector("[data-product-page-price]");
   const productPageImage = document.querySelector(".produkt-skabelon-image-hero img");
+  const productPageDetailsImage = document.querySelector(".produkt-skabelon-ingredient-image");
+  const productPageTitle = getProductPageTitle();
+  const defaultSizeButton = getDefaultProductSizeButton(productPageSizeButtons);
 
-  productPageSizeButtons.forEach((button, index) => {
-    const isActive = index === 0;
+  productPageSizeButtons.forEach((button) => {
+    const detailsImage = getProductDetailsImageForSize(productPageTitle, button.textContent);
+
+    if (detailsImage && !button.dataset.productDetailsImage) {
+      button.dataset.productDetailsImage = detailsImage;
+    }
+
+    const isActive = button === defaultSizeButton;
     button.classList.toggle("produkt-skabelon-size-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
 
@@ -1366,6 +1501,10 @@ if (productPageSizeButtons.length) {
 
     if (isActive && productPageImage && button.dataset.productImage) {
       productPageImage.src = button.dataset.productImage;
+    }
+
+    if (isActive && productPageDetailsImage && button.dataset.productDetailsImage) {
+      productPageDetailsImage.src = button.dataset.productDetailsImage;
     }
 
     button.addEventListener("click", () => {
@@ -1383,6 +1522,10 @@ if (productPageSizeButtons.length) {
 
       if (productPageImage && button.dataset.productImage) {
         productPageImage.src = button.dataset.productImage;
+      }
+
+      if (productPageDetailsImage && button.dataset.productDetailsImage) {
+        productPageDetailsImage.src = button.dataset.productDetailsImage;
       }
     });
   });
@@ -1510,7 +1653,12 @@ async function fetchQuickViewDetails(fullLink) {
         label: button.textContent.trim(),
         price: button.dataset.productPrice || "",
         image: getQuickViewUrl(button.dataset.productImage || heroImage, url),
-        detailsImage: getQuickViewUrl(button.dataset.productDetailsImage || "", url),
+        detailsImage: getQuickViewUrl(
+          button.dataset.productDetailsImage ||
+            getProductDetailsImageForSize(doc.querySelector("#produkt-skabelon-title")?.textContent.trim() || "", button.textContent.trim()) ||
+            "",
+          url
+        ),
         link: url,
       }));
       const amountRow = Array.from(doc.querySelectorAll(".produkt-skabelon-info-row"))
@@ -1523,7 +1671,7 @@ async function fetchQuickViewDetails(fullLink) {
           label: singleSizeLabel,
           price: doc.querySelector("[data-product-page-price]")?.textContent.trim() || "",
           image: getQuickViewUrl(heroImage, url),
-          detailsImage: "",
+          detailsImage: getQuickViewUrl(detailsImage, url),
           link: url,
         }];
       }
@@ -1565,10 +1713,12 @@ function mergeQuickViewData(data, details) {
 function renderQuickViewSizes(modal, data) {
   const sizes = modal.querySelector(".quick-view-size-options");
   const sizeFieldset = modal.querySelector(".quick-view-sizes");
+  const sizeLegend = modal.querySelector(".quick-view-size-label");
   const visibleSizes = data.sizes.filter((size) => size.label);
   const hasSizes = visibleSizes.length > 0;
 
   sizeFieldset.hidden = !hasSizes;
+  sizeLegend.hidden = visibleSizes.length === 1;
   sizes.replaceChildren(...(hasSizes ? visibleSizes.map((size, index) => {
     const button = document.createElement("button");
     button.className = "quick-view-size";
@@ -1700,7 +1850,7 @@ function renderQuickView(card) {
   modal.quickViewData = data;
   renderQuickViewSizes(modal, data);
   renderQuickViewGuide(modal, data);
-  setQuickViewSize(modal, data, 0);
+  setQuickViewSize(modal, data, Math.max(getDefaultProductSizeIndex(data.sizes), 0));
 
   fetchQuickViewDetails(data.fullLink).then((details) => {
     if (!details || modal.dataset.quickViewRequestId !== requestId) {
@@ -1710,7 +1860,7 @@ function renderQuickView(card) {
     const enrichedData = mergeQuickViewData(data, details);
     const selectedLabel = data.sizes[Number(modal.dataset.selectedSizeIndex || 0)]?.label;
     const matchingIndex = enrichedData.sizes.findIndex((size) => size.label === selectedLabel);
-    const selectedIndex = matchingIndex >= 0 ? matchingIndex : 0;
+    const selectedIndex = matchingIndex >= 0 ? matchingIndex : Math.max(getDefaultProductSizeIndex(enrichedData.sizes), 0);
 
     modal.quickViewData = enrichedData;
     renderQuickViewSizes(modal, enrichedData);

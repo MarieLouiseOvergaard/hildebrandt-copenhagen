@@ -94,8 +94,7 @@
   border: 0;
 }
 
-.produkt-skabelon-size-label,
-.produkt-skabelon-size-group .produkt-skabelon-visually-hidden {
+.produkt-skabelon-size-label {
   position: static;
   display: block;
   width: auto;
