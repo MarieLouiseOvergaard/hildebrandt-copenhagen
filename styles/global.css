@@ -60,6 +60,83 @@
   --button-radius: 2px;
 }
 
+/* Billedpladser: udfyld src="" i HTML'en, så vises billedet uden at strække. */
+.menu-dropdown-product-image,
+.mobile-menu-feature-image,
+.behandlinger-placeholder,
+.blog-page .blog-card-image,
+.blog-page .indlaeg-billede,
+.blog-page .indlaeg-produkt-cta-billede,
+.om-os-image-placeholder,
+.kroelle-placeholder,
+.guide-hero-media,
+.guide-compare-placeholder,
+.guide-placeholder,
+.guide-styling-placeholder,
+.guide-styling-tube,
+.produkt-skabelon-image,
+.produkt-skabelon-related-image {
+  overflow: hidden;
+}
+
+.menu-dropdown-product-image > img,
+.mobile-menu-feature-image > img,
+.behandlinger-placeholder > img,
+.blog-page .blog-card-image > img,
+.blog-page .indlaeg-billede > img,
+.blog-page .indlaeg-produkt-cta-billede > img,
+.om-os-image-placeholder > img,
+.kroelle-placeholder > img,
+.guide-hero-media > img,
+.guide-compare-placeholder > img,
+.guide-placeholder > img,
+.guide-styling-placeholder > img,
+.guide-styling-tube > img,
+.produkt-skabelon-image > img,
+.produkt-skabelon-related-image > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+}
+
+.menu-dropdown-product-image > img[src=""],
+.mobile-menu-feature-image > img[src=""],
+.behandlinger-placeholder > img[src=""],
+.blog-page .blog-card-image > img[src=""],
+.blog-page .indlaeg-billede > img[src=""],
+.blog-page .indlaeg-produkt-cta-billede > img[src=""],
+.om-os-image-placeholder > img[src=""],
+.kroelle-placeholder > img[src=""],
+.guide-hero-media > img[src=""],
+.guide-compare-placeholder > img[src=""],
+.guide-placeholder > img[src=""],
+.guide-styling-placeholder > img[src=""],
+.guide-styling-tube > img[src=""],
+.produkt-skabelon-image > img[src=""],
+.produkt-skabelon-related-image > img[src=""] {
+  display: none;
+}
+
+.menu-dropdown-product-image:has(> img[src]:not([src=""])) > :not(img),
+.mobile-menu-feature-image:has(> img[src]:not([src=""])) > :not(img),
+.behandlinger-placeholder:has(> img[src]:not([src=""])) > :not(img),
+.blog-page .blog-card-image:has(> img[src]:not([src=""])) > :not(img),
+.blog-page .indlaeg-billede:has(> img[src]:not([src=""])) > :not(img),
+.blog-page .indlaeg-produkt-cta-billede:has(> img[src]:not([src=""])) > :not(img),
+.om-os-image-placeholder:has(> img[src]:not([src=""])) > :not(img),
+.kroelle-placeholder:has(> img[src]:not([src=""])) > :not(img),
+.guide-hero-media:has(> img[src]:not([src=""])) > :not(img),
+.guide-compare-placeholder:has(> img[src]:not([src=""])) > :not(img),
+.guide-placeholder:has(> img[src]:not([src=""])) > :not(img),
+.guide-styling-placeholder:has(> img[src]:not([src=""])) > :not(img),
+.guide-styling-tube:has(> img[src]:not([src=""])) > :not(img),
+.produkt-skabelon-image:has(> img[src]:not([src=""])) > :not(img),
+.produkt-skabelon-related-image:has(> img[src]:not([src=""])) > :not(img) {
+  display: none;
+}
+
 /* ==================================================
    2. RESET OG BASE
    Ens udgangspunkt på tværs af browsere.

@@ -85,6 +85,8 @@
 }
 
 .guide-hero-media {
+  display: grid;
+  place-items: center;
   min-height: 422px;
   background: var(--color-image-placeholder);
 }
