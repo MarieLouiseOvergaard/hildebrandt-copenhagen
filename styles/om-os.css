@@ -60,7 +60,7 @@
   flex-direction: column;
   width: 100%;
   color: #111111;
-  background: var(--color-image-placeholder);
+  background: transparent;
   font-family: var(--font-heading);
   font-weight: 400;
   line-height: 1.35;

@@ -87,7 +87,7 @@
   display: grid;
   place-items: center;
   min-height: 422px;
-  background: var(--color-image-placeholder);
+  background: transparent;
 }
 
 .guide-compare {
@@ -186,7 +186,7 @@
   width: 216px;
   height: 302px;
   place-items: center;
-  background: #d9d9d9;
+  background: transparent;
   color: #111111;
   font-family: var(--font-heading);
   font-size: 1.8rem;
@@ -260,7 +260,7 @@
   display: grid;
   min-height: 290px;
   place-items: center;
-  background: #d9d9d9;
+  background: transparent;
   color: #111111;
   font-family: var(--font-heading);
   font-size: 2rem;
@@ -423,7 +423,7 @@
   display: grid;
   aspect-ratio: 315 / 370;
   place-items: center;
-  background: #d9d9d9;
+  background: transparent;
   color: #111111;
   font-family: var(--font-heading);
   text-align: center;
@@ -454,7 +454,7 @@
   width: min(126px, 48%);
   aspect-ratio: 0.54;
   place-items: center;
-  background: #b8b8b8;
+  background: transparent;
   color: #111111;
   font-family: var(--font-heading);
 }
@@ -480,7 +480,7 @@
 .guide-styling-images-right::after {
   display: grid;
   aspect-ratio: 315 / 370;
-  background: #d9d9d9;
+  background: transparent;
   content: "";
 }
 
