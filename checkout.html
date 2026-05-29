@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="img/logo/monogramDarkblue.svg">
+  <title>Checkout - Hildebrandt Copenhagen</title>
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <link rel="stylesheet" href="styles/checkout.css">
+</head>
+<body class="checkout-page">
+  <header class="header">
+    <div class="top-menu">
+      <a class="book-knap" href="https://salonbook.one/?henriksencopenhagen#/" aria-label="Book tid">Book tid</a>
+      <a class="menu-logo-link top-menu-logo" href="index.html" aria-label="Gå til forsiden">
+        <img class="menu-logo top-menu-logo-image" src="img/logo/monogramLysgraa.svg" alt="Hildebrandt Copenhagen monogram">
+      </a>
+
+      <nav class="top-nav" aria-label="Hjælpenavigation">
+        <ul class="top-nav-list">
+          <li class="top-nav-item">
+            <a class="top-nav-link top-nav-link-cart" href="#" aria-label="Kurv"><img class="top-nav-icon top-nav-icon-cart" src="img/ikoner/kurv.svg" alt=""></a>
+          </li>
+          <li class="top-nav-item top-nav-item-menu">
+            <button class="top-nav-link menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"></button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <nav class="menu" aria-label="Hovednavigation">
+      <ul class="menu-list">
+        <li class="menu-item menu-item-dropdown">
+          <a class="menu-link menu-link-dropdown" href="produkter.html" aria-haspopup="true">
+            Produkter
+            <span class="menu-link-arrow" aria-hidden="true">⌄</span>
+          </a>
+          <div class="menu-dropdown" aria-label="Produktmenu">
+            <div class="menu-dropdown-inner">
+              <nav class="menu-dropdown-column" aria-label="Produktoversigt">
+                <ul class="menu-dropdown-list">
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-startpakker.html">Startpakke</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-saet.html">Sæt</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter.html">Alle produkter</a></li>
+                </ul>
+              </nav>
+              <nav class="menu-dropdown-column" aria-label="Produkttyper">
+                <ul class="menu-dropdown-list">
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-shampoo.html">Shampoo</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-conditioner.html">Conditioner</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-haarmasker.html">Hårmaske</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="produkter-styling.html">Styling</a></li>
+                </ul>
+              </nav>
+              <div class="menu-dropdown-products">
+                <a class="menu-dropdown-product" href="produkter-startpakker.html">
+                  <span class="menu-dropdown-product-image"><img src="img/image/shampoo-haand.png" alt=""><span class="image-placeholder-label">165 x 195</span></span>
+                  <span class="menu-dropdown-product-title">Klar til at komme i gang?</span>
+                </a>
+                <a class="menu-dropdown-product" href="guides.html">
+                  <span class="menu-dropdown-product-image"><img src="img/ikoner/low-rich-balance.png" alt=""><span class="image-placeholder-label">165 x 195</span></span>
+                  <span class="menu-dropdown-product-title">Find din LOW-RICH balance</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item"><a class="menu-link" href="behandlinger.html">Behandlinger</a></li>
+        <li class="menu-item menu-item-dropdown">
+          <a class="menu-link menu-link-dropdown" href="kroelleunivers.html" aria-haspopup="true">
+            Krølleunivers
+            <span class="menu-link-arrow" aria-hidden="true">⌄</span>
+          </a>
+          <div class="menu-dropdown" aria-label="Krølleuniversmenu">
+            <div class="menu-dropdown-inner">
+              <nav class="menu-dropdown-column" aria-label="Krølleunivers">
+                <ul class="menu-dropdown-list">
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="kroelleunivers.html">Curl DNA fordi ingen krøller er ens</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="guides.html">Din guide til LOW og RICH</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="blog.html">Flere krølleguides og tips</a></li>
+                </ul>
+              </nav>
+              <div class="menu-dropdown-column" aria-hidden="true"></div>
+              <div class="menu-dropdown-products">
+                <a class="menu-dropdown-product" href="kroelleunivers.html">
+                  <span class="menu-dropdown-product-image"><img src="img/image/kroller-lav.png" alt=""><span class="image-placeholder-label">165 x 195</span></span>
+                  <span class="menu-dropdown-product-title">Lær dine krøller at kende</span>
+                </a>
+                <a class="menu-dropdown-product" href="guides.html">
+                  <span class="menu-dropdown-product-image"><img src="img/image/produkter-i-haand.png" alt=""><span class="image-placeholder-label">165 x 195</span></span>
+                  <span class="menu-dropdown-product-title">Udforsk guides</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="menu-item"><a class="menu-link" href="omos.html">Historien bag Hildebrandt</a></li>
+        <li class="menu-item"><a class="menu-link" href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-panel mobile-menu-panel-main" data-mobile-panel="main">
+      <div class="mobile-menu-header">
+        <p class="mobile-menu-title">Menu</p>
+        <button class="mobile-menu-close" type="button" aria-label="Luk menu">×</button>
+      </div>
+      <nav class="mobile-menu-nav" aria-label="Mobilnavigation">
+        <ul class="mobile-menu-list">
+          <li class="mobile-menu-item"><button class="mobile-menu-link mobile-menu-link-products" type="button">Produkter<span class="mobile-menu-arrow" aria-hidden="true">›</span></button></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="behandlinger.html">Behandlinger</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="kroelleunivers.html">Krølleunivers</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="guides.html">Din guide til LOW og RICH</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="blog.html">Flere krølleguides og tips</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="omos.html">Historien bag Hildebrandt</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mobile-menu-panel mobile-menu-panel-products" data-mobile-panel="products">
+      <div class="mobile-menu-header">
+        <button class="mobile-menu-back" type="button" aria-label="Tilbage til menu">‹</button>
+        <p class="mobile-menu-title">Produkter</p>
+      </div>
+      <div class="mobile-menu-scroll">
+        <nav class="mobile-menu-nav" aria-label="Produktnavigation">
+          <ul class="mobile-menu-list mobile-menu-product-list">
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-startpakker.html">Startpakke</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-saet.html">Sæt</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-shampoo.html">Shampoo</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-conditioner.html">Conditioner</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-haarmasker.html">Hårmaske</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter-styling.html">Styling</a></li>
+            <li class="mobile-menu-item"><a class="mobile-menu-link" href="produkter.html">Alle produkter</a></li>
+            <li class="mobile-menu-item mobile-menu-feature-item"><a class="mobile-menu-link mobile-menu-feature-link" href="guides.html">Find din LOW-RICH balance</a></li>
+          </ul>
+        </nav>
+        <div class="mobile-menu-feature">
+          <div class="mobile-menu-feature-image" aria-hidden="true"><img src="img/ikoner/low-rich-balance.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="checkout-main">
+    <form class="checkout-layout" data-checkout-form novalidate>
+      <section class="checkout-customer" aria-labelledby="checkout-title">
+        <h1 id="checkout-title">Kasse</h1>
+
+        <section class="checkout-section" aria-labelledby="checkout-contact-title">
+          <h2 id="checkout-contact-title">Kontaktoplysninger</h2>
+          <div class="checkout-field-grid checkout-field-grid-two">
+            <label class="checkout-field">
+              <span class="checkout-field-label">Fornavn <span class="checkout-required">*</span></span>
+              <input type="text" name="firstName" placeholder=" " autocomplete="given-name" required>
+            </label>
+            <label class="checkout-field">
+              <span class="checkout-field-label">Efternavn <span class="checkout-required">*</span></span>
+              <input type="text" name="lastName" placeholder=" " autocomplete="family-name" required>
+            </label>
+          </div>
+          <label class="checkout-field">
+            <span class="checkout-field-label">E-mailadresse <span class="checkout-required">*</span></span>
+            <input type="email" name="email" placeholder=" " autocomplete="email" required>
+          </label>
+          <label class="checkout-field">
+            <span class="checkout-field-label">Telefon <span class="checkout-required">*</span></span>
+            <input type="tel" name="phone" placeholder=" " autocomplete="tel" required>
+          </label>
+          <label class="checkout-field">
+            <span class="checkout-field-label">Firmanavn (valgfri)</span>
+            <input type="text" name="company" placeholder=" " autocomplete="organization">
+          </label>
+        </section>
+
+        <section class="checkout-section" aria-labelledby="checkout-address-title">
+          <h2 id="checkout-address-title">Leveringsadresse</h2>
+          <label class="checkout-field">
+            <span class="checkout-field-label">Gadenavn og nr <span class="checkout-required">*</span></span>
+            <input type="text" name="address" placeholder=" " autocomplete="street-address" required>
+          </label>
+          <div class="checkout-field-grid checkout-field-grid-two">
+            <label class="checkout-field">
+              <span class="checkout-field-label">Postnummer <span class="checkout-required">*</span></span>
+              <input type="text" name="postalCode" placeholder=" " autocomplete="postal-code" required>
+            </label>
+            <label class="checkout-field">
+              <span class="checkout-field-label">By <span class="checkout-required">*</span></span>
+              <input type="text" name="city" placeholder=" " autocomplete="address-level2" required>
+            </label>
+          </div>
+          <label class="checkout-field">
+            <span class="checkout-field-label">Land</span>
+            <input type="text" name="country" value="Danmark" placeholder=" " autocomplete="country-name" readonly>
+          </label>
+        </section>
+
+        <section class="checkout-section" aria-labelledby="checkout-shipping-title">
+          <h2 id="checkout-shipping-title">Levering</h2>
+          <p>Vælg hvordan du vil modtage din ordre.</p>
+
+          <div class="checkout-option-list" data-shipping-options>
+            <label class="checkout-option">
+              <input type="radio" name="shipping" value="35">
+              <span class="checkout-option-icon" aria-hidden="true">GLS</span>
+              <span class="checkout-option-content">
+                <span class="checkout-option-title">GLS Pakkeshop</span>
+                <strong>35,00 kr.</strong>
+                <span>Indtast forsendelsesadresse for at se tilgængelige udleveringssteder</span>
+              </span>
+            </label>
+            <label class="checkout-option">
+              <input type="radio" name="shipping" value="49">
+              <span class="checkout-option-icon" aria-hidden="true">GLS</span>
+              <span class="checkout-option-content">
+                <span class="checkout-option-title">GLS Privatlevering</span>
+                <strong>49,00 kr.</strong>
+                <span>Levering direkte til din adresse</span>
+              </span>
+            </label>
+            <label class="checkout-option">
+              <input type="radio" name="shipping" value="0">
+              <span class="checkout-option-icon" aria-hidden="true">HC</span>
+              <span class="checkout-option-content">
+                <span class="checkout-option-title">Afhentning hos Hildebrandt Copenhagen</span>
+                <strong>Gratis</strong>
+                <span>På Frederiksberg, Nordre Fasan Vej 163 (tirsdag, torsdag og fredag kl. 10.30-14.30)</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="checkout-comment">
+            <div class="checkout-comment-toggle-field">
+              <button class="checkout-comment-toggle" type="button" aria-expanded="false" aria-controls="checkout-comment-field">
+                <span class="checkout-comment-toggle-symbol" aria-hidden="true">+</span>
+                <span>Tilføj kommentar til ordren</span>
+                <span class="checkout-comment-optional">(valgfrit)</span>
+              </button>
+            </div>
+            <label class="checkout-field checkout-comment-field" id="checkout-comment-field" hidden>
+              <span>Kommentar til ordren</span>
+              <textarea name="orderComment" rows="4"></textarea>
+            </label>
+          </div>
+        </section>
+      </section>
+
+      <aside class="checkout-order" aria-labelledby="checkout-order-title">
+        <h2 id="checkout-order-title">Din ordre</h2>
+
+        <div class="checkout-product-list" data-checkout-cart-items>
+          <p class="checkout-empty">Din kurv er tom.</p>
+        </div>
+
+        <div class="checkout-discount">
+          <label for="checkout-discount-code">Rabatkupon</label>
+          <div class="checkout-discount-row">
+            <input id="checkout-discount-code" type="text" name="discountCode" placeholder="Indtast kode">
+            <button class="button button-secondary" type="button" data-apply-discount>Anvend</button>
+          </div>
+          <p class="checkout-discount-message" data-discount-message aria-live="polite"></p>
+        </div>
+
+        <dl class="checkout-totals">
+          <div>
+            <dt>Subtotal</dt>
+            <dd data-checkout-subtotal>0,00 kr.</dd>
+          </div>
+          <div class="checkout-discount-total" data-discount-total-row hidden>
+            <dt>Rabat</dt>
+            <dd data-discount-total>-0,00 kr.</dd>
+          </div>
+          <div>
+            <dt>Levering</dt>
+            <dd data-shipping-total>Vælg levering</dd>
+          </div>
+          <div class="checkout-total-line">
+            <dt>I alt</dt>
+            <dd data-order-total>0,00 kr.</dd>
+          </div>
+        </dl>
+
+        <section class="checkout-payment" aria-labelledby="checkout-payment-title">
+          <h2 id="checkout-payment-title">Betaling</h2>
+          <div class="checkout-payment-list" data-payment-options>
+            <label class="checkout-payment-option">
+              <input type="radio" name="payment" value="card">
+              <span>Betalingskort</span>
+              <span class="checkout-payment-marks" aria-hidden="true">Dankort VISA Mastercard</span>
+            </label>
+            <label class="checkout-payment-option">
+              <input type="radio" name="payment" value="mobilepay">
+              <span>MobilePay</span>
+              <span class="checkout-payment-mark-mobilepay" aria-hidden="true">MobilePay</span>
+            </label>
+          </div>
+        </section>
+
+        <p class="checkout-privacy">Dine personlige data vil blive anvendt til at gennemføre din bestilling, understøtte din brugeroplevelse på webshoppen, og til andre formål, som er beskrevet i vores Politik for personoplysninger.</p>
+
+        <label class="checkout-terms">
+          <input type="checkbox" name="terms" required>
+          <span>Jeg har læst og accepterer webshoppens <a href="handelsbetingelser.html">Vilkår og betingelser</a> <span class="checkout-required">*</span></span>
+        </label>
+
+        <p class="checkout-error" data-checkout-error aria-live="polite"></p>
+        <button class="button button-primary checkout-submit" type="submit">Betal nu</button>
+      </aside>
+    </form>
+  </main>
+
+  <footer class="footer footer--frontpage">
+    <section class="footer-tider" aria-labelledby="footer-tider-titel">
+      <h2 id="footer-tider-titel" class="footer-tider-titel">Åbningstider</h2>
+      <p class="kontakt-status footer-status" aria-live="polite">
+        <span class="kontakt-status-label">Tjekker status</span>
+        <span class="kontakt-status-detail"></span>
+      </p>
+      <dl class="footer-tider-liste">
+        <dt>Mandag</dt>
+        <dd>8.30-14.00</dd>
+        <dt>Tirsdag</dt>
+        <dd>10.00-17.30</dd>
+        <dt>Onsdag</dt>
+        <dd>Lukket</dd>
+        <dt>Torsdag</dt>
+        <dd>10.00-17.30</dd>
+        <dt>Fredag</dt>
+        <dd>10.00-16.00</dd>
+      </dl>
+    </section>
+
+    <section class="footer-kontakt" aria-labelledby="footer-kontakt-titel">
+      <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
+      <address class="footer-kontakt-adresse">
+        <span class="footer-kontakt-brand">Hildebrandt Copenhagen x Mixly</span>
+        <span>Nørre Fasanvej 163</span><br>
+        <span class="footer-kontakt-city">2000 Frederiksberg</span>
+        <a href="tel:+4530741430">+45 30 74 14 30</a><br>
+        <a href="mailto:hej@hildebrandtcopenhagen.dk">hej@hildebrandtcopenhagen.dk</a>
+      </address>
+    </section>
+
+    <nav class="footer-menu" aria-labelledby="footer-menu-titel">
+      <h2 id="footer-menu-titel" class="footer-menu-titel">Udforsk</h2>
+      <ul class="footer-menu-liste">
+        <li class="footer-menu-item"><a class="footer-menu-link" href="behandlinger.html">Behandlinger</a></li>
+        <li class="footer-menu-item"><a class="footer-menu-link" href="produkter.html">Produkter</a></li>
+        <li class="footer-menu-item"><a class="footer-menu-link" href="guides.html">Krølleguide</a></li>
+        <li class="footer-menu-item"><a class="footer-menu-link" href="omos.html">Historien bag Hildebrandt</a></li>
+      </ul>
+      <a class="button button-primary footer-booking" href="https://salonbook.one/?henriksencopenhagen#/">Book tid</a>
+    </nav>
+
+    <section class="footer-newsletter" aria-labelledby="footer-newsletter-titel">
+      <h2 id="footer-newsletter-titel" class="footer-newsletter-titel">Få tips til dine krøller</h2>
+      <form class="footer-newsletter-form" action="#" method="post">
+        <label class="footer-newsletter-label" for="footer-newsletter-name">Navn</label>
+        <input id="footer-newsletter-name" class="footer-newsletter-input" type="text" name="name" placeholder="Navn" autocomplete="name">
+        <label class="footer-newsletter-label" for="footer-newsletter-email">E-mail</label>
+        <input id="footer-newsletter-email" class="footer-newsletter-input" type="email" name="email" placeholder="E-mail" autocomplete="email">
+        <label class="footer-newsletter-consent">
+          <input class="footer-newsletter-checkbox" type="checkbox" name="consent">
+          <span>Jeg accepterer, at HCM Community må gemme og dele min data jf. vores privatlivspolitik.</span>
+        </label>
+        <button class="button button-secondary footer-newsletter-submit" type="submit">Tilmeld dig</button>
+      </form>
+    </section>
+
+    <div class="footer-info">
+      <div class="footer-legal">
+        <a class="footer-terms" href="handelsbetingelser.html">Handelsbetingelser</a>
+        <p class="footer-cvr">CVR 44399973</p>
+      </div>
+      <ul class="footer-socials" aria-label="Sociale medier">
+        <li class="footer-socials-item">
+          <a class="footer-social-link" href="#" aria-label="Instagram">
+            <svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="5" y="5" width="14" height="14" rx="4"></rect>
+              <circle cx="12" cy="12" r="3.2"></circle>
+              <circle cx="16.5" cy="7.5" r="1"></circle>
+            </svg>
+          </a>
+        </li>
+        <li class="footer-socials-item">
+          <a class="footer-social-link" href="#" aria-label="Facebook">
+            <svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M14.3 8.1h2.1V5h-2.6c-3 0-4.5 1.8-4.5 4.4v2H7v3.1h2.3V20h3.4v-5.5h2.8l.4-3.1h-3.2V9.7c0-1 .4-1.6 1.6-1.6Z"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <ul class="footer-betaling" aria-label="Betalingsmetoder">
+        <li class="footer-betaling-item" aria-label="Visa"><svg class="footer-payment-icon footer-payment-icon-visa" viewBox="0 0 92 30" aria-hidden="true" focusable="false"><text x="1" y="23">VISA</text></svg></li>
+        <li class="footer-betaling-item" aria-label="Mastercard"><svg class="footer-payment-icon footer-payment-icon-mastercard" viewBox="0 0 56 36" aria-hidden="true" focusable="false"><circle class="footer-payment-mastercard-red" cx="22" cy="16" r="14"></circle><circle class="footer-payment-mastercard-orange" cx="34" cy="16" r="14"></circle><text x="8" y="33">mastercard</text></svg></li>
+        <li class="footer-betaling-item" aria-label="PensoPay"><svg class="footer-payment-icon footer-payment-icon-pensopay" viewBox="0 0 146 36" aria-hidden="true" focusable="false"><g class="footer-payment-pensopay-mark"><rect x="3" y="4" width="28" height="28" rx="3" transform="rotate(-18 17 18)"></rect><path d="M24 14h17l-5 5 5 5H24Z"></path></g><text x="52" y="24">PENSOPAY</text></svg></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

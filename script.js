@@ -41,6 +41,349 @@ function prepareButtonUnderlines() {
 
 prepareButtonUnderlines();
 
+const checkoutForm = document.querySelector("[data-checkout-form]");
+
+if (checkoutForm) {
+  let productSubtotal = 0;
+  let discountAmount = 0;
+  let activeDiscountCode = "";
+  const checkoutCartItems = checkoutForm.querySelector("[data-checkout-cart-items]");
+  const checkoutSubtotal = checkoutForm.querySelector("[data-checkout-subtotal]");
+  const discountInput = checkoutForm.querySelector("#checkout-discount-code");
+  const discountButton = checkoutForm.querySelector("[data-apply-discount]");
+  const discountMessage = checkoutForm.querySelector("[data-discount-message]");
+  const discountTotalRow = checkoutForm.querySelector("[data-discount-total-row]");
+  const discountTotal = checkoutForm.querySelector("[data-discount-total]");
+  const shippingTotal = checkoutForm.querySelector("[data-shipping-total]");
+  const orderTotal = checkoutForm.querySelector("[data-order-total]");
+  const checkoutError = checkoutForm.querySelector("[data-checkout-error]");
+  const commentToggle = checkoutForm.querySelector(".checkout-comment-toggle");
+  const commentField = checkoutForm.querySelector(".checkout-comment-field");
+  const shippingOptions = Array.from(checkoutForm.querySelectorAll("[name='shipping']"));
+  const paymentOptions = Array.from(checkoutForm.querySelectorAll("[name='payment']"));
+
+  function formatDanishCurrency(amount) {
+    return `${amount.toLocaleString("da-DK", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} kr.`;
+  }
+
+  function loadCheckoutCartItems() {
+    try {
+      const storedItems = JSON.parse(localStorage.getItem("hildebrandtMixlyCart"));
+      return Array.isArray(storedItems) ? storedItems : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function saveCheckoutCartItems(items) {
+    try {
+      localStorage.setItem("hildebrandtMixlyCart", JSON.stringify(items));
+    } catch (error) {
+      // Checkouten kan stadig vise kurven, selv hvis localStorage er blokeret.
+    }
+
+    document.dispatchEvent(new CustomEvent("hildebrandt-cart-updated"));
+  }
+
+  function escapeCheckoutText(value) {
+    const div = document.createElement("div");
+    div.textContent = value;
+    return div.innerHTML;
+  }
+
+  function renderCheckoutCartItems() {
+    const items = loadCheckoutCartItems().filter((item) => item && Number(item.quantity) > 0);
+    productSubtotal = items.reduce((total, item) => total + Number(item.price || 0) * Number(item.quantity || 0), 0);
+    updateCheckoutDiscount();
+
+    if (checkoutSubtotal) {
+      checkoutSubtotal.textContent = formatDanishCurrency(productSubtotal);
+    }
+
+    if (!checkoutCartItems) {
+      updateCheckoutTotals();
+      return;
+    }
+
+    if (items.length === 0) {
+      checkoutCartItems.innerHTML = '<p class="checkout-empty">Din kurv er tom.</p>';
+      updateCheckoutTotals();
+      return;
+    }
+
+    checkoutCartItems.innerHTML = items.map((item) => {
+      const name = escapeCheckoutText(item.name || "Mixly produkt");
+      const size = escapeCheckoutText(item.size || "");
+      const image = escapeCheckoutText(item.image || "");
+      const id = escapeCheckoutText(item.id || "");
+      const quantity = Number(item.quantity || 0);
+      const lineTotal = Number(item.price || 0) * quantity;
+
+      return `
+        <div class="checkout-product">
+          <div class="checkout-product-image">
+            ${image ? `<img src="${image}" alt="${name}">` : "<span>IMG</span>"}
+          </div>
+          <div class="checkout-product-info">
+            <div class="checkout-product-heading">
+              <p>${name}</p>
+              <button class="checkout-remove" type="button" aria-label="Fjern ${name} fra kurv" data-checkout-cart-action="remove" data-checkout-cart-item-id="${id}">×</button>
+            </div>
+            ${size ? `<div class="checkout-product-meta"><span>${size}</span></div>` : ""}
+            <strong>${formatDanishCurrency(lineTotal)}</strong>
+            <div class="checkout-quantity">
+              <button type="button" aria-label="Reducer antal af ${name}" data-checkout-cart-action="decrease" data-checkout-cart-item-id="${id}">-</button>
+              <span aria-label="Antal">${quantity}</span>
+              <button type="button" aria-label="Øg antal af ${name}" data-checkout-cart-action="increase" data-checkout-cart-item-id="${id}">+</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    updateCheckoutTotals();
+  }
+
+  function setCheckoutDiscountMessage(message, isError = false) {
+    if (!discountMessage) {
+      return;
+    }
+
+    discountMessage.textContent = message;
+    discountMessage.classList.toggle("is-error", isError);
+  }
+
+  function updateCheckoutDiscount() {
+    discountAmount = activeDiscountCode === "rabat10" ? Math.round(productSubtotal * 0.1) : 0;
+
+    if (discountTotalRow) {
+      discountTotalRow.hidden = discountAmount <= 0;
+    }
+
+    if (discountTotal) {
+      discountTotal.textContent = `-${formatDanishCurrency(discountAmount)}`;
+    }
+  }
+
+  function updateCheckoutOptionState(options, selectedInput) {
+    options.forEach((input) => {
+      const option = input.closest(".checkout-option, .checkout-payment-option");
+
+      if (option) {
+        option.classList.toggle("is-selected", input.checked && input === selectedInput);
+      }
+    });
+  }
+
+  function allowCheckoutOptionToggle(input, options, afterToggle) {
+    const option = input.closest(".checkout-option, .checkout-payment-option");
+
+    option?.addEventListener("pointerdown", () => {
+      input.dataset.wasChecked = String(input.checked);
+    });
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key === " " || event.key === "Enter") {
+        input.dataset.wasChecked = String(input.checked);
+      }
+    });
+
+    option?.addEventListener("click", () => {
+      if (input.dataset.wasChecked !== "true") {
+        return;
+      }
+
+      window.setTimeout(() => {
+        input.checked = false;
+        updateCheckoutOptionState(options, input);
+        afterToggle();
+      }, 0);
+    });
+  }
+
+  function updateCheckoutTotals() {
+    const selectedShipping = checkoutForm.querySelector("[name='shipping']:checked");
+
+    if (!selectedShipping) {
+      if (shippingTotal) {
+        shippingTotal.textContent = "Vælg levering";
+      }
+
+      if (orderTotal) {
+        orderTotal.textContent = formatDanishCurrency(Math.max(productSubtotal - discountAmount, 0));
+      }
+
+      return;
+    }
+
+    const shippingPrice = Number(selectedShipping.value);
+
+    if (shippingTotal) {
+      shippingTotal.textContent = shippingPrice === 0 ? "Gratis" : formatDanishCurrency(shippingPrice);
+    }
+
+    if (orderTotal) {
+      orderTotal.textContent = formatDanishCurrency(Math.max(productSubtotal - discountAmount, 0) + shippingPrice);
+    }
+  }
+
+  function applyCheckoutDiscount() {
+    const code = discountInput?.value.trim().toLowerCase() || "";
+
+    if (!code) {
+      activeDiscountCode = "";
+      updateCheckoutDiscount();
+      updateCheckoutTotals();
+      setCheckoutDiscountMessage("");
+      return;
+    }
+
+    if (code === "rabat10") {
+      activeDiscountCode = code;
+      updateCheckoutDiscount();
+      updateCheckoutTotals();
+      setCheckoutDiscountMessage("Rabatkode anvendt: 10% rabat.");
+      return;
+    }
+
+    activeDiscountCode = "";
+    updateCheckoutDiscount();
+    updateCheckoutTotals();
+    setCheckoutDiscountMessage("Rabatkoden er ikke gyldig.", true);
+  }
+
+  shippingOptions.forEach((input) => {
+    allowCheckoutOptionToggle(input, shippingOptions, updateCheckoutTotals);
+    input.addEventListener("change", () => {
+      updateCheckoutOptionState(shippingOptions, input);
+      checkoutForm.querySelector("[data-shipping-options]")?.classList.remove("is-invalid");
+      updateCheckoutTotals();
+    });
+  });
+
+  paymentOptions.forEach((input) => {
+    allowCheckoutOptionToggle(input, paymentOptions, () => {});
+    input.addEventListener("change", () => {
+      updateCheckoutOptionState(paymentOptions, input);
+      checkoutForm.querySelector("[data-payment-options]")?.classList.remove("is-invalid");
+    });
+  });
+
+  if (commentToggle && commentField) {
+    commentToggle.addEventListener("click", () => {
+      const isOpen = commentToggle.getAttribute("aria-expanded") === "true";
+      const symbol = commentToggle.querySelector(".checkout-comment-toggle-symbol");
+
+      commentToggle.setAttribute("aria-expanded", String(!isOpen));
+      if (symbol) {
+        symbol.textContent = isOpen ? "+" : "-";
+      }
+      commentField.hidden = isOpen;
+    });
+  }
+
+  discountButton?.addEventListener("click", applyCheckoutDiscount);
+  discountInput?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  });
+
+  checkoutCartItems?.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-checkout-cart-action]");
+
+    if (!button) {
+      return;
+    }
+
+    const id = button.dataset.checkoutCartItemId;
+    const action = button.dataset.checkoutCartAction;
+    const items = loadCheckoutCartItems();
+    const nextItems = items
+      .map((item) => {
+        if (item.id !== id) {
+          return item;
+        }
+
+        const quantity = Number(item.quantity || 0);
+        const nextQuantity = action === "increase" ? quantity + 1 : quantity - 1;
+
+        if (action === "remove") {
+          return { ...item, quantity: 0 };
+        }
+
+        return { ...item, quantity: nextQuantity };
+      })
+      .filter((item) => Number(item.quantity || 0) > 0);
+
+    saveCheckoutCartItems(nextItems);
+  });
+
+  checkoutForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const cartIsEmpty = productSubtotal <= 0;
+    const invalidFields = Array.from(checkoutForm.querySelectorAll("[required]")).filter((field) => !field.checkValidity());
+    const selectedShipping = checkoutForm.querySelector("[name='shipping']:checked");
+    const selectedPayment = checkoutForm.querySelector("[name='payment']:checked");
+    const shippingList = checkoutForm.querySelector("[data-shipping-options]");
+    const paymentList = checkoutForm.querySelector("[data-payment-options]");
+
+    checkoutForm.querySelectorAll(".is-invalid").forEach((field) => field.classList.remove("is-invalid"));
+
+    invalidFields.forEach((field) => {
+      const wrapper = field.closest(".checkout-field, .checkout-terms") || field;
+      wrapper.classList.add("is-invalid");
+    });
+
+    if (shippingList) {
+      shippingList.classList.toggle("is-invalid", !selectedShipping);
+    }
+
+    if (paymentList) {
+      paymentList.classList.toggle("is-invalid", !selectedPayment);
+    }
+
+    if (checkoutError) {
+      checkoutError.textContent = invalidFields.length > 0 || !selectedShipping || !selectedPayment || cartIsEmpty
+        ? "Udfyld de markerede felter, vælg levering og betalingsmetode, accepter vilkår og betingelser, og sørg for at der er produkter i kurven."
+        : "";
+    }
+
+    if (cartIsEmpty) {
+      checkoutCartItems?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    if (invalidFields[0]) {
+      invalidFields[0].focus();
+      return;
+    }
+
+    if (!selectedShipping) {
+      shippingList?.querySelector("input")?.focus();
+      return;
+    }
+
+    if (!selectedPayment) {
+      paymentList?.querySelector("input")?.focus();
+      return;
+    }
+
+    if (checkoutError) {
+      checkoutError.textContent = "Tak. Checkouten er klar til betaling.";
+    }
+  });
+
+  renderCheckoutCartItems();
+  window.addEventListener("storage", (event) => {
+    if (event.key === "hildebrandtMixlyCart") {
+      renderCheckoutCartItems();
+    }
+  });
+  document.addEventListener("hildebrandt-cart-updated", renderCheckoutCartItems);
+}
+
 function setActiveMainNavigation() {
   const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
   const isProductPage =
@@ -1061,6 +1404,8 @@ function saveCartItems() {
   } catch (error) {
     // Kurven virker stadig på siden, selv hvis localStorage er blokeret.
   }
+
+  document.dispatchEvent(new CustomEvent("hildebrandt-cart-updated"));
 }
 
 function getCartCount() {
@@ -1209,11 +1554,6 @@ function createCartDrawer() {
       return;
     }
 
-    if (event.target.closest(".side-cart-checkout")) {
-      event.preventDefault();
-      return;
-    }
-
     const actionButton = event.target.closest("[data-cart-action]");
 
     if (!actionButton) {
@@ -1313,8 +1653,7 @@ function renderCartDrawer() {
       <span>I alt</span>
       <strong>${formatPrice(getCartTotal())}</strong>
     </div>
-    <!-- TODO: Link til eksisterende checkout-route, når den bliver oprettet. -->
-    <a class="side-cart-checkout" href="#" aria-label="Gå til kassen">Gå til kassen</a>
+    <a class="side-cart-checkout" href="checkout.html" aria-label="Gå til kassen">Gå til kassen</a>
     <p>Fri fragt over 1000 kr · 1-2 hverdages levering</p>
   `;
 }
@@ -1590,6 +1929,15 @@ document.querySelectorAll(".produkt-skabelon-buy").forEach((button) => {
   button.addEventListener("click", () => {
     addToCart(getProductFromPage());
   });
+});
+
+document.addEventListener("hildebrandt-cart-updated", () => {
+  cartItems = loadCartItems();
+  updateCartBadges();
+
+  if (cartDrawer) {
+    renderCartDrawer();
+  }
 });
 
 updateCartBadges();
