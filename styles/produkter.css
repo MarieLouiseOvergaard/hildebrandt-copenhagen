@@ -47,6 +47,7 @@
 
 .product-filter-link {
   display: inline-flex;
+  position: relative;
   min-height: 38px;
   align-items: center;
   justify-content: center;
@@ -59,15 +60,14 @@
   letter-spacing: 0.08em;
   line-height: 1.2;
   text-transform: uppercase;
-  transition: border-color 220ms ease, background 220ms ease, color 220ms ease;
 }
 
 .product-filter-link:hover,
 .product-filter-link:focus-visible,
 .product-filter-link.is-active {
-  border-color: var(--color-heading);
-  background: var(--color-heading);
-  color: var(--color-white);
+  border-color: var(--color-border);
+  background: transparent;
+  color: var(--color-heading);
 }
 
 body[data-product-page-filter="all"] [data-product-filter="all"],
@@ -77,9 +77,29 @@ body[data-product-page-filter="shampoo"] [data-product-filter="shampoo"],
 body[data-product-page-filter="conditioner"] [data-product-filter="conditioner"],
 body[data-product-page-filter="haarmasker"] [data-product-filter="haarmasker"],
 body[data-product-page-filter="styling"] [data-product-filter="styling"] {
-  border-color: var(--color-heading);
-  background: var(--color-heading);
-  color: var(--color-white);
+  border-color: var(--color-border);
+  background: transparent;
+  color: var(--color-heading);
+}
+
+body[data-product-page-filter="all"] [data-product-filter="all"] .button-label::after,
+body[data-product-page-filter="startpakker"] [data-product-filter="startpakker"] .button-label::after,
+body[data-product-page-filter="saet"] [data-product-filter="saet"] .button-label::after,
+body[data-product-page-filter="shampoo"] [data-product-filter="shampoo"] .button-label::after,
+body[data-product-page-filter="conditioner"] [data-product-filter="conditioner"] .button-label::after,
+body[data-product-page-filter="haarmasker"] [data-product-filter="haarmasker"] .button-label::after,
+body[data-product-page-filter="styling"] [data-product-filter="styling"] .button-label::after {
+  clip-path: none;
+}
+
+body[data-product-page-filter="all"] [data-product-filter="all"] .button-label,
+body[data-product-page-filter="startpakker"] [data-product-filter="startpakker"] .button-label,
+body[data-product-page-filter="saet"] [data-product-filter="saet"] .button-label,
+body[data-product-page-filter="shampoo"] [data-product-filter="shampoo"] .button-label,
+body[data-product-page-filter="conditioner"] [data-product-filter="conditioner"] .button-label,
+body[data-product-page-filter="haarmasker"] [data-product-filter="haarmasker"] .button-label,
+body[data-product-page-filter="styling"] [data-product-filter="styling"] .button-label {
+  background-size: 100% 1px;
 }
 
 .product-section[hidden] {
@@ -775,6 +795,7 @@ body[data-product-page-filter="all"] .product-promo-card {
 
 .quick-view-size {
   display: inline-flex;
+  position: relative;
   min-width: 96px;
   min-height: 34px;
   align-items: center;
@@ -791,14 +812,13 @@ body[data-product-page-filter="all"] .product-promo-card {
   letter-spacing: 0.12em;
   line-height: 1.2;
   text-transform: uppercase;
-  transition: background 220ms ease, color 220ms ease;
 }
 
 .quick-view-size:hover,
 .quick-view-size:focus-visible,
 .quick-view-size.is-active {
-  color: var(--color-white);
-  background: var(--color-heading);
+  color: var(--color-heading);
+  background: transparent;
 }
 
 .quick-view-buy {
@@ -916,16 +936,8 @@ body[data-product-page-filter="all"] .product-promo-card {
   }
 
   .product-filter-link::after {
-    position: absolute;
-    right: 0;
-    bottom: 17px;
-    left: 0;
-    height: 1px;
-    background: var(--color-primary);
     content: "";
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 220ms ease;
+    display: none;
   }
 
   .product-filter-link:hover,
@@ -964,7 +976,7 @@ body[data-product-page-filter="all"] .product-promo-card {
   body[data-product-page-filter="conditioner"] [data-product-filter="conditioner"]::after,
   body[data-product-page-filter="haarmasker"] [data-product-filter="haarmasker"]::after,
   body[data-product-page-filter="styling"] [data-product-filter="styling"]::after {
-    transform: scaleX(1);
+    display: none;
   }
 
   .products-intro {

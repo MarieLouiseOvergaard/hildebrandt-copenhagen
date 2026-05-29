@@ -120,6 +120,7 @@
 
 .produkt-skabelon-size {
   display: inline-flex;
+  position: relative;
   min-width: 96px;
   min-height: 34px;
   align-items: center;
@@ -136,15 +137,14 @@
   letter-spacing: 0.12em;
   line-height: 1.2;
   text-transform: uppercase;
-  transition: background 220ms ease, color 220ms ease;
 }
 
 .produkt-skabelon-size:hover,
 .produkt-skabelon-size:focus-visible,
 .produkt-skabelon-size-active,
 .produkt-skabelon-size:has(input:checked) {
-  color: var(--color-white);
-  background: var(--color-heading);
+  color: var(--color-heading);
+  background: transparent;
 }
 
 .produkt-skabelon-size input {
@@ -153,7 +153,27 @@
 }
 
 .produkt-skabelon-size span {
+  position: relative;
   display: inline-block;
+}
+
+.produkt-skabelon-size span:not(.button-label)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 220ms ease;
+}
+
+.produkt-skabelon-size:hover span::after,
+.produkt-skabelon-size:focus-visible span::after,
+.produkt-skabelon-size-active span::after,
+.produkt-skabelon-size:has(input:checked) span::after {
+  clip-path: inset(0 0 0 0);
 }
 
 .produkt-skabelon-size input:focus-visible + span {
@@ -844,6 +864,7 @@
 
 .quick-view-size {
   display: inline-flex;
+  position: relative;
   min-width: 96px;
   min-height: 34px;
   align-items: center;
@@ -860,14 +881,13 @@
   letter-spacing: 0.12em;
   line-height: 1.2;
   text-transform: uppercase;
-  transition: background 220ms ease, color 220ms ease;
 }
 
 .quick-view-size:hover,
 .quick-view-size:focus-visible,
 .quick-view-size.is-active {
-  color: var(--color-white);
-  background: var(--color-heading);
+  color: var(--color-heading);
+  background: transparent;
 }
 
 .quick-view-buy {

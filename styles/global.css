@@ -304,6 +304,7 @@ blockquote footer {
 -------------------------------- */
 .button {
   display: inline-flex;
+  position: relative;
   min-width: 0;
   height: var(--button-height);
   align-items: center;
@@ -319,6 +320,93 @@ blockquote footer {
   text-transform: uppercase;
 }
 
+.button-label {
+  display: inline;
+  padding-bottom: 4px;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  line-height: 1.2;
+  transition: background-size 220ms ease;
+}
+
+.button-label::after {
+  content: none;
+}
+
+.button:hover .button-label::after,
+.button:focus-visible .button-label::after,
+.book-knap:hover .button-label::after,
+.book-knap:focus-visible .button-label::after,
+.guide-button:hover .button-label::after,
+.guide-button:focus-visible .button-label::after,
+.kroelle-button:hover .button-label::after,
+.kroelle-button:focus-visible .button-label::after,
+.kroelle-form-button:hover .button-label::after,
+.kroelle-form-button:focus-visible .button-label::after,
+.kroelle-course-button:hover .button-label::after,
+.kroelle-course-button:focus-visible .button-label::after,
+.side-cart-checkout:hover .button-label::after,
+.side-cart-checkout:focus-visible .button-label::after,
+.button.is-active .button-label::after,
+.button[aria-current="page"] .button-label::after,
+.button[aria-pressed="true"] .button-label::after,
+.product-filter-link:hover .button-label::after,
+.product-filter-link:focus-visible .button-label::after,
+.product-filter-link.is-active .button-label::after,
+.product-filter-link[aria-current="page"] .button-label::after,
+.blog-filter:hover .button-label::after,
+.blog-filter:focus-visible .button-label::after,
+.produkt-skabelon-size:hover .button-label::after,
+.produkt-skabelon-size:focus-visible .button-label::after,
+.produkt-skabelon-size-active .button-label::after,
+.produkt-skabelon-size:has(input:checked) .button-label::after,
+.quick-view-size:hover .button-label::after,
+.quick-view-size:focus-visible .button-label::after,
+.quick-view-size.is-active .button-label::after {
+  clip-path: none;
+}
+
+.button:hover .button-label,
+.button:focus-visible .button-label,
+.book-knap:hover .button-label,
+.book-knap:focus-visible .button-label,
+.guide-button:hover .button-label,
+.guide-button:focus-visible .button-label,
+.kroelle-button:hover .button-label,
+.kroelle-button:focus-visible .button-label,
+.kroelle-form-button:hover .button-label,
+.kroelle-form-button:focus-visible .button-label,
+.kroelle-course-button:hover .button-label,
+.kroelle-course-button:focus-visible .button-label,
+.side-cart-checkout:hover .button-label,
+.side-cart-checkout:focus-visible .button-label,
+.button.is-active .button-label,
+.button[aria-current="page"] .button-label,
+.button[aria-pressed="true"] .button-label,
+.product-filter-link:hover .button-label,
+.product-filter-link:focus-visible .button-label,
+.product-filter-link.is-active .button-label,
+.product-filter-link[aria-current="page"] .button-label,
+.blog-filter:hover .button-label,
+.blog-filter:focus-visible .button-label,
+.produkt-skabelon-size:hover .button-label,
+.produkt-skabelon-size:focus-visible .button-label,
+.produkt-skabelon-size-active .button-label,
+.produkt-skabelon-size:has(input:checked) .button-label,
+.quick-view-size:hover .button-label,
+.quick-view-size:focus-visible .button-label,
+.quick-view-size.is-active .button-label,
+.mobile-menu-link:hover .button-label,
+.mobile-menu-link:focus-visible .button-label,
+.mobile-menu-link[aria-current="page"] .button-label,
+.mobile-menu-link-active .button-label {
+  background-size: 100% 1px;
+}
+
 .button-primary {
   border-color: var(--color-primary);
   color: var(--color-white);
@@ -329,9 +417,14 @@ blockquote footer {
   background: transparent;
 }
 
-.button-secondary:hover {
-  color: var(--color-white);
-  background: var(--color-heading);
+@media (prefers-reduced-motion: reduce) {
+  .button-label::after {
+    transition: none;
+  }
+
+  .button-label {
+    transition: none;
+  }
 }
 
 button,

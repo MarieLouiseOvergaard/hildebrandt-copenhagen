@@ -80,7 +80,6 @@
   letter-spacing: 0.08em;
   line-height: 1.2;
   text-transform: uppercase;
-  transition: border-color 220ms ease, background 220ms ease, color 220ms ease;
   cursor: pointer;
 }
 
@@ -90,9 +89,23 @@
 .blog-page #blog-filter-kroelleviden:checked ~ .blog-filters label[for="blog-filter-kroelleviden"],
 .blog-page #blog-filter-guides:checked ~ .blog-filters label[for="blog-filter-guides"],
 .blog-page #blog-filter-mixly:checked ~ .blog-filters label[for="blog-filter-mixly"] {
-  border-color: var(--color-heading);
-  background: var(--color-heading);
-  color: var(--color-white);
+  border-color: var(--color-border);
+  background: var(--color-white);
+  color: var(--color-heading);
+}
+
+.blog-page #blog-filter-all:checked ~ .blog-filters label[for="blog-filter-all"] .button-label::after,
+.blog-page #blog-filter-kroelleviden:checked ~ .blog-filters label[for="blog-filter-kroelleviden"] .button-label::after,
+.blog-page #blog-filter-guides:checked ~ .blog-filters label[for="blog-filter-guides"] .button-label::after,
+.blog-page #blog-filter-mixly:checked ~ .blog-filters label[for="blog-filter-mixly"] .button-label::after {
+  clip-path: none;
+}
+
+.blog-page #blog-filter-all:checked ~ .blog-filters label[for="blog-filter-all"] .button-label,
+.blog-page #blog-filter-kroelleviden:checked ~ .blog-filters label[for="blog-filter-kroelleviden"] .button-label,
+.blog-page #blog-filter-guides:checked ~ .blog-filters label[for="blog-filter-guides"] .button-label,
+.blog-page #blog-filter-mixly:checked ~ .blog-filters label[for="blog-filter-mixly"] .button-label {
+  background-size: 100% 1px;
 }
 
 .blog-page #blog-filter-all:focus-visible ~ .blog-filters label[for="blog-filter-all"],
@@ -390,16 +403,8 @@
   }
 
   .blog-page .blog-filter::after {
-    position: absolute;
-    right: 0;
-    bottom: 17px;
-    left: 0;
-    height: 1px;
-    background: var(--color-primary);
     content: "";
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 220ms ease;
+    display: none;
   }
 
   .blog-page .blog-filter:hover,
@@ -420,7 +425,7 @@
   .blog-page #blog-filter-kroelleviden:checked ~ .blog-filters label[for="blog-filter-kroelleviden"]::after,
   .blog-page #blog-filter-guides:checked ~ .blog-filters label[for="blog-filter-guides"]::after,
   .blog-page #blog-filter-mixly:checked ~ .blog-filters label[for="blog-filter-mixly"]::after {
-    transform: scaleX(1);
+    display: none;
   }
 
   .blog-page .blog-grid {

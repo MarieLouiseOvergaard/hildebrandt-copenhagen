@@ -38,14 +38,13 @@
   border-color: var(--color-primary);
   color: var(--color-white);
   background: var(--color-primary);
-  transition: background 220ms ease, border-color 220ms ease, transform 220ms ease;
 }
 
 .guide-button:hover,
 .guide-button:focus-visible {
-  border-color: #a66d2d;
-  background: #a66d2d;
-  transform: translateY(-1px);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+  background: var(--color-primary);
 }
 
 .guide-hero {

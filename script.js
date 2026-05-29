@@ -8,6 +8,39 @@ const mobileBookingMedia = window.matchMedia("(max-width: 767px)");
 const mainContent = document.querySelector("main");
 const mobileBookingTrigger = mainContent?.querySelector(":scope > section, :scope > article, :scope > div") || mainContent;
 
+function prepareButtonUnderlines() {
+  const underlineButtons = document.querySelectorAll(
+    ".button, .book-knap, .guide-button, .kroelle-button, .kroelle-form-button, .kroelle-course-button, .side-cart-checkout, .product-filter-link, .blog-filter, .produkt-skabelon-size, .quick-view-size, .mobile-menu-link"
+  );
+
+  underlineButtons.forEach((button) => {
+    if (button.querySelector(".button-label")) {
+      return;
+    }
+
+    const hasElementChildren = Array.from(button.childNodes).some((node) => node.nodeType === Node.ELEMENT_NODE);
+
+    if (hasElementChildren) {
+      return;
+    }
+
+    const label = button.textContent.trim();
+
+    if (!label) {
+      return;
+    }
+
+    button.textContent = "";
+
+    const labelElement = document.createElement("span");
+    labelElement.className = "button-label";
+    labelElement.textContent = label;
+    button.append(labelElement);
+  });
+}
+
+prepareButtonUnderlines();
+
 function setActiveMainNavigation() {
   const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
   const isProductPage =
@@ -1471,6 +1504,7 @@ function ensureSingleProductSizeButton() {
   button.dataset.productDetailsImage = detailsImage?.getAttribute("src") || "";
   fieldset.querySelector(".produkt-skabelon-size-options")?.append(button);
   price?.after(fieldset);
+  prepareButtonUnderlines();
 }
 
 ensureSingleProductSizeButton();
@@ -1730,6 +1764,7 @@ function renderQuickViewSizes(modal, data) {
     });
     return button;
   }) : []));
+  prepareButtonUnderlines();
 }
 
 function renderQuickViewGuide(modal, data) {
