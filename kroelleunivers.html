@@ -280,13 +280,16 @@
 
     <!-- Tilmeldingssektion -->
     <section class="kroelle-signup" aria-labelledby="kroelle-signup-title">
-      <h2 id="kroelle-signup-title">Bliv en del af HCM community</h2>
+      <div class="kroelle-signup-copy">
+        <p id="kroelle-signup-title">Bliv en del af</p>
+        <p>HCM community</p>
+      </div>
       <form class="kroelle-form" action="#" method="post">
         <div class="kroelle-form-fields">
           <label class="sr-only" for="kroelle-name">Navn</label>
-          <input id="kroelle-name" name="name" type="text" placeholder="NAVN">
+          <input id="kroelle-name" name="name" type="text" placeholder="Navn" autocomplete="name">
           <label class="sr-only" for="kroelle-email">E-mail</label>
-          <input id="kroelle-email" name="email" type="email" placeholder="E-MAIL">
+          <input id="kroelle-email" name="email" type="email" placeholder="E-mail" autocomplete="email">
           <button class="button button-primary kroelle-form-button" type="submit">Tilmeld dig</button>
         </div>
         <label class="kroelle-checkbox">
@@ -438,4 +441,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-

@@ -218,42 +218,60 @@
 /* Tilmelding */
 .kroelle-signup {
   display: grid;
-  grid-template-columns: minmax(220px, 300px) minmax(0, 770px);
+  grid-template-columns: 330px 1fr;
   align-items: center;
-  gap: 70px;
+  gap: 42px;
   max-width: 1320px;
   margin: 0 auto 96px;
-  padding: 44px 74px;
+  padding: 28px clamp(28px, 7vw, 96px) 26px;
   background: var(--color-light-blue);
 }
 
-.kroelle-signup h2 {
+.kroelle-signup-copy {
+  align-self: start;
+  padding: 6px 42px 4px 0;
+  border-right: 1px solid var(--color-heading);
+  text-align: center;
+}
+
+.kroelle-signup-copy p {
   color: var(--color-heading);
   font-family: var(--font-quote);
-  font-size: 2.05rem;
+  font-size: 30px;
   font-style: italic;
-  line-height: 1.5;
-  text-transform: none;
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
+.kroelle-form {
+  min-width: 0;
+  align-self: center;
 }
 
 .kroelle-form-fields {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(160px, 200px);
-  gap: 20px;
+  grid-template-columns: minmax(190px, 270px) minmax(220px, 310px) minmax(180px, 210px);
+  gap: clamp(32px, 6vw, 92px);
+  align-items: end;
 }
 
 .kroelle-form input[type="text"],
 .kroelle-form input[type="email"] {
   width: 100%;
-  height: 50px;
-  padding: 0 20px;
-  border: 1px solid var(--color-heading);
-  border-radius: var(--button-radius);
+  height: 52px;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--color-heading);
+  border-bottom: 1px solid var(--color-heading);
   color: var(--color-heading);
   background: transparent;
   font-family: var(--font-heading);
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 52px;
+  text-transform: uppercase;
 }
 
 .kroelle-form input::placeholder {
@@ -263,8 +281,10 @@
 
 .kroelle-form-button {
   width: 100%;
-  border: 0;
+  min-width: 0;
+  height: 52px;
   cursor: pointer;
+  letter-spacing: 0.18em;
 }
 
 .kroelle-checkbox {
@@ -272,10 +292,33 @@
   align-items: flex-start;
   gap: 12px;
   margin-top: 18px;
-  color: var(--color-text);
+  color: #777777;
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  line-height: 1.45;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.kroelle-signup-success {
+  align-self: center;
+  max-width: 720px;
+  text-align: center;
+}
+
+.kroelle-signup-success h3 {
+  margin-bottom: 24px;
+  color: #111111;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.kroelle-signup-success p {
+  color: var(--color-heading);
+  font-size: 17px;
+  line-height: 1.55;
 }
 
 .kroelle-checkbox input {
@@ -343,6 +386,16 @@
     margin-right: 40px;
     margin-left: 40px;
     padding: 36px;
+  }
+
+  .kroelle-signup-copy {
+    padding: 0;
+    border-right: 0;
+  }
+
+  .kroelle-form-fields {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
 
@@ -521,9 +574,14 @@
     padding: 28px 22px 34px;
   }
 
-  .kroelle-signup h2 {
-    font-size: 1.55rem;
-    line-height: 1.45;
+  .kroelle-signup-copy {
+    padding: 0;
+    border-right: 0;
+  }
+
+  .kroelle-signup-copy p {
+    font-size: 24px;
+    line-height: 1.35;
   }
 
   .kroelle-form-fields {

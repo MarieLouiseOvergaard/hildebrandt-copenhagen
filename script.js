@@ -41,6 +41,46 @@ function prepareButtonUnderlines() {
 
 prepareButtonUnderlines();
 
+function setupCommunitySignup(formSelector, copySelector, successClass) {
+  document.querySelectorAll(formSelector).forEach((form) => {
+    const section = form.closest("section");
+    const copy = section?.querySelector(copySelector);
+    const nameInput = form.querySelector("input[name='name']");
+    const emailInput = form.querySelector("input[type='email']");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!nameInput?.value.trim()) {
+        nameInput?.focus();
+        return;
+      }
+
+      if (!emailInput?.value.trim()) {
+        emailInput?.focus();
+        return;
+      }
+
+      if (copy) {
+        copy.innerHTML = `
+          <p>Velkommen til</p>
+          <p>HCM community</p>
+        `;
+      }
+
+      form.replaceChildren();
+      form.classList.add(successClass);
+      form.innerHTML = `
+        <h3>Tak! Du er nu tilmeldt</h3>
+        <p>Få 10% rabat på fragt og 10% på din første ordre - samt early access til nye produkter, eksklusive events, konkurrencer, tilbud og kampagner kun for vores community.</p>
+      `;
+    });
+  });
+}
+
+setupCommunitySignup(".blog-newsletter-form", ".blog-newsletter-copy", "blog-newsletter-success");
+setupCommunitySignup(".kroelle-form", ".kroelle-signup-copy", "kroelle-signup-success");
+
 const checkoutForm = document.querySelector("[data-checkout-form]");
 
 if (checkoutForm) {
