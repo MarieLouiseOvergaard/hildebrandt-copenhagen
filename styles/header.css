@@ -427,7 +427,7 @@
   top: 0;
   right: 0;
   display: flex;
-  width: min(100%, 440px);
+  width: min(100%, clamp(420px, 33.333vw, 560px));
   height: 100dvh;
   flex-direction: column;
   background: var(--color-white);
@@ -518,6 +518,28 @@
 .side-cart-list {
   display: grid;
   gap: 0;
+}
+
+.side-cart-added {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(51, 76, 86, 0.22);
+  background: var(--color-light-blue);
+  color: #111111;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.side-cart-added p {
+  margin: 0;
+}
+
+.side-cart-added-title {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-weight: 700;
 }
 
 .side-cart-item {

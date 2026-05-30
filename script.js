@@ -10,7 +10,7 @@ const mobileBookingTrigger = mainContent?.querySelector(":scope > section, :scop
 
 function prepareButtonUnderlines() {
   const underlineButtons = document.querySelectorAll(
-    ".button, .book-knap, .guide-button, .kroelle-button, .kroelle-form-button, .kroelle-course-button, .side-cart-checkout, .product-filter-link, .blog-filter, .produkt-skabelon-size, .quick-view-size, .mobile-menu-link"
+    ".button, .book-knap, .guide-button, .kroelle-button, .kroelle-form-button, .kroelle-course-button, .side-cart-checkout, .product-filter-link, .blog-filter, .produkt-skabelon-size, .mobile-menu-link"
   );
 
   underlineButtons.forEach((button) => {
@@ -72,7 +72,7 @@ function setupCommunitySignup(formSelector, copySelector, successClass) {
       form.classList.add(successClass);
       form.innerHTML = `
         <h3>Tak! Du er nu tilmeldt</h3>
-        <p>Få 10% rabat på fragt og 10% på din første ordre - samt early access til nye produkter, eksklusive events, konkurrencer, tilbud og kampagner kun for vores community.</p>
+        <p>FÃ¥ 10% rabat pÃ¥ fragt og 10% pÃ¥ din fÃ¸rste ordre - samt early access til nye produkter, eksklusive events, konkurrencer, tilbud og kampagner kun for vores community.</p>
       `;
     });
   });
@@ -167,14 +167,14 @@ if (checkoutForm) {
           <div class="checkout-product-info">
             <div class="checkout-product-heading">
               <p>${name}</p>
-              <button class="checkout-remove" type="button" aria-label="Fjern ${name} fra kurv" data-checkout-cart-action="remove" data-checkout-cart-item-id="${id}">×</button>
+              <button class="checkout-remove" type="button" aria-label="Fjern ${name} fra kurv" data-checkout-cart-action="remove" data-checkout-cart-item-id="${id}">Ã—</button>
             </div>
             ${size ? `<div class="checkout-product-meta"><span>${size}</span></div>` : ""}
             <strong>${formatDanishCurrency(lineTotal)}</strong>
             <div class="checkout-quantity">
               <button type="button" aria-label="Reducer antal af ${name}" data-checkout-cart-action="decrease" data-checkout-cart-item-id="${id}">-</button>
               <span aria-label="Antal">${quantity}</span>
-              <button type="button" aria-label="Øg antal af ${name}" data-checkout-cart-action="increase" data-checkout-cart-item-id="${id}">+</button>
+              <button type="button" aria-label="Ã˜g antal af ${name}" data-checkout-cart-action="increase" data-checkout-cart-item-id="${id}">+</button>
             </div>
           </div>
         </div>
@@ -246,7 +246,7 @@ if (checkoutForm) {
 
     if (!selectedShipping) {
       if (shippingTotal) {
-        shippingTotal.textContent = "Vælg levering";
+        shippingTotal.textContent = "VÃ¦lg levering";
       }
 
       if (orderTotal) {
@@ -386,7 +386,7 @@ if (checkoutForm) {
 
     if (checkoutError) {
       checkoutError.textContent = invalidFields.length > 0 || !selectedShipping || !selectedPayment || cartIsEmpty
-        ? "Udfyld de markerede felter, vælg levering og betalingsmetode, accepter vilkår og betingelser, og sørg for at der er produkter i kurven."
+        ? "Udfyld de markerede felter, vÃ¦lg levering og betalingsmetode, accepter vilkÃ¥r og betingelser, og sÃ¸rg for at der er produkter i kurven."
         : "";
     }
 
@@ -497,7 +497,7 @@ function showMainMenu() {
   mobileMenu.classList.remove("is-products");
 }
 
-// Mobilmenuen styres kun, hvis elementerne findes på siden.
+// Mobilmenuen styres kun, hvis elementerne findes pÃ¥ siden.
 if (mobileMenu && menuToggle && menuClose && productsToggle && productsBack) {
   menuToggle.addEventListener("click", toggleMobileMenu);
   menuClose.addEventListener("click", closeMobileMenu);
@@ -673,8 +673,8 @@ function updateContactOpeningStatus() {
     { name: "onsdag", weekday: "Wed", open: null, close: null },
     { name: "torsdag", weekday: "Thu", open: 10 * 60, close: 17 * 60 + 30 },
     { name: "fredag", weekday: "Fri", open: 10 * 60, close: 16 * 60 },
-    { name: "lørdag", weekday: "Sat", open: null, close: null },
-    { name: "søndag", weekday: "Sun", open: null, close: null },
+    { name: "lÃ¸rdag", weekday: "Sat", open: null, close: null },
+    { name: "sÃ¸ndag", weekday: "Sun", open: null, close: null },
   ];
 
   const timeParts = getCopenhagenTimeParts();
@@ -690,7 +690,7 @@ function updateContactOpeningStatus() {
 
   contactStatus.classList.toggle("kontakt-status--open", isOpen);
   contactStatus.classList.toggle("kontakt-status--closed", !isOpen);
-  statusLabel.textContent = isOpen ? "ÅBEN NU" : "LUKKET NU";
+  statusLabel.textContent = isOpen ? "Ã…BEN NU" : "LUKKET NU";
 
   if (isOpen) {
     statusDetail.textContent = `Lukker kl. ${formatOpeningTime(today.close)}`;
@@ -698,7 +698,7 @@ function updateContactOpeningStatus() {
   }
 
   const nextOpening = getNextOpening(schedule, currentDayIndex, currentMinutes);
-  statusDetail.textContent = nextOpening ? `Åbner igen ${nextOpening.dayLabel} kl. ${nextOpening.time}` : "";
+  statusDetail.textContent = nextOpening ? `Ã…bner igen ${nextOpening.dayLabel} kl. ${nextOpening.time}` : "";
 }
 
 if (contactStatus) {
@@ -905,15 +905,189 @@ function getProductSetSortRank(card) {
   return 3;
 }
 
+const productSetCardUpdates = {
+  "products/saet/rich-low-intensive-care-for-curly-ends.html": {
+    title: "Rich + Low Intensive Care For Curly Ends",
+    ariaLabel: "Se Rich + Low Intensive Care For Curly Ends",
+    imageAlt: "Rich + Low Intensive Care For Curly Ends",
+    size: "80 ml",
+  },
+  "products/saet/rich-low-curly-conditioner-bars-orange-sensitive.html": {
+    title: "Rich + Low Curly Conditioner Bar Orange-Sensitive",
+    ariaLabel: "Se Rich + Low Curly Conditioner Bar Orange-Sensitive",
+    imageAlt: "Rich + Low Curly Conditioner Bar Orange-Sensitive",
+    size: "150 g",
+  },
+  "products/saet/rich-morning-low-sea-mist-barrier.html": {
+    size: "300 ml",
+  },
+  "products/saet/low-rich-curly-shampoo-bar-sensitive.html": {
+    size: "170 g",
+  },
+  "products/saet/low-rich-shampoo.html": {
+    size: "2 Ã— 250 ml",
+  },
+  "products/saet/rich-low-shampoo.html": {
+    title: "Low Refresh + Rich Repair Cleansing Shampoo",
+    ariaLabel: "Se Low Refresh + Rich Repair Cleansing Shampoo",
+    imageAlt: "Low Refresh + Rich Repair Cleansing Shampoo",
+    price: "Fra 209 kr.",
+    size: "2 Ã— 100 ml / 2 Ã— 1000 ml",
+  },
+  "products/saet/low-rich-conditioner.html": {
+    title: "Low + Rich Deep Drink Conditioner",
+    ariaLabel: "Se Low + Rich Deep Drink Conditioner",
+    imageAlt: "Low + Rich Deep Drink Conditioner",
+    price: "Fra 299 kr.",
+    size: "2 Ã— 200 ml / 2 Ã— 1000 ml",
+  },
+  "products/saet/low-rich-leave-in-conditioner.html": {
+    size: "2 Ã— 150 ml",
+  },
+  "products/saet/low-refiner-curl-gel-rich-curl-cream.html": {
+    size: "2 Ã— 150 ml",
+  },
+};
+
+const duplicateProductSetLinks = new Set([
+  "products/saet/low-rich-deep-drink-conditioner-200.html",
+  "products/saet/low-refresh-rich-repair-cleansing-shampoo-1000.html",
+]);
+
+const productSetCardOrder = [
+  "products/saet/rich-low-intensive-care-for-curly-ends.html",
+  "products/saet/rich-low-curly-conditioner-bars-orange-sensitive.html",
+  "products/saet/rich-morning-low-sea-mist-barrier.html",
+  "products/saet/low-rich-curly-shampoo-bar-sensitive.html",
+  "products/saet/low-rich-shampoo.html",
+  "products/saet/rich-low-shampoo.html",
+  "products/saet/low-rich-conditioner.html",
+  "products/saet/low-rich-leave-in-conditioner.html",
+  "products/saet/low-refiner-curl-gel-rich-curl-cream.html",
+];
+
+const startPackageCardUpdates = {
+  "products/startpakker/startpakke-2.html": "6 produkter",
+  "products/startpakker/startpakke-3.html": "6 produkter",
+};
+
+const productCardSizeUpdates = {
+  "products/shampoo/rich-repair-cleansing-shampoo.html": "100 ml / 1000 ml",
+  "products/shampoo/low-refresh-cleansing-shampoo.html": "100 ml / 1000 ml",
+  "products/shampoo/curly-charcoal-calm-shampoo.html": "50 ml / 200 ml",
+  "products/conditioner/rich-deep-drink-conditioner.html": "200 ml / 1000 ml",
+  "products/conditioner/mixly-low-conditioner.html": "200 ml / 1000 ml",
+  "products/haarmasker/rich-intensive-care-for-curly-ends.html": "30 ml / 50 ml",
+  "products/saet/rich-low-shampoo.html": "2 Ã— 100 ml / 2 Ã— 1000 ml",
+  "products/saet/low-rich-conditioner.html": "2 Ã— 200 ml / 2 Ã— 1000 ml",
+};
+
+function normalizeProductHref(href) {
+  return href.replace(/^(\.\.\/)+/, "");
+}
+
+function normalizeProductCardSizes() {
+  document.querySelectorAll(".product-card").forEach((card) => {
+    const titleLink = card.querySelector("h4 a");
+    const imageLink = card.querySelector(".product-image a");
+    const image = card.querySelector(".product-image img");
+    const link = normalizeProductHref(titleLink?.getAttribute("href") || imageLink?.getAttribute("href") || "");
+    const contentUpdate = productSetCardUpdates[link];
+    const size = productCardSizeUpdates[link] || contentUpdate?.size;
+    const metaItems = card.querySelectorAll(".product-meta span");
+
+    if (contentUpdate?.title && titleLink) {
+      titleLink.textContent = contentUpdate.title;
+    }
+
+    if (contentUpdate?.ariaLabel) {
+      titleLink?.setAttribute("aria-label", contentUpdate.ariaLabel);
+      imageLink?.setAttribute("aria-label", contentUpdate.ariaLabel);
+    }
+
+    if (contentUpdate?.imageAlt && image) {
+      image.alt = contentUpdate.imageAlt;
+    }
+
+    if (contentUpdate?.price && metaItems[0]) {
+      metaItems[0].textContent = contentUpdate.price;
+    }
+
+    if (size && metaItems[1]) {
+      metaItems[1].textContent = size;
+    }
+  });
+}
+
+function normalizeStartPackageCards() {
+  document.querySelectorAll('[data-product-section="startpakker"] .product-card').forEach((card) => {
+    const link = card.querySelector("h4 a")?.getAttribute("href") || "";
+    const productCount = startPackageCardUpdates[link];
+    const metaItems = card.querySelectorAll(".product-meta span");
+
+    if (productCount && metaItems[1]) {
+      metaItems[1].textContent = productCount;
+    }
+  });
+}
+
+function normalizeProductSetCard(card) {
+  const titleLink = card.querySelector("h4 a");
+  const imageLink = card.querySelector(".product-image a");
+  const image = card.querySelector(".product-image img");
+  const metaItems = card.querySelectorAll(".product-meta span");
+  const href = normalizeProductHref(titleLink?.getAttribute("href") || imageLink?.getAttribute("href") || "");
+  const update = productSetCardUpdates[href];
+
+  if (!update) {
+    return;
+  }
+
+  if (update.title && titleLink) {
+    titleLink.textContent = update.title;
+  }
+
+  if (update.ariaLabel) {
+    titleLink?.setAttribute("aria-label", update.ariaLabel);
+    imageLink?.setAttribute("aria-label", update.ariaLabel);
+  }
+
+  if (update.imageAlt && image) {
+    image.alt = update.imageAlt;
+  }
+
+  if (update.price && metaItems[0]) {
+    metaItems[0].textContent = update.price;
+  }
+
+  if (update.size && metaItems[1]) {
+    metaItems[1].textContent = update.size;
+  }
+}
+
 function organizeProductSets() {
   document.querySelectorAll("[data-organize-product-sets]").forEach((row) => {
-    const cards = Array.from(row.querySelectorAll(".product-card"));
+    Array.from(row.querySelectorAll(".product-card")).forEach(normalizeProductSetCard);
+
+    const cards = Array.from(row.querySelectorAll(".product-card")).filter((card) => {
+      const href = card.querySelector("h4 a")?.getAttribute("href") || card.querySelector(".product-image a")?.getAttribute("href") || "";
+      return !duplicateProductSetLinks.has(href);
+    });
 
     if (!cards.length || row.dataset.productSetsOrganized === "true") {
       return;
     }
 
     const sortedCards = cards.sort((firstCard, secondCard) => {
+      const firstLink = firstCard.querySelector("h4 a")?.getAttribute("href") || "";
+      const secondLink = secondCard.querySelector("h4 a")?.getAttribute("href") || "";
+      const firstOrder = productSetCardOrder.indexOf(firstLink);
+      const secondOrder = productSetCardOrder.indexOf(secondLink);
+
+      if (firstOrder !== -1 || secondOrder !== -1) {
+        return (firstOrder === -1 ? Number.MAX_SAFE_INTEGER : firstOrder) - (secondOrder === -1 ? Number.MAX_SAFE_INTEGER : secondOrder);
+      }
+
       const firstRank = getProductSetSortRank(firstCard);
       const secondRank = getProductSetSortRank(secondCard);
 
@@ -968,6 +1142,8 @@ function centerActiveProductFilter() {
   });
 }
 
+normalizeStartPackageCards();
+normalizeProductCardSizes();
 organizeProductSets();
 
 if (productSections.length) {
@@ -1157,7 +1333,7 @@ function setupSliderIndicators(row, options = {}) {
         const indicator = document.createElement("button");
         indicator.className = "indicator";
         indicator.type = "button";
-        indicator.setAttribute("aria-label", `Gå til ${label} ${index + 1}`);
+        indicator.setAttribute("aria-label", `GÃ¥ til ${label} ${index + 1}`);
 
         indicator.addEventListener("click", () => {
           const targetLeft = pages === 1 ? 0 : (maxScroll / (pages - 1)) * index;
@@ -1228,27 +1404,14 @@ productCards.forEach((card) => {
     imageLink.appendChild(productImage);
   }
 
-  const quickViewButton = document.createElement("button");
-  quickViewButton.className = "product-hover-eye";
-  quickViewButton.type = "button";
-  quickViewButton.setAttribute("aria-label", "Se produkt");
-
-  const quickViewIcon = document.createElement("img");
-  quickViewIcon.src = getInterfaceIconUrl("eye");
-  quickViewIcon.alt = "";
-  quickViewIcon.setAttribute("aria-hidden", "true");
-  quickViewButton.addEventListener("click", (event) => {
-    openQuickView(card, event);
-  });
-
   const addButton = document.createElement("button");
   addButton.className = "product-add-button";
   addButton.type = "button";
-  addButton.setAttribute("aria-label", "Tilføj til kurv");
+  addButton.setAttribute("aria-label", "TilfÃ¸j til kurv");
 
   const addButtonText = document.createElement("span");
   addButtonText.className = "product-add-button-text";
-  addButtonText.textContent = "Tilføj til kurv";
+  addButtonText.textContent = "TilfÃ¸j til kurv";
 
   const addButtonIcon = document.createElement("img");
   addButtonIcon.className = "product-add-button-icon";
@@ -1256,10 +1419,8 @@ productCards.forEach((card) => {
   addButtonIcon.alt = "";
   addButtonIcon.setAttribute("aria-hidden", "true");
 
-  quickViewButton.appendChild(quickViewIcon);
   addButton.append(addButtonText, addButtonIcon);
   if (!phoneMedia.matches) {
-    image.append(quickViewButton);
     content.append(addButton);
   } else {
     image.append(addButton);
@@ -1273,29 +1434,14 @@ relatedProductCards.forEach((card) => {
     return;
   }
 
-  const quickViewButton = document.createElement("button");
-  quickViewButton.className = "product-hover-eye";
-  quickViewButton.type = "button";
-  quickViewButton.setAttribute("aria-label", "Se produkt");
-
-  const quickViewIcon = document.createElement("img");
-  quickViewIcon.src = getInterfaceIconUrl("eye");
-  quickViewIcon.alt = "";
-  quickViewIcon.setAttribute("aria-hidden", "true");
-  quickViewButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    openQuickView(card, event);
-  });
-
   const addButton = document.createElement("button");
   addButton.className = "product-add-button";
   addButton.type = "button";
-  addButton.setAttribute("aria-label", "Tilføj til kurv");
+  addButton.setAttribute("aria-label", "TilfÃ¸j til kurv");
 
   const addButtonText = document.createElement("span");
   addButtonText.className = "product-add-button-text";
-  addButtonText.textContent = "Tilføj til kurv";
+  addButtonText.textContent = "TilfÃ¸j til kurv";
 
   const addButtonIcon = document.createElement("img");
   addButtonIcon.className = "product-add-button-icon";
@@ -1303,11 +1449,7 @@ relatedProductCards.forEach((card) => {
   addButtonIcon.alt = "";
   addButtonIcon.setAttribute("aria-hidden", "true");
 
-  quickViewButton.appendChild(quickViewIcon);
   addButton.append(addButtonText, addButtonIcon);
-  if (!phoneMedia.matches) {
-    image.append(quickViewButton);
-  }
   image.append(addButton);
 });
 
@@ -1351,12 +1493,13 @@ const cartStorageKey = "hildebrandtMixlyCart";
 let cartItems = loadCartItems();
 let cartDrawer = null;
 let lastCartTrigger = null;
+let lastAddedCartItem = null;
 
-const quickViewCatalog = {
+const quickAddCatalog = {
   "rich repair cleansing shampoo": {
-    tags: ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    tags: ["Ã˜kologisk", "Vegansk", "Parfumefri", "Unisex"],
     description:
-      "Giver mere næring og ro til krøller, der føles tørre, frizzede eller medtagne.",
+      "Giver mere nÃ¦ring og ro til krÃ¸ller, der fÃ¸les tÃ¸rre, frizzede eller medtagne.",
     sizes: [
       { label: "100 ml", price: "110 kr.", image: "img/produktbilleder/MIXLY-Rich-Repair-Shampoo-100.png" },
       { label: "1000 ml", price: "379 kr.", image: "img/produktbilleder/MIXLY-Rich-Repair-Shampoo-1000ml.png" },
@@ -1364,30 +1507,30 @@ const quickViewCatalog = {
     detailsImage: "img/ingredienser/ingredienser-Rich-Repair-Shampoo-1000ml.png",
     fullLink: "products/shampoo/rich-repair-cleansing-shampoo.html",
     guide: [
-      ["Brug", "Fordel i vådt hår, massér og skyl grundigt."],
-      ["God til", "Tørre, krusede eller medtagne krøller."],
-      ["Effekt", "Mere næring, styrke og mindre frizz."],
+      ["Brug", "Fordel i vÃ¥dt hÃ¥r, massÃ©r og skyl grundigt."],
+      ["God til", "TÃ¸rre, krusede eller medtagne krÃ¸ller."],
+      ["Effekt", "Mere nÃ¦ring, styrke og mindre frizz."],
     ],
   },
   "rich shampoo": {
-    tags: ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    tags: ["Ã˜kologisk", "Vegansk", "Parfumefri", "Unisex"],
     description:
-      "Giver mere næring og ro til krøller, der føles tørre, frizzede eller medtagne.",
+      "Giver mere nÃ¦ring og ro til krÃ¸ller, der fÃ¸les tÃ¸rre, frizzede eller medtagne.",
     sizes: [
       { label: "250 ml", price: "299 kr.", image: "img/produktbilleder/Rich-Shampoo-1.png" },
     ],
     detailsImage: "img/ingredienser/ingredienser-Rich-Repair-Shampoo-1000ml.png",
     fullLink: "products/shampoo/rich-shampoo.html",
     guide: [
-      ["Brug", "Fordel i vådt hår, massér og skyl grundigt."],
-      ["God til", "Tørre, krusede eller medtagne krøller."],
-      ["Effekt", "Mere næring, styrke og mindre frizz."],
+      ["Brug", "Fordel i vÃ¥dt hÃ¥r, massÃ©r og skyl grundigt."],
+      ["God til", "TÃ¸rre, krusede eller medtagne krÃ¸ller."],
+      ["Effekt", "Mere nÃ¦ring, styrke og mindre frizz."],
     ],
   },
   "low refresh cleansing shampoo": {
-    tags: ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    tags: ["Ã˜kologisk", "Vegansk", "Parfumefri", "Unisex"],
     description:
-      "Renser skånsomt og hjælper krøller med at bevare fugt, lethed og spændstighed.",
+      "Renser skÃ¥nsomt og hjÃ¦lper krÃ¸ller med at bevare fugt, lethed og spÃ¦ndstighed.",
     sizes: [
       { label: "100 ml", price: "110 kr.", image: "img/produktbilleder/MIXLY-Low-Refresh-Shampoo-100.png" },
       { label: "1000 ml", price: "379 kr.", image: "img/produktbilleder/MIXLY-Low-Refresh-Shampoo-1000.png" },
@@ -1395,15 +1538,15 @@ const quickViewCatalog = {
     detailsImage: "img/ingredienser/ingredienser-MIXLY-Low-Refresh-Shampoo-100.png",
     fullLink: "products/shampoo/low-refresh-cleansing-shampoo.html",
     guide: [
-      ["Brug", "Massér i vådt hår og skyl grundigt."],
-      ["God til", "Fint hår, bølger og krøller der let tynges."],
-      ["Effekt", "Renser let og bevarer bevægelse."],
+      ["Brug", "MassÃ©r i vÃ¥dt hÃ¥r og skyl grundigt."],
+      ["God til", "Fint hÃ¥r, bÃ¸lger og krÃ¸ller der let tynges."],
+      ["Effekt", "Renser let og bevarer bevÃ¦gelse."],
     ],
   },
   "low conditioner": {
-    tags: ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    tags: ["Ã˜kologisk", "Vegansk", "Parfumefri", "Unisex"],
     description:
-      "Let conditioner, der hjælper krøller med styrke og bevægelse uden at tynge.",
+      "Let conditioner, der hjÃ¦lper krÃ¸ller med styrke og bevÃ¦gelse uden at tynge.",
     sizes: [
       { label: "200 ml", price: "159 kr.", image: "img/produktbilleder/Low-Conditioner-1.png", link: "products/conditioner/mixly-low-conditioner.html" },
       { label: "1000 ml", price: "399 kr.", image: "img/produktbilleder/MIXLY-Low-Conditioner-1000.png", link: "products/conditioner/mixly-low-conditioner.html" },
@@ -1411,15 +1554,15 @@ const quickViewCatalog = {
     detailsImage: "img/ingredienser/Ingrediens-Low-Conditioner-1000.png",
     fullLink: "products/conditioner/mixly-low-conditioner.html",
     guide: [
-      ["Brug", "Fordel i nyvasket, vådt hår og skyl grundigt."],
-      ["God til", "Fine krøller, bølger eller hår der let bliver tynget."],
+      ["Brug", "Fordel i nyvasket, vÃ¥dt hÃ¥r og skyl grundigt."],
+      ["God til", "Fine krÃ¸ller, bÃ¸lger eller hÃ¥r der let bliver tynget."],
       ["Effekt", "Fugt, styrke og naturlig lethed."],
     ],
   },
   "rich deep drink conditioner": {
-    tags: ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    tags: ["Ã˜kologisk", "Vegansk", "Parfumefri", "Unisex"],
     description:
-      "Conditioner med intens fugt, der hjælper tørre krøller med mere blødhed og ro.",
+      "Conditioner med intens fugt, der hjÃ¦lper tÃ¸rre krÃ¸ller med mere blÃ¸dhed og ro.",
     sizes: [
       { label: "200 ml", price: "159 kr.", image: "img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-200.png" },
       { label: "1000 ml", price: "399 kr.", image: "img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-1000.png" },
@@ -1427,9 +1570,23 @@ const quickViewCatalog = {
     detailsImage: "img/ingredienser/ingredienser-Rich-Deep-Drink-Conditioner-1000.png",
     fullLink: "products/conditioner/rich-deep-drink-conditioner.html",
     guide: [
-      ["Brug", "Fordel i længderne efter shampoo og skyl."],
-      ["God til", "Tørre krøller der mangler fugt og ro."],
-      ["Effekt", "Blødhed, glans og mindre frizz."],
+      ["Brug", "Fordel i lÃ¦ngderne efter shampoo og skyl."],
+      ["God til", "TÃ¸rre krÃ¸ller der mangler fugt og ro."],
+      ["Effekt", "BlÃ¸dhed, glans og mindre frizz."],
+    ],
+  },
+  "low curly jojoba quench oil 30 ml": {
+    tags: ["Ã˜kologisk", "Vegansk", "Parfumefri", "Unisex"],
+    description:
+      "Let olie, der giver glans, blÃ¸dhed og beskyttelse uden at tynge fine krÃ¸ller og bÃ¸lger.",
+    sizes: [
+      { label: "30 ml", price: "159 kr.", link: "products/styling/low-curly-jojoba-quench-oil.html" },
+    ],
+    fullLink: "products/styling/low-curly-jojoba-quench-oil.html",
+    guide: [
+      ["Brug", "Fordel fÃ¥ drÃ¥ber i lÃ¦ngder og spidser."],
+      ["God til", "Fine krÃ¸ller og bÃ¸lger, der Ã¸nsker en lettere olieoplevelse."],
+      ["Effekt", "Glans, blÃ¸dhed, beskyttelse og mindre frizz."],
     ],
   },
 };
@@ -1440,7 +1597,19 @@ function parsePrice(priceText) {
 }
 
 function formatPrice(amount) {
-  return `${amount.toLocaleString("da-DK")} kr`;
+  return `${amount.toLocaleString("da-DK")} kr.`;
+}
+
+function formatDisplayPrice(priceText) {
+  return String(priceText || "")
+    .replace(/(\d[\d.]*)\s*,00\s*kr\.?/gi, "$1 kr.")
+    .replace(/(\d[\d.]*)\s*kr(?![.\w])/gi, "$1 kr.");
+}
+
+function normalizeDisplayedPrices(scope = document) {
+  scope.querySelectorAll(".produkt-skabelon-price, [data-product-page-price], .product-meta span:first-child").forEach((item) => {
+    item.textContent = formatDisplayPrice(item.textContent);
+  });
 }
 
 function getAbsoluteAssetUrl(src) {
@@ -1464,7 +1633,7 @@ function saveCartItems() {
   try {
     localStorage.setItem(cartStorageKey, JSON.stringify(cartItems));
   } catch (error) {
-    // Kurven virker stadig på siden, selv hvis localStorage er blokeret.
+    // Kurven virker stadig pÃ¥ siden, selv hvis localStorage er blokeret.
   }
 
   document.dispatchEvent(new CustomEvent("hildebrandt-cart-updated"));
@@ -1505,14 +1674,17 @@ function updateCartBadges() {
   });
 }
 
-function addToCart(product) {
+function addToCart(product, options = {}) {
   const id = getCartItemId(product);
-  const existingItem = cartItems.find((item) => item.id === id);
+  const existingItemIndex = cartItems.findIndex((item) => item.id === id);
+  const existingItem = cartItems[existingItemIndex];
 
   if (existingItem) {
     existingItem.quantity += 1;
+    cartItems.splice(existingItemIndex, 1);
+    cartItems.unshift(existingItem);
   } else {
-    cartItems.push({
+    cartItems.unshift({
       id,
       name: product.name,
       size: product.size || "",
@@ -1522,10 +1694,19 @@ function addToCart(product) {
     });
   }
 
+  lastAddedCartItem = {
+    name: product.name,
+    size: product.size || "",
+    price: product.price,
+  };
+
   saveCartItems();
   updateCartBadges();
   renderCartDrawer();
-  openCartDrawer();
+
+  if (options.openDrawer !== false) {
+    openCartDrawer();
+  }
 }
 
 function updateCartItemQuantity(id, quantity) {
@@ -1548,7 +1729,7 @@ function escapeCartText(value) {
 
 function getProductFromCard(card) {
   const title = getCardTitle(card);
-  const catalogData = quickViewCatalog[normalizeProductTitle(title)];
+  const catalogData = quickAddCatalog[normalizeProductTitle(title)];
   const defaultSizeIndex = catalogData?.sizes ? Math.max(getDefaultProductSizeIndex(catalogData.sizes), 0) : 0;
   const defaultSize = catalogData?.sizes?.[defaultSizeIndex];
   const meta = Array.from(card.querySelectorAll(".product-meta span")).map((item) => item.textContent.trim());
@@ -1563,11 +1744,28 @@ function getProductFromCard(card) {
   };
 }
 
+function cardMayHaveMultipleSizes(card, sizes = []) {
+  const meta = Array.from(card.querySelectorAll(".product-meta span")).map((item) => item.textContent.trim());
+  return sizes.length > 1 || /^fra\b/i.test(meta[0] || "") || (meta[1] || "").includes("/");
+}
+
+function getProductFromCardVariant(card, variant) {
+  const title = getCardTitle(card);
+  const image = variant?.image || getCardImage(card)?.getAttribute("src") || "";
+
+  return {
+    name: title,
+    size: variant?.label || "",
+    price: parsePrice(variant?.price),
+    image: getAbsoluteAssetUrl(image),
+  };
+}
+
 function getProductFromPage() {
   const title = document.querySelector("#produkt-skabelon-title")?.textContent.trim() || document.title.replace(" - Hildebrandt Copenhagen", "").trim();
   const checkedSize = document.querySelector(".produkt-skabelon-size input:checked");
   const activeSize = document.querySelector(".produkt-skabelon-size-active") || document.querySelector(".produkt-skabelon-size[aria-pressed='true']") || checkedSize?.closest(".produkt-skabelon-size");
-  const fallbackSize = Array.from(document.querySelectorAll(".produkt-skabelon-spec-row")).find((row) => row.querySelector("dt")?.textContent.trim().toLowerCase() === "størrelse")?.querySelector("dd")?.textContent.trim();
+  const fallbackSize = Array.from(document.querySelectorAll(".produkt-skabelon-spec-row")).find((row) => row.querySelector("dt")?.textContent.trim().toLowerCase() === "stÃ¸rrelse")?.querySelector("dd")?.textContent.trim();
   const price = document.querySelector("[data-product-page-price]") || document.querySelector(".produkt-skabelon-price");
   const image = document.querySelector(".produkt-skabelon-image-hero img")?.getAttribute("src") || "";
 
@@ -1575,21 +1773,6 @@ function getProductFromPage() {
     name: title,
     size: activeSize?.textContent.trim() || activeSize?.querySelector("input")?.value || fallbackSize || "",
     price: parsePrice(price?.textContent),
-    image: getAbsoluteAssetUrl(image),
-  };
-}
-
-function getQuickViewSelectedProduct(modal) {
-  const title = modal.querySelector("#quick-view-title")?.textContent.trim() || "Mixly produkt";
-  const data = modal.quickViewData || quickViewCatalog[normalizeProductTitle(title)] || {};
-  const selectedIndex = Number(modal.dataset.selectedSizeIndex || 0);
-  const selectedSize = data.sizes?.[selectedIndex];
-  const image = selectedSize?.image || modal.querySelector(".quick-view-product-image")?.getAttribute("src") || "";
-
-  return {
-    name: title,
-    size: selectedSize?.label || "",
-    price: parsePrice(selectedSize?.price || modal.querySelector(".quick-view-price")?.textContent),
     image: getAbsoluteAssetUrl(image),
   };
 }
@@ -1603,7 +1786,7 @@ function createCartDrawer() {
     <aside class="side-cart-panel" role="dialog" aria-modal="true" aria-labelledby="side-cart-title" tabindex="-1">
       <header class="side-cart-header">
         <h2 id="side-cart-title">Din kurv</h2>
-        <button class="side-cart-close" type="button" aria-label="Luk kurv" data-cart-close>×</button>
+        <button class="side-cart-close" type="button" aria-label="Luk kurv" data-cart-close>Ã—</button>
       </header>
       <div class="side-cart-body" data-cart-body></div>
       <div class="side-cart-footer" data-cart-footer></div>
@@ -1645,7 +1828,7 @@ function createCartDrawer() {
   drawer.addEventListener("submit", (event) => {
     if (event.target.closest(".side-cart-discount")) {
       event.preventDefault();
-      // TODO: Tilslut rabatkode-validering, når checkout/betalingssystemet findes.
+      // TODO: Tilslut rabatkode-validering, nÃ¥r checkout/betalingssystemet findes.
     }
   });
 
@@ -1664,7 +1847,7 @@ function renderCartDrawer() {
     body.innerHTML = `
       <div class="side-cart-empty">
         <h3>Din kurv er tom</h3>
-        <p>Tilføj nogle Mixly produkter!</p>
+        <p>TilfÃ¸j nogle Mixly produkter!</p>
       </div>
     `;
     footer.replaceChildren();
@@ -1674,6 +1857,14 @@ function renderCartDrawer() {
 
   footer.hidden = false;
   body.innerHTML = `
+    ${lastAddedCartItem ? `
+      <div class="side-cart-added" role="status" aria-live="polite">
+        <p class="side-cart-added-title">✓ Produkt tilføjet til kurven</p>
+        <p>${escapeCartText(lastAddedCartItem.name)}</p>
+        ${lastAddedCartItem.size ? `<p>${escapeCartText(lastAddedCartItem.size)}</p>` : ""}
+        <p>${formatPrice(lastAddedCartItem.price)}</p>
+      </div>
+    ` : ""}
     <ul class="side-cart-list">
       ${cartItems.map((item) => {
         const name = escapeCartText(item.name);
@@ -1687,14 +1878,14 @@ function renderCartDrawer() {
             <div class="side-cart-item-content">
               <div class="side-cart-item-heading">
                 <h3>${name}</h3>
-                <button class="side-cart-remove" type="button" aria-label="Fjern ${name} fra kurv" data-cart-action="remove" data-cart-item-id="${id}">×</button>
+                <button class="side-cart-remove" type="button" aria-label="Fjern ${name} fra kurv" data-cart-action="remove" data-cart-item-id="${id}">Ã—</button>
               </div>
               <p class="side-cart-item-size">${size}</p>
               <p class="side-cart-item-price">${formatPrice(item.price)}/stk</p>
               <div class="side-cart-quantity">
-                <button type="button" aria-label="Reducer antal af ${name}" data-cart-action="decrease" data-cart-item-id="${id}">−</button>
+                <button type="button" aria-label="Reducer antal af ${name}" data-cart-action="decrease" data-cart-item-id="${id}">âˆ’</button>
                 <span aria-label="Antal">${item.quantity}</span>
-                <button type="button" aria-label="Øg antal af ${name}" data-cart-action="increase" data-cart-item-id="${id}">+</button>
+                <button type="button" aria-label="Ã˜g antal af ${name}" data-cart-action="increase" data-cart-item-id="${id}">+</button>
               </div>
             </div>
           </li>
@@ -1715,8 +1906,8 @@ function renderCartDrawer() {
       <span>I alt</span>
       <strong>${formatPrice(getCartTotal())}</strong>
     </div>
-    <a class="side-cart-checkout" href="checkout.html" aria-label="Gå til kassen">Gå til kassen</a>
-    <p>Fri fragt over 1000 kr · 1-2 hverdages levering</p>
+    <a class="side-cart-checkout" href="checkout.html" aria-label="GÃ¥ til kassen">GÃ¥ til kassen</a>
+    <p>Fri fragt over 1000 kr. Â· 1-2 hverdages levering</p>
   `;
 }
 
@@ -1742,6 +1933,7 @@ function closeCartDrawer() {
   cartDrawer.classList.remove("is-open");
   cartDrawer.setAttribute("aria-hidden", "true");
   document.body.classList.remove("is-cart-open");
+  lastAddedCartItem = null;
 
   if (lastCartTrigger && typeof lastCartTrigger.focus === "function") {
     lastCartTrigger.focus();
@@ -1820,32 +2012,32 @@ const productDetailsImageBySize = {
 
 const productInfoBySize = {
   "curly charcoal calm shampoo": {
-    "50 ml": { weight: "0,050 kg", dimensions: "11 cm", amount: "50 ml", shelfLife: "12 måneder efter åbning", sku: "MCCC50" },
-    "200 ml": { weight: "0,200 kg", dimensions: "18 cm", amount: "200 ml", shelfLife: "12 måneder efter åbning", sku: "MCCC200" },
+    "50 ml": { weight: "0,050 kg", dimensions: "11 cm", amount: "50 ml", shelfLife: "12 mÃ¥neder efter Ã¥bning", sku: "MCCC50" },
+    "200 ml": { weight: "0,200 kg", dimensions: "18 cm", amount: "200 ml", shelfLife: "12 mÃ¥neder efter Ã¥bning", sku: "MCCC200" },
   },
   "low refresh cleansing shampoo": {
-    "100 ml": { weight: "0,1 kg", amount: "100 ml", shelfLife: "12 måneder efter åbning", sku: "Afventer varenummer" },
-    "1000 ml": { weight: "1 kg", amount: "1000 ml", shelfLife: "12 måneder efter åbning", sku: "Afventer varenummer" },
+    "100 ml": { weight: "0,1 kg", amount: "100 ml", shelfLife: "12 mÃ¥neder efter Ã¥bning", sku: "Afventer varenummer" },
+    "1000 ml": { weight: "1 kg", amount: "1000 ml", shelfLife: "12 mÃ¥neder efter Ã¥bning", sku: "Afventer varenummer" },
   },
   "rich repair cleansing shampoo": {
-    "100 ml": { weight: "0,1 kg", amount: "100 ml", shelfLife: "12 måneder efter åbning", sku: "RRCS100" },
-    "1000 ml": { weight: "6 kg", amount: "1000 ml", shelfLife: "12 måneder efter åbning", sku: "RRCS1000" },
+    "100 ml": { weight: "0,1 kg", amount: "100 ml", shelfLife: "12 mÃ¥neder efter Ã¥bning", sku: "RRCS100" },
+    "1000 ml": { weight: "6 kg", amount: "1000 ml", shelfLife: "12 mÃ¥neder efter Ã¥bning", sku: "RRCS1000" },
   },
   "mixly low conditioner": {
-    "200 ml": { weight: "0,2 kg", amount: "200 ml", shelfLife: "6 måneder efter åbning", sku: "LC200" },
-    "1000 ml": { weight: "1 kg", amount: "1000 ml", shelfLife: "12 måneder efter åbning", sku: "LC1000" },
+    "200 ml": { weight: "0,2 kg", amount: "200 ml", shelfLife: "6 mÃ¥neder efter Ã¥bning", sku: "LC200" },
+    "1000 ml": { weight: "1 kg", amount: "1000 ml", shelfLife: "12 mÃ¥neder efter Ã¥bning", sku: "LC1000" },
   },
   "rich deep drink conditioner": {
-    "200 ml": { weight: "0,2 kg", amount: "200 ml", shelfLife: "12 måneder efter åbning", sku: "RDDC200" },
-    "1000 ml": { weight: "1 kg", amount: "1000 ml", shelfLife: "12 måneder efter åbning", sku: "RDDC1000" },
+    "200 ml": { weight: "0,2 kg", amount: "200 ml", shelfLife: "12 mÃ¥neder efter Ã¥bning", sku: "RDDC200" },
+    "1000 ml": { weight: "1 kg", amount: "1000 ml", shelfLife: "12 mÃ¥neder efter Ã¥bning", sku: "RDDC1000" },
   },
   "low refresh + rich repair cleansing shampoo": {
-    "2 x 100 ml": { weight: "0,2 kg", amount: "2 × 100 ml", shelfLife: "12 måneder", sku: "LRCS-RRCS-200" },
-    "2 x 1000 ml": { weight: "2 kg", amount: "2 × 1000 ml", shelfLife: "12 måneder", sku: "LRCS-RRCS-2000" },
+    "2 x 100 ml": { weight: "0,2 kg", amount: "2 Ã— 100 ml", shelfLife: "12 mÃ¥neder", sku: "LRCS-RRCS-200" },
+    "2 x 1000 ml": { weight: "2 kg", amount: "2 Ã— 1000 ml", shelfLife: "12 mÃ¥neder", sku: "LRCS-RRCS-2000" },
   },
   "low + rich deep drink conditioner": {
-    "2 x 200 ml": { weight: "0,4 kg", amount: "2 × 200 ml", shelfLife: "12 måneder", sku: "LC-RDDC-400" },
-    "2 x 1000 ml": { weight: "2 kg", amount: "2 × 1000 ml", shelfLife: "12 måneder", sku: "LC-RDDC-2000" },
+    "2 x 200 ml": { weight: "0,4 kg", amount: "2 Ã— 200 ml", shelfLife: "12 mÃ¥neder", sku: "LC-RDDC-400" },
+    "2 x 1000 ml": { weight: "2 kg", amount: "2 Ã— 1000 ml", shelfLife: "12 mÃ¥neder", sku: "LC-RDDC-2000" },
   },
 };
 
@@ -1854,7 +2046,7 @@ function getProductPageTitle() {
 }
 
 function normalizeProductSizeLabel(label) {
-  return String(label || "").trim().replace(/\s*[×x]\s*/gi, " x ").replace(/\s+/g, " ").toLowerCase();
+  return String(label || "").trim().replace(/\s*[Ã—x]\s*/gi, " x ").replace(/\s+/g, " ").toLowerCase();
 }
 
 function getProductSizeVolume(label) {
@@ -1922,10 +2114,10 @@ function updateProductInfoForSize(title, label) {
   }
 
   setProductInfoRowValue(["VARENUMMER"], info.sku);
-  setProductInfoRowValue(["SAMLET MÆNGDE", "MÆNGDE"], info.amount);
-  setProductInfoRowValue(["VÆGT"], info.weight);
+  setProductInfoRowValue(["SAMLET MÃ†NGDE", "MÃ†NGDE"], info.amount);
+  setProductInfoRowValue(["VÃ†GT"], info.weight);
   setProductInfoRowValue(["HOLDBARHED"], info.shelfLife);
-  setProductInfoRowValue(["STØRRELSE"], info.dimensions);
+  setProductInfoRowValue(["STÃ˜RRELSE"], info.dimensions);
 }
 
 function getSetVariantForSize(title, label) {
@@ -1961,7 +2153,7 @@ function getProductPageAmountLabel() {
   const rows = Array.from(document.querySelectorAll(".produkt-skabelon-info-row"));
   const amountRow = rows.find((row) => {
     const label = row.querySelector(".produkt-skabelon-info-label")?.textContent.trim().toUpperCase() || "";
-    return label.includes("MÆNGDE") || label.includes("STØRRELSE");
+    return label.includes("MÃ†NGDE") || label.includes("STÃ˜RRELSE");
   });
   const amountText = amountRow?.querySelector(".produkt-skabelon-info-value")?.textContent.trim() || "";
 
@@ -1989,7 +2181,7 @@ function ensureSingleProductSizeButton() {
   const fieldset = document.createElement("fieldset");
   fieldset.className = "produkt-skabelon-size-group";
   fieldset.innerHTML = `
-    <legend class="produkt-skabelon-size-label">Størrelse</legend>
+    <legend class="produkt-skabelon-size-label">StÃ¸rrelse</legend>
     <div class="produkt-skabelon-size-options"></div>
   `;
 
@@ -1997,7 +2189,7 @@ function ensureSingleProductSizeButton() {
   button.className = "produkt-skabelon-size";
   button.type = "button";
   button.textContent = amountLabel;
-  button.dataset.productPrice = price?.textContent.trim() || "";
+    button.dataset.productPrice = price?.textContent.trim() || "";
   button.dataset.productImage = heroImage?.getAttribute("src") || "";
   button.dataset.productDetailsImage = detailsImage?.getAttribute("src") || "";
   fieldset.querySelector(".produkt-skabelon-size-options")?.append(button);
@@ -2010,142 +2202,142 @@ ensureSingleProductSizeButton();
 const mixlySetPageUpgrades = {
   "low refresh + rich repair cleansing shampoo - 2 x 1000 ml": {
     price: "758 kr.",
-    intro: "Et fleksibelt shampoosæt til dig, der vil kunne tilpasse vasken efter hårets behov. LOW giver en lettere rens, mens RICH tilfører mere pleje og næring.",
-    containsTitle: "Sættet indeholder",
+    intro: "Et fleksibelt shampoosÃ¦t til dig, der vil kunne tilpasse vasken efter hÃ¥rets behov. LOW giver en lettere rens, mens RICH tilfÃ¸rer mere pleje og nÃ¦ring.",
+    containsTitle: "SÃ¦ttet indeholder",
     containsLabel: "Produkter i Low Refresh + Rich Repair Cleansing Shampoo 2 x 1000 ml",
     use: [
-      "Brug shampooen i vådt hår og massér produktet ind i hovedbund og længder. Skyl grundigt ud.",
-      "Brug LOW, når håret har brug for en let rens og mere bevægelse. Brug RICH, når håret føles tørt eller har brug for ekstra pleje.",
+      "Brug shampooen i vÃ¥dt hÃ¥r og massÃ©r produktet ind i hovedbund og lÃ¦ngder. Skyl grundigt ud.",
+      "Brug LOW, nÃ¥r hÃ¥ret har brug for en let rens og mere bevÃ¦gelse. Brug RICH, nÃ¥r hÃ¥ret fÃ¸les tÃ¸rt eller har brug for ekstra pleje.",
     ],
     learn: [
-      "LOW og RICH giver dig mulighed for at justere din hårvask efter hårets behov. LOW hjælper med at rense uden at tynge, mens RICH tilfører mere fugt og pleje til hår, der føles tørt eller kræver ekstra næring.",
+      "LOW og RICH giver dig mulighed for at justere din hÃ¥rvask efter hÃ¥rets behov. LOW hjÃ¦lper med at rense uden at tynge, mens RICH tilfÃ¸rer mere fugt og pleje til hÃ¥r, der fÃ¸les tÃ¸rt eller krÃ¦ver ekstra nÃ¦ring.",
     ],
-    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
-    productInfo: { sku: "LRCS-RRCS-2000", amount: "2 × 1000 ml", weight: "2 kg", shelfLife: "12 måneder" },
+    infoIntro: "Klik pÃ¥ et produkt under 'SÃ¦ttet indeholder' for at lÃ¦se mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LRCS-RRCS-2000", amount: "2 Ã— 1000 ml", weight: "2 kg", shelfLife: "12 mÃ¥neder" },
     cards: [
-      { title: "LOW Refresh Cleansing Shampoo", description: "Let rens til hovedbund og hår med fokus på friskhed, fugt og balance.", price: "379 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Low-Refresh-Shampoo-1000.png", href: "../../products/shampoo/low-refresh-cleansing-shampoo.html" },
-      { title: "RICH Repair Cleansing Shampoo", description: "Plejende shampoo til hår, der føles tørt eller kræver ekstra næring.", price: "379 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Rich-Repair-Shampoo-1000ml.png", href: "../../products/shampoo/rich-repair-cleansing-shampoo.html" },
+      { title: "LOW Refresh Cleansing Shampoo", description: "Let rens til hovedbund og hÃ¥r med fokus pÃ¥ friskhed, fugt og balance.", price: "379 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Low-Refresh-Shampoo-1000.png", href: "../../products/shampoo/low-refresh-cleansing-shampoo.html" },
+      { title: "RICH Repair Cleansing Shampoo", description: "Plejende shampoo til hÃ¥r, der fÃ¸les tÃ¸rt eller krÃ¦ver ekstra nÃ¦ring.", price: "379 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Rich-Repair-Shampoo-1000ml.png", href: "../../products/shampoo/rich-repair-cleansing-shampoo.html" },
     ],
   },
   "low + rich deep drink conditioner - 2 x 1000 ml": {
     price: "798 kr.",
-    intro: "Et conditioner-sæt til dig, der ønsker fleksibel pleje og fugt til krøller og bølger. LOW giver let balance, mens RICH tilfører ekstra fugt og næring.",
-    containsTitle: "Sættet indeholder",
+    intro: "Et conditioner-sÃ¦t til dig, der Ã¸nsker fleksibel pleje og fugt til krÃ¸ller og bÃ¸lger. LOW giver let balance, mens RICH tilfÃ¸rer ekstra fugt og nÃ¦ring.",
+    containsTitle: "SÃ¦ttet indeholder",
     containsLabel: "Produkter i Low + Rich Deep Drink Conditioner 2 x 1000 ml",
     use: [
-      "Påfør conditioner i vådt hår efter vask. Fordel produktet i længderne, lad håret absorbere fugten og skyl derefter ud.",
-      "Brug LOW, når håret har brug for let pleje. Brug RICH, når håret føles tørt eller mangler blødhed.",
+      "PÃ¥fÃ¸r conditioner i vÃ¥dt hÃ¥r efter vask. Fordel produktet i lÃ¦ngderne, lad hÃ¥ret absorbere fugten og skyl derefter ud.",
+      "Brug LOW, nÃ¥r hÃ¥ret har brug for let pleje. Brug RICH, nÃ¥r hÃ¥ret fÃ¸les tÃ¸rt eller mangler blÃ¸dhed.",
     ],
     learn: [
-      "Conditioner hjælper med at gøre håret blødere, lettere at rede ud og mere modtageligt for styling. Kombinationen af LOW og RICH gør det muligt at tilpasse plejen efter hårets aktuelle behov.",
+      "Conditioner hjÃ¦lper med at gÃ¸re hÃ¥ret blÃ¸dere, lettere at rede ud og mere modtageligt for styling. Kombinationen af LOW og RICH gÃ¸r det muligt at tilpasse plejen efter hÃ¥rets aktuelle behov.",
     ],
-    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
-    productInfo: { sku: "LC-RDDC-2000", amount: "2 × 1000 ml", weight: "2 kg", shelfLife: "12 måneder" },
+    infoIntro: "Klik pÃ¥ et produkt under 'SÃ¦ttet indeholder' for at lÃ¦se mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LC-RDDC-2000", amount: "2 Ã— 1000 ml", weight: "2 kg", shelfLife: "12 mÃ¥neder" },
     cards: [
-      { title: "LOW Conditioner", description: "Let conditioner, der giver fugt og balance uden at tynge håret.", price: "399 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Low-Conditioner-1000.png", href: "../../products/conditioner/mixly-low-conditioner.html" },
-      { title: "RICH Deep Drink Conditioner", description: "Ekstra fugt og næring til hår, der føles tørt eller mangler blødhed.", price: "399 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-1000.png", href: "../../products/conditioner/rich-deep-drink-conditioner.html" },
+      { title: "LOW Conditioner", description: "Let conditioner, der giver fugt og balance uden at tynge hÃ¥ret.", price: "399 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Low-Conditioner-1000.png", href: "../../products/conditioner/mixly-low-conditioner.html" },
+      { title: "RICH Deep Drink Conditioner", description: "Ekstra fugt og nÃ¦ring til hÃ¥r, der fÃ¸les tÃ¸rt eller mangler blÃ¸dhed.", price: "399 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-1000.png", href: "../../products/conditioner/rich-deep-drink-conditioner.html" },
     ],
   },
   "low refiner curl gel + rich curl cream - 2 x 150 ml": {
     price: "338 kr.",
-    intro: "Et stylingsæt til dig, der ønsker definition, fugt og hold. LOW Refiner Curl Gel giver struktur, mens RICH Curl Cream tilfører blødhed og pleje.",
-    containsTitle: "Sættet indeholder",
+    intro: "Et stylingsÃ¦t til dig, der Ã¸nsker definition, fugt og hold. LOW Refiner Curl Gel giver struktur, mens RICH Curl Cream tilfÃ¸rer blÃ¸dhed og pleje.",
+    containsTitle: "SÃ¦ttet indeholder",
     containsLabel: "Produkter i Low Refiner Curl Gel + Rich Curl Cream",
     use: [
-      "Fordel produktet i fugtigt hår efter vask og pleje.",
-      "Brug gel for mere hold og definition. Brug curl cream for mere fugt, blødhed og pleje. Produkterne kan bruges hver for sig eller sammen.",
+      "Fordel produktet i fugtigt hÃ¥r efter vask og pleje.",
+      "Brug gel for mere hold og definition. Brug curl cream for mere fugt, blÃ¸dhed og pleje. Produkterne kan bruges hver for sig eller sammen.",
     ],
     learn: [
-      "Gel og curl cream arbejder forskelligt i håret. Gel hjælper med at give struktur og holde formen på krøllerne, mens curl cream tilfører fugt og gør håret blødere. Sammen giver de en fleksibel stylingrutine.",
+      "Gel og curl cream arbejder forskelligt i hÃ¥ret. Gel hjÃ¦lper med at give struktur og holde formen pÃ¥ krÃ¸llerne, mens curl cream tilfÃ¸rer fugt og gÃ¸r hÃ¥ret blÃ¸dere. Sammen giver de en fleksibel stylingrutine.",
     ],
-    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
-    productInfo: { sku: "LRGC-RCC-300", amount: "2 × 150 ml", weight: "0,3 kg", shelfLife: "6-12 måneder" },
+    infoIntro: "Klik pÃ¥ et produkt under 'SÃ¦ttet indeholder' for at lÃ¦se mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LRGC-RCC-300", amount: "2 Ã— 150 ml", weight: "0,3 kg", shelfLife: "6-12 mÃ¥neder" },
     cards: [
-      { title: "LOW Refiner Curl Gel", description: "Giver struktur, hold og definition uden at gøre håret stift.", price: "169 kr.", size: "150 ml", image: "../../img/produktbilleder/MIXLY-Curl-Gel.png", href: "../../products/styling/low-refiner-curl-gel.html" },
-      { title: "RICH Curl Cream", description: "Tilfører fugt, blødhed og pleje til krøller og bølger.", price: "169 kr.", size: "150 ml", image: "../../img/produktbilleder/Mixly-Curl-Cream.png", href: "../../products/styling/rich-curl-cream.html" },
+      { title: "LOW Refiner Curl Gel", description: "Giver struktur, hold og definition uden at gÃ¸re hÃ¥ret stift.", price: "169 kr.", size: "150 ml", image: "../../img/produktbilleder/MIXLY-Curl-Gel.png", href: "../../products/styling/low-refiner-curl-gel.html" },
+      { title: "RICH Curl Cream", description: "TilfÃ¸rer fugt, blÃ¸dhed og pleje til krÃ¸ller og bÃ¸lger.", price: "169 kr.", size: "150 ml", image: "../../img/produktbilleder/Mixly-Curl-Cream.png", href: "../../products/styling/rich-curl-cream.html" },
     ],
   },
   "low + rich leave-in conditioner - 2 x 150 ml": {
     price: "338 kr.",
-    intro: "Et leave-in sæt til dig, der ønsker fugt, blødhed og let pleje efter vask. LOW giver let balance, mens RICH tilfører ekstra fugt og næring.",
-    containsTitle: "Sættet indeholder",
+    intro: "Et leave-in sÃ¦t til dig, der Ã¸nsker fugt, blÃ¸dhed og let pleje efter vask. LOW giver let balance, mens RICH tilfÃ¸rer ekstra fugt og nÃ¦ring.",
+    containsTitle: "SÃ¦ttet indeholder",
     containsLabel: "Produkter i Low + Rich Leave-In Conditioner",
-    use: ["Fordel leave-in i fugtigt hår efter vask. Produktet skal ikke skylles ud."],
+    use: ["Fordel leave-in i fugtigt hÃ¥r efter vask. Produktet skal ikke skylles ud."],
     learn: [
-      "Leave-in conditioner hjælper med at bevare fugten i håret og gøre krøller og bølger lettere at style. Kombinationen af LOW og RICH gør det muligt at tilpasse plejen efter hårets behov.",
+      "Leave-in conditioner hjÃ¦lper med at bevare fugten i hÃ¥ret og gÃ¸re krÃ¸ller og bÃ¸lger lettere at style. Kombinationen af LOW og RICH gÃ¸r det muligt at tilpasse plejen efter hÃ¥rets behov.",
     ],
-    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
-    productInfo: { sku: "RLIC-LLIC-300", amount: "2 × 150 ml", weight: "0,3 kg", shelfLife: "6 måneder" },
+    infoIntro: "Klik pÃ¥ et produkt under 'SÃ¦ttet indeholder' for at lÃ¦se mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "RLIC-LLIC-300", amount: "2 Ã— 150 ml", weight: "0,3 kg", shelfLife: "6 mÃ¥neder" },
     cards: [
       { title: "LOW Leave-In Conditioner", description: "Let fugt, beskyttelse og balance efter vask.", price: "169 kr.", size: "150 ml", image: "../../img/produktbilleder/Low-Leave-In-Conditioner (1).png", href: "../../products/conditioner/low-leave-in-conditioner.html" },
-      { title: "RICH Leave-In Conditioner", description: "Ekstra fugt, næring og blødhed til krøller og bølger.", price: "169 kr.", size: "150 ml", image: "../../img/produktbilleder/Mixly-Rich-Leave-In-Conditioner (1).png", href: "../../products/conditioner/rich-leave-in-conditioner.html" },
+      { title: "RICH Leave-In Conditioner", description: "Ekstra fugt, nÃ¦ring og blÃ¸dhed til krÃ¸ller og bÃ¸lger.", price: "169 kr.", size: "150 ml", image: "../../img/produktbilleder/Mixly-Rich-Leave-In-Conditioner (1).png", href: "../../products/conditioner/rich-leave-in-conditioner.html" },
     ],
   },
   "low + rich deep drink conditioner - 2 x 200 ml": {
     price: "318 kr.",
-    intro: "Et conditioner-sæt i mindre størrelse til dig, der vil kunne skifte mellem let pleje og dybere fugt efter hårets behov.",
-    containsTitle: "Sættet indeholder",
+    intro: "Et conditioner-sÃ¦t i mindre stÃ¸rrelse til dig, der vil kunne skifte mellem let pleje og dybere fugt efter hÃ¥rets behov.",
+    containsTitle: "SÃ¦ttet indeholder",
     containsLabel: "Produkter i Low Conditioner + Rich Deep Drink Conditioner 2 x 200 ml",
-    use: ["Påfør conditioner i vådt hår efter vask. Fordel produktet i længderne, lad håret absorbere fugten og skyl derefter ud."],
+    use: ["PÃ¥fÃ¸r conditioner i vÃ¥dt hÃ¥r efter vask. Fordel produktet i lÃ¦ngderne, lad hÃ¥ret absorbere fugten og skyl derefter ud."],
     learn: [
-      "LOW Conditioner giver let pleje uden at tynge håret. RICH Deep Drink Conditioner tilfører mere fugt og næring til hår, der føles tørt eller mangler smidighed.",
+      "LOW Conditioner giver let pleje uden at tynge hÃ¥ret. RICH Deep Drink Conditioner tilfÃ¸rer mere fugt og nÃ¦ring til hÃ¥r, der fÃ¸les tÃ¸rt eller mangler smidighed.",
     ],
-    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
-    productInfo: { sku: "LC-RDDC-400", amount: "2 × 200 ml", weight: "0,4 kg", shelfLife: "12 måneder" },
+    infoIntro: "Klik pÃ¥ et produkt under 'SÃ¦ttet indeholder' for at lÃ¦se mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LC-RDDC-400", amount: "2 Ã— 200 ml", weight: "0,4 kg", shelfLife: "12 mÃ¥neder" },
     cards: [
-      { title: "LOW Conditioner", description: "Let conditioner, der giver fugt og balance uden at tynge håret.", price: "159 kr.", size: "200 ml", image: "../../img/produktbilleder/Low-Conditioner-1.png", href: "../../products/conditioner/mixly-low-conditioner.html" },
-      { title: "RICH Deep Drink Conditioner", description: "Mere fugt og næring til hår, der føles tørt eller mangler smidighed.", price: "159 kr.", size: "200 ml", image: "../../img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-200.png", href: "../../products/conditioner/rich-deep-drink-conditioner.html" },
+      { title: "LOW Conditioner", description: "Let conditioner, der giver fugt og balance uden at tynge hÃ¥ret.", price: "159 kr.", size: "200 ml", image: "../../img/produktbilleder/Low-Conditioner-1.png", href: "../../products/conditioner/mixly-low-conditioner.html" },
+      { title: "RICH Deep Drink Conditioner", description: "Mere fugt og nÃ¦ring til hÃ¥r, der fÃ¸les tÃ¸rt eller mangler smidighed.", price: "159 kr.", size: "200 ml", image: "../../img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-200.png", href: "../../products/conditioner/rich-deep-drink-conditioner.html" },
     ],
   },
   "low refresh + rich repair cleansing shampoo": {
     title: "Low Refresh + Rich Repair Cleansing Shampoo",
     price: "220 kr.",
-    intro: "Et mindre shampoosæt til dig, der vil prøve LOW og RICH eller have en fleksibel rutine med på farten.",
-    containsTitle: "Sættet indeholder",
+    intro: "Et mindre shampoosÃ¦t til dig, der vil prÃ¸ve LOW og RICH eller have en fleksibel rutine med pÃ¥ farten.",
+    containsTitle: "SÃ¦ttet indeholder",
     containsLabel: "Produkter i Low Refresh + Rich Repair Cleansing Shampoo 2 x 100 ml",
-    use: ["Massér shampooen ind i vådt hår og hovedbund. Skyl grundigt ud."],
+    use: ["MassÃ©r shampooen ind i vÃ¥dt hÃ¥r og hovedbund. Skyl grundigt ud."],
     learn: [
-      "Sættet gør det nemt at mærke forskellen på LOW og RICH. LOW renser let og hjælper håret med at bevare bevægelse, mens RICH giver en mere plejende vask.",
+      "SÃ¦ttet gÃ¸r det nemt at mÃ¦rke forskellen pÃ¥ LOW og RICH. LOW renser let og hjÃ¦lper hÃ¥ret med at bevare bevÃ¦gelse, mens RICH giver en mere plejende vask.",
     ],
-    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
-    productInfo: { sku: "LRCS-RRCS-200", amount: "2 × 100 ml", weight: "0,2 kg", shelfLife: "12 måneder" },
+    infoIntro: "Klik pÃ¥ et produkt under 'SÃ¦ttet indeholder' for at lÃ¦se mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LRCS-RRCS-200", amount: "2 Ã— 100 ml", weight: "0,2 kg", shelfLife: "12 mÃ¥neder" },
     cards: [
-      { title: "LOW Refresh Cleansing Shampoo", description: "Let rens til hovedbund og hår med fokus på friskhed og bevægelse.", price: "110 kr.", size: "100 ml", image: "../../img/produktbilleder/MIXLY-Low-Refresh-Shampoo-100.png", href: "../../products/shampoo/low-refresh-cleansing-shampoo.html" },
-      { title: "RICH Repair Cleansing Shampoo", description: "En mere plejende vask til hår, der føles tørt eller kræver ekstra næring.", price: "110 kr.", size: "100 ml", image: "../../img/produktbilleder/MIXLY-Rich-Repair-Shampoo-100.png", href: "../../products/shampoo/rich-repair-cleansing-shampoo.html" },
+      { title: "LOW Refresh Cleansing Shampoo", description: "Let rens til hovedbund og hÃ¥r med fokus pÃ¥ friskhed og bevÃ¦gelse.", price: "110 kr.", size: "100 ml", image: "../../img/produktbilleder/MIXLY-Low-Refresh-Shampoo-100.png", href: "../../products/shampoo/low-refresh-cleansing-shampoo.html" },
+      { title: "RICH Repair Cleansing Shampoo", description: "En mere plejende vask til hÃ¥r, der fÃ¸les tÃ¸rt eller krÃ¦ver ekstra nÃ¦ring.", price: "110 kr.", size: "100 ml", image: "../../img/produktbilleder/MIXLY-Rich-Repair-Shampoo-100.png", href: "../../products/shampoo/rich-repair-cleansing-shampoo.html" },
     ],
   },
   "low + rich shampoo": {
     title: "Low + Rich Shampoo",
     price: "298 kr.",
-    intro: "Et shampoosæt til dig, der vil kunne tilpasse hårvasken efter dagsform, fugtbehov og hårets balance.",
-    containsTitle: "Sættet indeholder",
+    intro: "Et shampoosÃ¦t til dig, der vil kunne tilpasse hÃ¥rvasken efter dagsform, fugtbehov og hÃ¥rets balance.",
+    containsTitle: "SÃ¦ttet indeholder",
     containsLabel: "Produkter i Low + Rich Shampoo",
-    use: ["Massér shampooen ind i vådt hår og hovedbund. Skyl grundigt ud."],
+    use: ["MassÃ©r shampooen ind i vÃ¥dt hÃ¥r og hovedbund. Skyl grundigt ud."],
     learn: [
-      "LOW og RICH kan bruges hver for sig eller kombineres. LOW hjælper med at give en lettere fornemmelse i håret, mens RICH tilfører mere pleje.",
+      "LOW og RICH kan bruges hver for sig eller kombineres. LOW hjÃ¦lper med at give en lettere fornemmelse i hÃ¥ret, mens RICH tilfÃ¸rer mere pleje.",
     ],
-    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
-    productInfo: { sku: "LS-RS-200", amount: "2 × 250 ml", weight: "0,5 kg", shelfLife: "6 måneder" },
+    infoIntro: "Klik pÃ¥ et produkt under 'SÃ¦ttet indeholder' for at lÃ¦se mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LS-RS-200", amount: "2 Ã— 250 ml", weight: "0,5 kg", shelfLife: "6 mÃ¥neder" },
     cards: [
-      { title: "LOW Shampoo", description: "Let shampoo til en balanceret vask med bevægelse og fugt.", price: "149 kr.", size: "250 ml", image: "../../img/produktbilleder/Low-Shampoo-1.png", href: "../../products/shampoo/low-shampoo.html" },
-      { title: "RICH Shampoo", description: "Plejende shampoo, der tilfører mere fugt og næring.", price: "149 kr.", size: "250 ml", image: "../../img/produktbilleder/Rich-Shampoo-1.png", href: "../../products/shampoo/rich-shampoo.html" },
+      { title: "LOW Shampoo", description: "Let shampoo til en balanceret vask med bevÃ¦gelse og fugt.", price: "149 kr.", size: "250 ml", image: "../../img/produktbilleder/Low-Shampoo-1.png", href: "../../products/shampoo/low-shampoo.html" },
+      { title: "RICH Shampoo", description: "Plejende shampoo, der tilfÃ¸rer mere fugt og nÃ¦ring.", price: "149 kr.", size: "250 ml", image: "../../img/produktbilleder/Rich-Shampoo-1.png", href: "../../products/shampoo/rich-shampoo.html" },
     ],
   },
   "low + rich curly shampoo bar sensitive": {
     title: "Low + Rich Curly Shampoo Bar Sensitive",
     price: "198 kr.",
-    intro: "Et shampoobar-sæt til dig, der ønsker en mild og fleksibel vask af krøller og bølger. LOW giver let rens, mens RICH tilfører mere pleje.",
-    containsTitle: "Sættet indeholder",
+    intro: "Et shampoobar-sÃ¦t til dig, der Ã¸nsker en mild og fleksibel vask af krÃ¸ller og bÃ¸lger. LOW giver let rens, mens RICH tilfÃ¸rer mere pleje.",
+    containsTitle: "SÃ¦ttet indeholder",
     containsLabel: "Produkter i Low + Rich Curly Shampoo Bar Sensitive",
-    use: ["Fugt håret og arbejd shampoobaren op mellem hænderne eller direkte i håret. Massér produktet ind i hovedbund og længder. Skyl grundigt ud."],
+    use: ["Fugt hÃ¥ret og arbejd shampoobaren op mellem hÃ¦nderne eller direkte i hÃ¥ret. MassÃ©r produktet ind i hovedbund og lÃ¦ngder. Skyl grundigt ud."],
     learn: [
-      "Shampoobarer er et alternativ til flydende shampoo og kan bruges som en del af en fleksibel krøllerutine. LOW hjælper med let rens og balance, mens RICH tilfører mere fugt og pleje.",
+      "Shampoobarer er et alternativ til flydende shampoo og kan bruges som en del af en fleksibel krÃ¸llerutine. LOW hjÃ¦lper med let rens og balance, mens RICH tilfÃ¸rer mere fugt og pleje.",
     ],
-    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
-    productInfo: { sku: "LRSB-170", amount: "170 g", weight: "0,170 kg", shelfLife: "6-12 måneder" },
+    infoIntro: "Klik pÃ¥ et produkt under 'SÃ¦ttet indeholder' for at lÃ¦se mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LRSB-170", amount: "170 g", weight: "0,170 kg", shelfLife: "6-12 mÃ¥neder" },
     cards: [
-      { title: "LOW Curly Shampoo Bar Sensitive", description: "Mild shampoobar med let rens og balance til krøller og bølger.", price: "99 kr.", size: "85 g", image: "../../img/produktbilleder/Low-Curly-Shampoo-Bar-Sensitive-1.png", href: "../../products/shampoo/low-curly-shampoo-bar-sensitive.html" },
-      { title: "RICH Curly Shampoo Bar Sensitive", description: "Mild shampoobar med mere fugt og pleje til krøller og bølger.", price: "99 kr.", size: "85 g", image: "../../img/produktbilleder/Rich-Curly-Shampoo-Bar-Sensitive-1.png", href: "../../products/shampoo/rich-curly-shampoo-bar-sensitive.html" },
+      { title: "LOW Curly Shampoo Bar Sensitive", description: "Mild shampoobar med let rens og balance til krÃ¸ller og bÃ¸lger.", price: "99 kr.", size: "85 g", image: "../../img/produktbilleder/Low-Curly-Shampoo-Bar-Sensitive-1.png", href: "../../products/shampoo/low-curly-shampoo-bar-sensitive.html" },
+      { title: "RICH Curly Shampoo Bar Sensitive", description: "Mild shampoobar med mere fugt og pleje til krÃ¸ller og bÃ¸lger.", price: "99 kr.", size: "85 g", image: "../../img/produktbilleder/Rich-Curly-Shampoo-Bar-Sensitive-1.png", href: "../../products/shampoo/rich-curly-shampoo-bar-sensitive.html" },
     ],
   },
 };
@@ -2175,7 +2367,7 @@ function createSetPackageCards(config) {
   const row = document.createElement("div");
   row.className = "produkt-skabelon-package-products";
   row.dataset.packageProductsRow = "";
-  row.setAttribute("aria-label", config.containsLabel || "Produkter i sættet");
+  row.setAttribute("aria-label", config.containsLabel || "Produkter i sÃ¦ttet");
 
   config.cards.forEach((product) => {
     const card = document.createElement("a");
@@ -2200,7 +2392,7 @@ function createSetAccordion(title, children) {
   details.innerHTML = `
     <summary class="produkt-skabelon-accordion-button">
       <span>${title}</span>
-      <span aria-hidden="true">⌄</span>
+      <span aria-hidden="true">âŒ„</span>
     </summary>
   `;
   details.append(panel);
@@ -2222,8 +2414,8 @@ function createSetProductInfo(config, existingIngredientInfo) {
 
   [
     ["VARENUMMER", config.productInfo.sku],
-    ["MÆNGDE", config.productInfo.amount],
-    ["VÆGT", config.productInfo.weight],
+    ["MÃ†NGDE", config.productInfo.amount],
+    ["VÃ†GT", config.productInfo.weight],
     ["HOLDBARHED", config.productInfo.shelfLife],
   ].forEach(([label, value]) => {
     const row = document.createElement("div");
@@ -2287,20 +2479,189 @@ function upgradeMixlySetPage() {
 
   accordions?.replaceChildren(
     createSetAccordion(config.containsTitle, packagePanel),
-    createSetAccordion("Sådan bruges produktet", [createProductPageOrderedList(config.use)]),
-    createSetAccordion("Lær mere om produktet", createProductPageParagraphs(config.learn)),
+    createSetAccordion("SÃ¥dan bruges produktet", [createProductPageOrderedList(config.use)]),
+    createSetAccordion("LÃ¦r mere om produktet", createProductPageParagraphs(config.learn)),
     createSetAccordion("Ingredienser & produktinfo", infoPanel)
   );
 
   accordions?.querySelectorAll("[data-package-products-row]").forEach((row) => {
     setupSliderIndicators(row, {
       itemSelector: ".produkt-skabelon-package-card",
-      label: "produkt i sættet",
+      label: "produkt i sÃ¦ttet",
     });
   });
 }
 
 upgradeMixlySetPage();
+
+const standaloneProductPageUpgrades = {
+  "low curly protein treatment tea": {
+    intro: "En intensiv proteinbehandling til krÃ¸ller og bÃ¸lger, der mangler styrke, spÃ¦ndstighed eller struktur. HjÃ¦lper hÃ¥ret med at genopbygge sig efter belastning fra styling, farvning eller miljÃ¸pÃ¥virkninger.",
+    use: [
+      "Bland en lille mÃ¦ngde pulver med varmt vand til en ensartet creme.",
+      "Fordel i nyvasket hÃ¥r fra lÃ¦ngder til spidser.",
+      "Lad virke 15-20 minutter.",
+      "Skyl grundigt.",
+      "Afslut gerne med conditioner eller fugtgivende behandling.",
+    ],
+    learn: [
+      "Protein og fugt arbejder sammen, men har forskellige opgaver. Hvor fugt gÃ¸r hÃ¥ret blÃ¸dt og smidigt, hjÃ¦lper protein med at styrke hÃ¥rstrÃ¥ets struktur.",
+      "Low Curly Protein Treatment Tea er udviklet til krÃ¸ller og bÃ¸lger, der fÃ¸les slappe, mister definition hurtigt eller har svÃ¦rt ved at holde formen.",
+      "Behandlingen tilfÃ¸rer proteiner, som hjÃ¦lper hÃ¥ret med at genopbygge sin naturlige spÃ¦ndstighed.",
+      "Produktet er sÃ¦rligt relevant efter perioder med varme, sol, kemiske behandlinger eller hvis hÃ¥ret generelt virker trÃ¦t og livlÃ¸st.",
+      "Resultatet er krÃ¸ller, der fÃ¸les mere elastiske, definerede og modstandsdygtige uden at blive tunge.",
+    ],
+  },
+  "rich curly moisturizing treatment mask": {
+    intro: "En intensiv fugtmaske til krÃ¸ller og bÃ¸lger med behov for ekstra nÃ¦ring, blÃ¸dhed og pleje. HjÃ¦lper hÃ¥ret med at fÃ¸les mere smidigt, stÃ¦rkt og velplejet.",
+    use: ["PÃ¥fÃ¸r i nyvasket hÃ¥r.", "Fordel jÃ¦vnt fra lÃ¦ngder til spidser.", "Lad virke 15-30 minutter.", "Skyl grundigt.", "Brug efter behov som ekstra fugtpleje."],
+    learn: [
+      "Rich Curly Moisturizing Treatment Mask er udviklet til krÃ¸ller, der har brug for mere fugt end den daglige rutine kan tilfÃ¸re.",
+      "Masken arbejder i dybden og hjÃ¦lper med at genoprette hÃ¥rets fugtbalance. Det gÃ¸r krÃ¸llerne mere smidige, lettere at rede ud og mere modstandsdygtige overfor tÃ¸rhed.",
+      "Den er sÃ¦rligt velegnet til tykkere krÃ¸ller, tÃ¸rre lÃ¦ngder eller hÃ¥r, der udsÃ¦ttes for varme, vejr og mekanisk belastning.",
+      "Ved regelmÃ¦ssig brug opleves hÃ¥ret mere elastisk, blÃ¸dt og lettere at forme.",
+    ],
+  },
+  "rich intensive care for curly ends": {
+    intro: "En nÃ¦rende spidsbehandling til tÃ¸rre eller slidte lÃ¦ngder, som har brug for ekstra pleje og beskyttelse. HjÃ¦lper med at gÃ¸re spidserne blÃ¸dere, mere glansfulde og mindre krusede.",
+    use: ["Fordel fÃ¥ drÃ¥ber i lÃ¦ngder og spidser.", "Brug i fugtigt eller tÃ¸rt hÃ¥r.", "FokusÃ©r pÃ¥ de omrÃ¥der, der fÃ¸les tÃ¸rre eller slidte.", "Gentag efter behov.", "Kan bruges som afsluttende pleje i din rutine."],
+    learn: [
+      "KrÃ¸ller udsÃ¦ttes ofte for mest slid i lÃ¦ngder og spidser, fordi hÃ¥rets naturlige olier har svÃ¦rere ved at bevÃ¦ge sig hele vejen ned gennem hÃ¥rstrÃ¥et.",
+      "Rich Intensive Care for Curly Ends hjÃ¦lper med at forsegle fugt og reducere synlig tÃ¸rhed.",
+      "Produktet giver ekstra pleje til omrÃ¥der, der let bliver ru, matte eller filtrede.",
+      "Det er sÃ¦rligt velegnet til dig, der Ã¸nsker mere nÃ¦ring og beskyttelse uden at tynge hÃ¥ret unÃ¸digt.",
+      "Resultatet er blÃ¸dere, mere velplejede lÃ¦ngder med mindre frizz.",
+    ],
+  },
+  "low intensive care for curly ends": {
+    intro: "En let plejende olie til spidser og lÃ¦ngder, der giver blÃ¸dhed, glans og beskyttelse uden at tynge hÃ¥ret. Velegnet til fine krÃ¸ller og bÃ¸lger.",
+    use: ["Fordel 1-2 drÃ¥ber i lÃ¦ngder og spidser.", "Brug i fugtigt eller tÃ¸rt hÃ¥r.", "Start med en lille mÃ¦ngde.", "TilfÃ¸j mere efter behov.", "Kan bruges som daglig finish eller ekstra pleje mellem vaske."],
+    learn: [
+      "Low Intensive Care for Curly Ends er udviklet til finere krÃ¸ller og bÃ¸lger, der har brug for let pleje.",
+      "Produktet hjÃ¦lper med at reducere tÃ¸rhed i lÃ¦ngderne og gÃ¸r hÃ¥ret mere medgÃ¸rligt uden at skabe en tung eller fedtet fÃ¸lelse.",
+      "Det fungerer som et dagligt plejeprodukt, der understÃ¸tter hÃ¥rets naturlige bevÃ¦gelse og glans.",
+      "Velegnet til dig, der Ã¸nsker let beskyttelse og blÃ¸dhed mellem hÃ¥rvaskene.",
+      "Resultatet er et mere glansfuldt, blÃ¸dt og velplejet hÃ¥r uden tung finish.",
+    ],
+  },
+  "rich leave-in conditioner": {
+    intro: "En plejende leave-in conditioner til krÃ¸ller og bÃ¸lger, der har brug for fugt, blÃ¸dhed og mere kontrol. HjÃ¦lper med at reducere frizz og gÃ¸re hÃ¥ret mere medgÃ¸rligt.",
+    use: ["Fordel en lille mÃ¦ngde i fugtigt hÃ¥r.", "Arbejd produktet ind i lÃ¦ngder og spidser.", "Lad produktet blive i hÃ¥ret.", "Brug mere efter behov pÃ¥ tÃ¸rre omrÃ¥der.", "Kan anvendes alene eller sammen med stylingprodukter."],
+    learn: [
+      "Rich Leave-In Conditioner er udviklet til krÃ¸ller og bÃ¸lger, der har brug for mere fugt og pleje i hverdagen.",
+      "Produktet hjÃ¦lper med at samle krÃ¸llerne, reducere frizz og gÃ¸re hÃ¥ret mere medgÃ¸rligt uden at fÃ¸les fedtet.",
+      "Den passer sÃ¦rligt godt til hÃ¥r, der fÃ¸les tÃ¸rt, groft eller har brug for ekstra stÃ¸tte mellem hÃ¥rvaskene.",
+      "Leave-in conditioner bliver i hÃ¥ret og fungerer derfor som en plejende base under styling.",
+      "Resultatet er blÃ¸dere, mere kontrollerede krÃ¸ller med naturligt fald og mindre frizz.",
+    ],
+  },
+  "low leave-in conditioner": {
+    intro: "En let leave-in conditioner til fine krÃ¸ller og bÃ¸lger, der giver fugt, bevÃ¦gelse og beskyttelse uden at tynge hÃ¥ret.",
+    use: ["Fordel en lille mÃ¦ngde i fugtigt hÃ¥r.", "Kram produktet forsigtigt ind i lÃ¦ngderne.", "Lad produktet blive i hÃ¥ret.", "TilfÃ¸j ekstra efter behov.", "Kan bruges alene eller som base under styling."],
+    learn: [
+      "Low Leave-In Conditioner er udviklet til hÃ¥r, der let bliver tungt eller mister volumen.",
+      "Produktet hjÃ¦lper med at bevare hÃ¥rets naturlige bevÃ¦gelse, samtidig med at krÃ¸llerne fÃ¥r fugt og beskyttelse.",
+      "Den lette formel gÃ¸r den velegnet til fine krÃ¸ller og bÃ¸lger, hvor for meget produkt hurtigt kan fÃ¥ hÃ¥ret til at falde sammen.",
+      "Leave-in conditioner fungerer som et plejende mellemtrin mellem vask og styling.",
+      "Resultatet er blÃ¸de, lette og mere veldefinerede krÃ¸ller uden tung fornemmelse.",
+    ],
+  },
+  "rich curl cream": {
+    intro: "En plejende curl cream til krÃ¸ller og bÃ¸lger, der Ã¸nsker fugt, blÃ¸dhed og mere samlet form. HjÃ¦lper med at reducere frizz og give et roligt, naturligt udtryk.",
+    use: ["Fordel produktet i fugtigt hÃ¥r.", "Arbejd det ind i lÃ¦ngder og spidser.", "Kram krÃ¸llerne op med hÃ¦nderne.", "Lad hÃ¥ret lufttÃ¸rre eller brug diffuser.", "Kan bruges alene eller sammen med gel."],
+    learn: [
+      "Rich Curl Cream er udviklet til krÃ¸ller, der har brug for mere fugt og blÃ¸dhed i stylingrutinen.",
+      "Produktet hjÃ¦lper med at samle krÃ¸llerne og give en mere rolig form uden at gÃ¸re hÃ¥ret stift.",
+      "Curl cream er isÃ¦r velegnet til hÃ¥r, der bliver tÃ¸rt, kruset eller har brug for ekstra pleje i lÃ¦ngderne.",
+      "Den kan bruges alene for et blÃ¸dt og naturligt resultat eller kombineres med gel for mere hold.",
+      "Resultatet er blÃ¸de, smidige krÃ¸ller med naturlig bevÃ¦gelse og et mere samlet udtryk.",
+    ],
+  },
+  "low refiner curl gel": {
+    intro: "En let curl gel til krÃ¸ller og bÃ¸lger, der Ã¸nsker definition, fleksibelt hold og naturlig bevÃ¦gelse uden at hÃ¥ret fÃ¸les stift.",
+    use: ["Fordel produktet i fugtigt eller nÃ¦sten tÃ¸rt hÃ¥r.", "Kram produktet ind i krÃ¸ller eller bÃ¸lger.", "Lad hÃ¥ret lufttÃ¸rre eller brug diffuser.", "NÃ¥r hÃ¥ret er tÃ¸rt, kan du kramme det let for en blÃ¸dere finish.", "Kan bruges alene eller sammen med curl cream."],
+    learn: [
+      "Low Refiner Curl Gel er udviklet til krÃ¸ller og bÃ¸lger, der har brug for definition og let hold uden tung styling.",
+      "Gelen hjÃ¦lper med at fremhÃ¦ve hÃ¥rets naturlige form og reducere frizz, samtidig med at hÃ¥ret stadig kan bevÃ¦ge sig.",
+      "Den er sÃ¦rligt velegnet til fine krÃ¸ller og bÃ¸lger, hvor tunge stylingprodukter hurtigt kan fÃ¥ hÃ¥ret til at miste volumen.",
+      "Produktet kan bruges alene for et let og naturligt resultat eller sammen med curl cream for ekstra pleje og hold.",
+      "Resultatet er mere definerede krÃ¸ller med fleksibelt hold og en naturlig finish.",
+    ],
+  },
+  "low curly sea mist barrier": {
+    intro: "En let stylingmist, der giver struktur, fylde og naturlig definition til fine krÃ¸ller og bÃ¸lger. Perfekt til dig, der Ã¸nsker et mere levende og tekstureret udtryk.",
+    use: ["Spray i fugtigt eller tÃ¸rt hÃ¥r.", "Fordel produktet i lÃ¦ngderne.", "Kram krÃ¸ller eller bÃ¸lger op med hÃ¦nderne.", "Lad hÃ¥ret lufttÃ¸rre eller brug diffuser.", "Genopfrisk i lÃ¸bet af dagen efter behov."],
+    learn: [
+      "Low Curly Sea Mist Barrier er udviklet til dig, der Ã¸nsker mere struktur og tekstur i hÃ¥ret uden klassiske stylingprodukters tyngde.",
+      "Misten hjÃ¦lper med at fremhÃ¦ve hÃ¥rets naturlige form og giver en mere levende overflade med let hold.",
+      "Den er sÃ¦rligt velegnet til fine krÃ¸ller og bÃ¸lger, som hurtigt mister volumen eller definition i lÃ¸bet af dagen.",
+      "Produktet kan bruges bÃ¥de efter vask og som opfriskning mellem vaske.",
+      "Resultatet er et mere naturligt beach-look med fleksibel bevÃ¦gelse og let definition.",
+    ],
+  },
+  "rich curly morning mist barrier": {
+    intro: "En opfriskende mist til krÃ¸ller og bÃ¸lger, der har brug for fugt, definition og mindre frizz mellem hÃ¥rvaskene.",
+    use: ["Spray i tÃ¸rt eller let fugtigt hÃ¥r.", "Fordel produktet i lÃ¦ngderne.", "Kram krÃ¸llerne op igen.", "Lad hÃ¥ret lufttÃ¸rre eller brug diffuser.", "Brug efter behov mellem hÃ¥rvaskene."],
+    learn: [
+      "KrÃ¸ller Ã¦ndrer sig fra dag til dag. Rich Curly Morning Mist Barrier er udviklet til at genaktivere hÃ¥rets form uden at skulle starte hele rutinen forfra.",
+      "Produktet tilfÃ¸rer let fugt og hjÃ¦lper hÃ¥ret med at finde tilbage til sin naturlige struktur.",
+      "Det er sÃ¦rligt velegnet til morgener, hvor krÃ¸llerne virker flade, tÃ¸rre eller urolige.",
+      "Misten kan bruges alene eller sammen med andre stylingprodukter, nÃ¥r hÃ¥ret har brug for en hurtig opfriskning.",
+      "Resultatet er mere samlede krÃ¸ller med mindre frizz, mere blÃ¸dhed og mere bevÃ¦gelse.",
+    ],
+  },
+  "low curly botanic whipped mousse": {
+    intro: "En let mousse, der giver volumen, hold og definition uden at gÃ¸re hÃ¥ret stift. Velegnet til fine krÃ¸ller og bÃ¸lger, der har brug for mere fylde.",
+    use: ["Ryst flasken grundigt.", "Fordel produktet i fugtigt hÃ¥r.", "Kram moussen ind i krÃ¸ller eller bÃ¸lger.", "Lad hÃ¥ret lufttÃ¸rre eller brug diffuser.", "Genopfrisk efter behov."],
+    learn: [
+      "Low Curly Botanic Whipped Mousse er udviklet til krÃ¸ller og bÃ¸lger, der Ã¸nsker mere fylde og struktur uden tung styling.",
+      "Den lette konsistens fordeler sig nemt gennem hÃ¥ret og hjÃ¦lper krÃ¸llerne med at holde formen lÃ¦ngere.",
+      "Mousse er sÃ¦rligt velegnet til fint hÃ¥r, hvor cremer og tunge stylingprodukter hurtigt kan fÃ¸les for meget.",
+      "Produktet kan bruges alene for et luftigt resultat eller kombineres med andre produkter for mere hold.",
+      "Resultatet er mere volumen, bedre definition og naturlig bevÃ¦gelse.",
+    ],
+  },
+  "rich curly rice infusion oil": {
+    intro: "En nÃ¦rende olie til krÃ¸ller og bÃ¸lger med behov for ekstra beskyttelse, blÃ¸dhed og fugt. HjÃ¦lper med at forsegle hÃ¥ret og reducere frizz.",
+    use: ["PÃ¥fÃ¸r fÃ¥ drÃ¥ber i lÃ¦ngder og spidser.", "Brug i fugtigt eller tÃ¸rt hÃ¥r.", "Start med en lille mÃ¦ngde.", "TilfÃ¸j mere efter behov.", "Kan bruges alene eller som afsluttende finish."],
+    learn: [
+      "Rich Curly Rice Infusion Oil er udviklet til hÃ¥r, der har brug for mere nÃ¦ring og beskyttelse end en let olie kan give.",
+      "Olien hjÃ¦lper med at forsegle fugt i hÃ¥ret og beskytte mod udtÃ¸rring fra vejr, varme og daglig belastning.",
+      "Den er sÃ¦rligt velegnet til tykkere krÃ¸ller, tÃ¸rre lÃ¦ngder eller hÃ¥r med tendens til frizz.",
+      "Produktet kan bruges som sidste trin i rutinen for at give glans, blÃ¸dhed og beskyttelse.",
+      "Resultatet er blÃ¸dere, mere smidige krÃ¸ller med naturlig glans og bedre fugtbalance.",
+    ],
+  },
+};
+
+function upgradeStandaloneProductPage() {
+  const summary = document.querySelector(".produkt-skabelon-summary");
+  const config = standaloneProductPageUpgrades[normalizeProductTitle(getProductPageTitle())];
+
+  if (!summary || !config) {
+    return;
+  }
+
+  const description = summary.querySelector(".produkt-skabelon-description");
+  const accordions = summary.querySelector(".produkt-skabelon-accordions");
+  const existingProductInfo = summary.querySelector(".produkt-skabelon-product-info");
+
+  if (description) {
+    description.textContent = config.intro;
+  }
+
+  if (!accordions || !existingProductInfo) {
+    return;
+  }
+
+  accordions.replaceChildren(
+    createSetAccordion("SÃ¥dan bruges produktet", [createProductPageOrderedList(config.use)]),
+    createSetAccordion("LÃ¦r mere om produktet", createProductPageParagraphs(config.learn)),
+    createSetAccordion("Ingredienser & produktinfo", [existingProductInfo])
+  );
+}
+
+upgradeStandaloneProductPage();
 
 function updateSetContentForSize(title, label) {
   const config = getSetVariantForSize(title, label);
@@ -2331,20 +2692,21 @@ function updateSetContentForSize(title, label) {
 
   accordions.replaceChildren(
     createSetAccordion(config.containsTitle, packagePanel),
-    createSetAccordion("Sådan bruges produktet", [createProductPageOrderedList(config.use)]),
-    createSetAccordion("Lær mere om produktet", createProductPageParagraphs(config.learn)),
+    createSetAccordion("SÃ¥dan bruges produktet", [createProductPageOrderedList(config.use)]),
+    createSetAccordion("LÃ¦r mere om produktet", createProductPageParagraphs(config.learn)),
     createSetAccordion("Ingredienser & produktinfo", infoPanel)
   );
 
   accordions.querySelectorAll("[data-package-products-row]").forEach((row) => {
     setupSliderIndicators(row, {
       itemSelector: ".produkt-skabelon-package-card",
-      label: "produkt i sættet",
+      label: "produkt i sÃ¦ttet",
     });
   });
 }
 
-const productPageTags = ["Økologisk", "Vegansk", "Parfumefri", "Unisex"];
+const productPageTags = ["Ã˜kologisk", "Vegansk", "Parfumefri", "Unisex"];
+const jojobaQuenchProductPageTags = ["Ã˜kologisk", "Vegansk", "Unisex", "Parfumefri"];
 
 function ensureProductPageTags() {
   const summary = document.querySelector(".produkt-skabelon-summary");
@@ -2364,7 +2726,9 @@ function ensureProductPageTags() {
     heading?.before(tagList);
   }
 
-  tagList.replaceChildren(...productPageTags.map((tag) => {
+  const tags = normalizeProductTitle(title) === "low curly jojoba quench oil 30 ml" ? jojobaQuenchProductPageTags : productPageTags;
+  tagList.classList.toggle("produkt-skabelon-tags-all", tags.length > 4);
+  tagList.replaceChildren(...tags.map((tag) => {
     const item = document.createElement("li");
     item.textContent = tag;
     return item;
@@ -2372,6 +2736,54 @@ function ensureProductPageTags() {
 }
 
 ensureProductPageTags();
+
+const productBreadcrumbLabels = {
+  shampoo: "Shampoo",
+  conditioner: "Conditioner",
+  haarmasker: "HÃ¥rmaske",
+  styling: "Styling",
+  saet: "SÃ¦t",
+  startpakker: "Startpakker",
+};
+
+const productBreadcrumbLinks = {
+  shampoo: "../../produkter-shampoo.html",
+  conditioner: "../../produkter-conditioner.html",
+  haarmasker: "../../produkter-haarmasker.html",
+  styling: "../../produkter-styling.html",
+  saet: "../../produkter-saet.html",
+  startpakker: "../../produkter-startpakker.html",
+};
+
+function ensureProductBreadcrumbs() {
+  const main = document.querySelector(".produkt-skabelon-main");
+  const hero = document.querySelector(".produkt-skabelon-hero");
+  const title = getProductPageTitle();
+
+  if (!main || !hero || main.querySelector(".produkt-breadcrumbs") || !title) {
+    return;
+  }
+
+  const categoryKey = window.location.pathname.split("/products/")[1]?.split("/")[0] || "";
+  const categoryLabel = productBreadcrumbLabels[categoryKey] || "Produkter";
+  const categoryHref = productBreadcrumbLinks[categoryKey] || "../../produkter.html";
+  const breadcrumbs = document.createElement("nav");
+  breadcrumbs.className = "produkt-breadcrumbs";
+  breadcrumbs.setAttribute("aria-label", "BrÃ¸dkrummesti");
+  breadcrumbs.innerHTML = `
+    <a href="../../index.html">Forside</a>
+    <span aria-hidden="true">/</span>
+    <a href="../../produkter.html">Produkter</a>
+    <span aria-hidden="true">/</span>
+    <a href="${categoryHref}">${categoryLabel}</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">${title}</span>
+  `;
+
+  main.insertBefore(breadcrumbs, hero);
+}
+
+ensureProductBreadcrumbs();
 
 const productPageSizeButtons = document.querySelectorAll(".produkt-skabelon-size[data-product-price]");
 
@@ -2394,7 +2806,7 @@ if (productPageSizeButtons.length) {
     button.setAttribute("aria-pressed", String(isActive));
 
     if (isActive && productPagePrice) {
-      productPagePrice.textContent = button.dataset.productPrice;
+      productPagePrice.textContent = formatDisplayPrice(button.dataset.productPrice);
     }
 
     if (isActive && productPageImage && button.dataset.productImage) {
@@ -2420,7 +2832,7 @@ if (productPageSizeButtons.length) {
       button.setAttribute("aria-pressed", "true");
 
       if (productPagePrice) {
-        productPagePrice.textContent = button.dataset.productPrice;
+        productPagePrice.textContent = formatDisplayPrice(button.dataset.productPrice);
       }
 
       if (productPageImage && button.dataset.productImage) {
@@ -2436,6 +2848,291 @@ if (productPageSizeButtons.length) {
     });
   });
 }
+
+normalizeDisplayedPrices();
+
+let openQuickAddDropdown = null;
+let quickAddSheet = null;
+
+function getSelectedQuickAddVariant(control) {
+  const selectedLabel = control.dataset.selectedSize || "";
+  return control.quickAddData?.sizes?.find((size) => size.label === selectedLabel) || null;
+}
+
+function updateQuickAddSelectedLabel(control) {
+  const label = control.querySelector(".quick-add-size-label");
+  const selectedVariant = getSelectedQuickAddVariant(control);
+
+  if (label) {
+    label.textContent = selectedVariant ? `✓ ${selectedVariant.label}` : "Vælg str. ▼";
+  }
+}
+
+function closeQuickAddDropdown(control = openQuickAddDropdown) {
+  if (!control) {
+    return;
+  }
+
+  control.classList.remove("is-open");
+  control.querySelector(".quick-add-size-toggle")?.setAttribute("aria-expanded", "false");
+
+  const dropdown = control.querySelector(".quick-add-dropdown");
+
+  if (dropdown) {
+    dropdown.hidden = true;
+  }
+
+  if (openQuickAddDropdown === control) {
+    openQuickAddDropdown = null;
+  }
+}
+
+function openQuickAddDropdownFor(control, showHelp = false) {
+  if (openQuickAddDropdown && openQuickAddDropdown !== control) {
+    closeQuickAddDropdown(openQuickAddDropdown);
+  }
+
+  const dropdown = control.querySelector(".quick-add-dropdown");
+  const help = control.querySelector(".quick-add-help");
+
+  control.classList.add("is-open");
+  control.querySelector(".quick-add-size-toggle")?.setAttribute("aria-expanded", "true");
+
+  if (dropdown) {
+    dropdown.hidden = false;
+  }
+
+  if (help) {
+    help.hidden = !showHelp;
+  }
+
+  openQuickAddDropdown = control;
+}
+
+function renderQuickAddOptions(control, data) {
+  const options = control.querySelector(".quick-add-options");
+
+  if (!options) {
+    return;
+  }
+
+  options.replaceChildren(...data.sizes.filter((size) => size.label).map((size) => {
+    const button = document.createElement("button");
+    button.className = "quick-add-option";
+    button.type = "button";
+    button.textContent = size.label;
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      control.dataset.selectedSize = size.label;
+      updateQuickAddSelectedLabel(control);
+      closeQuickAddDropdown(control);
+    });
+    return button;
+  }));
+}
+
+function replaceCardAddButtonWithQuickAdd(card, data) {
+  const addButton = card.querySelector(".product-add-button");
+  const sizes = data.sizes.filter((size) => size.label);
+
+  if (!window.matchMedia("(min-width: 1181px)").matches || !addButton || !cardMayHaveMultipleSizes(card, sizes)) {
+    return;
+  }
+
+  if (addButton.classList.contains("quick-add-control")) {
+    addButton.quickAddData = data;
+    renderQuickAddOptions(addButton, data);
+    updateQuickAddSelectedLabel(addButton);
+    return;
+  }
+
+  const control = document.createElement("div");
+  control.className = addButton.className;
+  control.classList.add("quick-add-control");
+  control.setAttribute("role", "group");
+  control.setAttribute("aria-label", "Vælg størrelse og tilføj til kurv");
+  control.quickAddData = data;
+  control.innerHTML = `
+    <div class="quick-add-menu">
+      <div class="quick-add-dropdown" hidden>
+        <p class="quick-add-help" hidden>Vælg en størrelse for at tilføje til kurv.</p>
+        <div class="quick-add-options"></div>
+      </div>
+      <button class="quick-add-size-toggle" type="button" aria-expanded="false">
+        <span class="quick-add-size-label">Vælg str. ▼</span>
+      </button>
+    </div>
+    <button class="quick-add-submit" type="button">Tilføj til kurv</button>
+  `;
+
+  renderQuickAddOptions(control, data);
+  control.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    handleProductCardAdd(card, event);
+  });
+  addButton.replaceWith(control);
+}
+
+async function enhanceCardQuickAdd(card) {
+  const data = getQuickAddData(card);
+  const sizes = data.sizes.filter((size) => size.label);
+
+  if (cardMayHaveMultipleSizes(card, sizes)) {
+    replaceCardAddButtonWithQuickAdd(card, data);
+  }
+
+  const details = await fetchQuickAddDetails(data.fullLink);
+  const enrichedData = mergeQuickAddData(data, details);
+
+  if (!card.isConnected) {
+    return;
+  }
+
+  replaceCardAddButtonWithQuickAdd(card, enrichedData);
+}
+
+function createQuickAddSheet() {
+  const sheet = document.createElement("div");
+  sheet.className = "quick-add-sheet";
+  sheet.hidden = true;
+  sheet.innerHTML = `
+    <div class="quick-add-sheet-backdrop" data-quick-add-close></div>
+    <section class="quick-add-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="quick-add-sheet-title">
+      <button class="quick-add-sheet-close" type="button" aria-label="Luk" data-quick-add-close>×</button>
+      <h2 id="quick-add-sheet-title">Vælg størrelse</h2>
+      <div class="quick-add-sheet-options"></div>
+      <button class="button button-primary quick-add-sheet-submit" type="button">Tilføj til kurv</button>
+    </section>
+  `;
+
+  sheet.addEventListener("click", (event) => {
+    if (event.target.closest("[data-quick-add-close]")) {
+      closeQuickAddSheet();
+      return;
+    }
+
+    const option = event.target.closest(".quick-add-sheet-option");
+
+    if (option) {
+      sheet.dataset.selectedSize = option.dataset.size || "";
+      sheet.querySelectorAll(".quick-add-sheet-option").forEach((button) => {
+        const isActive = button === option;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+    }
+  });
+
+  sheet.querySelector(".quick-add-sheet-submit").addEventListener("click", () => {
+    const selectedVariant = sheet.quickAddData?.sizes?.find((size) => size.label === sheet.dataset.selectedSize);
+
+    if (!selectedVariant) {
+      sheet.classList.add("show-help");
+      return;
+    }
+
+    closeQuickAddSheet();
+    addToCart(getProductFromCardVariant(sheet.quickAddCard, selectedVariant));
+  });
+
+  document.body.append(sheet);
+  return sheet;
+}
+
+function openQuickAddSheet(card, data) {
+  const sheet = quickAddSheet || createQuickAddSheet();
+  quickAddSheet = sheet;
+  sheet.quickAddCard = card;
+  sheet.quickAddData = data;
+  sheet.dataset.selectedSize = "";
+  sheet.classList.remove("show-help");
+
+  sheet.querySelector(".quick-add-sheet-options").replaceChildren(...data.sizes.filter((size) => size.label).map((size) => {
+    const button = document.createElement("button");
+    button.className = "quick-add-sheet-option";
+    button.type = "button";
+    button.dataset.size = size.label;
+    button.setAttribute("aria-pressed", "false");
+    button.textContent = size.label;
+    return button;
+  }));
+
+  sheet.hidden = false;
+  document.body.classList.add("is-quick-add-sheet-open");
+}
+
+function closeQuickAddSheet() {
+  if (!quickAddSheet || quickAddSheet.hidden) {
+    return;
+  }
+
+  quickAddSheet.hidden = true;
+  document.body.classList.remove("is-quick-add-sheet-open");
+}
+
+async function handleProductCardAdd(card, event) {
+  const control = event.target.closest(".quick-add-control");
+
+  if (control) {
+    if (event.target.closest(".quick-add-size-toggle")) {
+      openQuickAddDropdownFor(control, false);
+      return;
+    }
+
+    if (event.target.closest(".quick-add-submit")) {
+      const selectedVariant = getSelectedQuickAddVariant(control);
+
+      if (!selectedVariant) {
+        openQuickAddDropdownFor(control, true);
+        return;
+      }
+
+      closeQuickAddDropdown(control);
+      addToCart(getProductFromCardVariant(card, selectedVariant));
+    }
+
+    return;
+  }
+
+  const data = getQuickAddData(card);
+  const sizes = data.sizes.filter((size) => size.label);
+
+  if (cardMayHaveMultipleSizes(card, sizes)) {
+    const details = await fetchQuickAddDetails(data.fullLink);
+    const enrichedData = mergeQuickAddData(data, details);
+
+    if (window.matchMedia("(min-width: 1181px)").matches) {
+      replaceCardAddButtonWithQuickAdd(card, enrichedData);
+      const control = card.querySelector(".quick-add-control");
+
+      if (control) {
+        openQuickAddDropdownFor(control, true);
+      }
+
+      return;
+    }
+
+    openQuickAddSheet(card, enrichedData);
+    return;
+  }
+
+  addToCart(getProductFromCard(card));
+}
+
+document.addEventListener("click", (event) => {
+  if (openQuickAddDropdown && !event.target.closest(".quick-add-control")) {
+    closeQuickAddDropdown();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeQuickAddDropdown();
+    closeQuickAddSheet();
+  }
+});
 
 document.querySelectorAll(".top-nav-link-cart").forEach((cartLink) => {
   cartLink.addEventListener("click", (event) => {
@@ -2454,7 +3151,7 @@ document.querySelectorAll(".product-card, .produkt-skabelon-related-card").forEa
   addButton.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    addToCart(getProductFromCard(card));
+    handleProductCardAdd(card, event);
   });
 });
 
@@ -2475,19 +3172,16 @@ document.addEventListener("hildebrandt-cart-updated", () => {
 
 updateCartBadges();
 
-let quickViewModal = null;
-let lastQuickViewTrigger = null;
-let shouldRestoreQuickViewFocus = true;
-const quickViewDetailCache = new Map();
+const quickAddDetailCache = new Map();
 
 function normalizeProductTitle(title) {
   return title.trim().toLowerCase();
 }
 
-function getQuickViewData(card) {
+function getQuickAddData(card) {
   const title = getCardTitle(card);
   const key = normalizeProductTitle(title);
-  const catalogData = quickViewCatalog[key] || {};
+  const catalogData = quickAddCatalog[key] || {};
   const image = getCardImage(card);
   const price = card.querySelector(".product-meta span:first-child")?.textContent.trim() ||
     (card.classList.contains("produkt-skabelon-related-card") ? card.querySelector("p")?.textContent.trim() : "") ||
@@ -2499,7 +3193,7 @@ function getQuickViewData(card) {
   return {
     title,
     description: catalogData.description || description,
-    tags: catalogData.tags || ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    tags: catalogData.tags || ["Ã˜kologisk", "Vegansk", "Parfumefri", "Unisex"],
     sizes: catalogData.sizes || [{ label: "", price, image: fallbackImage, link: fullLink }],
     detailsImage: catalogData.detailsImage || "",
     fullLink,
@@ -2507,7 +3201,7 @@ function getQuickViewData(card) {
   };
 }
 
-function getQuickViewUrl(value, baseUrl = window.location.href) {
+function getQuickAddUrl(value, baseUrl = window.location.href) {
   if (!value || value === "#") {
     return "";
   }
@@ -2519,7 +3213,7 @@ function getQuickViewUrl(value, baseUrl = window.location.href) {
   }
 }
 
-function getQuickViewGuideLabel(label) {
+function getQuickAddGuideLabel(label) {
   const normalizedLabel = normalizeProductTitle(label);
 
   if (normalizedLabel === "anvendelse" || normalizedLabel.includes("brug")) {
@@ -2529,27 +3223,27 @@ function getQuickViewGuideLabel(label) {
   return label;
 }
 
-function getQuickViewFallbackGuide(data) {
+function getQuickAddFallbackGuide(data) {
   if (data.guide.length) {
     return data.guide;
   }
 
   return [
-    ["Brug", "Se produktets anvendelse på produktsiden."],
-    ["God til", data.description || "Krøller og bølger med behov for pleje."],
-    ["Effekt", "Pleje tilpasset hårets behov."],
+    ["Brug", "Se produktets anvendelse pÃ¥ produktsiden."],
+    ["God til", data.description || "KrÃ¸ller og bÃ¸lger med behov for pleje."],
+    ["Effekt", "Pleje tilpasset hÃ¥rets behov."],
   ];
 }
 
-async function fetchQuickViewDetails(fullLink) {
-  const url = getQuickViewUrl(fullLink);
+async function fetchQuickAddDetails(fullLink) {
+  const url = getQuickAddUrl(fullLink);
 
   if (!url) {
     return null;
   }
 
-  if (quickViewDetailCache.has(url)) {
-    return quickViewDetailCache.get(url);
+  if (quickAddDetailCache.has(url)) {
+    return quickAddDetailCache.get(url);
   }
 
   const detailsPromise = fetch(url)
@@ -2567,8 +3261,8 @@ async function fetchQuickViewDetails(fullLink) {
       let sizes = Array.from(doc.querySelectorAll(".produkt-skabelon-size[data-product-price]")).map((button) => ({
         label: button.textContent.trim(),
         price: button.dataset.productPrice || "",
-        image: getQuickViewUrl(button.dataset.productImage || heroImage, url),
-        detailsImage: getQuickViewUrl(
+        image: getQuickAddUrl(button.dataset.productImage || heroImage, url),
+        detailsImage: getQuickAddUrl(
           button.dataset.productDetailsImage ||
             getProductDetailsImageForSize(doc.querySelector("#produkt-skabelon-title")?.textContent.trim() || "", button.textContent.trim()) ||
             "",
@@ -2585,8 +3279,8 @@ async function fetchQuickViewDetails(fullLink) {
         sizes = [{
           label: singleSizeLabel,
           price: doc.querySelector("[data-product-page-price]")?.textContent.trim() || "",
-          image: getQuickViewUrl(heroImage, url),
-          detailsImage: getQuickViewUrl(detailsImage, url),
+          image: getQuickAddUrl(heroImage, url),
+          detailsImage: getQuickAddUrl(detailsImage, url),
           link: url,
         }];
       }
@@ -2594,24 +3288,24 @@ async function fetchQuickViewDetails(fullLink) {
         .map((row) => {
           const title = row.querySelector("dt")?.textContent.trim() || "";
           const text = row.querySelector("dd")?.textContent.trim() || "";
-          return title && text ? [getQuickViewGuideLabel(title), text] : null;
+          return title && text ? [getQuickAddGuideLabel(title), text] : null;
         })
         .filter(Boolean);
 
       return {
         sizes,
-        detailsImage: getQuickViewUrl(detailsImage, url),
-        productImage: getQuickViewUrl(heroImage, url),
+        detailsImage: getQuickAddUrl(detailsImage, url),
+        productImage: getQuickAddUrl(heroImage, url),
         guide,
       };
     })
     .catch(() => null);
 
-  quickViewDetailCache.set(url, detailsPromise);
+  quickAddDetailCache.set(url, detailsPromise);
   return detailsPromise;
 }
 
-function mergeQuickViewData(data, details) {
+function mergeQuickAddData(data, details) {
   if (!details) {
     return data;
   }
@@ -2619,282 +3313,54 @@ function mergeQuickViewData(data, details) {
   return {
     ...data,
     sizes: details.sizes.length ? details.sizes : data.sizes,
-    detailsImage: details.detailsImage || data.detailsImage,
     productImage: details.productImage || data.productImage,
-    guide: details.guide.length ? details.guide : data.guide,
   };
 }
 
-function renderQuickViewSizes(modal, data) {
-  const sizes = modal.querySelector(".quick-view-size-options");
-  const sizeFieldset = modal.querySelector(".quick-view-sizes");
-  const sizeLegend = modal.querySelector(".quick-view-size-label");
-  const visibleSizes = data.sizes.filter((size) => size.label);
-  const hasSizes = visibleSizes.length > 0;
-
-  sizeFieldset.hidden = !hasSizes;
-  sizeLegend.hidden = visibleSizes.length === 1;
-  sizes.replaceChildren(...(hasSizes ? visibleSizes.map((size, index) => {
-    const button = document.createElement("button");
-    button.className = "quick-view-size";
-    button.type = "button";
-    button.textContent = size.label;
-    button.setAttribute("aria-label", `Vælg ${size.label}`);
-    button.addEventListener("click", () => {
-      setQuickViewSize(modal, data, index);
-    });
-    return button;
-  }) : []));
-  prepareButtonUnderlines();
-}
-
-function renderQuickViewGuide(modal, data) {
-  const guide = modal.querySelector(".quick-view-guide");
-  guide.replaceChildren(...getQuickViewFallbackGuide(data).map(([title, text]) => {
-    const item = document.createElement("div");
-    item.className = "quick-view-guide-item";
-
-    const itemTitle = document.createElement("h3");
-    itemTitle.textContent = title;
-
-    const itemText = document.createElement("p");
-    itemText.textContent = text;
-
-    item.append(itemTitle, itemText);
-    return item;
-  }));
-}
-
-function createQuickViewModal() {
-  const modal = document.createElement("div");
-  modal.className = "quick-view";
-  modal.setAttribute("role", "dialog");
-  modal.setAttribute("aria-modal", "true");
-  modal.setAttribute("aria-labelledby", "quick-view-title");
-  modal.hidden = true;
-  modal.innerHTML = `
-    <div class="quick-view-backdrop" data-quick-view-close></div>
-    <article class="quick-view-panel">
-      <button class="quick-view-close" type="button" aria-label="Luk quick view" data-quick-view-close>×</button>
-      <div class="quick-view-body">
-        <section class="quick-view-intro">
-          <div class="quick-view-media">
-            <div class="quick-view-detail-image">
-              <img class="quick-view-product-image" alt="">
-              <img class="quick-view-ingredient-image" alt="">
-            </div>
-          </div>
-          <div class="quick-view-summary">
-            <h2><a id="quick-view-title" href="#"></a></h2>
-            <fieldset class="quick-view-sizes">
-              <legend class="quick-view-size-label">Vælg størrelse</legend>
-              <div class="quick-view-size-options"></div>
-            </fieldset>
-            <p class="quick-view-price" aria-live="polite"></p>
-            <button class="button button-primary quick-view-buy" type="button">Tilføj til kurv</button>
-            <div class="quick-view-guide" aria-label="Kort produktinformation"></div>
-            <a class="quick-view-read-more" href="#">
-              <span>Læs mere om produktet</span>
-              <span aria-hidden="true">›</span>
-            </a>
-          </div>
-        </section>
-      </div>
-    </article>
-  `;
-
-  modal.addEventListener("click", (event) => {
-    if (event.target.closest("[data-quick-view-close]")) {
-      closeQuickView();
-    }
-  });
-
-  modal.querySelector(".quick-view-buy").addEventListener("click", () => {
-    closeQuickView();
-    addToCart(getQuickViewSelectedProduct(modal));
-  });
-
-  document.body.appendChild(modal);
-  return modal;
-}
-
-function setQuickViewSize(modal, data, selectedIndex) {
-  const selectedSize = data.sizes[selectedIndex];
-  const price = modal.querySelector(".quick-view-price");
-  const readMore = modal.querySelector(".quick-view-read-more");
-  const imageWrap = modal.querySelector(".quick-view-detail-image");
-  const productImage = modal.querySelector(".quick-view-product-image");
-  const ingredientImage = modal.querySelector(".quick-view-ingredient-image");
-  const selectedDetailsImage = selectedSize.detailsImage || data.detailsImage || "";
-
-  modal.dataset.selectedSizeIndex = String(selectedIndex);
-  price.textContent = selectedSize.price;
-  readMore.href = selectedSize.link || data.fullLink;
-  productImage.hidden = true;
-  productImage.removeAttribute("src");
-  productImage.alt = "";
-
-  if (selectedDetailsImage) {
-    ingredientImage.hidden = false;
-    ingredientImage.src = getQuickViewUrl(selectedDetailsImage);
-    ingredientImage.alt = `Ingredienser i ${data.title}`;
-    imageWrap.classList.add("quick-view-detail-image-single");
-  } else {
-    ingredientImage.hidden = true;
-    ingredientImage.removeAttribute("src");
-    ingredientImage.alt = "";
-    imageWrap.classList.add("quick-view-detail-image-single");
-  }
-
-  modal.querySelectorAll(".quick-view-size").forEach((button, index) => {
-    const isActive = index === selectedIndex;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
-}
-
-function renderQuickView(card) {
-  const data = getQuickViewData(card);
-  const modal = quickViewModal || createQuickViewModal();
-  quickViewModal = modal;
-
-  const titleLink = modal.querySelector("#quick-view-title");
-  titleLink.textContent = data.title;
-  titleLink.href = data.fullLink;
-  const requestId = String(Date.now());
-  modal.dataset.quickViewRequestId = requestId;
-  modal.quickViewData = data;
-  renderQuickViewSizes(modal, data);
-  renderQuickViewGuide(modal, data);
-  setQuickViewSize(modal, data, Math.max(getDefaultProductSizeIndex(data.sizes), 0));
-
-  fetchQuickViewDetails(data.fullLink).then((details) => {
-    if (!details || modal.dataset.quickViewRequestId !== requestId) {
-      return;
-    }
-
-    const enrichedData = mergeQuickViewData(data, details);
-    const selectedLabel = data.sizes[Number(modal.dataset.selectedSizeIndex || 0)]?.label;
-    const matchingIndex = enrichedData.sizes.findIndex((size) => size.label === selectedLabel);
-    const selectedIndex = matchingIndex >= 0 ? matchingIndex : Math.max(getDefaultProductSizeIndex(enrichedData.sizes), 0);
-
-    modal.quickViewData = enrichedData;
-    renderQuickViewSizes(modal, enrichedData);
-    renderQuickViewGuide(modal, enrichedData);
-    setQuickViewSize(modal, enrichedData, selectedIndex);
-  });
-
-  return modal;
-
-}
-
-function openQuickView(card, event) {
-  if (phoneMedia.matches) {
-    return;
-  }
-
-  lastQuickViewTrigger = document.activeElement;
-  shouldRestoreQuickViewFocus = !event || event.detail === 0;
-  const modal = renderQuickView(card);
-  modal.hidden = false;
-  document.body.classList.add("is-quick-view-open");
-
-  window.setTimeout(() => {
-    modal.querySelector(".quick-view-close").focus();
-  }, 0);
-}
-
-function closeQuickView() {
-  if (!quickViewModal || quickViewModal.hidden) {
-    return;
-  }
-
-  quickViewModal.hidden = true;
-  document.body.classList.remove("is-quick-view-open");
-
-  if (shouldRestoreQuickViewFocus && lastQuickViewTrigger && typeof lastQuickViewTrigger.focus === "function") {
-    lastQuickViewTrigger.focus();
-  } else if (lastQuickViewTrigger && typeof lastQuickViewTrigger.blur === "function") {
-    lastQuickViewTrigger.blur();
-  }
-}
-
-document.addEventListener("keydown", (event) => {
-  if (!quickViewModal || quickViewModal.hidden) {
-    return;
-  }
-
-  if (event.key === "Escape") {
-    closeQuickView();
-    return;
-  }
-
-  if (event.key !== "Tab") {
-    return;
-  }
-
-  const focusable = Array.from(
-    quickViewModal.querySelectorAll("a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex='-1'])")
-  ).filter((item) => item.offsetParent !== null);
-
-  if (!focusable.length) {
-    return;
-  }
-
-  const first = focusable[0];
-  const last = focusable[focusable.length - 1];
-
-  if (event.shiftKey && document.activeElement === first) {
-    event.preventDefault();
-    last.focus();
-  } else if (!event.shiftKey && document.activeElement === last) {
-    event.preventDefault();
-    first.focus();
-  }
-});
+document.querySelectorAll(".product-card, .produkt-skabelon-related-card").forEach(enhanceCardQuickAdd);
 
 const relatedPostsContainer = document.querySelector("[data-related-posts]");
 
 if (relatedPostsContainer) {
   const blogPosts = [
     {
-      category: "Krølleviden",
-      title: "Hvorfor krøllet og bølget hår kræver en anden tilgang end glat hår",
+      category: "KrÃ¸lleviden",
+      title: "Hvorfor krÃ¸llet og bÃ¸lget hÃ¥r krÃ¦ver en anden tilgang end glat hÃ¥r",
       href: "hvorfor-kroellet-og-bolget-har-kraever-en-anden-tilgang.html",
     },
     {
       category: "Guides",
-      title: "5 gode råd til at få det bedste ud af dine krøller og bølger",
+      title: "5 gode rÃ¥d til at fÃ¥ det bedste ud af dine krÃ¸ller og bÃ¸lger",
       href: "5-gode-rad-til-dine-kroller-og-bolger.html",
     },
     {
       category: "Mixly",
-      title: "Derfor virker dine krølleprodukter ikke og hvad du skal gøre i stedet",
+      title: "Derfor virker dine krÃ¸lleprodukter ikke og hvad du skal gÃ¸re i stedet",
       href: "derfor-virker-dine-krolleprodukter-ikke.html",
     },
     {
-      category: "Krølleviden",
-      title: "Sådan får du dine naturlige krøller frem",
+      category: "KrÃ¸lleviden",
+      title: "SÃ¥dan fÃ¥r du dine naturlige krÃ¸ller frem",
       href: "sadan-far-du-dine-naturlige-kroller-frem.html",
     },
     {
       category: "Guides",
-      title: "Sådan får du dine skandinaviske krøller frem - uden spildte penge",
+      title: "SÃ¥dan fÃ¥r du dine skandinaviske krÃ¸ller frem - uden spildte penge",
       href: "sadan-far-du-dine-skandinaviske-kroller-frem.html",
     },
     {
-      category: "Krølleviden",
-      title: "5 vaner du bør undgå, hvis du har fint krøllet eller bølget hår",
+      category: "KrÃ¸lleviden",
+      title: "5 vaner du bÃ¸r undgÃ¥, hvis du har fint krÃ¸llet eller bÃ¸lget hÃ¥r",
       href: "5-vaner-du-bor-undga.html",
     },
     {
       category: "Guides",
-      title: "Sådan vælger du din Mixly startpakke - kom godt i gang",
+      title: "SÃ¥dan vÃ¦lger du din Mixly startpakke - kom godt i gang",
       href: "sadan-vaelger-du-din-mixly-startpakke.html",
     },
     {
       category: "Mixly",
-      title: "Sådan vil Mixlys ingredienser virke i dit fine krøllede eller bølgede hår",
+      title: "SÃ¥dan vil Mixlys ingredienser virke i dit fine krÃ¸llede eller bÃ¸lgede hÃ¥r",
       href: "sadan-virker-mixlys-ingredienser.html",
     },
   ];
@@ -2933,7 +3399,7 @@ if (relatedPostsContainer) {
     const link = document.createElement("a");
     link.className = "blog-card-link";
     link.href = `${isBlogFolderPage ? "" : "blog/"}${post.href}`;
-    link.textContent = "Læs indlæg →";
+    link.textContent = "LÃ¦s indlÃ¦g â†’";
 
     card.append(image, category, title, link);
     return card;
