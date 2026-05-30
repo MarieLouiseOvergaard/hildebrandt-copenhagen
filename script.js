@@ -1184,6 +1184,7 @@ function setupSliderIndicators(row, options = {}) {
   updateIndicators();
   row.addEventListener("scroll", updateIndicators, { passive: true });
   window.addEventListener("resize", updateIndicators);
+  row.closest("details")?.addEventListener("toggle", updateIndicators);
 }
 
 productRows.forEach((row) => {
@@ -1191,6 +1192,13 @@ productRows.forEach((row) => {
     itemSelector: ".product-card, .product-promo-card",
     label: "produktgruppe",
     alwaysShow: document.body.dataset.productPageFilter === "all",
+  });
+});
+
+document.querySelectorAll("[data-package-products-row]").forEach((row) => {
+  setupSliderIndicators(row, {
+    itemSelector: ".produkt-skabelon-package-card",
+    label: "produkt i pakken",
   });
 });
 
@@ -1351,11 +1359,25 @@ const quickViewCatalog = {
       "Giver mere næring og ro til krøller, der føles tørre, frizzede eller medtagne.",
     sizes: [
       { label: "100 ml", price: "110 kr.", image: "img/produktbilleder/MIXLY-Rich-Repair-Shampoo-100.png" },
-      { label: "250 ml", price: "299 kr.", image: "img/produktbilleder/Rich-Shampoo-1.png" },
       { label: "1000 ml", price: "379 kr.", image: "img/produktbilleder/MIXLY-Rich-Repair-Shampoo-1000ml.png" },
     ],
     detailsImage: "img/ingredienser/ingredienser-Rich-Repair-Shampoo-1000ml.png",
     fullLink: "products/shampoo/rich-repair-cleansing-shampoo.html",
+    guide: [
+      ["Brug", "Fordel i vådt hår, massér og skyl grundigt."],
+      ["God til", "Tørre, krusede eller medtagne krøller."],
+      ["Effekt", "Mere næring, styrke og mindre frizz."],
+    ],
+  },
+  "rich shampoo": {
+    tags: ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
+    description:
+      "Giver mere næring og ro til krøller, der føles tørre, frizzede eller medtagne.",
+    sizes: [
+      { label: "250 ml", price: "299 kr.", image: "img/produktbilleder/Rich-Shampoo-1.png" },
+    ],
+    detailsImage: "img/ingredienser/ingredienser-Rich-Repair-Shampoo-1000ml.png",
+    fullLink: "products/shampoo/rich-shampoo.html",
     guide: [
       ["Brug", "Fordel i vådt hår, massér og skyl grundigt."],
       ["God til", "Tørre, krusede eller medtagne krøller."],
@@ -1782,14 +1804,57 @@ const productDetailsImageBySize = {
     "2 x 100 ml": "../../img/ingredienser/sets/ingredienser-Rich-Repair-Low-Refresh-Shampoo-100-Saet.png",
     "2 x 1000 ml": "../../img/ingredienser/sets/ingredienser-Low-Rich-Shampoo-1000.png",
   },
+  "low refresh + rich repair cleansing shampoo": {
+    "2 x 100 ml": "../../img/ingredienser/sets/ingredienser-Rich-Repair-Low-Refresh-Shampoo-100-Saet.png",
+    "2 x 1000 ml": "../../img/ingredienser/sets/ingredienser-Low-Rich-Shampoo-1000.png",
+  },
   "low + rich conditioner": {
+    "2 x 200 ml": "../../img/ingredienser/sets/ingredienser-Low-Rich-Deep-Drink-Conditioner-200-Saet-a.png",
+    "2 x 1000 ml": "../../img/ingredienser/sets/ingredienser-Low-Rich-Conditioner-1000-Set.png",
+  },
+  "low + rich deep drink conditioner": {
     "2 x 200 ml": "../../img/ingredienser/sets/ingredienser-Low-Rich-Deep-Drink-Conditioner-200-Saet-a.png",
     "2 x 1000 ml": "../../img/ingredienser/sets/ingredienser-Low-Rich-Conditioner-1000-Set.png",
   },
 };
 
+const productInfoBySize = {
+  "curly charcoal calm shampoo": {
+    "50 ml": { weight: "0,050 kg", dimensions: "11 cm", amount: "50 ml", shelfLife: "12 måneder efter åbning", sku: "MCCC50" },
+    "200 ml": { weight: "0,200 kg", dimensions: "18 cm", amount: "200 ml", shelfLife: "12 måneder efter åbning", sku: "MCCC200" },
+  },
+  "low refresh cleansing shampoo": {
+    "100 ml": { weight: "0,1 kg", amount: "100 ml", shelfLife: "12 måneder efter åbning", sku: "Afventer varenummer" },
+    "1000 ml": { weight: "1 kg", amount: "1000 ml", shelfLife: "12 måneder efter åbning", sku: "Afventer varenummer" },
+  },
+  "rich repair cleansing shampoo": {
+    "100 ml": { weight: "0,1 kg", amount: "100 ml", shelfLife: "12 måneder efter åbning", sku: "RRCS100" },
+    "1000 ml": { weight: "6 kg", amount: "1000 ml", shelfLife: "12 måneder efter åbning", sku: "RRCS1000" },
+  },
+  "mixly low conditioner": {
+    "200 ml": { weight: "0,2 kg", amount: "200 ml", shelfLife: "6 måneder efter åbning", sku: "LC200" },
+    "1000 ml": { weight: "1 kg", amount: "1000 ml", shelfLife: "12 måneder efter åbning", sku: "LC1000" },
+  },
+  "rich deep drink conditioner": {
+    "200 ml": { weight: "0,2 kg", amount: "200 ml", shelfLife: "12 måneder efter åbning", sku: "RDDC200" },
+    "1000 ml": { weight: "1 kg", amount: "1000 ml", shelfLife: "12 måneder efter åbning", sku: "RDDC1000" },
+  },
+  "low refresh + rich repair cleansing shampoo": {
+    "2 x 100 ml": { weight: "0,2 kg", amount: "2 × 100 ml", shelfLife: "12 måneder", sku: "LRCS-RRCS-200" },
+    "2 x 1000 ml": { weight: "2 kg", amount: "2 × 1000 ml", shelfLife: "12 måneder", sku: "LRCS-RRCS-2000" },
+  },
+  "low + rich deep drink conditioner": {
+    "2 x 200 ml": { weight: "0,4 kg", amount: "2 × 200 ml", shelfLife: "12 måneder", sku: "LC-RDDC-400" },
+    "2 x 1000 ml": { weight: "2 kg", amount: "2 × 1000 ml", shelfLife: "12 måneder", sku: "LC-RDDC-2000" },
+  },
+};
+
 function getProductPageTitle() {
   return document.querySelector("#produkt-skabelon-title")?.textContent.trim() || "";
+}
+
+function normalizeProductSizeLabel(label) {
+  return String(label || "").trim().replace(/\s*[×x]\s*/gi, " x ").replace(/\s+/g, " ").toLowerCase();
 }
 
 function getProductSizeVolume(label) {
@@ -1822,7 +1887,61 @@ function getDefaultProductSizeButton(buttons) {
 
 function getProductDetailsImageForSize(title, label) {
   const productMap = productDetailsImageBySize[normalizeProductTitle(title)] || {};
-  return productMap[String(label || "").trim()] || "";
+  const normalizedLabel = normalizeProductSizeLabel(label);
+  const matchingKey = Object.keys(productMap).find((key) => normalizeProductSizeLabel(key) === normalizedLabel);
+  return productMap[matchingKey] || "";
+}
+
+function getProductInfoForSize(title, label) {
+  const productMap = productInfoBySize[normalizeProductTitle(title)] || {};
+  return productMap[normalizeProductSizeLabel(label)] || null;
+}
+
+function setProductInfoRowValue(labelMatchers, value) {
+  if (!value) {
+    return;
+  }
+
+  const rows = Array.from(document.querySelectorAll(".produkt-skabelon-product-info .produkt-skabelon-info-row"));
+  const row = rows.find((item) => {
+    const label = item.querySelector(".produkt-skabelon-info-label")?.textContent.trim().toUpperCase() || "";
+    return labelMatchers.some((matcher) => label.includes(matcher));
+  });
+
+  const valueElement = row?.querySelector(".produkt-skabelon-info-value");
+  if (valueElement) {
+    valueElement.textContent = value;
+  }
+}
+
+function updateProductInfoForSize(title, label) {
+  const info = getProductInfoForSize(title, label);
+
+  if (!info) {
+    return;
+  }
+
+  setProductInfoRowValue(["VARENUMMER"], info.sku);
+  setProductInfoRowValue(["SAMLET MÆNGDE", "MÆNGDE"], info.amount);
+  setProductInfoRowValue(["VÆGT"], info.weight);
+  setProductInfoRowValue(["HOLDBARHED"], info.shelfLife);
+  setProductInfoRowValue(["STØRRELSE"], info.dimensions);
+}
+
+function getSetVariantForSize(title, label) {
+  const normalizedTitle = normalizeProductTitle(title);
+  const normalizedLabel = normalizeProductSizeLabel(label);
+  const exactKey = `${normalizedTitle} - ${normalizedLabel}`;
+
+  if (mixlySetPageUpgrades[exactKey]) {
+    return mixlySetPageUpgrades[exactKey];
+  }
+
+  if (normalizedTitle === "low refresh + rich repair cleansing shampoo" && normalizedLabel === "2 x 100 ml") {
+    return mixlySetPageUpgrades[normalizedTitle];
+  }
+
+  return null;
 }
 
 function getDefaultProductSizeIndex(sizes) {
@@ -1870,7 +1989,7 @@ function ensureSingleProductSizeButton() {
   const fieldset = document.createElement("fieldset");
   fieldset.className = "produkt-skabelon-size-group";
   fieldset.innerHTML = `
-    <legend class="produkt-skabelon-size-label produkt-skabelon-visually-hidden">Størrelse</legend>
+    <legend class="produkt-skabelon-size-label">Størrelse</legend>
     <div class="produkt-skabelon-size-options"></div>
   `;
 
@@ -1887,6 +2006,372 @@ function ensureSingleProductSizeButton() {
 }
 
 ensureSingleProductSizeButton();
+
+const mixlySetPageUpgrades = {
+  "low refresh + rich repair cleansing shampoo - 2 x 1000 ml": {
+    price: "758 kr.",
+    intro: "Et fleksibelt shampoosæt til dig, der vil kunne tilpasse vasken efter hårets behov. LOW giver en lettere rens, mens RICH tilfører mere pleje og næring.",
+    containsTitle: "Sættet indeholder",
+    containsLabel: "Produkter i Low Refresh + Rich Repair Cleansing Shampoo 2 x 1000 ml",
+    use: [
+      "Brug shampooen i vådt hår og massér produktet ind i hovedbund og længder. Skyl grundigt ud.",
+      "Brug LOW, når håret har brug for en let rens og mere bevægelse. Brug RICH, når håret føles tørt eller har brug for ekstra pleje.",
+    ],
+    learn: [
+      "LOW og RICH giver dig mulighed for at justere din hårvask efter hårets behov. LOW hjælper med at rense uden at tynge, mens RICH tilfører mere fugt og pleje til hår, der føles tørt eller kræver ekstra næring.",
+    ],
+    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LRCS-RRCS-2000", amount: "2 × 1000 ml", weight: "2 kg", shelfLife: "12 måneder" },
+    cards: [
+      { title: "LOW Refresh Cleansing Shampoo", description: "Let rens til hovedbund og hår med fokus på friskhed, fugt og balance.", price: "379 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Low-Refresh-Shampoo-1000.png", href: "../../products/shampoo/low-refresh-cleansing-shampoo.html" },
+      { title: "RICH Repair Cleansing Shampoo", description: "Plejende shampoo til hår, der føles tørt eller kræver ekstra næring.", price: "379 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Rich-Repair-Shampoo-1000ml.png", href: "../../products/shampoo/rich-repair-cleansing-shampoo.html" },
+    ],
+  },
+  "low + rich deep drink conditioner - 2 x 1000 ml": {
+    price: "798 kr.",
+    intro: "Et conditioner-sæt til dig, der ønsker fleksibel pleje og fugt til krøller og bølger. LOW giver let balance, mens RICH tilfører ekstra fugt og næring.",
+    containsTitle: "Sættet indeholder",
+    containsLabel: "Produkter i Low + Rich Deep Drink Conditioner 2 x 1000 ml",
+    use: [
+      "Påfør conditioner i vådt hår efter vask. Fordel produktet i længderne, lad håret absorbere fugten og skyl derefter ud.",
+      "Brug LOW, når håret har brug for let pleje. Brug RICH, når håret føles tørt eller mangler blødhed.",
+    ],
+    learn: [
+      "Conditioner hjælper med at gøre håret blødere, lettere at rede ud og mere modtageligt for styling. Kombinationen af LOW og RICH gør det muligt at tilpasse plejen efter hårets aktuelle behov.",
+    ],
+    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LC-RDDC-2000", amount: "2 × 1000 ml", weight: "2 kg", shelfLife: "12 måneder" },
+    cards: [
+      { title: "LOW Conditioner", description: "Let conditioner, der giver fugt og balance uden at tynge håret.", price: "399 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Low-Conditioner-1000.png", href: "../../products/conditioner/mixly-low-conditioner.html" },
+      { title: "RICH Deep Drink Conditioner", description: "Ekstra fugt og næring til hår, der føles tørt eller mangler blødhed.", price: "399 kr.", size: "1000 ml", image: "../../img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-1000.png", href: "../../products/conditioner/rich-deep-drink-conditioner.html" },
+    ],
+  },
+  "low refiner curl gel + rich curl cream - 2 x 150 ml": {
+    price: "338 kr.",
+    intro: "Et stylingsæt til dig, der ønsker definition, fugt og hold. LOW Refiner Curl Gel giver struktur, mens RICH Curl Cream tilfører blødhed og pleje.",
+    containsTitle: "Sættet indeholder",
+    containsLabel: "Produkter i Low Refiner Curl Gel + Rich Curl Cream",
+    use: [
+      "Fordel produktet i fugtigt hår efter vask og pleje.",
+      "Brug gel for mere hold og definition. Brug curl cream for mere fugt, blødhed og pleje. Produkterne kan bruges hver for sig eller sammen.",
+    ],
+    learn: [
+      "Gel og curl cream arbejder forskelligt i håret. Gel hjælper med at give struktur og holde formen på krøllerne, mens curl cream tilfører fugt og gør håret blødere. Sammen giver de en fleksibel stylingrutine.",
+    ],
+    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LRGC-RCC-300", amount: "2 × 150 ml", weight: "0,3 kg", shelfLife: "6-12 måneder" },
+    cards: [
+      { title: "LOW Refiner Curl Gel", description: "Giver struktur, hold og definition uden at gøre håret stift.", price: "169 kr.", size: "150 ml", image: "../../img/produktbilleder/MIXLY-Curl-Gel.png", href: "../../products/styling/low-refiner-curl-gel.html" },
+      { title: "RICH Curl Cream", description: "Tilfører fugt, blødhed og pleje til krøller og bølger.", price: "169 kr.", size: "150 ml", image: "../../img/produktbilleder/Mixly-Curl-Cream.png", href: "../../products/styling/rich-curl-cream.html" },
+    ],
+  },
+  "low + rich leave-in conditioner - 2 x 150 ml": {
+    price: "338 kr.",
+    intro: "Et leave-in sæt til dig, der ønsker fugt, blødhed og let pleje efter vask. LOW giver let balance, mens RICH tilfører ekstra fugt og næring.",
+    containsTitle: "Sættet indeholder",
+    containsLabel: "Produkter i Low + Rich Leave-In Conditioner",
+    use: ["Fordel leave-in i fugtigt hår efter vask. Produktet skal ikke skylles ud."],
+    learn: [
+      "Leave-in conditioner hjælper med at bevare fugten i håret og gøre krøller og bølger lettere at style. Kombinationen af LOW og RICH gør det muligt at tilpasse plejen efter hårets behov.",
+    ],
+    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "RLIC-LLIC-300", amount: "2 × 150 ml", weight: "0,3 kg", shelfLife: "6 måneder" },
+    cards: [
+      { title: "LOW Leave-In Conditioner", description: "Let fugt, beskyttelse og balance efter vask.", price: "169 kr.", size: "150 ml", image: "../../img/produktbilleder/Low-Leave-In-Conditioner (1).png", href: "../../products/conditioner/low-leave-in-conditioner.html" },
+      { title: "RICH Leave-In Conditioner", description: "Ekstra fugt, næring og blødhed til krøller og bølger.", price: "169 kr.", size: "150 ml", image: "../../img/produktbilleder/Mixly-Rich-Leave-In-Conditioner (1).png", href: "../../products/conditioner/rich-leave-in-conditioner.html" },
+    ],
+  },
+  "low + rich deep drink conditioner - 2 x 200 ml": {
+    price: "318 kr.",
+    intro: "Et conditioner-sæt i mindre størrelse til dig, der vil kunne skifte mellem let pleje og dybere fugt efter hårets behov.",
+    containsTitle: "Sættet indeholder",
+    containsLabel: "Produkter i Low Conditioner + Rich Deep Drink Conditioner 2 x 200 ml",
+    use: ["Påfør conditioner i vådt hår efter vask. Fordel produktet i længderne, lad håret absorbere fugten og skyl derefter ud."],
+    learn: [
+      "LOW Conditioner giver let pleje uden at tynge håret. RICH Deep Drink Conditioner tilfører mere fugt og næring til hår, der føles tørt eller mangler smidighed.",
+    ],
+    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LC-RDDC-400", amount: "2 × 200 ml", weight: "0,4 kg", shelfLife: "12 måneder" },
+    cards: [
+      { title: "LOW Conditioner", description: "Let conditioner, der giver fugt og balance uden at tynge håret.", price: "159 kr.", size: "200 ml", image: "../../img/produktbilleder/Low-Conditioner-1.png", href: "../../products/conditioner/mixly-low-conditioner.html" },
+      { title: "RICH Deep Drink Conditioner", description: "Mere fugt og næring til hår, der føles tørt eller mangler smidighed.", price: "159 kr.", size: "200 ml", image: "../../img/produktbilleder/MIXLY-Rich-Deep-Drink-Conditioner-200.png", href: "../../products/conditioner/rich-deep-drink-conditioner.html" },
+    ],
+  },
+  "low refresh + rich repair cleansing shampoo": {
+    title: "Low Refresh + Rich Repair Cleansing Shampoo",
+    price: "220 kr.",
+    intro: "Et mindre shampoosæt til dig, der vil prøve LOW og RICH eller have en fleksibel rutine med på farten.",
+    containsTitle: "Sættet indeholder",
+    containsLabel: "Produkter i Low Refresh + Rich Repair Cleansing Shampoo 2 x 100 ml",
+    use: ["Massér shampooen ind i vådt hår og hovedbund. Skyl grundigt ud."],
+    learn: [
+      "Sættet gør det nemt at mærke forskellen på LOW og RICH. LOW renser let og hjælper håret med at bevare bevægelse, mens RICH giver en mere plejende vask.",
+    ],
+    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LRCS-RRCS-200", amount: "2 × 100 ml", weight: "0,2 kg", shelfLife: "12 måneder" },
+    cards: [
+      { title: "LOW Refresh Cleansing Shampoo", description: "Let rens til hovedbund og hår med fokus på friskhed og bevægelse.", price: "110 kr.", size: "100 ml", image: "../../img/produktbilleder/MIXLY-Low-Refresh-Shampoo-100.png", href: "../../products/shampoo/low-refresh-cleansing-shampoo.html" },
+      { title: "RICH Repair Cleansing Shampoo", description: "En mere plejende vask til hår, der føles tørt eller kræver ekstra næring.", price: "110 kr.", size: "100 ml", image: "../../img/produktbilleder/MIXLY-Rich-Repair-Shampoo-100.png", href: "../../products/shampoo/rich-repair-cleansing-shampoo.html" },
+    ],
+  },
+  "low + rich shampoo": {
+    title: "Low + Rich Shampoo",
+    price: "298 kr.",
+    intro: "Et shampoosæt til dig, der vil kunne tilpasse hårvasken efter dagsform, fugtbehov og hårets balance.",
+    containsTitle: "Sættet indeholder",
+    containsLabel: "Produkter i Low + Rich Shampoo",
+    use: ["Massér shampooen ind i vådt hår og hovedbund. Skyl grundigt ud."],
+    learn: [
+      "LOW og RICH kan bruges hver for sig eller kombineres. LOW hjælper med at give en lettere fornemmelse i håret, mens RICH tilfører mere pleje.",
+    ],
+    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LS-RS-200", amount: "2 × 250 ml", weight: "0,5 kg", shelfLife: "6 måneder" },
+    cards: [
+      { title: "LOW Shampoo", description: "Let shampoo til en balanceret vask med bevægelse og fugt.", price: "149 kr.", size: "250 ml", image: "../../img/produktbilleder/Low-Shampoo-1.png", href: "../../products/shampoo/low-shampoo.html" },
+      { title: "RICH Shampoo", description: "Plejende shampoo, der tilfører mere fugt og næring.", price: "149 kr.", size: "250 ml", image: "../../img/produktbilleder/Rich-Shampoo-1.png", href: "../../products/shampoo/rich-shampoo.html" },
+    ],
+  },
+  "low + rich curly shampoo bar sensitive": {
+    title: "Low + Rich Curly Shampoo Bar Sensitive",
+    price: "198 kr.",
+    intro: "Et shampoobar-sæt til dig, der ønsker en mild og fleksibel vask af krøller og bølger. LOW giver let rens, mens RICH tilfører mere pleje.",
+    containsTitle: "Sættet indeholder",
+    containsLabel: "Produkter i Low + Rich Curly Shampoo Bar Sensitive",
+    use: ["Fugt håret og arbejd shampoobaren op mellem hænderne eller direkte i håret. Massér produktet ind i hovedbund og længder. Skyl grundigt ud."],
+    learn: [
+      "Shampoobarer er et alternativ til flydende shampoo og kan bruges som en del af en fleksibel krøllerutine. LOW hjælper med let rens og balance, mens RICH tilfører mere fugt og pleje.",
+    ],
+    infoIntro: "Klik på et produkt under 'Sættet indeholder' for at læse mere om anvendelse og produktdetaljer for det enkelte produkt.",
+    productInfo: { sku: "LRSB-170", amount: "170 g", weight: "0,170 kg", shelfLife: "6-12 måneder" },
+    cards: [
+      { title: "LOW Curly Shampoo Bar Sensitive", description: "Mild shampoobar med let rens og balance til krøller og bølger.", price: "99 kr.", size: "85 g", image: "../../img/produktbilleder/Low-Curly-Shampoo-Bar-Sensitive-1.png", href: "../../products/shampoo/low-curly-shampoo-bar-sensitive.html" },
+      { title: "RICH Curly Shampoo Bar Sensitive", description: "Mild shampoobar med mere fugt og pleje til krøller og bølger.", price: "99 kr.", size: "85 g", image: "../../img/produktbilleder/Rich-Curly-Shampoo-Bar-Sensitive-1.png", href: "../../products/shampoo/rich-curly-shampoo-bar-sensitive.html" },
+    ],
+  },
+};
+
+function createProductPageParagraphs(items) {
+  return items.map((text) => {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = text;
+    return paragraph;
+  });
+}
+
+function createProductPageOrderedList(items) {
+  const list = document.createElement("ol");
+  list.className = "produkt-skabelon-panel-list";
+
+  items.forEach((text) => {
+    const item = document.createElement("li");
+    item.textContent = text;
+    list.append(item);
+  });
+
+  return list;
+}
+
+function createSetPackageCards(config) {
+  const row = document.createElement("div");
+  row.className = "produkt-skabelon-package-products";
+  row.dataset.packageProductsRow = "";
+  row.setAttribute("aria-label", config.containsLabel || "Produkter i sættet");
+
+  config.cards.forEach((product) => {
+    const card = document.createElement("a");
+    card.className = "produkt-skabelon-package-card";
+    card.href = product.href;
+    card.innerHTML = `
+      <span class="produkt-skabelon-package-image"><img src="${product.image}" alt="${product.title}"></span>
+      <span class="produkt-skabelon-package-content"><strong>${product.title}</strong><span class="produkt-skabelon-package-description">${product.description}</span><span class="produkt-skabelon-package-meta"><span>${product.price}</span><span>${product.size}</span></span></span>
+    `;
+    row.append(card);
+  });
+
+  return row;
+}
+
+function createSetAccordion(title, children) {
+  const details = document.createElement("details");
+  details.className = "produkt-skabelon-accordion";
+  const panel = document.createElement("div");
+  panel.className = "produkt-skabelon-accordion-panel";
+  panel.append(...children);
+  details.innerHTML = `
+    <summary class="produkt-skabelon-accordion-button">
+      <span>${title}</span>
+      <span aria-hidden="true">⌄</span>
+    </summary>
+  `;
+  details.append(panel);
+  return details;
+}
+
+function extractExistingIngredientInfo(productInfo) {
+  const ingredientRow = Array.from(productInfo?.querySelectorAll(".produkt-skabelon-info-row") || []).find((row) => {
+    const label = row.querySelector(".produkt-skabelon-info-label")?.textContent.trim().toUpperCase() || "";
+    return label.includes("INGREDIENSER");
+  });
+
+  return ingredientRow?.querySelector(".produkt-skabelon-info-value") || null;
+}
+
+function createSetProductInfo(config, existingIngredientInfo) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "produkt-skabelon-product-info";
+
+  [
+    ["VARENUMMER", config.productInfo.sku],
+    ["MÆNGDE", config.productInfo.amount],
+    ["VÆGT", config.productInfo.weight],
+    ["HOLDBARHED", config.productInfo.shelfLife],
+  ].forEach(([label, value]) => {
+    const row = document.createElement("div");
+    row.className = "produkt-skabelon-info-row";
+    row.innerHTML = `<div class="produkt-skabelon-info-label">${label}</div><div class="produkt-skabelon-info-value">${value}</div>`;
+    wrapper.append(row);
+  });
+
+  if (existingIngredientInfo) {
+    const ingredientRow = document.createElement("div");
+    ingredientRow.className = "produkt-skabelon-info-row";
+    ingredientRow.innerHTML = '<div class="produkt-skabelon-info-label">INGREDIENSER</div>';
+    const value = document.createElement("div");
+    value.className = "produkt-skabelon-info-value";
+    value.append(...Array.from(existingIngredientInfo.childNodes));
+    ingredientRow.append(value);
+    wrapper.append(ingredientRow);
+  }
+
+  return wrapper;
+}
+
+function upgradeMixlySetPage() {
+  const summary = document.querySelector(".produkt-skabelon-summary");
+  const title = getProductPageTitle();
+  const config = mixlySetPageUpgrades[normalizeProductTitle(title)];
+
+  if (!summary || !config) {
+    return;
+  }
+
+  const heading = summary.querySelector("#produkt-skabelon-title");
+  const price = summary.querySelector("[data-product-page-price]");
+  const description = summary.querySelector(".produkt-skabelon-description");
+  const accordions = summary.querySelector(".produkt-skabelon-accordions");
+  const existingProductInfo = summary.querySelector(".produkt-skabelon-product-info");
+  const existingIngredientInfo = extractExistingIngredientInfo(existingProductInfo);
+
+  if (config.title && heading) {
+    heading.textContent = config.title;
+  }
+
+  if (config.price && price) {
+    price.textContent = config.price;
+  }
+
+  if (description) {
+    description.textContent = config.intro;
+  }
+
+  const packagePanel = [createSetPackageCards(config)];
+  const indicators = document.createElement("div");
+  indicators.className = "slider-indicators produkt-skabelon-package-indicators";
+  indicators.setAttribute("aria-label", `Navigation mellem ${config.containsLabel || "produkter"}`);
+  packagePanel.push(indicators);
+
+  const infoPanel = [
+    ...createProductPageParagraphs([config.infoIntro]),
+    createSetProductInfo(config, existingIngredientInfo),
+  ];
+
+  accordions?.replaceChildren(
+    createSetAccordion(config.containsTitle, packagePanel),
+    createSetAccordion("Sådan bruges produktet", [createProductPageOrderedList(config.use)]),
+    createSetAccordion("Lær mere om produktet", createProductPageParagraphs(config.learn)),
+    createSetAccordion("Ingredienser & produktinfo", infoPanel)
+  );
+
+  accordions?.querySelectorAll("[data-package-products-row]").forEach((row) => {
+    setupSliderIndicators(row, {
+      itemSelector: ".produkt-skabelon-package-card",
+      label: "produkt i sættet",
+    });
+  });
+}
+
+upgradeMixlySetPage();
+
+function updateSetContentForSize(title, label) {
+  const config = getSetVariantForSize(title, label);
+  const summary = document.querySelector(".produkt-skabelon-summary");
+  const accordions = summary?.querySelector(".produkt-skabelon-accordions");
+  const description = summary?.querySelector(".produkt-skabelon-description");
+  const existingProductInfo = summary?.querySelector(".produkt-skabelon-product-info");
+  const existingIngredientInfo = extractExistingIngredientInfo(existingProductInfo);
+
+  if (!config || !accordions) {
+    return;
+  }
+
+  if (description) {
+    description.textContent = config.intro;
+  }
+
+  const packagePanel = [createSetPackageCards(config)];
+  const indicators = document.createElement("div");
+  indicators.className = "slider-indicators produkt-skabelon-package-indicators";
+  indicators.setAttribute("aria-label", `Navigation mellem ${config.containsLabel || "produkter"}`);
+  packagePanel.push(indicators);
+
+  const infoPanel = [
+    ...createProductPageParagraphs([config.infoIntro]),
+    createSetProductInfo(config, existingIngredientInfo),
+  ];
+
+  accordions.replaceChildren(
+    createSetAccordion(config.containsTitle, packagePanel),
+    createSetAccordion("Sådan bruges produktet", [createProductPageOrderedList(config.use)]),
+    createSetAccordion("Lær mere om produktet", createProductPageParagraphs(config.learn)),
+    createSetAccordion("Ingredienser & produktinfo", infoPanel)
+  );
+
+  accordions.querySelectorAll("[data-package-products-row]").forEach((row) => {
+    setupSliderIndicators(row, {
+      itemSelector: ".produkt-skabelon-package-card",
+      label: "produkt i sættet",
+    });
+  });
+}
+
+const productPageTags = ["Økologisk", "Vegansk", "Parfumefri", "Unisex"];
+
+function ensureProductPageTags() {
+  const summary = document.querySelector(".produkt-skabelon-summary");
+  const title = getProductPageTitle();
+
+  if (!summary || !title) {
+    return;
+  }
+
+  const heading = summary.querySelector("#produkt-skabelon-title");
+  let tagList = summary.querySelector(".produkt-skabelon-tags");
+
+  if (!tagList) {
+    tagList = document.createElement("ul");
+    tagList.className = "produkt-skabelon-tags";
+    tagList.setAttribute("aria-label", "Produkt-tags");
+    heading?.before(tagList);
+  }
+
+  tagList.replaceChildren(...productPageTags.map((tag) => {
+    const item = document.createElement("li");
+    item.textContent = tag;
+    return item;
+  }));
+}
+
+ensureProductPageTags();
 
 const productPageSizeButtons = document.querySelectorAll(".produkt-skabelon-size[data-product-price]");
 
@@ -1920,6 +2405,11 @@ if (productPageSizeButtons.length) {
       productPageDetailsImage.src = button.dataset.productDetailsImage;
     }
 
+    if (isActive) {
+      updateSetContentForSize(productPageTitle, button.textContent);
+      updateProductInfoForSize(productPageTitle, button.textContent);
+    }
+
     button.addEventListener("click", () => {
       productPageSizeButtons.forEach((sizeButton) => {
         sizeButton.classList.remove("produkt-skabelon-size-active");
@@ -1940,6 +2430,9 @@ if (productPageSizeButtons.length) {
       if (productPageDetailsImage && button.dataset.productDetailsImage) {
         productPageDetailsImage.src = button.dataset.productDetailsImage;
       }
+
+      updateSetContentForSize(productPageTitle, button.textContent);
+      updateProductInfoForSize(productPageTitle, button.textContent);
     });
   });
 }
@@ -2446,3 +2939,6 @@ if (relatedPostsContainer) {
     return card;
   }));
 }
+
+
+
