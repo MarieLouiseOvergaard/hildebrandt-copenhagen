@@ -1,4 +1,4 @@
-/* Scoped layout styles for produkt-skabelon.html. Globale fonte, farver og knapper genbruges fra global.css. */
+﻿/* Scoped layout styles for produkt-skabelon.html. Globale fonte, farver og knapper genbruges fra global.css. */
 
 .produkt-skabelon-main {
   overflow-x: clip;
@@ -18,7 +18,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  padding: 14px 24px 0;
+  padding: 14px var(--page-gutter) 0;
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 13px;
@@ -49,7 +49,7 @@
 .produkt-skabelon-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
-  padding: 16px 24px 0;
+  padding: 16px var(--page-gutter) 0;
 }
 
 .produkt-skabelon-image {
@@ -648,7 +648,7 @@
   grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
   gap: 96px;
   margin-top: 72px;
-  padding: 50px max(24px, calc((100vw - var(--container-max)) / 2 + 24px));
+  padding: 50px var(--content-gutter);
   background: var(--color-light-blue);
 }
 
@@ -695,7 +695,7 @@
 
 .produkt-skabelon-low-rich {
   margin-top: 42px;
-  padding: 70px 24px 78px;
+  padding: 70px var(--page-gutter) 78px;
 }
 
 .produkt-skabelon-section-label {
@@ -741,7 +741,7 @@
 }
 
 .produkt-skabelon-related {
-  padding: 0 24px 82px;
+  padding: 0 var(--page-gutter) 82px;
 }
 
 .produkt-skabelon-related-grid {
@@ -855,18 +855,25 @@
 }
 
 .quick-add-control {
+  display: flex;
+  width: min(82%, 257px);
   padding: 0;
+  background: transparent;
   overflow: visible;
 }
 
 .quick-add-menu,
 .quick-add-submit {
-  width: 50%;
   min-height: inherit;
 }
 
 .quick-add-menu {
   position: relative;
+  width: 58%;
+}
+
+.quick-add-submit {
+  width: 42%;
 }
 
 .quick-add-size-toggle,
@@ -892,7 +899,28 @@
 }
 
 .quick-add-size-toggle {
-  border-right: 1px solid rgba(255, 255, 255, 0.28);
+  background: var(--color-white);
+  color: var(--color-heading);
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+.quick-add-submit {
+  width: 42%;
+  background: var(--color-heading);
+  color: var(--color-white);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+}
+
+.quick-add-size-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
 }
 
 .quick-add-dropdown {
@@ -906,6 +934,22 @@
   background: var(--color-white);
   color: var(--color-heading);
   box-shadow: 0 -8px 18px rgba(51, 76, 86, 0.12);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.quick-add-control.is-open .quick-add-dropdown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quick-add-control.is-added .quick-add-menu {
+  display: none;
+}
+
+.quick-add-control.is-added .quick-add-submit {
+  width: 100%;
 }
 
 .quick-add-help {
@@ -925,6 +969,8 @@
   min-height: 38px;
   padding: 0 12px;
   color: var(--color-heading);
+  font-size: 11px;
+  letter-spacing: 0.04em;
   text-align: left;
 }
 
@@ -988,7 +1034,7 @@
   display: block;
   margin-bottom: 10px;
   color: var(--color-heading);
-  content: "Vælg en størrelse for at tilføje til kurv.";
+  content: "VÃ¦lg en stÃ¸rrelse for at tilfÃ¸je til kurv.";
   font-size: 14px;
 }
 
@@ -1009,11 +1055,11 @@
 
 .quick-add-sheet-option::before {
   margin-right: 10px;
-  content: "○";
+  content: "â—‹";
 }
 
 .quick-add-sheet-option.is-active::before {
-  content: "●";
+  content: "â—";
 }
 
 .produkt-skabelon-visually-hidden {
@@ -1025,7 +1071,7 @@
   white-space: nowrap;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1180px) {
   .produkt-skabelon-hero,
   .produkt-skabelon-set-buy,
   .produkt-skabelon-details {
@@ -1060,7 +1106,7 @@
   .produkt-skabelon-details {
     gap: 36px;
     margin-top: 54px;
-    padding: 42px 24px;
+    padding: 42px var(--page-gutter);
   }
 
   .produkt-skabelon-related-grid {
@@ -1102,7 +1148,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1180px) {
   .produkt-skabelon-package-products {
     display: flex;
     gap: 8px;
@@ -1130,7 +1176,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1180px) {
   .produkt-skabelon-page {
     padding-bottom: calc(78px + env(safe-area-inset-bottom));
   }
@@ -1181,7 +1227,7 @@
   }
 
   .produkt-skabelon-summary {
-    padding: 32px 14px 0;
+    padding: 32px var(--page-gutter) 0;
   }
 
   .produkt-skabelon-summary h1 {
@@ -1304,8 +1350,8 @@
 
   .produkt-skabelon-low-rich,
   .produkt-skabelon-related {
-    padding-right: 14px;
-    padding-left: 14px;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
   }
 
   .produkt-skabelon-set-buy {
@@ -1479,9 +1525,9 @@
     gap: 20px;
     margin-top: 32px;
     padding-top: 34px;
-    padding-right: 14px;
+    padding-right: var(--page-gutter);
     padding-bottom: 34px;
-    padding-left: 14px;
+    padding-left: var(--page-gutter);
   }
 
   .produkt-skabelon-image-secondary {

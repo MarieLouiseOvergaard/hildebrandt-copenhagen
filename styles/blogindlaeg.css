@@ -1,4 +1,4 @@
-/* Blogindlæg: side-specifik layout til indholdsfortegnelse og artikel. */
+﻿/* BlogindlÃ¦g: side-specifik layout til indholdsfortegnelse og artikel. */
 
 .blog-post-page {
   scroll-behavior: smooth;
@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  padding: 86px 24px 76px;
+  padding: 86px var(--page-gutter) 76px;
   text-align: center;
 }
 
@@ -59,7 +59,7 @@
   gap: 70px;
   max-width: 990px;
   margin: 0 auto;
-  padding: 30px 24px 112px;
+  padding: 30px var(--page-gutter) 112px;
 }
 
 .blog-page .indlaeg-menu {
@@ -240,7 +240,7 @@
 .blog-page .indlaeg-laes-ogsa {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 0 24px 112px;
+  padding: 0 var(--page-gutter) 112px;
 }
 
 .blog-page .indlaeg-laes-ogsa h2 {
@@ -254,7 +254,7 @@
   gap: 116px;
   align-items: center;
   justify-content: center;
-  padding: 70px 48px;
+  padding: 70px var(--content-gutter);
   background: var(--color-turkis);
 }
 
@@ -295,7 +295,7 @@
   margin-top: 32px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1180px) {
   .blog-page .indlaeg-hero {
     align-items: center;
     padding: 46px 18px 54px;
@@ -517,7 +517,7 @@
   .blog-page .indlaeg-produkt-cta {
     grid-template-columns: 1fr;
     gap: 32px;
-    padding: 46px 18px 56px;
+    padding: 46px var(--page-gutter) 56px;
   }
 
   .blog-page .indlaeg-produkt-cta-billede {

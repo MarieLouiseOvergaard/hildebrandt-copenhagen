@@ -13,7 +13,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 28px 48px 88px;
+  padding: 28px var(--content-gutter) 88px;
   background: var(--color-text);
 }
 
@@ -101,7 +101,9 @@
   grid-template-columns: 370px 500px;
   justify-content: center;
   gap: 86px;
-  padding: 140px 48px 135px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 140px var(--page-gutter) 135px;
 }
 
 .om-belinda-billede {
@@ -155,15 +157,15 @@
   align-items: start;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 52px 48px 64px;
+  padding: 52px var(--page-gutter) 64px;
 }
 
 @media (min-width: 1181px) {
   .mixly-introduktion-indhold {
-    max-width: none;
-    margin-left: 0;
-    margin-right: 0;
-    padding-right: 0;
+    max-width: var(--container-max);
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: var(--page-gutter);
   }
 }
 
@@ -220,7 +222,7 @@
 
 .citat-sektion {
   min-height: 345px;
-  padding: 90px 48px;
+  padding: 90px var(--content-gutter);
   background: var(--color-turkis);
 }
 
@@ -259,7 +261,9 @@
   display: grid;
   grid-template-columns: 1fr 360px;
   gap: 36px;
-  padding: 70px 38px 100px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 70px var(--page-gutter) 100px;
 }
 
 .behandlinger-sektion-liste {
@@ -346,7 +350,7 @@
 .anmeldelser {
   --anmeldelse-display-duration: 5000ms;
   --anmeldelse-transition-duration: 600ms;
-  padding: 58px 48px 120px;
+  padding: 58px var(--content-gutter) 120px;
   background: var(--color-light-blue);
   text-align: center;
 }
@@ -414,7 +418,9 @@
   grid-template-columns: 470px 150px minmax(520px, 1fr);
   align-items: start;
   gap: 0;
-  padding: 78px 48px 92px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 78px var(--page-gutter) 92px;
   overflow: hidden;
 }
 
@@ -468,7 +474,7 @@
 
 .salon-citat {
   min-height: 305px;
-  padding: 64px 160px;
+  padding: 64px var(--content-gutter);
   background: #294a54;
 }
 
@@ -487,6 +493,14 @@
   content: "IMG\A 1140 x 525";
   white-space: pre;
   text-align: center;
+}
+
+@media (min-width: 1441px) {
+  .kort-sektion-billede {
+    max-width: var(--container-max);
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 /* Tablet: forside-sektioner */
@@ -508,14 +522,14 @@
 
   /* Mixly på tablet: tekst til venstre og billeder helt ud til højre. */
   .mixly-introduktion {
-    background: #f6f6f6;
+    background: var(--color-light-blue);
     overflow: hidden;
   }
 
   .mixly-introduktion-indhold {
     grid-template-columns: minmax(300px, 0.75fr) minmax(0, 1.25fr);
     column-gap: 60px;
-    margin-left: 30px;
+    margin-left: var(--page-gutter);
     margin-right: 0;
     padding: 52px 0 64px 0;
   }
@@ -559,8 +573,8 @@
   .behandlinger-sektion {
     grid-template-columns: 1fr;
     gap: 0;
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
   }
 
   .behandlinger-sektion-titel {
@@ -599,8 +613,8 @@
   .guide-sektion {
     grid-template-columns: minmax(280px, 430px) minmax(140px, 180px) minmax(0, 1fr);
     gap: 24px;
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
   }
 
   .anmeldelser-liste {
@@ -617,11 +631,11 @@
 }
 
 /* Mobil: forside-sektioner */
-@media (max-width: 767px) {
+@media (max-width: 1180px) {
   .hero {
     min-height: 476px;
     padding: 43px 34px 66px;
-    background: #d9d9d9;
+    background: var(--color-text);
   }
 
   .hero-title {
@@ -651,7 +665,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 48px 14px 44px;
+    padding: 48px var(--page-gutter) 44px;
   }
 
   .om-belinda__content {
@@ -706,7 +720,7 @@
   }
 
   .mixly-introduktion {
-    background: #f6f6f6;
+    background: var(--color-light-blue);
     overflow: hidden;
   }
 
@@ -835,7 +849,7 @@
 
   .citat-sektion {
     min-height: 230px;
-    padding: 58px 14px;
+    padding: 58px var(--page-gutter);
   }
 
   .citat-tekst p {
@@ -860,7 +874,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 52px 14px 60px;
+    padding: 52px var(--page-gutter) 60px;
   }
 
   .behandlinger-sektion-titel {
@@ -927,7 +941,7 @@
   }
 
   .anmeldelser {
-    padding: 82px 14px 76px;
+    padding: 82px var(--page-gutter) 76px;
     text-align: center;
   }
 
@@ -976,7 +990,7 @@
 
   .guide-sektion-tekst {
     order: 2;
-    padding: 46px 14px 0;
+    padding: 46px var(--page-gutter) 0;
   }
 
   .guide-sektion-knapper {
@@ -993,7 +1007,7 @@
 
   .salon-citat {
     min-height: 305px;
-    padding: 58px 14px;
+    padding: 58px var(--page-gutter);
   }
 
   .kort-sektion-billede {

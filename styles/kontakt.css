@@ -11,7 +11,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 80px 24px;
+  padding: 80px var(--content-gutter);
   text-align: center;
   background: var(--color-turkis);
 }
@@ -53,7 +53,7 @@
   gap: 64px; 
   max-width: var(--container-max); 
   margin: 0 auto; 
-  padding: 68px 36px 78px; 
+  padding: 68px var(--page-gutter) 78px; 
 } 
   
   .kontakt-info { 
@@ -180,7 +180,7 @@
   gap: 64px;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 28px 36px 170px;
+  padding: 28px var(--page-gutter) 170px;
 }
 
 .kontakt-status {
@@ -289,8 +289,8 @@
   .kontakt-praktisk {
     grid-template-columns: minmax(220px, 0.8fr) minmax(360px, 1.2fr);
     gap: 42px;
-    padding-right: 28px;
-    padding-left: 28px;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
   }
 
   .kontakt-formular {
@@ -301,10 +301,10 @@
 }
 
 /* Mobil: kontakt-siden stackes lodret */
-@media (max-width: 768px) {
+@media (max-width: 1180px) {
   .kontakt-hero {
     min-height: 300px;
-    padding: 52px 18px 44px;
+    padding: 52px var(--page-gutter) 44px;
   }
 
   .kontakt-hero .eyebrow {
@@ -337,7 +337,7 @@
   .kontakt-praktisk {
     grid-template-columns: 1fr;
     gap: 42px;
-    padding: 42px 18px;
+    padding: 42px var(--page-gutter);
   }
 
   .kontakt-praktisk {
@@ -414,14 +414,14 @@
   }
 
   .kontakt-kort {
-    margin-right: -18px;
-    margin-left: -18px;
+    margin-right: calc(var(--page-gutter) * -1);
+    margin-left: calc(var(--page-gutter) * -1);
   }
 
   .kontakt-kort h2,
   .kontakt-kort > p {
-    padding-right: 18px;
-    padding-left: 18px;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
   }
 
   .kontakt-kort-placeholder {

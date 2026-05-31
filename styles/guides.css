@@ -20,7 +20,7 @@
 .guide-section {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 64px 24px;
+  padding: 64px var(--page-gutter);
 }
 
 .guide-section-heading {
@@ -53,7 +53,9 @@
   align-items: start;
   justify-content: center;
   gap: 48px;
-  padding: 58px 40px 58px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 58px var(--page-gutter);
   background: var(--color-white);
 }
 
@@ -235,6 +237,8 @@
 
 .guide-editorial {
   max-width: none;
+  padding-right: var(--content-gutter);
+  padding-left: var(--content-gutter);
   background: var(--color-light-blue);
 }
 
@@ -360,7 +364,7 @@
   display: grid;
   min-height: 345px;
   place-items: center;
-  padding: 90px 48px;
+  padding: 90px var(--content-gutter);
   background: var(--color-turkis);
   text-align: center;
 }
@@ -500,7 +504,7 @@
   margin-top: 12px;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 1181px) {
   .guide-steps-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -544,9 +548,9 @@
 
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1181px) {
   .guide-section {
-    padding: 82px 52px;
+    padding: 82px var(--page-gutter);
   }
 
   .guide-section.guide-styling {
@@ -562,6 +566,16 @@
     gap: 232px;
   }
 
+}
+
+@media (min-width: 1441px) {
+  .guide-styling-block {
+    max-width: var(--container-max);
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
+  }
 }
 
 @media (max-width: 1180px) {
@@ -592,7 +606,7 @@
   }
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1180px) {
   .guide-hero {
     display: flex;
     flex-direction: column;
@@ -606,7 +620,7 @@
 
   .guide-hero-content {
     max-width: none;
-    padding: 34px 18px 42px;
+    padding: 34px var(--page-gutter) 42px;
   }
 
   .guide-hero h1 {
@@ -615,9 +629,9 @@
 
   .guide-section {
     padding-top: 52px;
-    padding-right: 18px;
+    padding-right: var(--page-gutter);
     padding-bottom: 52px;
-    padding-left: 18px;
+    padding-left: var(--page-gutter);
   }
 
   .guide-steps {
@@ -628,7 +642,7 @@
 
   .guide-steps .guide-section-heading {
     margin-bottom: 22px;
-    padding-right: 18px;
+    padding-right: var(--page-gutter);
   }
 
   .guide-steps-grid {
@@ -636,7 +650,7 @@
     gap: 28px;
     overflow-x: auto;
     overflow-y: hidden;
-    padding-right: 18px;
+    padding-right: var(--page-gutter);
     padding-bottom: 0.8rem;
     scroll-padding-left: 0;
     scroll-snap-type: x mandatory;
@@ -697,12 +711,12 @@
 
   .guide-feeling-mobile-text-low {
     max-width: 210px;
-    margin: -7px 18px 0 auto;
+    margin: -7px var(--page-gutter) 0 auto;
     text-align: left;
   }
 
   .guide-feeling-mobile-text-center {
-    margin: 18px 18px 0;
+    margin: 18px var(--page-gutter) 0;
     text-align: center;
   }
 
@@ -716,7 +730,7 @@
     display: grid;
     gap: 34px;
     margin-top: 38px;
-    padding: 0 18px;
+    padding: 0 var(--page-gutter);
   }
 
   .guide-feeling-mobile-items + .guide-feeling-mobile-balance {
@@ -752,7 +766,7 @@
 
   .guide-quote-section {
     min-height: 0;
-    padding: 68px 18px;
+    padding: 68px var(--page-gutter);
   }
 
   .guide-quote p {
@@ -766,8 +780,8 @@
 
   .guide-styling .guide-section-heading {
     margin-bottom: 20px;
-    padding-right: 18px;
-    padding-left: 18px;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
   }
 
   .guide-styling-block {
@@ -819,8 +833,8 @@
   }
 
   .guide-styling-copy {
-    padding-right: 18px;
-    padding-left: 18px;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
   }
 
   .guide-styling-tube {
@@ -847,14 +861,14 @@
   }
 
   .guide-compare {
-    --guide-compare-gutter: 18px;
+    --guide-compare-gutter: var(--page-gutter);
     padding: 42px 0 36px;
   }
 
   .guide-compare .guide-section-heading {
     margin-bottom: 14px;
-    padding-right: 18px;
-    padding-left: 18px;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
   }
 
   .guide-compare-grid {
@@ -872,23 +886,23 @@
 
   .guide-compare-card h2 {
     margin-bottom: 8px;
-    padding-right: 18px;
-    padding-left: 18px;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
   }
 
   .guide-compare-rich h2 {
-    padding-left: 18px;
+    padding-left: var(--page-gutter);
   }
 
   .guide-compare-body,
   .guide-compare-rich .guide-compare-body {
     position: relative;
     min-height: 0;
-    padding: 34px 108px 34px 18px;
+    padding: 34px 108px 34px var(--page-gutter);
   }
 
   .guide-compare-rich .guide-compare-body {
-    padding-right: 18px;
+    padding-right: var(--page-gutter);
     padding-left: 96px;
   }
 

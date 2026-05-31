@@ -1,4 +1,4 @@
-/* Krølleunivers CSS: styling til kroelleunivers.html. */
+﻿/* KrÃ¸lleunivers CSS: styling til kroelleunivers.html. */
 
 .kroelleunivers-main {
   --kroelle-hero-offset: max(40px, calc((100vw - 1278px) / 2));
@@ -22,15 +22,22 @@
   display: grid;
   align-items: center;
   justify-content: center;
-  padding-right: 40px;
-  padding-left: 40px;
+  padding-right: var(--page-gutter);
+  padding-left: var(--page-gutter);
+}
+
+.kroelle-hero,
+.kroelle-community {
+  max-width: var(--container-max);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .kroelle-hero {
   grid-template-columns: minmax(360px, 560px) minmax(520px, 670px);
   align-items: start;
   gap: 48px;
-  padding: 58px 40px 96px;
+  padding: 58px var(--page-gutter) 96px;
 }
 
 .kroelle-hero-text,
@@ -173,7 +180,7 @@
   display: grid;
   min-height: 345px;
   place-items: center;
-  padding: 90px 48px;
+  padding: 90px var(--content-gutter);
   background: var(--color-turkis);
   text-align: center;
 }
@@ -225,6 +232,8 @@
   margin: 0 auto 96px;
   padding: 28px clamp(28px, 7vw, 96px) 26px;
   background: var(--color-light-blue);
+  box-shadow: 0 0 0 100vmax var(--color-light-blue);
+  clip-path: inset(0 -100vmax);
 }
 
 .kroelle-signup-copy {
@@ -337,7 +346,7 @@
   align-items: stretch;
   justify-content: start;
   gap: 36px;
-  padding-right: 40px;
+  padding-right: var(--page-gutter);
   padding-left: 0;
   padding-top: 48px;
   padding-bottom: 96px;
@@ -367,6 +376,16 @@
   min-width: 250px;
 }
 
+@media (min-width: 1441px) {
+  .kroelle-course {
+    max-width: var(--container-max);
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
+  }
+}
+
 /* Tablet */
 @media (max-width: 1180px) {
   .kroelle-hero,
@@ -383,8 +402,8 @@
   .kroelle-signup {
     grid-template-columns: 1fr;
     gap: 28px;
-    margin-right: 40px;
-    margin-left: 40px;
+    margin-right: var(--page-gutter);
+    margin-left: var(--page-gutter);
     padding: 36px;
   }
 
@@ -400,7 +419,7 @@
 }
 
 /* Mobiltilpasning */
-@media (max-width: 767px) {
+@media (max-width: 1180px) {
   .kroelleunivers-main {
     overflow-x: hidden;
   }
@@ -411,8 +430,8 @@
     display: flex;
     flex-direction: column;
     gap: 28px;
-    padding-right: 14px;
-    padding-left: 14px;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
   }
 
   .kroelle-hero {
@@ -426,9 +445,9 @@
 
   .kroelle-hero-figure {
     order: -1;
-    width: calc(100% + 28px);
-    margin-right: -14px;
-    margin-left: -14px;
+    width: calc(100% + (var(--page-gutter) * 2));
+    margin-right: calc(var(--page-gutter) * -1);
+    margin-left: calc(var(--page-gutter) * -1);
     margin-bottom: 22px;
   }
 
@@ -462,6 +481,7 @@
   .kroelle-button,
   .kroelle-course-button {
     width: calc(100% - 42px);
+    max-width: var(--button-width);
     min-height: 48px;
     align-self: center;
     font-size: 0.72rem;
@@ -478,7 +498,7 @@
 
   .kroelle-section-head {
     padding-right: 0;
-    padding-left: 14px;
+    padding-left: var(--page-gutter);
   }
 
   .kroelle-section-head h2 {
@@ -501,13 +521,13 @@
   .kroelle-card h3 {
     margin-bottom: 8px;
     padding-right: 0;
-    padding-left: 14px;
+    padding-left: var(--page-gutter);
     font-size: 1.35rem;
     letter-spacing: 0.02em;
   }
 
   .kroelle-card:nth-child(2) h3 {
-    padding-left: 14px;
+    padding-left: var(--page-gutter);
   }
 
   .kroelle-card-list {
@@ -531,7 +551,7 @@
 
   .kroelle-quote-section {
     min-height: 230px;
-    padding: 58px 14px;
+    padding: 58px var(--page-gutter);
   }
 
   .kroelle-quote p {
@@ -570,7 +590,7 @@
   .kroelle-signup {
     grid-template-columns: 1fr;
     gap: 20px;
-    margin: 0 14px 54px;
+    margin: 0 var(--page-gutter) 54px;
     padding: 28px 22px 34px;
   }
 

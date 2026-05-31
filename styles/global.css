@@ -56,6 +56,8 @@
   --button-width: 324px;
 
   --container-max: 1320px;
+  --page-gutter: clamp(14px, 4vw, 48px);
+  --content-gutter: max(var(--page-gutter), calc((100vw - var(--container-max)) / 2 + var(--page-gutter)));
   --button-height: 50px;
   --button-radius: 2px;
 }
@@ -453,6 +455,220 @@ input[type="reset"],
   border-radius: var(--button-radius);
 }
 
+.product-hover-eye {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 0;
+  background: var(--color-white);
+  box-shadow: 0 6px 18px rgba(51, 76, 86, 0.14);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+.product-hover-eye img {
+  width: 22px;
+  height: 22px;
+}
+
+.product-card:hover .product-hover-eye,
+.product-card:focus-within .product-hover-eye,
+.produkt-skabelon-related-card:hover .product-hover-eye,
+.produkt-skabelon-related-card:focus-within .product-hover-eye {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-hover-eye:hover,
+.product-hover-eye:focus-visible {
+  box-shadow: 0 8px 22px rgba(51, 76, 86, 0.2);
+}
+
+.is-quick-view-open {
+  overflow: hidden;
+}
+
+.quick-view[hidden] {
+  display: none;
+}
+
+.quick-view {
+  position: fixed;
+  z-index: 4200;
+  inset: 0;
+}
+
+.quick-view-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 32, 36, 0.42);
+}
+
+.quick-view-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: min(1040px, calc(100vw - 48px));
+  max-height: calc(100vh - 48px);
+  grid-template-columns: minmax(320px, 0.9fr) minmax(390px, 1fr);
+  overflow: auto;
+  background: var(--color-white);
+  box-shadow: 0 22px 60px rgba(20, 32, 36, 0.24);
+  transform: translate(-50%, -50%);
+}
+
+.quick-view-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 2;
+  border: 0;
+  background: transparent;
+  color: var(--color-heading);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.quick-view-media {
+  display: grid;
+  min-height: 520px;
+  place-items: center;
+  background: var(--color-light-blue);
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+}
+
+.quick-view-media img {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+}
+
+.quick-view-content {
+  padding: 32px 44px 40px;
+}
+
+.quick-view-price {
+  margin-top: 18px;
+}
+
+.quick-view-price {
+  color: var(--color-heading);
+  font-size: 20px;
+}
+
+.quick-view-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.quick-view-size-help {
+  flex: 0 0 100%;
+  margin: 0;
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.quick-view-size {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--color-heading);
+  background: transparent;
+  color: var(--color-heading);
+  cursor: pointer;
+  font-family: var(--font-heading);
+}
+
+.quick-view-size.is-active {
+  background: var(--color-heading);
+  color: var(--color-white);
+}
+
+.quick-view-specs {
+  margin-top: 28px;
+}
+
+.quick-view-spec-row {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  gap: 18px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--color-heading);
+}
+
+.quick-view-spec-row:first-child {
+  border-top: 0;
+}
+
+.quick-view-spec-row dt {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.quick-view-spec-row dd {
+  margin: 0;
+  line-height: 1.35;
+}
+
+.quick-view-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.quick-view-actions .button {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 1180px) {
+  .product-hover-eye {
+    display: none;
+  }
+}
+
+@media (max-width: 1180px) {
+  .quick-view-panel {
+    width: 100%;
+    max-height: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .quick-view-media {
+    min-height: 260px;
+  }
+
+  .quick-view-content {
+    padding: 30px 22px 28px;
+  }
+
+  .quick-view-spec-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
 /* ==================================================
    FÆLLES INSTAGRAM-SEKTION
    Bruges på omos.html og kontakt.html.
@@ -466,7 +682,7 @@ input[type="reset"],
   align-items: flex-end;
   justify-content: space-between;
   gap: 40px;
-  padding: 0 40px 18px;
+  padding: 0 var(--page-gutter) 18px;
 }
 
 .om-os-instagram .om-os-section-title {
@@ -523,7 +739,7 @@ input[type="reset"],
   font-size: 1.85rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1180px) {
   .om-os-instagram {
     display: flex;
     flex-direction: column;
@@ -538,7 +754,7 @@ input[type="reset"],
   .om-os-instagram .om-os-section-title {
     order: 1;
     max-width: 260px;
-    padding: 0 14px 20px;
+    padding: 0 var(--page-gutter) 20px;
     letter-spacing: 0.02em;
   }
 
@@ -546,7 +762,7 @@ input[type="reset"],
     order: 3;
     align-self: flex-end;
     margin-top: 16px;
-    padding: 0 14px;
+    padding: 0 var(--page-gutter);
     padding-bottom: 0;
     font-size: 0.78rem;
     line-height: 1.2;
@@ -616,7 +832,7 @@ input[type="reset"],
 }
 
 /* Mobil: global typografi og knapper */
-@media (max-width: 767px) {
+@media (max-width: 1180px) {
   html,
   body {
     overflow-x: hidden;

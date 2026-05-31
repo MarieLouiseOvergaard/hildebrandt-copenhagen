@@ -10,7 +10,7 @@
   gap: clamp(36px, 5vw, 72px);
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 72px 48px 104px;
+  padding: 72px var(--page-gutter) 104px;
 }
 
 .checkout-customer h1 {
@@ -594,7 +594,7 @@
   letter-spacing: 0.16em;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1180px) {
   .checkout-layout {
     grid-template-columns: 1fr;
     max-width: 760px;
@@ -606,10 +606,10 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1180px) {
   .checkout-layout {
     gap: 28px;
-    padding: 46px 18px 72px;
+    padding: 46px var(--page-gutter) 72px;
   }
 
   .checkout-field-grid-two,

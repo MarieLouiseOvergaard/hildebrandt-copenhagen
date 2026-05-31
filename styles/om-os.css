@@ -10,7 +10,9 @@
   align-items: start;
   justify-content: center;
   gap: 72px;
-  padding: 58px 40px 96px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 58px var(--page-gutter) 96px;
 }
 
 .om-os-hero-content {
@@ -83,7 +85,7 @@
   display: grid;
   min-height: 345px;
   place-items: center;
-  padding: 90px 48px;
+  padding: 90px var(--content-gutter);
   background: var(--color-turkis);
   text-align: center;
 }
@@ -111,7 +113,9 @@
   align-items: center;
   justify-content: center;
   gap: 58px;
-  padding: 86px 40px 112px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 86px var(--page-gutter) 112px;
 }
 
 .om-os-image-placeholder-mixly {
@@ -140,7 +144,7 @@
 }
 
 /* Mobiltilpasning */
-@media (max-width: 767px) {
+@media (max-width: 1180px) {
   .om-os-main {
     overflow-x: hidden;
   }
@@ -199,6 +203,7 @@
   .om-os-hero-cta,
   .om-os-mixly-actions .button {
     width: calc(100% - 42px);
+    max-width: var(--button-width);
     min-height: 48px;
     align-self: center;
     font-size: 0.72rem;
