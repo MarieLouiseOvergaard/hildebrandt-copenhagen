@@ -1,4 +1,6 @@
-﻿/* Global CSS: fonte, farver, reset, base-typografi og fælles komponenter. */
+﻿/* Filkommentar: styles/global.css indeholder styling og responsive regler for websitet. */
+
+/* Global CSS: fonte, farver, reset, base-typografi og fælles komponenter. */
 @import url("https://fonts.googleapis.com/css2?family=Amiri:ital@1&family=DM+Sans:opsz,wght@9..40,400&family=Montserrat:wght@100;300;400&display=swap");
 
 /* ==================================================
@@ -16,6 +18,7 @@
    1. DESIGN TOKENS
    Farver, fonte og desktop-typografi samlet øverst.
 ================================================== */
+/* Globale variabler: farver, fonte og storrelser, der genbruges paa sitet. */
 :root {
   --color-primary: #C27F33;
   --color-heading: #334C56;
@@ -40,8 +43,18 @@
   --font-salon-quote-desktop: 28px;
   --font-quote-author-desktop: 16px;
   --font-quote-author-weight: 400;
-  --font-review-quote-desktop: 16px;
+  --font-review-quote-desktop: 16px; 
   --font-review-author-desktop: 16px;
+
+  --font-h1-tablet: 25px;
+  --font-h2-tablet: 24px;
+  --font-h3-tablet: 20px;
+  --font-h4-tablet: 15px;
+  --font-eyebrow-tablet: 13px;
+  --font-body-tablet: 14.5px;
+  --font-quote-tablet: 24px;
+  --font-review-quote-tablet: 17px;
+  --font-review-author-tablet: 15px;
 
   --font-h1-mobile: 20px;
   --font-h2-mobile: 20px;
@@ -55,7 +68,7 @@
 
   --button-width: 324px;
 
-  --container-max: 1320px;
+  --container-max: 1440px;
   --page-gutter: clamp(14px, 4vw, 48px);
   --content-gutter: max(var(--page-gutter), calc((100vw - var(--container-max)) / 2 + var(--page-gutter)));
   --button-height: 50px;
@@ -81,6 +94,7 @@
   overflow: hidden;
 }
 
+/* Styling for .menu-dropdown-product-image. */
 .menu-dropdown-product-image > img,
 .mobile-menu-feature-image > img,
 .behandlinger-placeholder > img,
@@ -103,6 +117,7 @@
   object-fit: cover;
 }
 
+/* Styling for .menu-dropdown-product-image. */
 .menu-dropdown-product-image > img[src=""],
 .mobile-menu-feature-image > img[src=""],
 .behandlinger-placeholder > img[src=""],
@@ -121,6 +136,7 @@
   display: none;
 }
 
+/* Styling for .menu-dropdown-product-image. */
 .menu-dropdown-product-image:has(> img[src]:not([src=""])) > :not(img),
 .mobile-menu-feature-image:has(> img[src]:not([src=""])) > :not(img),
 .behandlinger-placeholder:has(> img[src]:not([src=""])) > :not(img),
@@ -143,11 +159,13 @@
    2. RESET OG BASE
    Ens udgangspunkt på tværs af browsere.
 ================================================== */
+/* Stylingregel: styrer udseende, spacing eller layout for elementerne nedenfor. */
 * {
   box-sizing: border-box;
 }
 
 
+/* Styling for HTML-elementet html. */
 html {
   color: var(--color-text);
   background: var(--color-white);
@@ -155,17 +173,21 @@ html {
   font-size: 16px;
 }
 
+/* Styling for HTML-elementet body. */
 body {
   margin: 0;
   padding-top: 113px;
   background: var(--color-white);
+  overflow-x: clip;
 }
 
+/* Styling for HTML-elementet img. */
 img {
   display: block;
   max-width: 100%;
 }
 
+/* Styling for HTML-elementet figure. */
 figure,
 blockquote,
 p,
@@ -179,6 +201,7 @@ dd {
 }
 
 
+/* Styling for HTML-elementet ul. */
 ul {
   margin: 0;
   padding: 0;
@@ -190,11 +213,13 @@ ul {
    3. TYPOGRAFI
    Globale desktop-størrelser. Mobil overrides nederst.
 ================================================== */
+/* Styling for HTML-elementet a. */
 a {
   color: inherit;
   text-decoration: none;
 }
 
+/* Styling for .eyebrow. */
 .eyebrow {
   margin-bottom: 10px;
   color: var(--color-primary);
@@ -205,11 +230,13 @@ a {
   text-transform: uppercase;
 }
 
+/* Styling for .eyebrow. */
 .eyebrow + h1,
 .eyebrow + h2 {
   margin-top: 0;
 }
 
+/* Styling for HTML-elementet h1. */
 h1 {
   color: var(--color-heading);
   font-family: var(--font-heading);
@@ -219,6 +246,7 @@ h1 {
   text-transform: uppercase;
 }
 
+/* Styling for HTML-elementet h2. */
 h2 {
   color: var(--color-heading);
   font-family: var(--font-heading);
@@ -228,6 +256,7 @@ h2 {
   text-transform: uppercase;
 }
 
+/* Styling for HTML-elementet p. */
 p {
   color: var(--color-text);
   font-family: var(--font-body);
@@ -236,6 +265,7 @@ p {
   line-height: 1.6;
 }
 
+/* Styling for HTML-elementet h3. */
 h3 {
   color: var(--color-primary);
   font-family: var(--font-heading);
@@ -245,6 +275,7 @@ h3 {
   text-transform: uppercase;
 }
 
+/* Styling for HTML-elementet h4. */
 h4 {
   color: var(--color-heading);
   font-family: var(--font-heading);
@@ -254,23 +285,28 @@ h4 {
   text-transform: uppercase;
 }
 
+/* Styling for HTML-elementet h2. */
 h2 + p {
   margin-top: 20px;
 }
 
+/* Styling for HTML-elementet h3. */
 h3 + p {
   margin-top: 10px;
 }
 
+/* Styling for HTML-elementet blockquote. */
 blockquote p {
   font-family: var(--font-quote);
   font-style: italic;
 }
 
+/* Styling for HTML-elementet blockquote. */
 blockquote footer {
   font-family: var(--font-heading);
 }
 
+/* Styling for .citat-tekst. */
 .citat-tekst footer,
 .salon-citat-tekst footer,
 .om-os-quote footer,
@@ -281,6 +317,7 @@ blockquote footer {
   text-transform: uppercase;
 }
 
+/* Styling for .anmeldelse-citat. */
 .anmeldelse-citat p,
 .anmeldelse-citat p:not(.eyebrow) {
   color: var(--color-heading);
@@ -289,6 +326,7 @@ blockquote footer {
   font-style: italic;
 }
 
+/* Styling for .anmeldelse-citat. */
 .anmeldelse-citat footer {
   color: var(--color-heading);
   font-family: var(--font-heading);
@@ -296,6 +334,7 @@ blockquote footer {
   font-weight: 400;
 }
 
+/* Styling for .hero-actions. */
 .hero-actions {
   margin-top: 46px;
 }
@@ -304,6 +343,7 @@ blockquote footer {
 /* ------------------------------
    Fælles knapper
 -------------------------------- */
+/* Styling for .button. */
 .button {
   display: inline-flex;
   position: relative;
@@ -322,6 +362,7 @@ blockquote footer {
   text-transform: uppercase;
 }
 
+/* Styling for .button-label. */
 .button-label {
   display: inline;
   padding-bottom: 4px;
@@ -335,10 +376,12 @@ blockquote footer {
   transition: background-size 220ms ease;
 }
 
+/* Styling for .button-label. */
 .button-label::after {
   content: none;
 }
 
+/* Styling for .button. */
 .button:hover .button-label::after,
 .button:focus-visible .button-label::after,
 .book-knap:hover .button-label::after,
@@ -372,6 +415,7 @@ blockquote footer {
   clip-path: none;
 }
 
+/* Styling for .button. */
 .button:hover .button-label,
 .button:focus-visible .button-label,
 .book-knap:hover .button-label,
@@ -409,16 +453,19 @@ blockquote footer {
   background-size: 100% 1px;
 }
 
+/* Styling for .button-primary. */
 .button-primary {
   border-color: var(--color-primary);
   color: var(--color-white);
   background: var(--color-primary);
 }
 
+/* Styling for .button-secondary. */
 .button-secondary {
   background: transparent;
 }
 
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
 @media (prefers-reduced-motion: reduce) {
   .button-label::after {
     transition: none;
@@ -429,6 +476,7 @@ blockquote footer {
   }
 }
 
+/* Styling for HTML-elementet button. */
 button,
 input[type="button"],
 input[type="submit"],
@@ -455,6 +503,7 @@ input[type="reset"],
   border-radius: var(--button-radius);
 }
 
+/* Styling for .product-hover-eye. */
 .product-hover-eye {
   position: absolute;
   top: 14px;
@@ -473,11 +522,13 @@ input[type="reset"],
   transition: opacity 220ms ease, transform 220ms ease, box-shadow 220ms ease;
 }
 
+/* Styling for .product-hover-eye. */
 .product-hover-eye img {
   width: 22px;
   height: 22px;
 }
 
+/* Styling for .product-card. */
 .product-card:hover .product-hover-eye,
 .product-card:focus-within .product-hover-eye,
 .produkt-skabelon-related-card:hover .product-hover-eye,
@@ -486,37 +537,43 @@ input[type="reset"],
   transform: translateY(0);
 }
 
+/* Styling for .product-hover-eye. */
 .product-hover-eye:hover,
 .product-hover-eye:focus-visible {
   box-shadow: 0 8px 22px rgba(51, 76, 86, 0.2);
 }
 
+/* Styling for .is-quick-view-open. */
 .is-quick-view-open {
   overflow: hidden;
 }
 
+/* Styling for .quick-view. */
 .quick-view[hidden] {
   display: none;
 }
 
+/* Styling for .quick-view. */
 .quick-view {
   position: fixed;
   z-index: 4200;
   inset: 0;
 }
 
+/* Styling for .quick-view-backdrop. */
 .quick-view-backdrop {
   position: absolute;
   inset: 0;
   background: rgba(20, 32, 36, 0.42);
 }
 
+/* Styling for .quick-view-panel. */
 .quick-view-panel {
   position: absolute;
   top: 50%;
   left: 50%;
   display: grid;
-  width: min(1040px, calc(100vw - 48px));
+  width: min(1040px, 92%);
   max-height: calc(100vh - 48px);
   grid-template-columns: minmax(320px, 0.9fr) minmax(390px, 1fr);
   overflow: auto;
@@ -525,6 +582,7 @@ input[type="reset"],
   transform: translate(-50%, -50%);
 }
 
+/* Styling for .quick-view-close. */
 .quick-view-close {
   position: absolute;
   top: 12px;
@@ -539,6 +597,7 @@ input[type="reset"],
   line-height: 1;
 }
 
+/* Styling for .quick-view-media. */
 .quick-view-media {
   display: grid;
   min-height: 520px;
@@ -548,25 +607,30 @@ input[type="reset"],
   font-family: var(--font-heading);
 }
 
+/* Styling for .quick-view-media. */
 .quick-view-media img {
   width: 86%;
   height: 86%;
   object-fit: contain;
 }
 
+/* Styling for .quick-view-content. */
 .quick-view-content {
   padding: 32px 44px 40px;
 }
 
+/* Styling for .quick-view-price. */
 .quick-view-price {
   margin-top: 18px;
 }
 
+/* Styling for .quick-view-price. */
 .quick-view-price {
   color: var(--color-heading);
   font-size: 20px;
 }
 
+/* Styling for .quick-view-sizes. */
 .quick-view-sizes {
   display: flex;
   flex-wrap: wrap;
@@ -574,6 +638,7 @@ input[type="reset"],
   margin-top: 18px;
 }
 
+/* Styling for .quick-view-size-help. */
 .quick-view-size-help {
   flex: 0 0 100%;
   margin: 0;
@@ -584,6 +649,7 @@ input[type="reset"],
   text-transform: uppercase;
 }
 
+/* Styling for .quick-view-size. */
 .quick-view-size {
   min-height: 38px;
   padding: 0 14px;
@@ -594,15 +660,18 @@ input[type="reset"],
   font-family: var(--font-heading);
 }
 
+/* Styling for .quick-view-size.is-active. */
 .quick-view-size.is-active {
   background: var(--color-heading);
   color: var(--color-white);
 }
 
+/* Styling for .quick-view-specs. */
 .quick-view-specs {
   margin-top: 28px;
 }
 
+/* Styling for .quick-view-spec-row. */
 .quick-view-spec-row {
   display: grid;
   grid-template-columns: 116px 1fr;
@@ -611,10 +680,12 @@ input[type="reset"],
   border-bottom: 1px solid var(--color-heading);
 }
 
+/* Styling for .quick-view-spec-row. */
 .quick-view-spec-row:first-child {
   border-top: 0;
 }
 
+/* Styling for .quick-view-spec-row. */
 .quick-view-spec-row dt {
   color: var(--color-heading);
   font-family: var(--font-heading);
@@ -623,11 +694,13 @@ input[type="reset"],
   text-transform: uppercase;
 }
 
+/* Styling for .quick-view-spec-row. */
 .quick-view-spec-row dd {
   margin: 0;
   line-height: 1.35;
 }
 
+/* Styling for .quick-view-actions. */
 .quick-view-actions {
   display: flex;
   flex-wrap: nowrap;
@@ -635,6 +708,7 @@ input[type="reset"],
   margin-top: 12px;
 }
 
+/* Styling for .quick-view-actions. */
 .quick-view-actions .button {
   flex: 1 1 0;
   width: auto;
@@ -642,13 +716,15 @@ input[type="reset"],
   white-space: nowrap;
 }
 
-@media (max-width: 1180px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (max-width: 767px) {
   .product-hover-eye {
     display: none;
   }
 }
 
-@media (max-width: 1180px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (max-width: 767px) {
   .quick-view-panel {
     width: 100%;
     max-height: 100%;
@@ -673,10 +749,12 @@ input[type="reset"],
    FÆLLES INSTAGRAM-SEKTION
    Bruges på omos.html og kontakt.html.
 ================================================== */
+/* Styling for .om-os-instagram. */
 .om-os-instagram {
   padding: 0 0 70px;
 }
 
+/* Styling for .om-os-instagram-header. */
 .om-os-instagram-header {
   display: flex;
   align-items: flex-end;
@@ -685,12 +763,14 @@ input[type="reset"],
   padding: 0 var(--page-gutter) 18px;
 }
 
+/* Styling for .om-os-instagram. */
 .om-os-instagram .om-os-section-title {
   max-width: 760px;
   letter-spacing: 0.04em;
   line-height: 1.18;
 }
 
+/* Styling for .om-os-instagram-handle. */
 .om-os-instagram-handle {
   flex: 0 0 auto;
   padding-bottom: 8px;
@@ -700,24 +780,29 @@ input[type="reset"],
   line-height: 1.2;
 }
 
+/* Styling for .om-os-instagram-grid. */
 .om-os-instagram-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 5px;
 }
 
+/* Styling for .om-os-instagram-link. */
 .om-os-instagram-link {
   display: block;
 }
 
+/* Styling for .om-os-instagram-link-duplicate. */
 .om-os-instagram-link-duplicate {
   display: none;
 }
 
+/* Styling for .om-os-instagram-item. */
 .om-os-instagram-item {
   margin: 0;
 }
 
+/* Styling for .om-os-instagram. */
 .om-os-instagram .om-os-image-placeholder {
   display: flex;
   align-items: center;
@@ -731,15 +816,18 @@ input[type="reset"],
   line-height: 1.35;
 }
 
+/* Styling for .om-os-image-placeholder-instagram. */
 .om-os-image-placeholder-instagram {
   aspect-ratio: 1 / 1.16;
 }
 
+/* Styling for .om-os-instagram. */
 .om-os-instagram .om-os-image-placeholder span:first-child {
   font-size: 1.85rem;
 }
 
-@media (max-width: 1180px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (max-width: 767px) {
   .om-os-instagram {
     display: flex;
     flex-direction: column;
@@ -773,17 +861,17 @@ input[type="reset"],
     display: flex;
     grid-template-columns: none;
     gap: 5px;
-    width: max-content;
-    margin-right: calc(50% - 50vw);
-    margin-left: calc(50% - 50vw);
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
     padding: 0;
     animation: om-os-instagram-mobile-slider 100s linear infinite;
     will-change: transform;
   }
 
   .om-os-instagram-link {
-    flex: 0 0 calc((100vw - 5px) / 2);
-    width: calc((100vw - 5px) / 2);
+    flex: 0 0 50%;
+    width: auto;
   }
 
   .om-os-instagram-link-duplicate {
@@ -804,16 +892,18 @@ input[type="reset"],
     font-size: 1.45rem;
   }
 
+  /* Animation: beskriver trin for en CSS-animation. */
   @keyframes om-os-instagram-mobile-slider {
     0% {
       transform: translateX(0);
     }
 
     100% {
-      transform: translateX(calc(-250vw - 12.5px));
+      transform: translateX(-250%);
     }
   }
 
+  /* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
   @media (prefers-reduced-motion: reduce) {
     .om-os-instagram {
       overflow: visible;
@@ -832,7 +922,7 @@ input[type="reset"],
 }
 
 /* Mobil: global typografi og knapper */
-@media (max-width: 1180px) {
+@media (max-width: 767px) {
   html,
   body {
     overflow-x: hidden;
@@ -907,5 +997,56 @@ input[type="reset"],
     font-size: 14px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+  }
+}
+
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  h1 {
+    font-size: var(--font-h1-tablet);
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: var(--font-h2-tablet);
+    line-height: 1.1;
+  }
+
+  p {
+    font-size: var(--font-body-tablet);
+    line-height: 1.55;
+  }
+
+  h3 {
+    font-size: var(--font-h3-tablet);
+  }
+
+  h4 {
+    font-size: var(--font-h4-tablet);
+  }
+
+  .eyebrow {
+    font-size: var(--font-eyebrow-tablet);
+  }
+
+  .anmeldelse-citat p {
+    font-size: var(--font-review-quote-tablet);
+  }
+
+  .anmeldelse-citat footer {
+    font-size: var(--font-review-author-tablet);
+  }
+
+  .button {
+    width: auto;
+    min-width: 150px;
+    max-width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+    font-size: var(--font-eyebrow-tablet);
+  }
+
+  .product-hover-eye {
+    display: grid;
   }
 }

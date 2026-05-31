@@ -1,9 +1,13 @@
-/* Checkout CSS: kun layout og interaktioner for checkout-indholdet. */
+﻿/* Filkommentar: styles/checkout.css indeholder styling og responsive regler for websitet. */
 
+/* Checkout CSS: layout og interaktioner for checkout-siden. */
+
+/* Saetter checkout-sidens baggrund, sae den matcher resten af sitet. */
 .checkout-main {
   background: var(--color-white);
 }
 
+/* Hovedlayoutet: kundeoplysninger til venstre og ordreoversigt til haejre. */
 .checkout-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
@@ -13,21 +17,25 @@
   padding: 72px var(--page-gutter) 104px;
 }
 
+/* Giver hovedoverskriften luft ned til faerste formularsektion. */
 .checkout-customer h1 {
   margin-bottom: 28px;
   letter-spacing: 0.04em;
 }
 
+/* Standardsektion i formularen, fx kontaktinfo, levering og betaling. */
 .checkout-section {
   padding: 30px 0 34px;
   border-top: 1px solid #d6e2e6;
 }
 
+/* Fjerner topstregen pae den faerste formularsektion lige efter h1. */
 .checkout-customer h1 + .checkout-section {
   border-top: 0;
   padding-top: 0;
 }
 
+/* Ens overskriftsstil for formular, ordreoversigt og betaling. */
 .checkout-section h2,
 .checkout-order h2,
 .checkout-payment h2 {
@@ -38,6 +46,7 @@
   text-transform: uppercase;
 }
 
+/* Hjaelpetekster i checkout-sektioner. */
 .checkout-section p {
   margin-bottom: 18px;
   color: #6f7f85;
@@ -45,21 +54,25 @@
   line-height: 1.45;
 }
 
+/* Grid til formularfelter, sae felter kan ligge paent i raekker. */
 .checkout-field-grid {
   display: grid;
   gap: 14px 18px;
 }
 
+/* Variant med to lige brede kolonner, fx fornavn og efternavn. */
 .checkout-field-grid-two {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* Wrapper omkring hvert felt; bruges til labels, fejlmarkering og spacing. */
 .checkout-field {
   display: block;
   position: relative;
   margin-bottom: 12px;
 }
 
+/* Skjuler ekstra labeltekst visuelt, men bevarer den for skaermlaesere. */
 .checkout-field > span:not(.checkout-field-label) {
   position: absolute;
   width: 1px;
@@ -69,6 +82,7 @@
   white-space: nowrap;
 }
 
+/* Label placeret inde i inputfeltet. */
 .checkout-field-label {
   position: absolute;
   top: 50%;
@@ -84,16 +98,19 @@
   transform: translateY(-50%);
 }
 
+/* Farver markeringen for obligatoriske felter. */
 .checkout-required {
   color: var(--color-primary);
 }
 
+/* Skjuler den interne label, naer feltet er aktivt eller udfyldt. */
 .checkout-field:focus-within .checkout-field-label,
 .checkout-field:has(input:not(:placeholder-shown)) .checkout-field-label,
 .checkout-field:has(textarea:not(:placeholder-shown)) .checkout-field-label {
   display: none;
 }
 
+/* Faelles styling for inputs, textarea og rabatkodefelt. */
 .checkout-field input,
 .checkout-field textarea,
 .checkout-discount input {
@@ -110,21 +127,25 @@
   transition: border-color 180ms ease, background 180ms ease;
 }
 
+/* Tekstomraeder er haejere og kan aendres i haejden af brugeren. */
 .checkout-field textarea {
   min-height: 118px;
   resize: vertical;
 }
 
+/* Placeholderfarve i inputfelter. */
 .checkout-field input::placeholder,
 .checkout-discount input::placeholder {
   color: #829198;
 }
 
+/* Readonly-felter faer svag baggrund, sae de faeles laeste. */
 .checkout-field input[readonly] {
   color: var(--color-heading);
   background: var(--color-light-blue);
 }
 
+/* Fokus-state for felter. */
 .checkout-field input:focus,
 .checkout-field textarea:focus,
 .checkout-discount input:focus {
@@ -133,6 +154,7 @@
   outline: none;
 }
 
+/* Fejl-state for felter, valglister, betingelser og rabatkode. */
 .checkout-field.is-invalid input,
 .checkout-field.is-invalid textarea,
 .checkout-terms.is-invalid,
@@ -142,12 +164,14 @@
   border-color: var(--color-primary);
 }
 
+/* Lister med leverings- og betalingsvalg. */
 .checkout-option-list,
 .checkout-payment-list {
   display: grid;
   gap: 10px;
 }
 
+/* Faelles kort-stil for leverings- og betalingsmuligheder. */
 .checkout-option,
 .checkout-payment-option {
   display: grid;
@@ -160,12 +184,14 @@
   transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
+/* Leveringsvalg med ikonkolonne og tekstkolonne. */
 .checkout-option {
   grid-template-columns: 82px 1fr;
   min-height: 92px;
   padding: 14px 42px 14px 18px;
 }
 
+/* Valgt levering/betaling markeres med maerk baggrund. */
 .checkout-option.is-selected,
 .checkout-payment-option.is-selected {
   border-color: var(--color-heading);
@@ -174,6 +200,7 @@
   box-shadow: none;
 }
 
+/* Native radio-inputs skjules; hele kortet fungerer som klikflade. */
 .checkout-option input,
 .checkout-payment-option input {
   position: absolute;
@@ -181,6 +208,7 @@
   pointer-events: none;
 }
 
+/* Lille ikonfelt i leveringskortet. */
 .checkout-option-icon {
   display: grid;
   width: 48px;
@@ -195,6 +223,7 @@
   opacity: 0.82;
 }
 
+/* Tekstindhold inde i leveringskortet. */
 .checkout-option-content {
   display: grid;
   gap: 4px;
@@ -203,6 +232,7 @@
   line-height: 1.45;
 }
 
+/* Teksten i valgte kort bliver lys. */
 .checkout-option.is-selected .checkout-option-content,
 .checkout-option.is-selected .checkout-option-icon,
 .checkout-option.is-selected .checkout-option-content strong,
@@ -211,6 +241,7 @@
   color: var(--color-white);
 }
 
+/* Titel og fremhaevet tekst i leveringskort deler staerrelse. */
 .checkout-option-title,
 .checkout-option-content strong {
   font-size: 15px;
@@ -218,15 +249,18 @@
   line-height: 1.25;
 }
 
+/* Vigtig leveringsinfo eller pris fremhaeves med primaerfarven. */
 .checkout-option-content strong {
   color: var(--color-primary);
   font-weight: 700;
 }
 
+/* Omraede til valgfri kommentar til ordren. */
 .checkout-comment {
   margin-top: 18px;
 }
 
+/* Felt-lignende wrapper omkring knappen der aebner kommentarfeltet. */
 .checkout-comment-toggle-field {
   display: flex;
   width: 100%;
@@ -237,6 +271,7 @@
   background: #f8fcfd;
 }
 
+/* Knap der viser eller skjuler kommentarfeltet. */
 .checkout-comment-toggle {
   display: inline-flex;
   align-items: center;
@@ -251,6 +286,7 @@
   cursor: pointer;
 }
 
+/* Plus/minus-symbol ved kommentar-toggle. */
 .checkout-comment-toggle-symbol {
   width: 12px;
   color: var(--color-heading);
@@ -259,19 +295,23 @@
   line-height: 1;
 }
 
+/* Markerering af at kommentaren er valgfri. */
 .checkout-comment-optional {
   color: #829198;
 }
 
+/* Afstand omkring kommentarfeltet, naer det er aebent. */
 .checkout-comment-field {
   margin-top: 10px;
   margin-bottom: 0;
 }
 
+/* Browser-sikker skjulning af lukket kommentarfelt. */
 .checkout-comment-field[hidden] {
   display: none;
 }
 
+/* Ordreoversigten i haejre side; sticky pae desktop. */
 .checkout-order {
   align-self: start;
   position: sticky;
@@ -281,11 +321,13 @@
   background: var(--color-white);
 }
 
+/* Ordreoversigtens titel har lidt mere luft end formularoverskrifter. */
 .checkout-order > h2 {
   margin-bottom: 26px;
   text-transform: uppercase;
 }
 
+/* Liste over produkter i kurven. */
 .checkout-product-list {
   display: grid;
   gap: 18px;
@@ -293,6 +335,7 @@
   border-bottom: 1px solid #b7cbd2;
 }
 
+/* Et produkt i ordreoversigten: billede til venstre, info til haejre. */
 .checkout-product {
   display: grid;
   position: relative;
@@ -301,6 +344,7 @@
   align-items: center;
 }
 
+/* Kvadratisk billedramme til produktfoto. */
 .checkout-product-image {
   display: flex;
   position: relative;
@@ -313,12 +357,14 @@
   font-size: 14px;
 }
 
+/* Produktbilledet holdes inde i rammen uden beskaering. */
 .checkout-product-image img {
   width: 96%;
   height: 96%;
   object-fit: contain;
 }
 
+/* Produktinfo: navn, pris, variant og antal. */
 .checkout-product-info {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -327,6 +373,7 @@
   color: var(--color-heading);
 }
 
+/* Ens typografi for produktnavn, metadata og pris. */
 .checkout-product-info p,
 .checkout-product-info span,
 .checkout-product-info strong {
@@ -336,15 +383,18 @@
   line-height: 1.35;
 }
 
+/* Lader titel og fjern-knap indgae direkte i samme grid. */
 .checkout-product-heading {
   display: contents;
 }
 
+/* Produktnavne staer i uppercase for at matche checkout-stilen. */
 .checkout-product-info p {
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
+/* Knap til at fjerne produktet fra kurven. */
 .checkout-remove {
   position: absolute;
   top: -5px;
@@ -359,11 +409,13 @@
   cursor: pointer;
 }
 
+/* Hover/fokus for fjern-knappen. */
 .checkout-remove:hover,
 .checkout-remove:focus-visible {
   color: var(--color-heading);
 }
 
+/* Produktmetadata, fx staerrelse. */
 .checkout-product-meta {
   display: flex;
   flex-wrap: wrap;
@@ -371,6 +423,7 @@
   gap: 8px 18px;
 }
 
+/* Produktlinjens pris placeres i haejre kolonne. */
 .checkout-product-info strong {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
@@ -379,6 +432,7 @@
   white-space: nowrap;
 }
 
+/* Antalsvaelger med minus, antal og plus. */
 .checkout-quantity {
   display: flex;
   grid-column: 1 / 2;
@@ -388,6 +442,7 @@
   color: #111111;
 }
 
+/* Minus/plus-knapper i antalsvaelgeren. */
 .checkout-quantity button {
   display: grid;
   width: 26px;
@@ -402,12 +457,14 @@
   transition: border-color 180ms ease, background 180ms ease;
 }
 
+/* Hover/fokus pae antalsknapper. */
 .checkout-quantity button:hover,
 .checkout-quantity button:focus-visible {
   border-color: var(--color-heading);
   background: #f6f6f6;
 }
 
+/* Tallet mellem plus og minus faer fast bredde, sae layoutet ikke hopper. */
 .checkout-quantity span {
   min-width: 12px;
   color: #111111;
@@ -415,16 +472,19 @@
   text-align: center;
 }
 
+/* Tekst der vises, naer kurven er tom. */
 .checkout-empty {
   color: #6f7f85;
   font-size: 15px;
   line-height: 1.45;
 }
 
+/* Rabatkodefeltets omraede. */
 .checkout-discount {
   padding: 26px 0 30px;
 }
 
+/* Label over rabatkodefeltet. */
 .checkout-discount label {
   display: block;
   margin-bottom: 10px;
@@ -436,12 +496,14 @@
   text-transform: uppercase;
 }
 
+/* Rabatkodeinput og anvend-knap ligger ved siden af hinanden pae desktop. */
 .checkout-discount-row {
   display: grid;
   grid-template-columns: 1fr 108px;
   gap: 8px;
 }
 
+/* Knap til at anvende rabatkoden. */
 .checkout-discount .button {
   width: 100%;
   height: 46px;
@@ -450,6 +512,7 @@
   font-size: 12px;
 }
 
+/* Besked under rabatkodefeltet, fx fejl eller succes. */
 .checkout-discount-message {
   min-height: 20px;
   margin-top: 10px;
@@ -458,10 +521,12 @@
   line-height: 1.4;
 }
 
+/* Fejlbeskeder i rabatkodefeltet bruger primaerfarven. */
 .checkout-discount-message.is-error {
   color: var(--color-primary);
 }
 
+/* Totalomraedet med subtotal, fragt, rabat og samlet belaeb. */
 .checkout-totals {
   display: grid;
   gap: 22px;
@@ -469,16 +534,19 @@
   color: var(--color-heading);
 }
 
+/* Hver total-linje fordeler label og belaeb i hver sin side. */
 .checkout-totals div {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
 
+/* Skjuler totals, der ikke er relevante. */
 .checkout-totals [hidden] {
   display: none;
 }
 
+/* Ens tekststil for totalernes label og belaeb. */
 .checkout-totals dt,
 .checkout-totals dd {
   margin: 0;
@@ -487,22 +555,26 @@
   font-weight: 400;
 }
 
+/* Samlet total adskilles visuelt med en topstreg. */
 .checkout-total-line {
   padding-top: 28px;
   border-top: 1px solid #b7cbd2;
   text-transform: uppercase;
 }
 
+/* Samlet total bruger heading-font og letterspacing. */
 .checkout-total-line dt,
 .checkout-total-line dd {
   font-family: var(--font-heading);
   letter-spacing: 0.04em;
 }
 
+/* Betalingsoverskrift har lidt mindre bundluft end standard h2. */
 .checkout-payment h2 {
   margin-bottom: 12px;
 }
 
+/* Betalingskort med tekst til venstre og betalingsmaerker til haejre. */
 .checkout-payment-option {
   grid-template-columns: 1fr auto;
   gap: 26px;
@@ -511,6 +583,7 @@
   font-size: 15px;
 }
 
+/* Smae badges til betalingsmetoder, fx kort eller MobilePay. */
 .checkout-payment-marks,
 .checkout-payment-mark-mobilepay {
   display: inline-flex;
@@ -523,16 +596,19 @@
   line-height: 1;
 }
 
+/* MobilePay-badge bruger samme tekstfarve som aevrige badges. */
 .checkout-payment-mark-mobilepay {
   color: var(--color-heading);
 }
 
+/* Betalingsbadges bliver lyse, naer betalingskortet er valgt. */
 .checkout-payment-option.is-selected .checkout-payment-marks,
 .checkout-payment-option.is-selected .checkout-payment-mark-mobilepay {
   color: var(--color-heading);
   background: var(--color-white);
 }
 
+/* Privatlivstekst under betalingsvalg. */
 .checkout-privacy {
   margin-top: 28px;
   color: #5f6f75;
@@ -540,6 +616,7 @@
   line-height: 1.55;
 }
 
+/* Handelsbetingelser: checkbox til venstre og tekst til haejre. */
 .checkout-terms {
   display: grid;
   grid-template-columns: 24px 1fr;
@@ -551,6 +628,7 @@
   line-height: 1.45;
 }
 
+/* Custom checkbox for handelsbetingelser. */
 .checkout-terms input {
   width: 24px;
   height: 24px;
@@ -562,11 +640,13 @@
   place-items: center;
 }
 
+/* Checked-state holder checkboxen enkel og transparent. */
 .checkout-terms input:checked {
   border-color: var(--color-heading);
   background: transparent;
 }
 
+/* Viser kryds i custom checkbox, naer den er valgt. */
 .checkout-terms input:checked::after {
   color: var(--color-heading);
   content: "×";
@@ -575,10 +655,12 @@
   line-height: 1;
 }
 
+/* Links i betingelsesteksten er understregede. */
 .checkout-terms a {
   text-decoration: underline;
 }
 
+/* Samlet checkout-fejlbesked, fx hvis kurven er tom eller felter mangler. */
 .checkout-error {
   min-height: 22px;
   margin-top: 14px;
@@ -587,6 +669,7 @@
   line-height: 1.45;
 }
 
+/* Primaer submit-knap for hele checkouten. */
 .checkout-submit {
   width: 100%;
   margin-top: 10px;
@@ -594,63 +677,118 @@
   letter-spacing: 0.16em;
 }
 
-@media (max-width: 1180px) {
+/* Mobil/tablet under 1180px: checkout stackes og faer taettere spacing. */
+@media (max-width: 767px) {
+  /* Hovedlayoutet bliver til aen kolonne pae mindre skaerme. */
   .checkout-layout {
     grid-template-columns: 1fr;
     max-width: 760px;
   }
 
+  /* Ordreoversigten flyttes under formularen og mister sticky-position. */
   .checkout-order {
     order: 2;
     position: static;
   }
 }
 
-@media (max-width: 1180px) {
+/* Smae skaerme: checkout faer taettere spacing og simplere kolonner. */
+@media (max-width: 767px) {
+  /* Hovedlayoutets luft reduceres, sae indholdet passer bedre pae mobil. */
   .checkout-layout {
     gap: 28px;
     padding: 46px var(--page-gutter) 72px;
   }
 
+  /* Formularens todelte raekker og produktkort stackes i aen kolonne. */
   .checkout-field-grid-two,
   .checkout-product {
     grid-template-columns: 1fr;
   }
 
+  /* Overskrifter bevarer samme staerrelse i den smalle checkout. */
   .checkout-section h2,
   .checkout-order h2,
   .checkout-payment h2 {
     font-size: 20px;
   }
 
+  /* Leveringskortet faer smallere ikonkolonne pae smae skaerme. */
   .checkout-option {
     grid-template-columns: 42px 1fr;
     padding-right: 40px;
   }
 
+  /* Ordreoversigten faer mindre padding pae smae skaerme. */
   .checkout-order {
     padding: 26px 18px 32px;
   }
 
+  /* Produktkortet faer mindre afstand mellem billede og tekst. */
   .checkout-product {
     gap: 18px;
   }
 
+  /* Produktbilledet begraenses, sae det ikke bliver for stort pae mobil. */
   .checkout-product-image {
     width: min(180px, 100%);
   }
 
+  /* Produktinfo og total-linjer aligner fra toppen i smalt layout. */
   .checkout-product-info,
   .checkout-totals div {
     align-items: flex-start;
   }
 
+  /* Rabatkodefelt og betalingsvalg stackes i aen kolonne. */
   .checkout-discount-row,
   .checkout-payment-option {
     grid-template-columns: 1fr;
   }
 
+  /* Betalingskortets venstre padding holdes kompakt pae mobil. */
   .checkout-payment-option {
     padding-left: 14px;
+  }
+}
+
+/* Tablet: bevarer to kolonner, men med mindre afstand end desktop. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Tablet faer checkout-formular og ordreoversigt side om side igen. */
+  .checkout-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+    max-width: var(--container-max);
+    gap: 36px;
+    padding: 60px var(--page-gutter) 90px;
+  }
+
+  /* Ordreoversigten bliver sticky igen pae tablet, hvor der er plads. */
+  .checkout-order {
+    order: 0;
+    position: sticky;
+    top: 136px;
+    padding: 28px 24px 34px;
+  }
+
+  /* Formularfelter med to kolonner vender tilbage pae tablet. */
+  .checkout-field-grid-two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Produktkort i ordreoversigten bruger billede til venstre og tekst til haejre. */
+  .checkout-product {
+    grid-template-columns: 96px 1fr;
+    gap: 18px;
+  }
+
+  /* Produktbilledets bredde styres igen af grid-kolonnen pae tablet. */
+  .checkout-product-image {
+    width: auto;
+  }
+
+  /* Rabatkodefelt og betalingsvalg bruger igen side-by-side layout. */
+  .checkout-discount-row,
+  .checkout-payment-option {
+    grid-template-columns: 1fr auto;
   }
 }

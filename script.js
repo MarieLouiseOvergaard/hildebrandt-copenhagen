@@ -1216,7 +1216,7 @@ function setupReviewSlider(slider) {
   }
 
   function getVisibleCount() {
-    return window.matchMedia("(max-width: 1180px)").matches ? 1 : 3;
+    return window.matchMedia("(max-width: 767px)").matches ? 1 : 3;
   }
 
   function updateSlideAccessibility() {

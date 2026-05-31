@@ -1,7 +1,10 @@
-﻿/* Footer CSS: footer-layout, kontaktinfo, åbningstider, navigation og betalingsikoner. */
+﻿/* Filkommentar: styles/footer.css indeholder styling og responsive regler for websitet. */
+
+/* Footer CSS: footer-layout, kontaktinfo, åbningstider, navigation og betalingsikoner. */
 /* ==================================================
    6. FOOTER
 ================================================== */
+/* Styling for .footer. */
 .footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -11,6 +14,7 @@
   background: var(--color-light-blue);
 }
 
+/* Styling for .footer. */
 .footer h2 {
   margin-bottom: 26px;
   color: #6f7f85;
@@ -20,6 +24,7 @@
   text-transform: uppercase;
 }
 
+/* Styling for .footer-kontakt-adresse. */
 .footer-kontakt-adresse,
 .footer-tider-liste,
 .footer-menu-link,
@@ -29,16 +34,19 @@
   line-height: 2;
 }
 
+/* Styling for .footer-tider-liste. */
 .footer-tider-liste {
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 12px;
 }
 
+/* Styling for .footer-tider-liste. */
 .footer-tider-liste dd {
   color: #8a979b;
 }
 
+/* Styling for .footer. */
 .footer .kontakt-status {
   position: relative;
   display: flex;
@@ -56,14 +64,17 @@
   text-transform: uppercase;
 }
 
+/* Styling for .footer. */
 .footer .kontakt-status--open {
   color: #3f9f58;
 }
 
+/* Styling for .footer. */
 .footer .kontakt-status--closed {
   color: #c94f45;
 }
 
+/* Styling for .footer. */
 .footer .kontakt-status::before {
   position: absolute;
   top: 0.55em;
@@ -76,14 +87,17 @@
   transform: translateY(-50%);
 }
 
+/* Styling for .footer. */
 .footer .kontakt-status--open::before {
   background: #3f9f58;
 }
 
+/* Styling for .footer. */
 .footer .kontakt-status--closed::before {
   background: #c94f45;
 }
 
+/* Styling for .footer. */
 .footer .kontakt-status-detail {
   color: #8a979b;
   font-family: var(--font-body);
@@ -93,12 +107,14 @@
   text-transform: none;
 }
 
+/* Styling for .footer-menu-liste. */
 .footer-menu-liste {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
+/* Styling for .footer-info. */
 .footer-info {
   display: grid;
   grid-column: 1 / -1;
@@ -109,6 +125,7 @@
   border-top: 1px solid #dedede;
 }
 
+/* Styling for .footer-socials. */
 .footer-socials,
 .footer-betaling {
   display: flex;
@@ -116,10 +133,12 @@
   gap: 14px;
 }
 
+/* Styling for .footer-betaling. */
 .footer-betaling {
   justify-content: flex-end;
 }
 
+/* Styling for .footer-booking. */
 .footer-booking {
   display: none;
 }
@@ -256,6 +275,7 @@
   background: var(--color-light-blue);
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage h2 {
   position: relative;
   margin-bottom: 0;
@@ -266,6 +286,7 @@
   line-height: 1.2;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-tider,
 .footer--frontpage .footer-kontakt,
 .footer--frontpage .footer-menu,
@@ -276,6 +297,7 @@
   align-content: start;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-kontakt-adresse,
 .footer--frontpage .footer-tider-liste,
 .footer--frontpage .footer-menu-link,
@@ -288,6 +310,7 @@
   line-height: 1.85;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .kontakt-status {
   gap: 1px;
   margin: 0 0 4px;
@@ -295,37 +318,44 @@
   letter-spacing: 0.04em;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .kontakt-status::before {
   top: 0.9em;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .kontakt-status-detail {
   color: var(--color-text);
   line-height: 1.45;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-kontakt-adresse a,
 .footer--frontpage .footer-menu-link,
 .footer--frontpage .footer-terms {
   transition: color 180ms ease;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-kontakt-adresse a:hover,
 .footer--frontpage .footer-menu-link:hover,
 .footer--frontpage .footer-terms:hover {
   color: var(--color-primary);
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-kontakt-brand {
   display: block;
   margin-bottom: 1.2em;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-kontakt-city {
   display: block;
   margin-bottom: 1.2em;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-tider-liste {
   display: grid;
   grid-template-columns: max-content max-content;
@@ -333,19 +363,23 @@
   padding-left: 12px;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-tider-liste dt,
 .footer--frontpage .footer-tider-liste dd {
   display: block;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-tider-liste dd {
   color: var(--color-text);
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-menu-liste {
   gap: 4px;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-booking {
   display: inline-flex;
   width: 144px;
@@ -354,11 +388,13 @@
   margin-top: 8px;
 }
 
+/* Styling for .footer-newsletter-form. */
 .footer-newsletter-form {
   display: grid;
   gap: 14px;
 }
 
+/* Styling for .footer-newsletter-label. */
 .footer-newsletter-label {
   position: absolute;
   width: 1px;
@@ -368,6 +404,7 @@
   white-space: nowrap;
 }
 
+/* Styling for .footer-newsletter-input. */
 .footer-newsletter-input {
   width: 100%;
   height: 31px;
@@ -382,11 +419,13 @@
   text-transform: uppercase;
 }
 
+/* Styling for .footer-newsletter-input. */
 .footer-newsletter-input::placeholder {
   color: var(--color-heading);
   opacity: 0.78;
 }
 
+/* Styling for .footer-newsletter-consent. */
 .footer-newsletter-consent {
   display: grid;
   grid-template-columns: 18px 1fr;
@@ -396,10 +435,12 @@
   line-height: 1.45;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-newsletter-consent {
   font-size: 10px;
 }
 
+/* Styling for .footer-newsletter-checkbox. */
 .footer-newsletter-checkbox {
   width: 19px;
   height: 19px;
@@ -409,11 +450,13 @@
   appearance: none;
 }
 
+/* Styling for .footer-newsletter-checkbox. */
 .footer-newsletter-checkbox:checked {
   background: linear-gradient(135deg, transparent 45%, var(--color-heading) 45%, var(--color-heading) 55%, transparent 55%),
     linear-gradient(45deg, transparent 45%, var(--color-heading) 45%, var(--color-heading) 55%, transparent 55%);
 }
 
+/* Styling for .footer-newsletter-submit. */
 .footer-newsletter-submit {
   width: 171px;
   min-width: 0;
@@ -423,6 +466,7 @@
   background: transparent;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-info {
   grid-template-columns: 1fr auto 1fr;
   grid-column: 1 / -1;
@@ -431,6 +475,7 @@
   border-top-color: #dedede;
 }
 
+/* Styling for .footer-legal. */
 .footer-legal {
   display: flex;
   gap: 80px;
@@ -438,18 +483,21 @@
   line-height: 1;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-terms,
 .footer--frontpage .footer-cvr {
   font-size: inherit;
   line-height: 1;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-socials,
 .footer--frontpage .footer-betaling {
   align-items: center;
   gap: 9px;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-social-link,
 .footer--frontpage .footer-betaling-item {
   display: inline-grid;
@@ -464,6 +512,7 @@
   text-transform: uppercase;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-betaling-item {
   width: auto;
   height: auto;
@@ -472,6 +521,7 @@
   background: transparent;
 }
 
+/* Styling for .footer--frontpage. */
 .footer--frontpage .footer-social-link {
   width: 31px;
   min-width: 31px;
@@ -480,6 +530,7 @@
   background: transparent;
 }
 
+/* Styling for .footer-social-icon. */
 .footer-social-icon {
   width: 31px;
   height: 31px;
@@ -490,20 +541,24 @@
   stroke-linejoin: round;
 }
 
+/* Styling for .footer-social-icon. */
 .footer-social-icon path {
   fill: #9a9a9a;
   stroke: none;
 }
 
+/* Styling for .footer-payment-icon. */
 .footer-payment-icon {
   display: block;
   height: 24px;
 }
 
+/* Styling for .footer-payment-icon-visa. */
 .footer-payment-icon-visa {
   width: 74px;
 }
 
+/* Styling for .footer-payment-icon-visa. */
 .footer-payment-icon-visa text {
   fill: #0b2f87;
   font-family: Arial, Helvetica, sans-serif;
@@ -513,20 +568,24 @@
   letter-spacing: -2px;
 }
 
+/* Styling for .footer-payment-icon-mastercard. */
 .footer-payment-icon-mastercard {
   width: 48px;
   height: 31px;
 }
 
+/* Styling for .footer-payment-mastercard-red. */
 .footer-payment-mastercard-red {
   fill: #eb001b;
 }
 
+/* Styling for .footer-payment-mastercard-orange. */
 .footer-payment-mastercard-orange {
   fill: #ff9900;
   fill-opacity: 0.88;
 }
 
+/* Styling for .footer-payment-icon-mastercard. */
 .footer-payment-icon-mastercard text {
   fill: #333333;
   font-family: Arial, Helvetica, sans-serif;
@@ -536,20 +595,24 @@
   text-transform: lowercase;
 }
 
+/* Styling for .footer-payment-icon-pensopay. */
 .footer-payment-icon-pensopay {
   width: 118px;
 }
 
+/* Styling for .footer-payment-pensopay-mark. */
 .footer-payment-pensopay-mark rect {
   fill: none;
   stroke: #587cff;
   stroke-width: 3;
 }
 
+/* Styling for .footer-payment-pensopay-mark. */
 .footer-payment-pensopay-mark path {
   fill: #587cff;
 }
 
+/* Styling for .footer-payment-icon-pensopay. */
 .footer-payment-icon-pensopay text {
   fill: #223069;
   font-family: var(--font-heading);
@@ -558,6 +621,7 @@
   letter-spacing: 3px;
 }
 
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
 @media (max-width: 1180px) {
   .footer--frontpage {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -565,6 +629,7 @@
   }
 }
 
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
 @media (max-width: 1180px) {
   html {
     background: var(--color-white);
@@ -659,5 +724,78 @@
     min-height: 20px;
     overflow: visible;
     color: #aaaaaa;
+  }
+}
+
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (min-width: 768px) and (max-width: 1180px) {
+  .footer {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    padding: 60px var(--page-gutter) 34px;
+  }
+
+  .footer h2 {
+    display: block;
+    margin-bottom: 26px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    cursor: default;
+  }
+
+  .footer h2::after {
+    content: none;
+  }
+
+  .footer-kontakt-adresse,
+  .footer-tider-liste,
+  .footer-menu-link,
+  .footer-info {
+    font-size: 0.74rem;
+  }
+
+  .footer-info {
+    grid-template-columns: 1fr auto 1fr;
+    justify-items: stretch;
+    text-align: left;
+  }
+
+  .footer-socials {
+    display: flex;
+  }
+
+  .footer--frontpage {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 44px 72px;
+    padding: 60px var(--page-gutter) 20px;
+  }
+
+  .footer--frontpage .footer-tider,
+  .footer--frontpage .footer-kontakt,
+  .footer--frontpage .footer-menu,
+  .footer--frontpage .footer-newsletter {
+    grid-template-rows: 20px auto;
+  }
+
+  .footer--frontpage .footer-info {
+    grid-template-columns: 1fr auto 1fr;
+    justify-items: stretch;
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .footer--frontpage .footer-socials {
+    order: 0;
+  }
+
+  .footer--frontpage .footer-betaling {
+    order: 0;
+    justify-content: flex-end;
+  }
+
+  .footer-legal {
+    order: 0;
+    justify-content: flex-start;
   }
 }

@@ -1,11 +1,14 @@
+﻿/* Filkommentar: styles/guides.css indeholder styling og responsive regler for websitet. */
+
 /* Guides CSS: editorial krølleunivers, guides og produkt-rækker. */
 
 .guides-main {
-  --guide-page-offset: max(42px, calc((100vw - 1278px) / 2));
+  --guide-page-offset: var(--content-gutter);
   overflow-x: hidden;
   background: var(--color-white);
 }
 
+/* Styling for .guides-main. */
 .guides-main .sr-only {
   position: absolute;
   width: 1px;
@@ -17,22 +20,26 @@
   border: 0;
 }
 
+/* Styling for .guide-section. */
 .guide-section {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 64px var(--page-gutter);
 }
 
+/* Styling for .guide-section-heading. */
 .guide-section-heading {
   max-width: 720px;
   margin-bottom: 30px;
 }
 
+/* Styling for .guide-section-heading. */
 .guide-section-heading p:not(.eyebrow) {
   max-width: 540px;
   margin-top: 22px;
 }
 
+/* Styling for .guide-button. */
 .guide-button {
   min-width: 154px;
   border-color: var(--color-primary);
@@ -40,6 +47,7 @@
   background: var(--color-primary);
 }
 
+/* Styling for .guide-button. */
 .guide-button:hover,
 .guide-button:focus-visible {
   border-color: var(--color-primary);
@@ -47,44 +55,51 @@
   background: var(--color-primary);
 }
 
+/* Styling for .guide-hero. */
 .guide-hero {
   display: grid;
-  grid-template-columns: minmax(360px, 560px) minmax(520px, 670px);
+  grid-template-columns: minmax(360px, 0.75fr) minmax(520px, 1.45fr);
   align-items: start;
   justify-content: center;
-  gap: 48px;
+  gap: 60px;
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 58px var(--page-gutter);
   background: var(--color-white);
 }
 
+/* Styling for .guide-hero-content. */
 .guide-hero-content {
   display: flex;
   width: 100%;
-  max-width: 590px;
+  max-width: 470px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
+/* Styling for .guide-hero. */
 .guide-hero h1 {
   max-width: 520px;
 }
 
+/* Styling for .guide-hero-lead. */
 .guide-hero-lead {
   margin-top: 16px;
 }
 
+/* Styling for .guide-hero. */
 .guide-hero p:not(.eyebrow):not(.guide-hero-lead) {
-  max-width: 535px;
+  max-width: 470px;
   margin-top: 24px;
 }
 
+/* Styling for .guide-hero. */
 .guide-hero .button {
   align-self: flex-start;
   margin-top: 24px;
 }
 
+/* Styling for .guide-hero-media. */
 .guide-hero-media {
   display: grid;
   place-items: center;
@@ -92,12 +107,14 @@
   background: transparent;
 }
 
+/* Styling for .guide-compare. */
 .guide-compare {
   --guide-compare-gutter: 24px;
   max-width: none;
   padding: 68px 0 44px;
 }
 
+/* Styling for .guide-compare. */
 .guide-compare .guide-section-heading {
   max-width: none;
   margin: 0 0 16px;
@@ -105,10 +122,12 @@
   padding-left: var(--guide-page-offset);
 }
 
+/* Styling for .guide-compare. */
 .guide-compare .guide-section-heading h4 {
   color: var(--color-primary);
 }
 
+/* Styling for .guide-compare-grid. */
 .guide-compare-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -117,11 +136,13 @@
   width: 100%;
 }
 
+/* Styling for .guide-compare-card. */
 .guide-compare-card {
   display: grid;
   min-width: 0;
 }
 
+/* Styling for .guide-compare-card. */
 .guide-compare-card h2 {
   margin-bottom: 22px;
   padding-right: 42px;
@@ -129,6 +150,7 @@
   color: var(--color-heading);
 }
 
+/* Styling for .guide-compare-body. */
 .guide-compare-body {
   position: relative;
   display: grid;
@@ -139,6 +161,7 @@
   background: var(--color-turkis);
 }
 
+/* Styling for .guide-compare-rich. */
 .guide-compare-rich .guide-compare-body {
   padding-right: var(--guide-page-offset);
   padding-left: 160px;
@@ -146,26 +169,31 @@
   background: #af7f3a;
 }
 
+/* Styling for .guide-compare-rich. */
 .guide-compare-rich h2 {
   padding-right: var(--guide-page-offset);
   padding-left: 8px;
 }
 
+/* Styling for .guide-compare-copy. */
 .guide-compare-copy h4,
 .guide-compare-copy p,
 .guide-compare-copy li {
   color: #f7f7f7;
 }
 
+/* Styling for .guide-compare-copy. */
 .guide-compare-copy h4:first-child {
   margin-top: 0;
 }
 
+/* Styling for .guide-compare-copy. */
 .guide-compare-copy h4 {
   margin-top: 18px;
   margin-bottom: 10px;
 }
 
+/* Styling for .guide-compare-copy. */
 .guide-compare-copy ul {
   display: grid;
   gap: 4px;
@@ -173,6 +201,7 @@
   list-style: disc;
 }
 
+/* Styling for .guide-compare-copy. */
 .guide-compare-copy li {
   font-family: var(--font-body);
   font-size: var(--font-body-desktop);
@@ -180,6 +209,7 @@
   line-height: 1.6;
 }
 
+/* Styling for .guide-compare-placeholder. */
 .guide-compare-placeholder {
   position: absolute;
   top: 38px;
@@ -194,25 +224,30 @@
   font-size: 1.8rem;
 }
 
+/* Styling for .guide-compare-rich. */
 .guide-compare-rich .guide-compare-placeholder {
   right: auto;
   left: -87px;
 }
 
+/* Styling for .guide-steps. */
 .guide-steps {
   padding-top: 48px;
   padding-bottom: 66px;
 }
 
+/* Styling for .guide-steps-grid. */
 .guide-steps-grid {
   display: grid;
   gap: 38px;
 }
 
+/* Styling for .guide-step-card. */
 .guide-step-card {
   width: min(100%, 220px);
 }
 
+/* Styling for .guide-step-card. */
 .guide-step-card img {
   width: 100%;
   height: 150px;
@@ -220,21 +255,25 @@
   margin-bottom: 18px;
 }
 
+/* Styling for .guide-step-card. */
 .guide-step-card h4 {
   margin-top: 8px;
 }
 
+/* Styling for .guide-step-card. */
 .guide-step-card p:last-child {
   margin-top: 8px;
 }
 
+/* Styling for .guide-editorial. */
 .guide-editorial,
 .guide-cta {
   display: grid;
-  gap: 36px;
-  align-items: center;
+  gap: 60px;
+  align-items: start;
 }
 
+/* Styling for .guide-editorial. */
 .guide-editorial {
   max-width: none;
   padding-right: var(--content-gutter);
@@ -242,24 +281,29 @@
   background: var(--color-light-blue);
 }
 
+/* Styling for .guide-editorial-copy. */
 .guide-editorial-copy,
 .guide-cta-copy {
-  max-width: 560px;
+  max-width: 470px;
 }
 
+/* Styling for .guide-editorial-copy. */
 .guide-editorial-copy p,
 .guide-cta-copy p {
   margin-top: 22px;
 }
 
+/* Styling for .guide-cta-copy. */
 .guide-cta-copy h4 {
   margin-top: 20px;
 }
 
+/* Styling for .guide-cta-copy. */
 .guide-cta-copy .button {
   margin-top: 28px;
 }
 
+/* Styling for .guide-placeholder. */
 .guide-placeholder {
   display: grid;
   min-height: 290px;
@@ -270,11 +314,13 @@
   font-size: 2rem;
 }
 
+/* Styling for .guide-section.guide-feeling. */
 .guide-section.guide-feeling {
   max-width: none;
   padding: 58px var(--guide-page-offset) 64px;
 }
 
+/* Styling for .guide-feeling-balance-wrap. */
 .guide-feeling-balance-wrap {
   position: relative;
   width: 100%;
@@ -282,12 +328,14 @@
   margin: 0 auto;
 }
 
+/* Styling for .guide-feeling-balance. */
 .guide-feeling-balance {
   display: block;
   width: 100%;
   height: auto;
 }
 
+/* Styling for .guide-feeling-balance-text. */
 .guide-feeling-balance-text {
   position: absolute;
   top: 68%;
@@ -301,21 +349,25 @@
   text-align: center;
 }
 
+/* Styling for .guide-feeling-balance-text-low. */
 .guide-feeling-balance-text-low {
   left: 3.5%;
   text-align: left;
 }
 
+/* Styling for .guide-feeling-balance-text-mid. */
 .guide-feeling-balance-text-mid {
   left: 50%;
   transform: translateX(-50%);
 }
 
+/* Styling for .guide-feeling-balance-text-rich. */
 .guide-feeling-balance-text-rich {
   right: 3.5%;
   text-align: right;
 }
 
+/* Styling for .guide-feeling-grid. */
 .guide-feeling-grid {
   display: grid;
   gap: 28px;
@@ -323,6 +375,7 @@
   margin: 42px auto 0;
 }
 
+/* Styling for .guide-feeling-item. */
 .guide-feeling-item {
   display: grid;
   min-height: 82px;
@@ -331,24 +384,29 @@
   align-items: center;
 }
 
+/* Styling for .guide-line-low. */
 .guide-line-low {
   color: #7eafbf;
 }
 
+/* Styling for .guide-line-rich. */
 .guide-line-rich {
   color: var(--color-primary);
 }
 
+/* Styling for .guide-feeling-item. */
 .guide-feeling-item img {
   width: 118px;
   height: 82px;
   object-fit: contain;
 }
 
+/* Styling for .guide-feeling-item. */
 .guide-feeling-item p {
   color: #333333;
 }
 
+/* Styling for .guide-feeling-item. */
 .guide-feeling-item span {
   display: block;
   margin-top: 8px;
@@ -356,10 +414,12 @@
   font-size: var(--font-body-desktop);
 }
 
+/* Styling for .guide-feeling-mobile. */
 .guide-feeling-mobile {
   display: none;
 }
 
+/* Styling for .guide-quote-section. */
 .guide-quote-section {
   display: grid;
   min-height: 345px;
@@ -369,16 +429,19 @@
   text-align: center;
 }
 
+/* Styling for .guide-quote. */
 .guide-quote {
   max-width: 1120px;
 }
 
+/* Styling for .guide-quote. */
 .guide-quote p {
   color: var(--color-light-blue);
   font-size: clamp(22px, 1.9vw, var(--font-quote-desktop));
   line-height: 1.3;
 }
 
+/* Styling for .guide-quote. */
 .guide-quote footer {
   margin-top: 34px;
   color: var(--color-light-blue);
@@ -389,11 +452,13 @@
   text-transform: uppercase;
 }
 
+/* Styling for .guide-section.guide-styling. */
 .guide-section.guide-styling {
   max-width: none;
   padding: 58px 0 82px;
 }
 
+/* Styling for .guide-styling. */
 .guide-styling .guide-section-heading {
   margin-right: auto;
   margin-left: 0;
@@ -401,6 +466,7 @@
   padding-left: var(--guide-page-offset);
 }
 
+/* Styling for .guide-styling-block. */
 .guide-styling-block {
   display: grid;
   align-items: center;
@@ -409,20 +475,24 @@
   overflow: hidden;
 }
 
+/* Styling for .guide-styling-images. */
 .guide-styling-images {
   display: grid;
   gap: 2px;
   min-width: 0;
 }
 
+/* Styling for .guide-styling-images-left. */
 .guide-styling-images-left {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* Styling for .guide-styling-images-right. */
 .guide-styling-images-right {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+/* Styling for .guide-styling-placeholder. */
 .guide-styling-placeholder {
   display: grid;
   aspect-ratio: 315 / 370;
@@ -433,24 +503,28 @@
   text-align: center;
 }
 
+/* Styling for .guide-styling-placeholder. */
 .guide-styling-placeholder span,
 .guide-styling-tube span {
   display: block;
   font-size: 1.6rem;
 }
 
+/* Styling for .guide-styling-placeholder. */
 .guide-styling-placeholder small {
   display: block;
   margin-top: -36%;
   font-size: 0.78rem;
 }
 
+/* Styling for .guide-styling-pair. */
 .guide-styling-pair {
   position: relative;
   min-width: 0;
   padding-bottom: 48px;
 }
 
+/* Styling for .guide-styling-tube. */
 .guide-styling-tube {
   position: absolute;
   bottom: 0;
@@ -463,24 +537,29 @@
   font-family: var(--font-heading);
 }
 
+/* Styling for .guide-styling-pair-right. */
 .guide-styling-pair-right .guide-styling-tube {
   right: -34px;
 }
 
+/* Styling for .guide-styling-pair-left. */
 .guide-styling-pair-left .guide-styling-tube {
   left: -34px;
 }
 
+/* Styling for .guide-styling-images-left. */
 .guide-styling-images-left .guide-styling-tube {
   right: -34px;
   left: auto;
 }
 
+/* Styling for .guide-styling-images-right. */
 .guide-styling-images-right .guide-styling-tube {
   right: auto;
   left: -34px;
 }
 
+/* Styling for .guide-styling-images-right. */
 .guide-styling-images-right::after {
   display: grid;
   aspect-ratio: 315 / 370;
@@ -488,35 +567,40 @@
   content: "";
 }
 
+/* Styling for .guide-styling-copy. */
 .guide-styling-copy {
   max-width: 560px;
 }
 
+/* Styling for .guide-styling-copy. */
 .guide-styling-copy h4 {
   margin-top: 28px;
 }
 
+/* Styling for .guide-styling-copy. */
 .guide-styling-copy h4:first-child {
   margin-top: 0;
 }
 
+/* Styling for .guide-styling-copy. */
 .guide-styling-copy p {
   margin-top: 12px;
 }
 
-@media (min-width: 1181px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (min-width: 1024px) {
   .guide-steps-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .guide-editorial,
   .guide-cta {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.96fr);
-    gap: 64px;
+    grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.75fr);
+    gap: 60px;
   }
 
   .guide-editorial {
-    grid-template-columns: minmax(0, 640px) minmax(320px, 615px);
+    grid-template-columns: minmax(360px, 0.75fr) minmax(520px, 1.45fr);
     justify-content: center;
   }
 
@@ -548,7 +632,8 @@
 
 }
 
-@media (min-width: 1181px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (min-width: 1024px) {
   .guide-section {
     padding: 82px var(--page-gutter);
   }
@@ -568,7 +653,8 @@
 
 }
 
-@media (min-width: 1441px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (min-width: 1024px) {
   .guide-styling-block {
     max-width: var(--container-max);
     margin-right: auto;
@@ -578,7 +664,8 @@
   }
 }
 
-@media (max-width: 1180px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (max-width: 767px) {
   .guide-hero {
     grid-template-columns: minmax(340px, 0.95fr) minmax(360px, 1.05fr);
   }
@@ -606,7 +693,8 @@
   }
 }
 
-@media (max-width: 1180px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (max-width: 767px) {
   .guide-hero {
     display: flex;
     flex-direction: column;
@@ -798,7 +886,7 @@
   }
 
   .guide-styling-images {
-    width: 100vw;
+    width: 100%;
     gap: 2px;
   }
 
@@ -808,7 +896,7 @@
   }
 
   .guide-styling-images-right {
-    width: 100vw;
+    width: 100%;
   }
 
   .guide-styling-images-right::after {
@@ -877,7 +965,7 @@
   }
 
   .guide-compare-card {
-    width: calc(100% - 44px);
+    width: 100%;
   }
 
   .guide-compare-rich {
@@ -920,5 +1008,122 @@
   .guide-compare-rich .guide-compare-placeholder {
     right: auto;
     left: -36px;
+  }
+}
+
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .guide-hero {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.75fr) minmax(360px, 1.25fr);
+    gap: 44px;
+    padding: 54px var(--page-gutter);
+  }
+
+  .guide-hero-media {
+    order: 0;
+    min-height: 360px;
+  }
+
+  .guide-hero-content {
+    max-width: 470px;
+    padding: 0;
+  }
+
+  .guide-hero h1 {
+    max-width: 520px;
+  }
+
+  .guide-steps {
+    padding-right: var(--page-gutter);
+  }
+
+  .guide-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .guide-steps-grid::after {
+    content: none;
+  }
+
+  .guide-step-card {
+    flex: initial;
+    width: min(100%, 220px);
+  }
+
+  .guide-section.guide-feeling {
+    padding: 58px var(--guide-page-offset) 64px;
+  }
+
+  .guide-feeling-balance-wrap,
+  .guide-feeling-grid {
+    display: grid;
+  }
+
+  .guide-feeling-balance-wrap {
+    display: block;
+  }
+
+  .guide-feeling-mobile {
+    display: none;
+  }
+
+  .guide-feeling-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .guide-styling-block {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+    gap: 42px;
+    overflow: hidden;
+  }
+
+  .guide-styling-block-reverse {
+    grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1fr);
+  }
+
+  .guide-styling-block-reverse .guide-styling-images {
+    order: 0;
+  }
+
+  .guide-styling-images,
+  .guide-styling-images-right {
+    width: auto;
+  }
+
+  .guide-styling-placeholder {
+    aspect-ratio: 315 / 370;
+  }
+
+  .guide-styling-copy {
+    padding-right: var(--page-gutter);
+    padding-left: 0;
+  }
+
+  .guide-styling-block-reverse .guide-styling-copy {
+    padding-left: var(--page-gutter);
+    padding-right: 0;
+  }
+
+  .guide-compare-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 96px;
+  }
+
+  .guide-compare-card {
+    width: auto;
+  }
+
+  .guide-compare-rich {
+    margin-left: 0;
+  }
+
+  .guide-compare-body,
+  .guide-compare-rich .guide-compare-body {
+    min-height: 330px;
   }
 }

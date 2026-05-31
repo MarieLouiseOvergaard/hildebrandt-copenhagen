@@ -1,5 +1,10 @@
-﻿/* Legacy stylesheet: CSS er opdelt i styles/-mappen. */
+﻿/* Filkommentar: style.css indeholder styling og responsive regler for websitet. */
+
+/* Legacy stylesheet: CSS er opdelt i styles/-mappen. */
 @import url("styles/global.css");
+/* Import: henter ekstra CSS ind i denne fil. */
 @import url("styles/header.css");
+/* Import: henter ekstra CSS ind i denne fil. */
 @import url("styles/footer.css");
+/* Import: henter ekstra CSS ind i denne fil. */
 @import url("styles/forsiden.css");

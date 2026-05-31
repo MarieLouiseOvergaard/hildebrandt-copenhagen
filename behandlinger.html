@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+<!-- Filkommentar: behandlinger.html indeholder HTML-strukturen for denne side. -->
 <html lang="da">
 <head>
   <meta charset="UTF-8">
@@ -19,6 +20,7 @@
         <img class="menu-logo top-menu-logo-image" src="img/logo/monogramLysgraa.svg" alt="Hildebrandt Copenhagen monogram">
       </a>
 
+      <!-- Navigation: links og menupunkter til resten af sitet. -->
       <nav class="top-nav" aria-label="Hjælpenavigation">
         <ul class="top-nav-list">
           <li class="top-nav-item">
@@ -31,6 +33,7 @@
       </nav>
     </div>
 
+    <!-- Navigation: links og menupunkter til resten af sitet. -->
     <nav class="menu" aria-label="Hovednavigation">
       <ul class="menu-list">
         <li class="menu-item menu-item-dropdown">
@@ -40,6 +43,7 @@
           </a>
           <div class="menu-dropdown" aria-label="Produktmenu">
             <div class="menu-dropdown-inner">
+              <!-- Navigation: links og menupunkter til resten af sitet. -->
               <nav class="menu-dropdown-column" aria-label="Produktoversigt">
                 <ul class="menu-dropdown-list">
                   <li class="menu-dropdown-item">
@@ -53,6 +57,7 @@
                   </li>
                 </ul>
               </nav>
+              <!-- Navigation: links og menupunkter til resten af sitet. -->
               <nav class="menu-dropdown-column" aria-label="Produkttyper">
                 <ul class="menu-dropdown-list">
                   <li class="menu-dropdown-item">
@@ -92,6 +97,7 @@
           </a>
           <div class="menu-dropdown" aria-label="Krølleuniversmenu">
             <div class="menu-dropdown-inner">
+              <!-- Navigation: links og menupunkter til resten af sitet. -->
               <nav class="menu-dropdown-column" aria-label="Krølleunivers">
                 <ul class="menu-dropdown-list">
                   <li class="menu-dropdown-item">
@@ -136,6 +142,7 @@
         <button class="mobile-menu-close" type="button" aria-label="Luk menu">×</button>
       </div>
 
+      <!-- Navigation: links og menupunkter til resten af sitet. -->
       <nav class="mobile-menu-nav" aria-label="Mobilnavigation">
         <ul class="mobile-menu-list">
           <li class="mobile-menu-item">
@@ -173,6 +180,7 @@
       </div>
 
       <div class="mobile-menu-scroll">
+        <!-- Navigation: links og menupunkter til resten af sitet. -->
         <nav class="mobile-menu-nav" aria-label="Produktnavigation">
           <ul class="mobile-menu-list mobile-menu-product-list">
             <li class="mobile-menu-item">
@@ -209,147 +217,126 @@
     </div>
   </div>
 
+  <!-- Main: sidens primaere indhold starter her. -->
   <main class="behandlinger-main">
     <!-- Hero -->
-    <section class="behandlinger-hero" aria-labelledby="behandlinger-hero-titel">
-      <div class="behandlinger-hero-tekst">
+    <section class="behandlinger-section behandlinger-hero" aria-labelledby="behandlinger-hero-titel">
+      <div class="behandlinger-text behandlinger-hero-text">
         <h1 id="behandlinger-hero-titel">Behandlinger</h1>
         <p>Hos Hildebrandt Copenhagen handler behandlinger om at arbejde med dine krøller, som de naturligt er.</p>
         <p>Jeg klipper altid krøller og bølger i tørt hår, så jeg kan se, hvordan håret falder og bevæger sig og skabe et resultat, der passer til netop dit hår og din hverdag.</p>
         <p>Målet er, at du går herfra med både flotte krøller og en større forståelse for dit eget hår.</p>
-        <a class="button button-primary" href="https://salonbook.one/?henriksencopenhagen#/">Book en tid</a>
+        <a class="button button-primary" href="https://salonbook.one/?henriksencopenhagen#/"><span class="button-label">Book en tid</span></a>
       </div>
 
-      <figure class="behandlinger-placeholder behandlinger-hero-billede"><img src="img/image/salon-lav-format.png" alt=""><span class="image-placeholder-label">IMG<br>950 x 370</span></figure>
+      <figure class="behandlinger-image behandlinger-hero-image">
+        <img src="img/image/salon-lav-format.png" alt="Salon hos Hildebrandt Copenhagen">
+      </figure>
     </section>
 
-    <!-- Intro og Mixly Curly Cut -->
-    <section class="behandlinger-grid behandlinger-mixly" aria-label="Introduktion og Mixly Curly Cut priser">
-      <div class="behandlinger-info-kort">
-        <figure class="behandlinger-placeholder behandlinger-kort-billede"><img src="img/image/low-mist-spray-haar.png" alt=""><span class="image-placeholder-label">IMG<br>315 x 370</span></figure>
+    <!-- Curl DNA og Mixly Curly Cut -->
+    <section class="behandlinger-section behandlinger-two-column behandlinger-mixly" aria-label="Curl DNA og Mixly Curly Cut priser">
+      <div class="behandlinger-card-row behandlinger-mixly-cards">
+        <figure class="behandlinger-image behandlinger-card-image">
+          <img src="img/image/low-mist-spray-haar.png" alt="Krøllet hår med Mixly produkt">
+        </figure>
 
-        <article class="behandlinger-intro-kort">
+        <article class="behandlinger-info-card">
           <h2>Hvad er et Curl DNA klip?</h2>
           <p>Jeg har udviklet Curl DNA til nordiske krøller og bølger med fokus på dit hårs naturlige bevægelse, så klipningen føles personlig og tilpasset netop dig.</p>
-          <a class="button button-primary" href="kroelleunivers.html">Læs mere</a>
+          <a class="button button-primary" href="kroelleunivers.html"><span class="button-label">Læs mere</span></a>
         </article>
 
-        <figure class="behandlinger-placeholder behandlinger-kort-billede"><img src="img/image/salon2.png" alt=""><span class="image-placeholder-label">IMG<br>315 x 370</span></figure>
+        <figure class="behandlinger-image behandlinger-card-image behandlinger-tablet-hide">
+          <img src="img/image/salon2.png" alt="Saloninteriør hos Hildebrandt Copenhagen">
+        </figure>
       </div>
 
-      <section class="behandlinger-priser" aria-labelledby="mixly-curly-cut-titel">
+      <section class="behandlinger-prices" aria-labelledby="mixly-curly-cut-titel">
         <h2 id="mixly-curly-cut-titel">Mixly Curly Cut</h2>
-
-        <dl class="behandlinger-pris-liste">
-          <div class="behandlinger-pris-linje">
+        <dl class="behandlinger-price-list">
+          <div class="behandlinger-price-line">
             <dt>
               <h4>Curl DNA klip</h4>
               <p>v/ vask &amp; styling</p>
             </dt>
-            <p>749,-</p>
+            <dd>749,-</dd>
           </div>
-
-          <div class="behandlinger-pris-linje">
+          <div class="behandlinger-price-line">
             <dt>
               <h4>Komplet pakke</h4>
               <p>Inkluderer vask, styling og et starter sæt bestående af shampoo, conditioner og et valgfrit stylingsæt</p>
             </dt>
-            <p>2595,-</p>
+            <dd>2595,-</dd>
           </div>
         </dl>
       </section>
     </section>
 
     <!-- Farvepriser -->
-    <section class="behandlinger-pris-grid" aria-label="Farvepriser">
-      <section class="behandlinger-priser" aria-labelledby="farve-titel">
+    <section class="behandlinger-section behandlinger-price-section" aria-label="Farvepriser">
+      <section class="behandlinger-prices" aria-labelledby="farve-titel">
         <h2 id="farve-titel">Farve</h2>
-
-        <dl class="behandlinger-pris-liste">
-          <div class="behandlinger-pris-linje">
-            <p>Bundfarve (max 2 cm)</p>
-            <p>880,-</p>
-          </div>
-          <div class="behandlinger-pris-linje">
-            <p>Farve til kort page</p>
-            <p>1080,-</p>
-          </div>
-          <div class="behandlinger-pris-linje">
-            <p>Farve til skulderlængde eller langt hår</p>
-            <p>1380,-</p>
-          </div>
-          <div class="behandlinger-pris-linje">
-            <p>Farve til ekstra langt hår</p>
-            <p>1480,-</p>
-          </div>
+        <dl class="behandlinger-price-list">
+          <div class="behandlinger-price-line"><dt>Bundfarve (max 2 cm)</dt><dd>880,-</dd></div>
+          <div class="behandlinger-price-line"><dt>Farve til kort page</dt><dd>1080,-</dd></div>
+          <div class="behandlinger-price-line"><dt>Farve til skulderlængde eller langt hår</dt><dd>1380,-</dd></div>
+          <div class="behandlinger-price-line"><dt>Farve til ekstra langt hår</dt><dd>1480,-</dd></div>
         </dl>
       </section>
 
-      <section class="behandlinger-priser" aria-labelledby="farve-reflekser-titel">
+      <section class="behandlinger-prices" aria-labelledby="farve-reflekser-titel">
         <h2 id="farve-reflekser-titel">Farve med reflekser</h2>
-
-        <dl class="behandlinger-pris-liste">
-          <div class="behandlinger-pris-linje">
-            <p>Kort til kort page</p>
-            <p>1080,-</p>
-          </div>
-          <div class="behandlinger-pris-linje">
-            <p>Skulder til langt</p>
-            <p>1380,-</p>
-          </div>
-          <div class="behandlinger-pris-linje">
-            <p>Langt til ekstra langt</p>
-            <p>1480,-</p>
-          </div>
+        <dl class="behandlinger-price-list">
+          <div class="behandlinger-price-line"><dt>Kort til kort page</dt><dd>1080,-</dd></div>
+          <div class="behandlinger-price-line"><dt>Skulder til langt</dt><dd>1380,-</dd></div>
+          <div class="behandlinger-price-line"><dt>Langt til ekstra langt</dt><dd>1480,-</dd></div>
         </dl>
       </section>
     </section>
 
     <!-- Permanent -->
-    <section class="behandlinger-grid behandlinger-permanent" aria-label="Permanentpriser">
-      <div class="behandlinger-billeder">
-        <figure class="behandlinger-placeholder behandlinger-kort-billede"><img src="img/image/Belindahaar.png" alt=""><span class="image-placeholder-label">IMG<br>315 x 370</span></figure>
-        <figure class="behandlinger-placeholder behandlinger-kort-billede"><img src="img/image/rich-leave-in-haar.png" alt=""><span class="image-placeholder-label">IMG<br>315 x 370</span></figure>
+    <section class="behandlinger-section behandlinger-two-column behandlinger-permanent" aria-label="Permanentpriser">
+      <div class="behandlinger-card-row behandlinger-permanent-images">
+        <figure class="behandlinger-image behandlinger-card-image">
+          <img src="img/image/Belindahaar.png" alt="Krøllebehandling hos Hildebrandt Copenhagen">
+        </figure>
+        <figure class="behandlinger-image behandlinger-card-image">
+          <img src="img/image/salon1.png" alt="Salon hos Hildebrandt Copenhagen">
+        </figure>
+        <figure class="behandlinger-image behandlinger-card-image behandlinger-tablet-hide">
+          <img src="img/image/rich-leave-in-haar.png" alt="Stylet krøllet hår">
+        </figure>
       </div>
 
-      <section class="behandlinger-priser" aria-labelledby="permanent-titel">
+      <section class="behandlinger-prices" aria-labelledby="permanent-titel">
         <h2 id="permanent-titel">Permanent inkl. klip</h2>
-
-        <dl class="behandlinger-pris-liste">
-          <div class="behandlinger-pris-linje">
-            <p>Kort til kort page</p>
-            <p>2200,-</p>
-          </div>
-          <div class="behandlinger-pris-linje">
-            <p>Page til skulder</p>
-            <p>2600,-</p>
-          </div>
-          <div class="behandlinger-pris-linje">
-            <p>Skulder til langt</p>
-            <p>2800,-</p>
-          </div>
-          <div class="behandlinger-pris-linje">
-            <p>Langt til ekstra langt</p>
-            <p>3000,-</p>
-          </div>
+        <dl class="behandlinger-price-list">
+          <div class="behandlinger-price-line"><dt>Kort til kort page</dt><dd>2200,-</dd></div>
+          <div class="behandlinger-price-line"><dt>Page til skulder</dt><dd>2600,-</dd></div>
+          <div class="behandlinger-price-line"><dt>Skulder til langt</dt><dd>2800,-</dd></div>
+          <div class="behandlinger-price-line"><dt>Langt til ekstra langt</dt><dd>3000,-</dd></div>
         </dl>
       </section>
     </section>
 
     <!-- Konsultation -->
-    <section class="behandlinger-konsultation" aria-labelledby="behandlinger-konsultation-titel">
-      <div class="behandlinger-konsultation-tekst">
+    <section class="behandlinger-section behandlinger-consultation" aria-labelledby="behandlinger-konsultation-titel">
+      <div class="behandlinger-text behandlinger-consultation-text">
         <h2 id="behandlinger-konsultation-titel">Ønsker du en personlig konsultation?</h2>
         <p>Book en tid hos mig, hvis du ønsker hjælp til at forstå dine krøller eller bølger bedre. Sammen finder vi ud af, hvad dit hår har brug for, så du får en rutine og en klipning, der passer til netop dig, din hverdag og dit naturlige hår.</p>
-        <a class="button button-primary" href="https://salonbook.one/?henriksencopenhagen#/">Book en tid</a>
+        <a class="button button-primary" href="https://salonbook.one/?henriksencopenhagen#/"><span class="button-label">Book en tid</span></a>
       </div>
 
-      <figure class="behandlinger-placeholder behandlinger-konsultation-billede"><img src="img/image/belinda2.png" alt=""><span class="image-placeholder-label">IMG<br>670 x 370</span></figure>
+      <figure class="behandlinger-image behandlinger-consultation-image">
+        <img src="img/image/belinda2.png" alt="Belinda fra Hildebrandt Copenhagen">
+      </figure>
     </section>
   </main>
 
   <!-- Footer med kontakt, åbningstider og links -->
 <footer class="footer footer--frontpage">
+  <!-- Sektion .footer-tider: samlet indholdsblok paa siden. -->
   <section class="footer-tider" aria-labelledby="footer-tider-titel">
     <h2 id="footer-tider-titel" class="footer-tider-titel">Åbningstider</h2>
     <p class="kontakt-status footer-status" aria-live="polite">
@@ -370,6 +357,7 @@
     </dl>
   </section>
 
+  <!-- Sektion .footer-kontakt: samlet indholdsblok paa siden. -->
   <section class="footer-kontakt" aria-labelledby="footer-kontakt-titel">
     <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
     <address class="footer-kontakt-adresse">
@@ -381,6 +369,7 @@
     </address>
   </section>
 
+  <!-- Navigation: links og menupunkter til resten af sitet. -->
   <nav class="footer-menu" aria-labelledby="footer-menu-titel">
     <h2 id="footer-menu-titel" class="footer-menu-titel">Udforsk</h2>
     <ul class="footer-menu-liste">
@@ -400,8 +389,10 @@
     <a class="button button-primary footer-booking" href="https://salonbook.one/?henriksencopenhagen#/">Book tid</a>
   </nav>
 
+  <!-- Sektion .footer-newsletter: samlet indholdsblok paa siden. -->
   <section class="footer-newsletter" aria-labelledby="footer-newsletter-titel">
     <h2 id="footer-newsletter-titel" class="footer-newsletter-titel">Få tips til dine krøller</h2>
+    <!-- Formular: samler felter og knapper til brugerinput. -->
     <form class="footer-newsletter-form" action="#" method="post">
       <label class="footer-newsletter-label" for="footer-newsletter-name">Navn</label>
       <input id="footer-newsletter-name" class="footer-newsletter-input" type="text" name="name" placeholder="Navn" autocomplete="name">
@@ -466,6 +457,7 @@
     </ul>
   </div>
 </footer>
+  <!-- Script: indlaeser JavaScript til interaktioner paa siden. -->
   <script src="script.js"></script>
 </body>
 </html>

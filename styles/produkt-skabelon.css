@@ -1,10 +1,13 @@
-﻿/* Scoped layout styles for produkt-skabelon.html. Globale fonte, farver og knapper genbruges fra global.css. */
+﻿/* Filkommentar: styles/produkt-skabelon.css indeholder styling og responsive regler for websitet. */
+
+/* Scoped layout styles for produkt-skabelon.html. Globale fonte, farver og knapper genbruges fra global.css. */
 
 .produkt-skabelon-main {
   overflow-x: clip;
   background: var(--color-white);
 }
 
+/* Styling for .produkt-skabelon-hero. */
 .produkt-skabelon-hero,
 .produkt-skabelon-set-buy,
 .produkt-skabelon-low-rich,
@@ -14,6 +17,7 @@
   margin: 0 auto;
 }
 
+/* Styling for .produkt-breadcrumbs. */
 .produkt-breadcrumbs {
   display: flex;
   flex-wrap: wrap;
@@ -25,12 +29,14 @@
   line-height: 1.45;
 }
 
+/* Styling for .produkt-breadcrumbs. */
 .produkt-breadcrumbs a,
 .produkt-breadcrumbs span {
   color: inherit;
   text-decoration: none;
 }
 
+/* Styling for .produkt-breadcrumbs. */
 .produkt-breadcrumbs a {
   padding-bottom: 3px;
   background-image: linear-gradient(currentColor, currentColor);
@@ -40,18 +46,22 @@
   transition: background-size 220ms ease, color 220ms ease;
 }
 
+/* Styling for .produkt-breadcrumbs. */
 .produkt-breadcrumbs a:hover,
 .produkt-breadcrumbs a:focus-visible {
   color: var(--color-heading);
   background-size: 100% 1px;
 }
 
+/* Styling for .produkt-skabelon-hero. */
 .produkt-skabelon-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+  align-items: start;
   padding: 16px var(--page-gutter) 0;
 }
 
+/* Styling for .produkt-skabelon-image. */
 .produkt-skabelon-image {
   display: grid;
   place-items: center;
@@ -61,24 +71,28 @@
   text-transform: uppercase;
 }
 
+/* Styling for .produkt-skabelon-image. */
 .produkt-skabelon-image img {
   width: min(88%, 500px);
   max-height: 88%;
   object-fit: contain;
 }
 
+/* Styling for .produkt-skabelon-image-hero. */
 .produkt-skabelon-image-hero {
   min-height: 650px;
   background: transparent;
   font-size: var(--font-h1-desktop);
 }
 
+/* Styling for .produkt-skabelon-image-hero-large. */
 .produkt-skabelon-image-hero-large img {
   width: min(94%, 580px);
   max-height: 94%;
 }
 
-@media (min-width: 901px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (min-width: 1024px) {
   .produkt-skabelon-image-hero {
     position: sticky;
     top: 24px;
@@ -89,12 +103,14 @@
   }
 }
 
+/* Styling for .produkt-skabelon-summary. */
 .produkt-skabelon-summary {
   display: flex;
   flex-direction: column;
   padding: 32px 40px 52px;
 }
 
+/* Styling for .produkt-skabelon-summary. */
 .produkt-skabelon-summary::before {
   order: 0;
   display: block;
@@ -103,11 +119,13 @@
   content: "";
 }
 
+/* Styling for .produkt-skabelon-summary. */
 .produkt-skabelon-summary h1 {
   order: 2;
   margin: 16px 0 0;
 }
 
+/* Styling for .produkt-skabelon-price. */
 .produkt-skabelon-price {
   order: 3;
   margin-top: 24px;
@@ -118,6 +136,7 @@
   line-height: 1.1;
 }
 
+/* Styling for .produkt-skabelon-status. */
 .produkt-skabelon-status {
   order: 4;
   margin-top: 12px;
@@ -129,6 +148,7 @@
   text-transform: uppercase;
 }
 
+/* Styling for .produkt-skabelon-size-group. */
 .produkt-skabelon-size-group {
   order: 4;
   margin: 28px 0 0;
@@ -136,6 +156,7 @@
   border: 0;
 }
 
+/* Styling for .produkt-skabelon-size-label. */
 .produkt-skabelon-size-label {
   position: static;
   display: block;
@@ -154,12 +175,14 @@
   white-space: normal;
 }
 
+/* Styling for .produkt-skabelon-size-options. */
 .produkt-skabelon-size-options {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
 
+/* Styling for .produkt-skabelon-size. */
 .produkt-skabelon-size {
   display: inline-flex;
   position: relative;
@@ -181,6 +204,7 @@
   text-transform: uppercase;
 }
 
+/* Styling for .produkt-skabelon-size. */
 .produkt-skabelon-size:hover,
 .produkt-skabelon-size:focus-visible,
 .produkt-skabelon-size-active,
@@ -189,16 +213,19 @@
   background: transparent;
 }
 
+/* Styling for .produkt-skabelon-size. */
 .produkt-skabelon-size input {
   position: absolute;
   opacity: 0;
 }
 
+/* Styling for .produkt-skabelon-size. */
 .produkt-skabelon-size span {
   position: relative;
   display: inline-block;
 }
 
+/* Styling for .produkt-skabelon-size. */
 .produkt-skabelon-size span:not(.button-label)::after {
   content: "";
   position: absolute;
@@ -211,6 +238,7 @@
   transition: clip-path 220ms ease;
 }
 
+/* Styling for .produkt-skabelon-size. */
 .produkt-skabelon-size:hover span::after,
 .produkt-skabelon-size:focus-visible span::after,
 .produkt-skabelon-size-active span::after,
@@ -218,10 +246,12 @@
   clip-path: inset(0 0 0 0);
 }
 
+/* Styling for .produkt-skabelon-size. */
 .produkt-skabelon-size input:focus-visible + span {
   outline: none;
 }
 
+/* Styling for .produkt-skabelon-buy. */
 .produkt-skabelon-buy {
   order: 5;
   width: auto;
@@ -233,10 +263,12 @@
   white-space: nowrap;
 }
 
+/* Styling for .produkt-skabelon-summary. */
 .produkt-skabelon-summary:not(:has(.produkt-skabelon-size-group)) .produkt-skabelon-buy {
   margin-top: 18px;
 }
 
+/* Styling for .produkt-skabelon-buy. */
 .produkt-skabelon-buy:hover,
 .produkt-skabelon-buy:focus-visible {
   border-color: var(--color-primary);
@@ -244,6 +276,7 @@
   background: var(--color-primary);
 }
 
+/* Styling for .produkt-skabelon-tags. */
 .produkt-skabelon-tags {
   order: 1;
   display: flex;
@@ -257,14 +290,17 @@
   text-transform: uppercase;
 }
 
+/* Styling for .produkt-skabelon-tags. */
 .produkt-skabelon-tags li:nth-child(n + 5) {
   display: none;
 }
 
+/* Styling for .produkt-skabelon-tags-all. */
 .produkt-skabelon-tags-all li:nth-child(n + 5) {
   display: list-item;
 }
 
+/* Styling for .produkt-skabelon-description. */
 .produkt-skabelon-description {
   order: 6;
   max-width: 620px;
@@ -274,11 +310,13 @@
   border-bottom: 1px solid var(--color-heading);
 }
 
+/* Styling for .produkt-skabelon-accordions. */
 .produkt-skabelon-accordions {
   order: 7;
   margin-top: 0;
 }
 
+/* Styling for .produkt-skabelon-set-buy. */
 .produkt-skabelon-set-buy {
   order: 8;
   display: grid;
@@ -293,22 +331,26 @@
   border-bottom: 1px solid var(--color-heading);
 }
 
+/* Styling for .produkt-skabelon-set-copy. */
 .produkt-skabelon-set-copy {
   display: flex;
   min-width: 0;
   flex-direction: column;
 }
 
+/* Styling for .produkt-skabelon-set-copy. */
 .produkt-skabelon-set-copy .eyebrow {
   color: var(--color-primary);
 }
 
+/* Styling for .produkt-skabelon-set-copy. */
 .produkt-skabelon-set-copy h2 {
   margin-top: 8px;
   font-size: clamp(28px, 3vw, 38px);
   line-height: 1;
 }
 
+/* Styling for .produkt-skabelon-set-copy. */
 .produkt-skabelon-set-copy p {
   max-width: 320px;
   margin-top: auto;
@@ -316,12 +358,14 @@
   line-height: 1.55;
 }
 
+/* Styling for .produkt-skabelon-set-products. */
 .produkt-skabelon-set-products {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
 }
 
+/* Styling for .produkt-skabelon-set-products. */
 .produkt-skabelon-set-products .product-card {
   display: flex;
   min-width: 0;
@@ -331,6 +375,7 @@
   overflow: hidden;
 }
 
+/* Styling for .produkt-skabelon-set-products. */
 .produkt-skabelon-set-products .product-image {
   position: relative;
   display: flex;
@@ -343,6 +388,7 @@
   border-radius: var(--button-radius) var(--button-radius) 0 0;
 }
 
+/* Styling for .produkt-skabelon-set-products. */
 .produkt-skabelon-set-products .product-image > a {
   display: flex;
   width: 100%;
@@ -351,6 +397,7 @@
   justify-content: center;
 }
 
+/* Styling for .produkt-skabelon-set-products. */
 .produkt-skabelon-set-products .product-image img {
   display: block;
   width: 80%;
@@ -358,6 +405,7 @@
   object-fit: contain;
 }
 
+/* Styling for .produkt-skabelon-set-products. */
 .produkt-skabelon-set-products .product-content {
   position: relative;
   display: flex;
@@ -371,6 +419,7 @@
   overflow: hidden;
 }
 
+/* Styling for .produkt-skabelon-set-products. */
 .produkt-skabelon-set-products .product-content h4 {
   height: calc(1.2em * 2);
   overflow: hidden;
@@ -378,6 +427,7 @@
   line-height: 1.2;
 }
 
+/* Styling for .produkt-skabelon-set-products. */
 .produkt-skabelon-set-products .product-content p {
   height: calc(1.45em * 2);
   margin-top: 4px;
@@ -387,6 +437,7 @@
   line-height: 1.45;
 }
 
+/* Styling for .produkt-skabelon-set-products. */
 .produkt-skabelon-set-products .product-meta {
   display: flex;
   align-items: flex-end;
@@ -401,29 +452,35 @@
   line-height: 1.3;
 }
 
+/* Styling for .produkt-skabelon-set-products. */
 .produkt-skabelon-set-products .product-meta span:first-child {
   font-size: 11px;
 }
 
+/* Styling for .produkt-skabelon-set-products. */
 .produkt-skabelon-set-products .product-meta span:last-child {
   color: var(--color-text);
   font-size: 9px;
   text-align: right;
 }
 
+/* Styling for .produkt-skabelon-accordion. */
 .produkt-skabelon-accordion {
   border-bottom: 1px solid #8fa4ad;
 }
 
+/* Styling for .produkt-skabelon-accordion. */
 .produkt-skabelon-accordion:first-child {
   border-top: 0;
 }
 
+/* Styling for .produkt-skabelon-accordion. */
 .produkt-skabelon-accordion h2 {
   font-size: inherit;
   line-height: inherit;
 }
 
+/* Styling for .produkt-skabelon-accordion-button. */
 .produkt-skabelon-accordion-button {
   display: flex;
   width: 100%;
@@ -440,39 +497,48 @@
   text-align: left;
 }
 
+/* Styling for .produkt-skabelon-accordion-button. */
 .produkt-skabelon-accordion-button::-webkit-details-marker {
   display: none;
 }
 
+/* Styling for .produkt-skabelon-accordion-button. */
 .produkt-skabelon-accordion-button::marker {
   content: "";
 }
 
+/* Styling for .produkt-skabelon-accordion. */
 .produkt-skabelon-accordion[open] .produkt-skabelon-accordion-button span:last-child {
   transform: rotate(180deg);
 }
 
+/* Styling for .produkt-skabelon-accordion-panel. */
 .produkt-skabelon-accordion-panel {
   padding: 0 0 22px 40px;
 }
 
+/* Styling for .produkt-skabelon-accordion. */
 .produkt-skabelon-accordion[open] .produkt-skabelon-accordion-panel {
   padding: 0 0 22px 40px;
 }
 
+/* Styling for .produkt-skabelon-accordion-panel. */
 .produkt-skabelon-accordion-panel p {
   margin: 0;
 }
 
+/* Styling for .produkt-skabelon-accordion-panel. */
 .produkt-skabelon-accordion-panel p + p {
   margin-top: 14px;
 }
 
+/* Styling for .produkt-skabelon-accordion-panel. */
 .produkt-skabelon-accordion-panel:has(.produkt-skabelon-package-products),
 .produkt-skabelon-accordion[open] .produkt-skabelon-accordion-panel:has(.produkt-skabelon-package-products) {
   padding-left: 0;
 }
 
+/* Styling for .produkt-skabelon-panel-list. */
 .produkt-skabelon-panel-list {
   display: grid;
   gap: 6px;
@@ -480,10 +546,12 @@
   padding-left: 18px;
 }
 
+/* Styling for .produkt-skabelon-panel-list. */
 .produkt-skabelon-panel-list li {
   line-height: 1.55;
 }
 
+/* Styling for .produkt-skabelon-package-products. */
 .produkt-skabelon-package-products {
   display: grid;
   width: 100%;
@@ -494,6 +562,7 @@
   min-width: 0;
 }
 
+/* Styling for .produkt-skabelon-package-card. */
 .produkt-skabelon-package-card {
   display: flex;
   min-width: 0;
@@ -504,11 +573,13 @@
   overflow: hidden;
 }
 
+/* Styling for .produkt-skabelon-package-card. */
 .produkt-skabelon-package-card:focus-visible {
   outline: 2px solid var(--color-heading);
   outline-offset: 3px;
 }
 
+/* Styling for .produkt-skabelon-package-image. */
 .produkt-skabelon-package-image {
   display: flex;
   width: 100%;
@@ -517,6 +588,7 @@
   justify-content: center;
 }
 
+/* Styling for .produkt-skabelon-package-image. */
 .produkt-skabelon-package-image img {
   display: block;
   width: 80%;
@@ -524,6 +596,7 @@
   object-fit: contain;
 }
 
+/* Styling for .produkt-skabelon-package-content. */
 .produkt-skabelon-package-content {
   display: flex;
   flex: 1;
@@ -533,6 +606,7 @@
   border-top: 1px solid var(--color-heading);
 }
 
+/* Styling for .produkt-skabelon-package-content. */
 .produkt-skabelon-package-content strong {
   min-height: calc(1.2em * 2);
   color: var(--color-heading);
@@ -542,6 +616,7 @@
   line-height: 1.2;
 }
 
+/* Styling for .produkt-skabelon-package-description. */
 .produkt-skabelon-package-description {
   display: -webkit-box;
   min-height: calc(1.4em * 3);
@@ -553,6 +628,7 @@
   line-height: 1.4;
 }
 
+/* Styling for .produkt-skabelon-package-meta. */
 .produkt-skabelon-package-meta {
   display: flex;
   align-items: flex-end;
@@ -566,12 +642,14 @@
   line-height: 1.3;
 }
 
+/* Styling for .produkt-skabelon-package-meta. */
 .produkt-skabelon-package-meta span:last-child {
   color: var(--color-text);
   font-size: 9px;
   text-align: right;
 }
 
+/* Styling for .produkt-skabelon-package-indicators. */
 .produkt-skabelon-package-indicators {
   display: none;
   align-items: center;
@@ -580,11 +658,13 @@
   margin-top: 14px;
 }
 
+/* Styling for .produkt-skabelon-package-indicators. */
 .produkt-skabelon-package-indicators:empty,
 .produkt-skabelon-package-indicators.is-hidden {
   display: none;
 }
 
+/* Styling for .produkt-skabelon-package-indicators. */
 .produkt-skabelon-package-indicators .indicator {
   width: 18px;
   height: 3px;
@@ -597,12 +677,14 @@
   transition: width 260ms ease, opacity 260ms ease, background 260ms ease;
 }
 
+/* Styling for .produkt-skabelon-package-indicators. */
 .produkt-skabelon-package-indicators .indicator.active {
   width: 30px;
   background: #8b989d;
   opacity: 1;
 }
 
+/* Styling for .produkt-skabelon-product-info. */
 .produkt-skabelon-product-info {
   margin-top: 14px;
   padding: 0;
@@ -610,6 +692,7 @@
   color: #111111;
 }
 
+/* Styling for .produkt-skabelon-info-row. */
 .produkt-skabelon-info-row {
   display: grid;
   grid-template-columns: 108px minmax(0, 1fr);
@@ -618,6 +701,7 @@
   border-bottom: 1px solid #8fa4ad;
 }
 
+/* Styling for .produkt-skabelon-info-label. */
 .produkt-skabelon-info-label {
   color: #111111;
   font-family: var(--font-heading);
@@ -626,12 +710,14 @@
   line-height: 1.35;
 }
 
+/* Styling for .produkt-skabelon-info-value. */
 .produkt-skabelon-info-value {
   color: #111111;
   font-size: 14px;
   line-height: 1.55;
 }
 
+/* Styling for .produkt-skabelon-info-value. */
 .produkt-skabelon-info-value strong {
   display: inline-block;
   margin: 10px 0 2px;
@@ -639,38 +725,46 @@
   font-weight: 700;
 }
 
+/* Styling for .produkt-skabelon-info-value. */
 .produkt-skabelon-info-value strong:first-child {
   margin-top: 0;
 }
 
+/* Styling for .produkt-skabelon-details. */
 .produkt-skabelon-details {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+  align-items: start;
   gap: 96px;
   margin-top: 72px;
   padding: 50px var(--content-gutter);
   background: var(--color-light-blue);
 }
 
+/* Styling for .produkt-skabelon-image-secondary. */
 .produkt-skabelon-image-secondary {
   min-height: 360px;
   background: transparent;
   font-size: var(--font-h2-desktop);
 }
 
+/* Styling for .produkt-skabelon-image-secondary-placeholder. */
 .produkt-skabelon-image-secondary-placeholder {
   background: var(--color-image-placeholder);
 }
 
+/* Styling for .produkt-skabelon-image-secondary. */
 .produkt-skabelon-image-secondary .produkt-skabelon-ingredient-image {
   width: min(92%, 560px);
   max-height: 92%;
 }
 
+/* Styling for .produkt-skabelon-specs. */
 .produkt-skabelon-specs {
   align-self: center;
 }
 
+/* Styling for .produkt-skabelon-spec-row. */
 .produkt-skabelon-spec-row {
   display: grid;
   grid-template-columns: 150px 1fr;
@@ -679,33 +773,40 @@
   border-bottom: 1px solid var(--color-heading);
 }
 
+/* Styling for .produkt-skabelon-spec-row. */
 .produkt-skabelon-spec-row:first-child {
   border-top: 1px solid var(--color-heading);
 }
 
+/* Styling for .produkt-skabelon-spec-row. */
 .produkt-skabelon-spec-row dt {
   color: var(--color-heading);
   font-family: var(--font-heading);
   text-transform: uppercase;
 }
 
+/* Styling for .produkt-skabelon-spec-row. */
 .produkt-skabelon-spec-row dd {
   line-height: 1.4;
 }
 
+/* Styling for .produkt-skabelon-low-rich. */
 .produkt-skabelon-low-rich {
   margin-top: 42px;
   padding: 70px var(--page-gutter) 78px;
 }
 
+/* Styling for .produkt-skabelon-section-label. */
 .produkt-skabelon-section-label {
   line-height: 1.2;
 }
 
+/* Styling for .produkt-skabelon-low-rich. */
 .produkt-skabelon-low-rich h2 {
   margin-top: 10px;
 }
 
+/* Styling for .produkt-skabelon-low-rich-placeholder. */
 .produkt-skabelon-low-rich-placeholder {
   display: grid;
   margin-top: 42px;
@@ -717,6 +818,7 @@
   text-align: center;
 }
 
+/* Styling for .produkt-skabelon-low-rich-image. */
 .produkt-skabelon-low-rich-image {
   display: block;
   width: 100%;
@@ -724,26 +826,31 @@
   height: auto;
 }
 
+/* Styling for .produkt-skabelon-low-rich-visual. */
 .produkt-skabelon-low-rich-visual,
 .produkt-skabelon-ingredient-map {
   display: none;
 }
 
+/* Styling for .produkt-skabelon-low-rich-actions. */
 .produkt-skabelon-low-rich-actions {
   display: flex;
   justify-content: flex-end;
   margin-top: 22px;
 }
 
+/* Styling for .produkt-skabelon-low-rich-cta. */
 .produkt-skabelon-low-rich-cta {
   width: auto;
   min-width: 190px;
 }
 
+/* Styling for .produkt-skabelon-related. */
 .produkt-skabelon-related {
   padding: 0 var(--page-gutter) 82px;
 }
 
+/* Styling for .produkt-skabelon-related-grid. */
 .produkt-skabelon-related-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -751,15 +858,18 @@
   margin-top: 22px;
 }
 
+/* Styling for .produkt-skabelon-related-card. */
 .produkt-skabelon-related-card a {
   display: block;
   border-radius: var(--button-radius);
 }
 
+/* Styling for .produkt-skabelon-related-card. */
 .produkt-skabelon-related-card {
   border-radius: var(--button-radius);
 }
 
+/* Styling for .produkt-skabelon-related-image. */
 .produkt-skabelon-related-image {
   position: relative;
   display: grid;
@@ -773,6 +883,7 @@
   border-radius: var(--button-radius);
 }
 
+/* Styling for .product-badge. */
 .product-badge {
   position: absolute;
   top: 10px;
@@ -797,22 +908,26 @@
   transform-origin: center;
 }
 
+/* Styling for .produkt-skabelon-related-image. */
 .produkt-skabelon-related-image img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
+/* Styling for .produkt-skabelon-related-card. */
 .produkt-skabelon-related-card h3 {
   margin-top: 16px;
   color: var(--color-heading);
   font-size: var(--font-h4-desktop);
 }
 
+/* Styling for .produkt-skabelon-related-card. */
 .produkt-skabelon-related-card p {
   margin-top: 6px;
 }
 
+/* Styling for .product-add-button. */
 .product-add-button {
   position: absolute;
   z-index: 1;
@@ -822,6 +937,7 @@
   transition: opacity 240ms ease, transform 240ms ease, box-shadow 240ms ease;
 }
 
+/* Styling for .product-add-button. */
 .product-add-button {
   bottom: 28px;
   left: 50%;
@@ -839,21 +955,25 @@
   transform: translate(-50%, 10px);
 }
 
+/* Styling for .produkt-skabelon-related-card. */
 .produkt-skabelon-related-card:hover .product-add-button,
 .produkt-skabelon-related-card:focus-within .product-add-button {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Styling for .produkt-skabelon-related-card. */
 .produkt-skabelon-related-card:hover .product-add-button,
 .produkt-skabelon-related-card:focus-within .product-add-button {
   transform: translate(-50%, 0);
 }
 
+/* Styling for .product-add-button. */
 .product-add-button .product-add-button-icon {
   display: none;
 }
 
+/* Styling for .quick-add-control. */
 .quick-add-control {
   display: flex;
   width: min(82%, 257px);
@@ -862,20 +982,24 @@
   overflow: visible;
 }
 
+/* Styling for .quick-add-menu. */
 .quick-add-menu,
 .quick-add-submit {
   min-height: inherit;
 }
 
+/* Styling for .quick-add-menu. */
 .quick-add-menu {
   position: relative;
   width: 58%;
 }
 
+/* Styling for .quick-add-submit. */
 .quick-add-submit {
   width: 42%;
 }
 
+/* Styling for .quick-add-size-toggle. */
 .quick-add-size-toggle,
 .quick-add-submit,
 .quick-add-option {
@@ -888,6 +1012,7 @@
   text-transform: inherit;
 }
 
+/* Styling for .quick-add-size-toggle. */
 .quick-add-size-toggle,
 .quick-add-submit {
   display: grid;
@@ -898,6 +1023,7 @@
   padding: 0 10px;
 }
 
+/* Styling for .quick-add-size-toggle. */
 .quick-add-size-toggle {
   background: var(--color-white);
   color: var(--color-heading);
@@ -908,6 +1034,7 @@
   text-transform: none;
 }
 
+/* Styling for .quick-add-submit. */
 .quick-add-submit {
   width: 42%;
   background: var(--color-heading);
@@ -916,6 +1043,7 @@
   letter-spacing: 0.12em;
 }
 
+/* Styling for .quick-add-size-label. */
 .quick-add-size-label {
   display: inline-flex;
   align-items: center;
@@ -923,6 +1051,7 @@
   white-space: nowrap;
 }
 
+/* Styling for .quick-add-dropdown. */
 .quick-add-dropdown {
   position: absolute;
   right: 0;
@@ -939,19 +1068,23 @@
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
+/* Styling for .quick-add-control.is-open. */
 .quick-add-control.is-open .quick-add-dropdown {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Styling for .quick-add-control.is-added. */
 .quick-add-control.is-added .quick-add-menu {
   display: none;
 }
 
+/* Styling for .quick-add-control.is-added. */
 .quick-add-control.is-added .quick-add-submit {
   width: 100%;
 }
 
+/* Styling for .quick-add-help. */
 .quick-add-help {
   margin: 0;
   padding: 10px 12px 8px;
@@ -963,6 +1096,7 @@
   text-transform: none;
 }
 
+/* Styling for .quick-add-option. */
 .quick-add-option {
   display: block;
   width: 100%;
@@ -974,31 +1108,37 @@
   text-align: left;
 }
 
+/* Styling for .quick-add-option. */
 .quick-add-option:hover,
 .quick-add-option:focus-visible {
   background: var(--color-light-blue);
 }
 
+/* Styling for .is-quick-add-sheet-open. */
 .is-quick-add-sheet-open {
   overflow: hidden;
 }
 
+/* Styling for .quick-add-sheet. */
 .quick-add-sheet[hidden] {
   display: none;
 }
 
+/* Styling for .quick-add-sheet. */
 .quick-add-sheet {
   position: fixed;
   z-index: 4100;
   inset: 0;
 }
 
+/* Styling for .quick-add-sheet-backdrop. */
 .quick-add-sheet-backdrop {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.34);
 }
 
+/* Styling for .quick-add-sheet-panel. */
 .quick-add-sheet-panel {
   position: absolute;
   right: 0;
@@ -1011,6 +1151,7 @@
   box-shadow: 0 -18px 40px rgba(51, 76, 86, 0.16);
 }
 
+/* Styling for .quick-add-sheet-close. */
 .quick-add-sheet-close {
   position: absolute;
   top: 10px;
@@ -1023,6 +1164,7 @@
   font-size: 28px;
 }
 
+/* Styling for .quick-add-sheet-panel. */
 .quick-add-sheet-panel h2 {
   color: var(--color-heading);
   font-family: var(--font-heading);
@@ -1030,19 +1172,22 @@
   font-weight: 400;
 }
 
+/* Styling for .quick-add-sheet.show-help. */
 .quick-add-sheet.show-help .quick-add-sheet-options::before {
   display: block;
   margin-bottom: 10px;
   color: var(--color-heading);
-  content: "VÃ¦lg en stÃ¸rrelse for at tilfÃ¸je til kurv.";
+  content: "Vælg en størrelse for at tilføje til kurv.";
   font-size: 14px;
 }
 
+/* Styling for .quick-add-sheet-options. */
 .quick-add-sheet-options {
   display: grid;
   gap: 8px;
 }
 
+/* Styling for .quick-add-sheet-option. */
 .quick-add-sheet-option {
   min-height: 44px;
   border: 1px solid var(--color-heading);
@@ -1053,15 +1198,18 @@
   text-align: left;
 }
 
+/* Styling for .quick-add-sheet-option. */
 .quick-add-sheet-option::before {
   margin-right: 10px;
-  content: "â—‹";
+  content: "○";
 }
 
+/* Styling for .quick-add-sheet-option.is-active. */
 .quick-add-sheet-option.is-active::before {
-  content: "â—";
+  content: "●";
 }
 
+/* Styling for .produkt-skabelon-visually-hidden. */
 .produkt-skabelon-visually-hidden {
   position: absolute;
   width: 1px;
@@ -1071,7 +1219,8 @@
   white-space: nowrap;
 }
 
-@media (max-width: 1180px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (max-width: 767px) {
   .produkt-skabelon-hero,
   .produkt-skabelon-set-buy,
   .produkt-skabelon-details {
@@ -1148,7 +1297,8 @@
   }
 }
 
-@media (max-width: 1180px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (max-width: 767px) {
   .produkt-skabelon-package-products {
     display: flex;
     gap: 8px;
@@ -1176,7 +1326,8 @@
   }
 }
 
-@media (max-width: 1180px) {
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (max-width: 767px) {
   .produkt-skabelon-page {
     padding-bottom: calc(78px + env(safe-area-inset-bottom));
   }
@@ -1417,7 +1568,7 @@
 
   .produkt-skabelon-low-rich-visual {
     display: grid;
-    width: calc(100vw - 28px);
+    width: 100%;
     gap: 32px;
     color: var(--color-heading);
     font-family: var(--font-body);
@@ -1493,7 +1644,7 @@
   .produkt-skabelon-low-rich-balance i {
     position: relative;
     display: block;
-    width: calc(100vw - 28px);
+    width: 100%;
     height: 4px;
     background: var(--color-heading);
   }
@@ -1645,5 +1796,120 @@
   .produkt-skabelon-related-image {
     aspect-ratio: 215 / 270;
     font-size: 20px;
+  }
+}
+
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .produkt-skabelon-page {
+    padding-bottom: 0;
+  }
+
+  .produkt-skabelon-hero,
+  .produkt-skabelon-details {
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 1fr);
+  }
+
+  .produkt-skabelon-hero {
+    max-width: var(--container-max);
+    padding: 16px var(--page-gutter) 0;
+  }
+
+  .produkt-skabelon-image-hero {
+    min-height: 520px;
+  }
+
+  .produkt-skabelon-summary {
+    padding: 28px 28px 48px;
+  }
+
+  .produkt-skabelon-buy {
+    width: auto;
+    min-width: 190px;
+  }
+
+  .produkt-skabelon-tags {
+    justify-content: flex-start;
+    gap: 18px 26px;
+    font-size: var(--font-eyebrow-tablet);
+  }
+
+  .produkt-skabelon-details {
+    gap: 48px;
+    margin-top: 54px;
+    padding: 42px var(--content-gutter);
+  }
+
+  .produkt-skabelon-spec-row {
+    grid-template-columns: 130px 1fr;
+  }
+
+  .produkt-skabelon-low-rich-visual,
+  .produkt-skabelon-ingredient-map {
+    display: none;
+  }
+
+  .produkt-skabelon-low-rich-cta {
+    width: auto;
+  }
+
+  .produkt-skabelon-low-rich-actions {
+    justify-content: flex-end;
+  }
+
+  .produkt-skabelon-related-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .produkt-skabelon-related-card:nth-child(n + 3) {
+    display: block;
+  }
+
+  .produkt-skabelon-related-card h3,
+  .produkt-skabelon-related-card p {
+    display: block;
+  }
+
+  .produkt-skabelon-related-image {
+    aspect-ratio: 1 / 1.18;
+  }
+
+  .product-add-button {
+    top: auto;
+    right: auto;
+    bottom: 28px;
+    left: 50%;
+    display: inline-flex;
+    width: min(82%, 257px);
+    min-height: 48px;
+    padding: 0 22px;
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  .product-add-button-text {
+    display: inline;
+  }
+
+  .product-add-button .product-add-button-icon {
+    display: none;
+  }
+
+  .produkt-skabelon-package-card {
+    flex: 1 1 180px;
+  }
+}
+
+/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+@media (hover: hover) and (min-width: 768px) and (max-width: 1023px) {
+  .produkt-skabelon-related .product-add-button {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+
+  .produkt-skabelon-related-card:hover .product-add-button,
+  .produkt-skabelon-related-card:focus-within .product-add-button {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 }
