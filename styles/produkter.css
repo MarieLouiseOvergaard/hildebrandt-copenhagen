@@ -69,6 +69,11 @@
   text-transform: uppercase;
 }
 
+.product-filter-link .button-label {
+  padding-bottom: 0;
+  background-image: none;
+}
+
 /* Den aktive filterknap markeres med en diskret streg under teksten. */
 .product-filter-link::after {
   position: absolute;
@@ -78,8 +83,22 @@
   height: 1px;
   background: currentColor;
   content: "";
-  opacity: 0;
-  transition: opacity 180ms ease;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease;
+}
+
+.product-filter-link:hover::after,
+.product-filter-link:focus-visible::after,
+.product-filter-link.is-active::after,
+body[data-product-page-filter="all"] [data-product-filter="all"]::after,
+body[data-product-page-filter="startpakker"] [data-product-filter="startpakker"]::after,
+body[data-product-page-filter="saet"] [data-product-filter="saet"]::after,
+body[data-product-page-filter="shampoo"] [data-product-filter="shampoo"]::after,
+body[data-product-page-filter="conditioner"] [data-product-filter="conditioner"]::after,
+body[data-product-page-filter="haarmasker"] [data-product-filter="haarmasker"]::after,
+body[data-product-page-filter="styling"] [data-product-filter="styling"]::after {
+  transform: scaleX(1);
 }
 
 /* Styling for .product-filter-link. */
@@ -112,7 +131,7 @@ body[data-product-page-filter="shampoo"] [data-product-filter="shampoo"]::after,
 body[data-product-page-filter="conditioner"] [data-product-filter="conditioner"]::after,
 body[data-product-page-filter="haarmasker"] [data-product-filter="haarmasker"]::after,
 body[data-product-page-filter="styling"] [data-product-filter="styling"]::after {
-  opacity: 1;
+  transform: scaleX(1);
 }
 
 /* Styling for .product-section. */
@@ -171,6 +190,11 @@ body[data-product-page-filter="styling"] [data-product-section="styling"] {
   flex-wrap: wrap;
   gap: 1.5rem;
   padding-bottom: 1rem;
+}
+
+body:not([data-product-page-filter="all"]) .product-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .product-row > .product-card,
@@ -469,8 +493,9 @@ body[data-product-page-filter="all"] .product-promo-card {
   width: 42%;
   background: var(--color-heading);
   color: var(--color-white);
-  font-size: 13px;
-  letter-spacing: 0.12em;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 /* Styling for .quick-add-size-label. */
@@ -514,18 +539,6 @@ body[data-product-page-filter="all"] .product-promo-card {
   width: 100%;
 }
 
-/* Styling for .quick-add-help. */
-.quick-add-help {
-  margin: 0;
-  padding: 10px 12px 8px;
-  color: var(--color-heading);
-  font-family: var(--font-body);
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: 1.25;
-  text-transform: none;
-}
-
 /* Styling for .quick-add-option. */
 .quick-add-option {
   display: block;
@@ -541,6 +554,15 @@ body[data-product-page-filter="all"] .product-promo-card {
 /* Styling for .quick-add-option. */
 .quick-add-option:hover,
 .quick-add-option:focus-visible {
+  background: var(--color-light-blue);
+}
+
+.quick-add-control.needs-size .quick-add-option {
+  background: #f7e8e6;
+}
+
+.quick-add-control.needs-size .quick-add-option:hover,
+.quick-add-control.needs-size .quick-add-option:focus-visible {
   background: var(--color-light-blue);
 }
 
@@ -565,7 +587,7 @@ body[data-product-page-filter="all"] .product-promo-card {
 .quick-add-sheet-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.34);
+  background: rgba(51, 76, 86, 0.28);
 }
 
 /* Styling for .quick-add-sheet-panel. */
@@ -575,10 +597,10 @@ body[data-product-page-filter="all"] .product-promo-card {
   bottom: 0;
   left: 0;
   display: grid;
-  gap: 16px;
-  padding: 24px 22px 28px;
+  gap: 14px;
+  padding: 28px var(--page-gutter) calc(30px + env(safe-area-inset-bottom));
   border-radius: 0;
-  background: var(--color-white);
+  background: var(--color-light-blue);
   box-shadow: 0 -18px 40px rgba(51, 76, 86, 0.16);
 }
 
@@ -599,8 +621,12 @@ body[data-product-page-filter="all"] .product-promo-card {
 .quick-add-sheet-panel h2 {
   color: var(--color-heading);
   font-family: var(--font-heading);
-  font-size: 22px;
+  font-size: var(--font-body-mobile);
   font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  padding-right: 42px;
+  text-transform: uppercase;
 }
 
 /* Styling for .quick-add-sheet.show-help. */
@@ -608,36 +634,34 @@ body[data-product-page-filter="all"] .product-promo-card {
   display: block;
   margin-bottom: 10px;
   color: var(--color-heading);
-  content: "Vælg en størrelse for at tilføje til kurv.";
+  content: "Vælg størrelse for at tilføje til kurv";
   font-size: 14px;
 }
 
 /* Styling for .quick-add-sheet-options. */
 .quick-add-sheet-options {
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 
 /* Styling for .quick-add-sheet-option. */
 .quick-add-sheet-option {
-  min-height: 44px;
+  min-height: 46px;
+  padding: 0 14px;
   border: 1px solid var(--color-heading);
   background: transparent;
   color: var(--color-heading);
   cursor: pointer;
-  font: inherit;
-  text-align: left;
+  font-family: var(--font-heading);
+  font-size: var(--font-eyebrow-mobile);
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 /* Styling for .quick-add-sheet-option. */
 .quick-add-sheet-option::before {
-  margin-right: 10px;
-  content: "○";
-}
-
-/* Styling for .quick-add-sheet-option.is-active. */
-.quick-add-sheet-option.is-active::before {
-  content: "●";
+  content: none;
 }
 
 /* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
@@ -748,6 +772,11 @@ body[data-product-page-filter="all"] .product-promo-card {
 @media (max-width: 767px) {
   .product-row {
     flex-wrap: wrap;
+  }
+
+  body:not([data-product-page-filter="all"]) .product-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
   }
 
   body[data-product-page-filter="all"] .product-card,
@@ -1186,6 +1215,10 @@ body[data-product-page-filter="all"] .product-promo-card {
 
   .product-row {
     flex-wrap: wrap;
+  }
+
+  body:not([data-product-page-filter="all"]) .product-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   body[data-product-page-filter="all"] .product-row {

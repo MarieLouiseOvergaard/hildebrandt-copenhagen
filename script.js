@@ -2905,6 +2905,7 @@ function closeQuickAddDropdown(control = openQuickAddDropdown) {
 
   window.clearTimeout(control.quickAddCloseTimer);
   control.classList.remove("is-open");
+  control.classList.remove("needs-size");
   control.querySelector(".quick-add-size-toggle")?.setAttribute("aria-expanded", "false");
 
   const dropdown = control.querySelector(".quick-add-dropdown");
@@ -2928,18 +2929,13 @@ function openQuickAddDropdownFor(control, showHelp = false) {
   }
 
   const dropdown = control.querySelector(".quick-add-dropdown");
-  const help = control.querySelector(".quick-add-help");
-
   window.clearTimeout(control.quickAddCloseTimer);
   control.classList.add("is-open");
+  control.classList.toggle("needs-size", showHelp);
   control.querySelector(".quick-add-size-toggle")?.setAttribute("aria-expanded", "true");
 
   if (dropdown) {
     dropdown.hidden = false;
-  }
-
-  if (help) {
-    help.hidden = !showHelp;
   }
 
   openQuickAddDropdown = control;
@@ -2978,6 +2974,7 @@ function renderQuickAddOptions(control, data) {
       event.preventDefault();
       event.stopPropagation();
       control.dataset.selectedSize = size.label;
+      control.classList.remove("needs-size");
       updateQuickAddSelectedLabel(control);
       closeQuickAddDropdown(control);
       showQuickAddAddedState(control);
@@ -3015,7 +3012,6 @@ function replaceCardAddButtonWithQuickAdd(card, data) {
   control.innerHTML = `
     <div class="quick-add-menu">
       <div class="quick-add-dropdown" hidden>
-        <p class="quick-add-help" hidden>Vælg en størrelse for at tilføje til kurv.</p>
         <div class="quick-add-options"></div>
       </div>
       <button class="quick-add-size-toggle" type="button" aria-expanded="false">
@@ -3067,9 +3063,8 @@ function createQuickAddSheet() {
     <div class="quick-add-sheet-backdrop" data-quick-add-close></div>
     <section class="quick-add-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="quick-add-sheet-title">
       <button class="quick-add-sheet-close" type="button" aria-label="Luk" data-quick-add-close>×</button>
-      <h2 id="quick-add-sheet-title">Vælg størrelse</h2>
+      <h2 id="quick-add-sheet-title">Vælg størrelse for at tilføje til kurv</h2>
       <div class="quick-add-sheet-options"></div>
-      <button class="button button-primary quick-add-sheet-submit" type="button">Tilføj til kurv</button>
     </section>
   `;
 
@@ -3083,24 +3078,17 @@ function createQuickAddSheet() {
 
     if (option) {
       sheet.dataset.selectedSize = option.dataset.size || "";
-      sheet.querySelectorAll(".quick-add-sheet-option").forEach((button) => {
-        const isActive = button === option;
-        button.classList.toggle("is-active", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
-      });
-    }
-  });
+      const selectedVariant = sheet.quickAddData?.sizes?.find((size) => size.label === sheet.dataset.selectedSize);
 
-  sheet.querySelector(".quick-add-sheet-submit").addEventListener("click", () => {
-    const selectedVariant = sheet.quickAddData?.sizes?.find((size) => size.label === sheet.dataset.selectedSize);
+      if (!selectedVariant) {
+        sheet.classList.add("show-help");
+        return;
+      }
 
-    if (!selectedVariant) {
-      sheet.classList.add("show-help");
+      closeQuickAddSheet();
+      addToCart(getProductFromCardVariant(sheet.quickAddCard, selectedVariant));
       return;
     }
-
-    closeQuickAddSheet();
-    addToCart(getProductFromCardVariant(sheet.quickAddCard, selectedVariant));
   });
 
   document.body.append(sheet);

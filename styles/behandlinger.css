@@ -393,6 +393,7 @@
   .behandlinger-info-card {
     min-height: 0;
     padding: 34px 16px 38px;
+    margin-bottom: 30px;
   }
 
   .behandlinger-info-card h2 {
