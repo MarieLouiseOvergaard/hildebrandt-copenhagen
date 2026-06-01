@@ -56,11 +56,18 @@
 
 .behandlinger-hero {
   display: grid;
-  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.6fr);
-  gap: 60px;
+  grid-template-columns: minmax(360px, 45fr) minmax(0, 55fr);
+  gap: 56px;
   align-items: start;
   padding-top: 36px;
   padding-bottom: 56px;
+}
+
+.behandlinger-hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 560px;
 }
 
 .behandlinger-hero h1 {
@@ -68,11 +75,30 @@
 }
 
 .behandlinger-hero-image {
+  display: grid;
+  place-items: center;
   width: 100%;
-  max-width: 100%;
-  min-height: 300px;
-  max-height: 370px;
-  aspect-ratio: 950 / 370;
+  max-width: 670px;
+  justify-self: end;
+  height: 370px;
+  min-height: 0;
+  aspect-ratio: 670 / 370;
+  color: #111111;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.behandlinger-hero-image img {
+  display: none;
+  object-fit: cover;
+}
+
+.behandlinger-hero-image::before {
+  content: "IMG\A 670 × 370";
+  white-space: pre-line;
 }
 
 /* ==============================
@@ -98,6 +124,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 5px;
+  align-items: stretch;
   width: 100%;
   min-width: 0;
 }
@@ -112,15 +139,21 @@
   aspect-ratio: 315 / 370;
 }
 
+.behandlinger-mixly .behandlinger-card-image,
+.behandlinger-mixly .behandlinger-info-card {
+  height: 370px;
+}
+
 .behandlinger-info-card {
   display: grid;
   align-content: center;
+  height: 100%;
   padding: 34px 28px;
   background: var(--color-turkis);
 }
 
 .behandlinger-info-card h2 {
-  font-size: var(--font-h3-desktop);
+  font-size: 18px;
   letter-spacing: 0.03em;
 }
 
@@ -244,36 +277,73 @@
    Tablet
 ============================== */
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1199px) {
+  .behandlinger-main {
+    overflow-x: hidden;
+  }
+
   .behandlinger-section {
     padding-left: 32px;
     padding-right: 32px;
   }
 
   .behandlinger-hero {
-    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+    grid-template-columns: 1fr 320px;
     gap: 36px;
     padding-top: 34px;
     padding-bottom: 50px;
   }
 
   .behandlinger-hero-image {
-    min-height: 250px;
-    max-height: 300px;
+    order: initial;
+    align-self: start;
+    width: 100%;
+    max-width: 320px;
+    justify-self: end;
+    height: 350px;
+    min-height: 0;
+    max-height: none;
+    overflow: hidden;
+  }
+
+  .behandlinger-hero-image::before {
+    content: "IMG\A 320 × 400";
+  }
+
+  .behandlinger-hero-text {
+    max-width: 560px;
+    padding: 0;
+  }
+
+  .behandlinger-hero .button {
+    margin-top: 28px;
   }
 
   .behandlinger-two-column {
-    grid-template-columns: minmax(0, 46%) minmax(0, 54%);
+    grid-template-columns: minmax(0, 47fr) minmax(0, 53fr);
     gap: 32px;
     padding-left: 0;
     padding-right: 32px;
   }
 
-  .behandlinger-mixly .behandlinger-card-row,
-  .behandlinger-permanent .behandlinger-card-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .behandlinger-mixly {
+    grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+    gap: 44px;
+    align-items: start;
   }
 
+  .behandlinger-mixly .behandlinger-card-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 5px;
+    height: 100%;
+  }
+
+  .behandlinger-permanent .behandlinger-card-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .behandlinger-mixly .behandlinger-card-image,
   .behandlinger-tablet-hide,
   .behandlinger-mixly .behandlinger-card-image:last-child,
   .behandlinger-permanent .behandlinger-card-image:nth-child(3) {
@@ -282,20 +352,41 @@
 
   .behandlinger-card-image,
   .behandlinger-info-card {
-    min-height: 300px;
+    min-height: 280px;
   }
 
   .behandlinger-info-card {
     padding: 24px 20px;
   }
 
+  .behandlinger-mixly .behandlinger-info-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+    height: 100%;
+  }
+
   .behandlinger-info-card h2 {
-    font-size: var(--font-h3-tablet);
+    font-size: 18px;
+  }
+
+  .behandlinger-mixly .behandlinger-info-card .button {
+    margin-top: auto;
+  }
+
+  .behandlinger-mixly .behandlinger-prices {
+    align-self: start;
   }
 
   .behandlinger-price-section {
-    gap: 36px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 44px;
     padding: 60px 32px;
+  }
+
+  .behandlinger-price-section > .behandlinger-prices {
+    max-width: none;
+    width: 100%;
   }
 
   .behandlinger-price-list {
@@ -307,13 +398,20 @@
   }
 
   .behandlinger-consultation {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-    gap: 48px;
+    grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+    gap: 40px;
     padding: 70px 32px;
   }
 
+  .behandlinger-consultation-text {
+    align-self: center;
+  }
+
   .behandlinger-consultation-image {
-    min-height: 260px;
+    width: 100%;
+    min-height: 220px;
+    max-height: 300px;
+    overflow: hidden;
   }
 }
 
@@ -347,19 +445,31 @@
 
   /* Hero på mobil: billede øverst, tekst under. */
   .behandlinger-hero {
+    gap: 20px;
     padding-top: 0;
     padding-bottom: 34px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .behandlinger-hero-image {
     order: -1;
-    min-height: 166px;
+    height: 200px;
+    min-height: 180px;
     max-height: none;
-    aspect-ratio: 390 / 166;
+    width: 100%;
+    max-width: 100%;
+    justify-self: stretch;
+    aspect-ratio: auto;
+    overflow: hidden;
+  }
+
+  .behandlinger-hero-image::before {
+    content: "IMG\A 100% × 200";
   }
 
   .behandlinger-hero-text {
-    padding-top: 20px;
+    padding: 0 16px;
   }
 
   .behandlinger-hero h1 {
@@ -396,16 +506,36 @@
     margin-bottom: 30px;
   }
 
+  .behandlinger-mixly .behandlinger-info-card {
+    height: auto;
+    min-height: 0;
+    align-content: start;
+    padding: 18px 16px 22px;
+    margin-bottom: 24px;
+  }
+
   .behandlinger-info-card h2 {
-    font-size: var(--font-h3-mobile);
+    font-size: 18px;
+  }
+
+  .behandlinger-mixly .behandlinger-info-card h2 {
+    font-size: 18px;
   }
 
   .behandlinger-info-card p {
     margin-top: 16px;
   }
 
+  .behandlinger-mixly .behandlinger-info-card p {
+    margin-top: 10px;
+  }
+
   .behandlinger-info-card .button {
     margin-top: 26px;
+  }
+
+  .behandlinger-mixly .behandlinger-info-card .button {
+    margin-top: 18px;
   }
 
   /* Priser på mobil. */
@@ -450,11 +580,15 @@
   .behandlinger-permanent {
     padding-top: 34px;
     padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .behandlinger-permanent .behandlinger-prices {
     order: 1;
     padding-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .behandlinger-permanent .behandlinger-card-row {

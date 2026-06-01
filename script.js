@@ -75,6 +75,12 @@ function setupCommunitySignup(formSelector, copySelector, successClass) {
         <h3>Tak! Du er nu tilmeldt</h3>
         <p>Få 10% rabat på fragt og 10% på din første ordre - samt early access til nye produkter, eksklusive events, konkurrencer, tilbud og kampagner kun for vores community.</p>
       `;
+      if (successClass === "kroelle-signup-success") {
+        form.innerHTML = `
+          <h3>Tak! Du er nu tilmeldt HCM Community</h3>
+          <p>Du er nu en del af HCM Community og vil modtage tips, inspiration og eksklusive fordele.</p>
+        `;
+      }
     });
   });
 }
