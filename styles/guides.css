@@ -211,9 +211,7 @@
 
 /* Styling for .guide-compare-placeholder. */
 .guide-compare-placeholder {
-  position: absolute;
-  top: 38px;
-  right: -95px;
+  position: static;
   display: grid;
   width: 216px;
   height: 302px;
@@ -227,7 +225,7 @@
 /* Styling for .guide-compare-rich. */
 .guide-compare-rich .guide-compare-placeholder {
   right: auto;
-  left: -87px;
+  left: auto;
 }
 
 /* Styling for .guide-steps. */
@@ -513,21 +511,22 @@
 /* Styling for .guide-styling-placeholder. */
 .guide-styling-placeholder small {
   display: block;
-  margin-top: -36%;
+  margin-top: 0;
   font-size: 0.78rem;
 }
 
 /* Styling for .guide-styling-pair. */
 .guide-styling-pair {
-  position: relative;
+  display: flex;
   min-width: 0;
+  gap: 5px;
+  align-items: flex-end;
   padding-bottom: 48px;
 }
 
 /* Styling for .guide-styling-tube. */
 .guide-styling-tube {
-  position: absolute;
-  bottom: 0;
+  position: static;
   display: grid;
   width: min(126px, 48%);
   aspect-ratio: 0.54;
@@ -539,24 +538,24 @@
 
 /* Styling for .guide-styling-pair-right. */
 .guide-styling-pair-right .guide-styling-tube {
-  right: -34px;
+  right: auto;
 }
 
 /* Styling for .guide-styling-pair-left. */
 .guide-styling-pair-left .guide-styling-tube {
-  left: -34px;
+  left: auto;
 }
 
 /* Styling for .guide-styling-images-left. */
 .guide-styling-images-left .guide-styling-tube {
-  right: -34px;
+  right: auto;
   left: auto;
 }
 
 /* Styling for .guide-styling-images-right. */
 .guide-styling-images-right .guide-styling-tube {
   right: auto;
-  left: -34px;
+  left: auto;
 }
 
 /* Styling for .guide-styling-images-right. */
@@ -984,7 +983,7 @@
 
   .guide-compare-body,
   .guide-compare-rich .guide-compare-body {
-    position: relative;
+    position: static;
     min-height: 0;
     padding: 34px 108px 34px var(--page-gutter);
   }
@@ -995,19 +994,18 @@
   }
 
   .guide-compare-placeholder {
-    position: absolute;
-    top: 50%;
-    right: -34px;
+    position: static;
+    top: auto;
+    right: auto;
     width: 98px;
     height: 178px;
     min-height: 0;
     margin-top: 0;
-    transform: translateY(-50%);
   }
 
   .guide-compare-rich .guide-compare-placeholder {
     right: auto;
-    left: -36px;
+    left: auto;
   }
 }
 
@@ -1195,9 +1193,22 @@
 }
 
 .guide-compare-grid {
+  align-items: stretch;
   max-width: var(--container-max);
   margin-right: auto;
   margin-left: auto;
+}
+
+.guide-compare-card {
+  grid-template-rows: auto 1fr;
+}
+
+.guide-compare-low {
+  justify-self: stretch;
+}
+
+.guide-compare-rich {
+  justify-self: stretch;
 }
 
 .guide-compare-card h2 {
@@ -1207,35 +1218,70 @@
 
 .guide-compare-body,
 .guide-compare-rich .guide-compare-body {
-  position: static;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(130px, 190px);
+  position: relative;
+  display: flex;
   gap: 24px;
+  height: 100%;
   min-height: 360px;
-  padding: 32px;
+  padding: 32px clamp(205px, 18vw, 275px) 32px 32px;
   align-items: center;
+  border-radius: 0 12px 12px 0;
+  box-shadow:
+    -10vw 0 0 var(--color-turkis),
+    -20vw 0 0 var(--color-turkis),
+    -30vw 0 0 var(--color-turkis),
+    -40vw 0 0 var(--color-turkis),
+    -50vw 0 0 var(--color-turkis),
+    -60vw 0 0 var(--color-turkis),
+    -70vw 0 0 var(--color-turkis),
+    -80vw 0 0 var(--color-turkis),
+    -90vw 0 0 var(--color-turkis),
+    -100vw 0 0 var(--color-turkis);
 }
 
 .guide-compare-rich .guide-compare-body {
-  grid-template-columns: minmax(130px, 190px) minmax(0, 1fr);
+  flex-direction: row-reverse;
+  padding-right: 32px;
+  padding-left: clamp(150px, 14vw, 210px);
+  border-radius: 12px 0 0 12px;
+  box-shadow:
+    10vw 0 0 #af7f3a,
+    20vw 0 0 #af7f3a,
+    30vw 0 0 #af7f3a,
+    40vw 0 0 #af7f3a,
+    50vw 0 0 #af7f3a,
+    60vw 0 0 #af7f3a,
+    70vw 0 0 #af7f3a,
+    80vw 0 0 #af7f3a,
+    90vw 0 0 #af7f3a,
+    100vw 0 0 #af7f3a;
 }
 
-.guide-compare-rich .guide-compare-copy {
-  grid-column: 2;
+.guide-compare-copy {
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .guide-compare-placeholder,
 .guide-compare-rich .guide-compare-placeholder {
-  position: static;
-  width: 100%;
-  height: auto;
-  min-height: 260px;
+  position: absolute;
+  top: 50%;
+  right: clamp(-18px, -1.4vw, -10px);
+  width: clamp(118px, 11vw, 165px);
+  height: clamp(200px, 17vw, 250px);
+  flex: 0 0 auto;
+  min-height: 0;
   background: transparent;
+  pointer-events: none;
 }
 
 .guide-compare-rich .guide-compare-placeholder {
-  grid-column: 1;
-  grid-row: 1;
+  right: auto;
+  left: clamp(-18px, -1.4vw, -10px);
+}
+
+.guide-compare-placeholder img {
+  object-fit: contain;
 }
 
 .guide-styling-block {
@@ -1246,7 +1292,77 @@
 }
 
 .guide-styling-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 5px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.guide-styling-images-left,
+.guide-styling-images-right {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.guide-styling-images-right {
+  justify-content: stretch;
+}
+
+.guide-styling-images-right::after {
+  display: none;
+}
+
+.guide-styling-pair {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  gap: 5px;
+  align-items: flex-end;
+  padding-bottom: 0;
+}
+
+.guide-styling-pair-left {
+  flex-direction: row-reverse;
+}
+
+.guide-styling-placeholder {
+  display: flex;
+  min-width: 0;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 260 / 320;
+  background: var(--color-image-placeholder);
+  text-align: center;
+}
+
+.guide-styling-placeholder span,
+.guide-styling-placeholder small {
+  display: block;
+}
+
+.guide-styling-placeholder small {
+  margin-top: 0;
+  font-size: 0.78rem;
+}
+
+.guide-styling-placeholder small::before {
+  content: none;
+}
+
+.guide-styling-tube,
+.guide-styling-pair-right .guide-styling-tube,
+.guide-styling-pair-left .guide-styling-tube,
+.guide-styling-images-left .guide-styling-tube,
+.guide-styling-images-right .guide-styling-tube {
+  position: static;
+  width: auto;
+  flex: 0 0 clamp(82px, 32%, 150px);
+}
+
+.guide-styling-tube img {
+  object-fit: contain;
 }
 
 @media (min-width: 1200px) {
@@ -1269,7 +1385,7 @@
 
   .guide-compare-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 40px;
+    gap: clamp(56px, 7vw, 104px);
   }
 
   .guide-editorial,
@@ -1300,14 +1416,14 @@
   }
 
   .guide-styling-block {
-    grid-template-columns: minmax(0, 55fr) minmax(360px, 45fr);
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
     gap: 56px;
     padding-right: 0;
     padding-left: 0;
   }
 
   .guide-styling-block-reverse {
-    grid-template-columns: minmax(360px, 45fr) minmax(0, 55fr);
+    grid-template-columns: minmax(360px, 1fr) minmax(0, 1fr);
     gap: 56px;
     margin-top: 44px;
   }
@@ -1344,24 +1460,36 @@
 
   .guide-compare-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px;
+    gap: 28px;
   }
 
   .guide-compare-body,
   .guide-compare-rich .guide-compare-body {
-    grid-template-columns: minmax(0, 1fr);
-    min-height: 0;
-    padding: 28px 24px;
+    flex-direction: column;
+    min-height: 390px;
+    padding: 28px 24px 170px;
+    align-items: stretch;
+  }
+
+  .guide-compare-rich .guide-compare-body {
+    padding: 28px 24px 170px;
   }
 
   .guide-compare-placeholder,
   .guide-compare-rich .guide-compare-placeholder {
-    display: grid;
-    min-height: 190px;
+    top: auto;
+    bottom: 22px;
+    right: 18px;
+    width: 108px;
+    height: 135px;
+    flex: 0 0 auto;
+    min-height: 0;
+    max-height: none;
   }
 
-  .guide-compare-rich .guide-compare-copy {
-    grid-column: auto;
+  .guide-compare-rich .guide-compare-placeholder {
+    right: auto;
+    left: 18px;
   }
 
   .guide-editorial,
@@ -1387,23 +1515,28 @@
 
   .guide-styling-block,
   .guide-styling-block-reverse {
-    grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
-    gap: 36px;
+    grid-template-columns: 1fr;
+    gap: 22px;
     padding-right: 0;
     padding-left: 0;
   }
 
+  .guide-styling-block-reverse {
+    grid-template-columns: 1fr;
+    margin-top: 34px;
+  }
+
   .guide-styling-block-reverse .guide-styling-images {
-    order: 0;
+    order: -1;
   }
 
-  .guide-styling-images-left,
-  .guide-styling-images-right {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .guide-styling-images {
+    width: 100%;
   }
 
-  .guide-styling-images-right::after {
-    display: none;
+  .guide-styling-placeholder {
+    aspect-ratio: 1.35 / 1;
+    max-height: 220px;
   }
 
   .guide-styling-copy,
@@ -1457,21 +1590,33 @@
 
   .guide-compare-body,
   .guide-compare-rich .guide-compare-body {
-    grid-template-columns: minmax(0, 1fr);
+    flex-direction: column;
     min-height: 0;
-    padding: 28px 20px;
+    padding: 28px 20px 140px;
+    align-items: stretch;
   }
 
-  .guide-compare-rich .guide-compare-copy {
-    grid-column: auto;
+  .guide-compare-rich .guide-compare-body {
+    padding: 28px 20px 140px;
   }
 
   .guide-compare-placeholder,
   .guide-compare-rich .guide-compare-placeholder {
-    position: static;
-    width: 100%;
-    min-height: 180px;
-    margin-top: 18px;
+    position: absolute;
+    top: auto;
+    right: 32px;
+    bottom: 18px;
+    width: 142px;
+    height: 118px;
+    flex: 0 0 auto;
+    min-height: 0;
+    max-height: none;
+    margin-top: 0;
+  }
+
+  .guide-compare-rich .guide-compare-placeholder {
+    right: auto;
+    left: 0;
   }
 
   .guide-editorial,
@@ -1502,21 +1647,19 @@
     gap: 26px;
   }
 
+  .guide-styling-block-reverse {
+    margin-top: 34px;
+  }
+
   .guide-styling-block-reverse .guide-styling-images {
     order: -1;
   }
 
   .guide-styling-images {
-    gap: 5px;
-  }
-
-  .guide-styling-images-left,
-  .guide-styling-images-right {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .guide-styling-images-right::after {
-    display: none;
+    gap: 5px;
+    width: 100%;
   }
 
   .guide-styling-copy {
@@ -1575,5 +1718,234 @@
   .guides-main .guide-editorial-image::before,
   .guides-main .guide-cta-image::before {
     content: "IMG\A 100% x 220";
+  }
+}
+
+/* Final layout: LOW/RICH cards and Stylingguide product mixes only. */
+.guide-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(56px, 7vw, 104px);
+}
+
+.guide-compare-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  justify-self: stretch;
+}
+
+.guide-compare-body,
+.guide-compare-rich .guide-compare-body {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 360px;
+  align-items: center;
+  padding: 32px clamp(150px, 14vw, 210px) 32px 32px;
+  overflow: visible;
+}
+
+.guide-compare-rich .guide-compare-body {
+  padding-right: 32px;
+  padding-left: clamp(205px, 18vw, 275px);
+}
+
+.guide-compare-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.guide-compare-placeholder,
+.guide-compare-rich .guide-compare-placeholder {
+  position: absolute;
+  top: auto;
+  right: -34px;
+  bottom: 34px;
+  width: clamp(210px, 18vw, 280px);
+  height: clamp(230px, 21vw, 310px);
+  min-height: 0;
+  margin-top: 0;
+  pointer-events: none;
+}
+
+.guide-compare-rich .guide-compare-placeholder {
+  right: auto;
+  left: -34px;
+}
+
+.guide-compare-placeholder img,
+.guide-compare-rich .guide-compare-placeholder img {
+  object-fit: contain;
+}
+
+.guide-styling-block,
+.guide-styling-block-reverse {
+  display: grid;
+  max-width: var(--container-max);
+  margin-right: auto;
+  margin-left: auto;
+  align-items: start;
+  overflow: visible;
+}
+
+.guide-styling-block {
+  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+  gap: 56px;
+}
+
+.guide-styling-block-reverse {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+  gap: 56px;
+  margin-top: 44px;
+}
+
+.guide-styling-block-reverse .guide-styling-images {
+  order: 0;
+}
+
+.guide-styling-images,
+.guide-styling-images-left,
+.guide-styling-images-right {
+  display: grid;
+  width: 100%;
+  max-width: 520px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.guide-styling-images-right {
+  justify-self: end;
+}
+
+.guide-styling-placeholder {
+  display: flex;
+  width: 100%;
+  max-height: none;
+  aspect-ratio: 260 / 320;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--color-image-placeholder);
+  text-align: center;
+}
+
+.guide-styling-placeholder .image-placeholder-label,
+.guide-styling-placeholder small {
+  display: block;
+}
+
+.guide-styling-placeholder small {
+  margin-top: 0;
+  font-size: 0.78rem;
+}
+
+.guide-styling-placeholder small::before {
+  content: none;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .guide-compare-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .guide-compare-body,
+  .guide-compare-rich .guide-compare-body {
+    min-height: 390px;
+    padding: 28px 24px 170px;
+  }
+
+  .guide-compare-placeholder,
+  .guide-compare-rich .guide-compare-placeholder {
+    right: 18px;
+    bottom: 22px;
+    width: 150px;
+    height: 150px;
+  }
+
+  .guide-compare-rich .guide-compare-placeholder {
+    right: auto;
+    left: 18px;
+  }
+
+  .guide-styling-block,
+  .guide-styling-block-reverse {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .guide-styling-block-reverse {
+    margin-top: 34px;
+  }
+
+  .guide-styling-block-reverse .guide-styling-images {
+    order: -1;
+  }
+
+  .guide-styling-images,
+  .guide-styling-images-left,
+  .guide-styling-images-right {
+    max-width: none;
+  }
+
+  .guide-styling-placeholder {
+    aspect-ratio: 1.35 / 1;
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 767px) {
+  .guide-compare-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .guide-compare-body,
+  .guide-compare-rich .guide-compare-body {
+    min-height: 0;
+    padding: 28px 20px 140px;
+  }
+
+  .guide-compare-placeholder,
+  .guide-compare-rich .guide-compare-placeholder {
+    right: 32px;
+    bottom: 18px;
+    width: 142px;
+    height: 118px;
+  }
+
+  .guide-compare-rich .guide-compare-placeholder {
+    right: auto;
+    left: 0;
+  }
+
+  .guide-styling-block,
+  .guide-styling-block-reverse {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .guide-styling-block-reverse {
+    margin-top: 34px;
+  }
+
+  .guide-styling-block-reverse .guide-styling-images {
+    order: -1;
+  }
+
+  .guide-styling-images,
+  .guide-styling-images-left,
+  .guide-styling-images-right {
+    max-width: none;
+  }
+
+  .guide-styling-placeholder {
+    aspect-ratio: 1.35 / 1;
+    max-height: 180px;
   }
 }
