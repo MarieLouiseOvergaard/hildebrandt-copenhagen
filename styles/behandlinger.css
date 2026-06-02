@@ -630,3 +630,56 @@
     display: none;
   }
 }
+
+/* Curl DNA-kortet bruger samme rolige udtryk som produktoversigtens promo-kort. */
+.behandlinger-mixly .behandlinger-info-card {
+  border-radius: var(--button-radius);
+  background: var(--color-light-blue);
+  overflow: hidden;
+}
+
+.behandlinger-mixly .behandlinger-info-card h2 {
+  font-size: var(--font-h4-desktop);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.behandlinger-mixly .behandlinger-info-card p {
+  margin-top: 16px;
+}
+
+.behandlinger-mixly .behandlinger-info-card .button {
+  width: auto;
+  min-width: 130px;
+  height: 42px;
+  margin-top: 24px;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .behandlinger-mixly .behandlinger-info-card h2 {
+    font-size: var(--font-h4-tablet);
+  }
+
+  .behandlinger-mixly .behandlinger-info-card .button {
+    min-width: 112px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 767px) {
+  .behandlinger-mixly .behandlinger-info-card {
+    padding: 20px 16px;
+  }
+
+  .behandlinger-mixly .behandlinger-info-card h2 {
+    font-size: var(--font-h4-mobile);
+  }
+
+  .behandlinger-mixly .behandlinger-info-card .button {
+    width: auto;
+    min-width: 112px;
+    height: 38px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}

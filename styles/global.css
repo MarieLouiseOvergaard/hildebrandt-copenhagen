@@ -20,6 +20,7 @@
 ================================================== */
 /* Globale variabler: farver, fonte og storrelser, der genbruges paa sitet. */
 :root {
+  --dropdown-arrow-icon: url("../img/ikoner/dropdown-arrow.svg");
   --color-primary: #C27F33;
   --color-heading: #334C56;
   --color-text: #333333;
@@ -1048,5 +1049,11 @@ input[type="reset"],
 
   .product-hover-eye {
     display: grid;
+  }
+}
+
+@media (max-width: 1180px) {
+  .product-hover-eye {
+    display: none;
   }
 }

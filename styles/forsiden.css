@@ -11,12 +11,33 @@
 -------------------------------- */
 /* Styling for .hero. */
 .hero {
+  position: relative;
   display: flex;
+  min-height: 430px;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 22px var(--content-gutter) 54px;
+  justify-content: center;
+  padding: 30px var(--content-gutter);
+  color: #f7f7f7;
   background: var(--color-text);
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.hero > :not(.image-placeholder-label) {
+  position: relative;
+  z-index: 1;
+}
+
+.hero > .image-placeholder-label {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  white-space: pre-line;
+  transform: translate(-50%, -50%);
 }
 
 /* Styling for .hero-title. */
@@ -42,17 +63,6 @@
 }
 
 /* Styling for .hero-image. */
-.hero-image {
-  display: grid;
-  width: min(1110px, 100%);
-  aspect-ratio: 1110 / 300;
-  place-items: center;
-  margin-top: 24px;
-  overflow: hidden;
-}
-
-/* Styling for .hero-image. */
-.hero-image img,
 .om-belinda-billede img,
 .mixly-introduktion-billede img,
 .forside-behandling-kort-billede img,
@@ -66,7 +76,6 @@
 }
 
 /* Styling for .hero-image. */
-.hero-image img[src="#"],
 .om-belinda-billede img[src="#"],
 .mixly-introduktion-billede img[src="#"],
 .forside-behandling-kort-billede img[src="#"],
@@ -77,14 +86,6 @@
 }
 
 /* Styling for .hero-image. */
-.hero-image::before {
-  content: "IMG\A 1440 x 390";
-  white-space: pre;
-  text-align: center;
-}
-
-/* Styling for .hero-image. */
-.hero-image:has(img:not([src="#"]))::before,
 .om-belinda-billede:has(img:not([src="#"]))::before,
 .mixly-introduktion-billede:has(img:not([src="#"]))::before,
 .forside-behandling-kort-billede:has(img:not([src="#"]))::before,
@@ -105,6 +106,11 @@
 
 .hero-actions {
   margin-top: 28px;
+}
+
+.hero-actions .button-secondary {
+  border-color: #F7F7F7;
+  color: #F7F7F7;
 }
 
 /* ------------------------------
@@ -595,9 +601,8 @@
 /* Mobil: forside-sektioner */
 @media (max-width: 767px) {
   .hero {
-    min-height: 360px;
-    padding: 36px 34px 54px;
-    background: var(--color-text);
+    min-height: 320px;
+    padding: 30px 34px;
   }
 
   .hero-title {
@@ -607,10 +612,6 @@
 
   .hero-title-logo {
     width: min(390px, 100%);
-  }
-
-  .hero-image {
-    display: none;
   }
 
   .hero-actions {
@@ -992,7 +993,8 @@
 /* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero {
-    padding: 22px var(--content-gutter) 54px;
+    min-height: 380px;
+    padding: 30px var(--content-gutter);
   }
 
   .hero-title {
@@ -1002,10 +1004,6 @@
 
   .hero-title-logo {
     width: min(1044px, 90vw);
-  }
-
-  .hero-image {
-    display: grid;
   }
 
   .hero-actions {

@@ -117,10 +117,12 @@
   width: 100%;
   min-height: 46px;
   padding: 11px 12px;
-  border: 1px solid #cbdce2;
+  border: 0;
+  border-top: 1px solid var(--color-heading);
+  border-bottom: 1px solid var(--color-heading);
   border-radius: 0;
   color: var(--color-heading);
-  background: #f8fcfd;
+  background: transparent;
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.35;
@@ -142,7 +144,7 @@
 /* Readonly-felter faer svag baggrund, sae de faeles laeste. */
 .checkout-field input[readonly] {
   color: var(--color-heading);
-  background: var(--color-light-blue);
+  background: transparent;
 }
 
 /* Fokus-state for felter. */
@@ -150,7 +152,7 @@
 .checkout-field textarea:focus,
 .checkout-discount input:focus {
   border-color: var(--color-heading);
-  background: var(--color-white);
+  background: transparent;
   outline: none;
 }
 
@@ -267,8 +269,10 @@
   min-height: 44px;
   align-items: center;
   padding: 10px 12px;
-  border: 1px solid #cbdce2;
-  background: #f8fcfd;
+  border: 0;
+  border-top: 1px solid var(--color-heading);
+  border-bottom: 1px solid var(--color-heading);
+  background: transparent;
 }
 
 /* Knap der viser eller skjuler kommentarfeltet. */

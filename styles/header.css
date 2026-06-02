@@ -26,9 +26,22 @@
   top: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  width: min(280px, 42vw);
   align-items: center;
   justify-content: center;
   height: 100%;
+}
+
+.top-menu-logo::before {
+  position: absolute;
+  width: 100%;
+  height: 28px;
+  background: url("../img/Logo.png") center / contain no-repeat;
+  content: "";
+  filter: brightness(0) invert(97%);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 240ms ease, transform 240ms ease;
 }
 
 /* Styling for .top-menu-logo-image. */
@@ -37,6 +50,19 @@
   max-height: 35px;
   width: auto;
   display: block;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+
+.is-header-logo-expanded .top-menu-logo::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.is-header-logo-expanded .top-menu-logo-image {
+  opacity: 0;
+  transform: scale(0.82);
 }
 
 /* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
@@ -62,13 +88,12 @@
     pointer-events: auto;
   }
 
-.top-menu-logo::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 28px;
-    background: url("../img/Logo.png") center / contain no-repeat;
-    filter: brightness(0) invert(97%);
+}
+
+@media (max-width: 767px) {
+  .top-menu-logo::before {
+    opacity: 1;
+    transform: scale(1);
   }
 
   .top-menu-logo-image {
@@ -278,8 +303,12 @@
 /* Styling for .menu-link-arrow. */
 .menu-link-arrow {
   display: inline-block;
-  font-size: 12px;
-  line-height: 1;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  font-size: 0;
+  -webkit-mask: var(--dropdown-arrow-icon) center / contain no-repeat;
+  mask: var(--dropdown-arrow-icon) center / contain no-repeat;
   transition: transform 250ms ease;
 }
 
@@ -290,7 +319,7 @@
   top: 113px;
   left: 0;
   width: 100%;
-  padding: 58px 48px 38px;
+  padding: 50px 48px 40px;
   background: var(--color-light-blue);
   opacity: 0;
   visibility: hidden;
@@ -317,15 +346,16 @@
 /* Styling for .menu-dropdown-inner. */
 .menu-dropdown-inner {
   display: grid;
-  grid-template-columns: minmax(120px, 160px) minmax(140px, 180px) minmax(360px, 1fr);
-  gap: 72px;
-  max-width: 900px;
+  grid-template-columns: minmax(120px, 170px) minmax(140px, 190px) auto;
+  gap: clamp(36px, 4vw, 64px);
+  width: fit-content;
+  max-width: calc(100vw - 96px);
   margin: 0 auto;
 }
 
 /* Styling for .menu-dropdown. */
 .menu-dropdown[aria-label="Krølleuniversmenu"] .menu-dropdown-inner {
-  grid-template-columns: max-content 0 minmax(360px, 1fr);
+  grid-template-columns: max-content 0 auto;
 }
 
 /* Styling for .menu-dropdown. */
@@ -388,29 +418,58 @@
 /* Styling for .menu-dropdown-products. */
 .menu-dropdown-products {
   display: grid;
-  grid-template-columns: repeat(2, 165px);
-  gap: 60px;
+  grid-template-columns: repeat(2, 230px);
+  gap: clamp(30px, 4vw, 52px);
 }
 
 /* Styling for .menu-dropdown-product. */
 .menu-dropdown-product {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 /* Styling for .menu-dropdown-product-image. */
 .menu-dropdown-product-image {
   display: grid;
-  width: 165px;
-  height: 195px;
+  width: 230px;
+  aspect-ratio: 165 / 195;
   place-items: center;
   color: #111111;
-  background: transparent;
+  background: #d9d9d9;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 12px;
   font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-align: center;
   text-transform: uppercase;
+}
+
+/* Styling for .menu-dropdown-product-image. */
+.menu-dropdown-product-image img {
+  display: none;
+}
+
+.menu-dropdown-product-image > .image-placeholder-label,
+.mobile-menu-feature-image > .image-placeholder-label {
+  display: block !important;
+}
+
+/* Styling for .menu-dropdown-product-image. */
+.menu-dropdown-product-image .image-placeholder-label {
+  font-size: 12px;
+  white-space: pre-line;
+}
+
+/* Styling for .menu-dropdown-product-image. */
+.menu-dropdown-product-image .image-placeholder-label::before {
+  content: none;
+}
+
+/* Styling for .menu-dropdown-product-image. */
+.menu-dropdown-product-image .image-placeholder-label::after {
+  content: none;
 }
 
 /* Styling for .menu-dropdown-product-title. */
@@ -779,7 +838,9 @@
   display: grid;
   grid-template-columns: 1fr auto;
   min-height: 38px;
-  border: 1px solid #ececec;
+  border: 0;
+  border-top: 1px solid var(--color-heading);
+  border-bottom: 1px solid var(--color-heading);
 }
 
 /* Styling for .side-cart-discount. */
@@ -1185,12 +1246,14 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  .mobile-menu-panel-products {
+  .mobile-menu-panel-products,
+  .mobile-menu-panel-curl {
     display: flex;
   }
 
-  .mobile-menu.is-open:not(.is-products) .mobile-menu-panel-main,
-  .mobile-menu.is-open.is-products .mobile-menu-panel-products {
+  .mobile-menu.is-open:not(.is-products):not(.is-curl) .mobile-menu-panel-main,
+  .mobile-menu.is-open.is-products .mobile-menu-panel-products,
+  .mobile-menu.is-open.is-curl .mobile-menu-panel-curl {
     opacity: 1;
     pointer-events: auto;
     transform: translateX(0);
@@ -1218,7 +1281,8 @@
 
   .mobile-menu-close,
   .mobile-menu-back,
-  .mobile-menu-link-products {
+  .mobile-menu-link-products,
+  .mobile-menu-link-curl {
     border: 0;
     background: transparent;
     font: inherit;
@@ -1289,8 +1353,19 @@
   }
 
   .mobile-menu-arrow {
-    font-size: 28px;
-    line-height: 1;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: currentColor;
+    font-size: 0;
+    -webkit-mask: var(--dropdown-arrow-icon) center / contain no-repeat;
+    mask: var(--dropdown-arrow-icon) center / contain no-repeat;
+    transition: transform 250ms ease;
+  }
+
+  .mobile-menu.is-products .mobile-menu-link-products .mobile-menu-arrow,
+  .mobile-menu.is-curl .mobile-menu-link-curl .mobile-menu-arrow {
+    transform: rotate(180deg);
   }
 
   .mobile-menu-product-list {
@@ -1318,7 +1393,24 @@
   }
 
   .mobile-menu-feature-image {
+    display: grid;
     height: 328px;
-    background: var(--color-turkis);
+    place-items: center;
+    color: #111111;
+    background: #d9d9d9;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu-feature-image img {
+    display: none;
+  }
+
+  .mobile-menu-feature-image .image-placeholder-label {
+    white-space: pre-line;
   }
 }

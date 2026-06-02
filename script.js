@@ -2,11 +2,13 @@ const mobileMenu = document.querySelector(".mobile-menu");
 const menuToggle = document.querySelector(".menu-toggle");
 const menuClose = document.querySelector(".mobile-menu-close");
 const productsToggle = document.querySelector(".mobile-menu-link-products");
-const productsBack = document.querySelector(".mobile-menu-back");
+const curlToggle = document.querySelector(".mobile-menu-link-curl");
+const mobileMenuBackButtons = document.querySelectorAll(".mobile-menu-back");
 const mobileMenuScroll = document.querySelector(".mobile-menu-scroll");
 const mobileBookingMedia = window.matchMedia("(max-width: 1180px)");
 const mainContent = document.querySelector("main");
 const mobileBookingTrigger = mainContent?.querySelector(":scope > section, :scope > article, :scope > div") || mainContent;
+const isFrontPage = document.body.querySelector(".hero") && document.body.querySelector(".footer--frontpage");
 
 function prepareButtonUnderlines() {
   const underlineButtons = document.querySelectorAll(
@@ -467,14 +469,14 @@ setActiveMainNavigation();
 
 function openMobileMenu(event) {
   mobileMenu.classList.add("is-open");
-  mobileMenu.classList.remove("is-products");
+  mobileMenu.classList.remove("is-products", "is-curl");
   mobileMenu.setAttribute("aria-hidden", "false");
   menuToggle.setAttribute("aria-expanded", "true");
   document.body.classList.add("is-menu-open");
 }
 
 function closeMobileMenu() {
-  mobileMenu.classList.remove("is-open", "is-products");
+  mobileMenu.classList.remove("is-open", "is-products", "is-curl");
   mobileMenu.setAttribute("aria-hidden", "true");
   menuToggle.setAttribute("aria-expanded", "false");
   document.body.classList.remove("is-menu-open");
@@ -495,21 +497,33 @@ function toggleMobileMenu(event) {
 
 function showProductsMenu() {
   mobileMenu.classList.add("is-products");
+  mobileMenu.classList.remove("is-curl");
+  if (mobileMenuScroll) {
+    mobileMenuScroll.scrollTop = 0;
+  }
+}
+
+function showCurlMenu() {
+  mobileMenu.classList.add("is-curl");
+  mobileMenu.classList.remove("is-products");
   if (mobileMenuScroll) {
     mobileMenuScroll.scrollTop = 0;
   }
 }
 
 function showMainMenu() {
-  mobileMenu.classList.remove("is-products");
+  mobileMenu.classList.remove("is-products", "is-curl");
 }
 
 // Mobilmenuen styres kun, hvis elementerne findes på siden.
-if (mobileMenu && menuToggle && menuClose && productsToggle && productsBack) {
+if (mobileMenu && menuToggle && menuClose && productsToggle) {
   menuToggle.addEventListener("click", toggleMobileMenu);
   menuClose.addEventListener("click", closeMobileMenu);
   productsToggle.addEventListener("click", showProductsMenu);
-  productsBack.addEventListener("click", showMainMenu);
+  curlToggle?.addEventListener("click", showCurlMenu);
+  mobileMenuBackButtons.forEach((backButton) => {
+    backButton.addEventListener("click", showMainMenu);
+  });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && mobileMenu.classList.contains("is-open")) {
@@ -519,7 +533,7 @@ if (mobileMenu && menuToggle && menuClose && productsToggle && productsBack) {
 }
 
 const footerAccordionItems = Array.from(document.querySelectorAll(".footer > section, .footer > nav"));
-const footerAccordionMedia = window.matchMedia("(max-width: 1180px)");
+const footerAccordionMedia = window.matchMedia("(max-width: 1199px)");
 const salonbookUrl = "https://salonbook.one/?henriksencopenhagen#/";
 
 document.querySelectorAll(".footer-booking").forEach((link) => {
@@ -604,6 +618,7 @@ function updateStickyBooking() {
 function updateMobileNavPosition() {
   const isFixed = window.scrollY > 0;
   document.body.classList.toggle("is-mobile-nav-fixed", isFixed);
+  document.body.classList.toggle("is-header-logo-expanded", !isFrontPage || window.scrollY > 8);
   updateStickyBooking();
 }
 
@@ -993,6 +1008,22 @@ function normalizeProductHref(href) {
   return href.replace(/^(\.\.\/)+/, "");
 }
 
+function updateProductCardSizeCount(card, sizes = []) {
+  const sizeLabel = card.querySelector(".product-meta span:last-child");
+
+  if (!sizeLabel) {
+    return;
+  }
+
+  const originalLabel = sizeLabel.dataset.productSizes || sizeLabel.textContent.trim();
+  const sizeCount = sizes.filter((size) => size.label).length || originalLabel.split("/").filter((size) => size.trim()).length;
+
+  if (sizeCount > 1) {
+    sizeLabel.dataset.productSizes = originalLabel;
+    sizeLabel.textContent = `${sizeCount} størrelser`;
+  }
+}
+
 function normalizeProductCardSizes() {
   document.querySelectorAll(".product-card").forEach((card) => {
     const titleLink = card.querySelector("h4 a");
@@ -1023,6 +1054,8 @@ function normalizeProductCardSizes() {
     if (size && metaItems[1]) {
       metaItems[1].textContent = size;
     }
+
+    updateProductCardSizeCount(card);
   });
 }
 
@@ -1070,6 +1103,8 @@ function normalizeProductSetCard(card) {
   if (update.size && metaItems[1]) {
     metaItems[1].textContent = update.size;
   }
+
+  updateProductCardSizeCount(card);
 }
 
 function organizeProductSets() {
@@ -1114,6 +1149,87 @@ function organizeProductSets() {
   });
 }
 
+function insertProductImagePlaceholderCards() {
+  const updatePlaceholderSize = (placeholder) => {
+    const { width, height } = placeholder.getBoundingClientRect();
+
+    if (!width || !height) {
+      return;
+    }
+
+    const sizeLabel = `${Math.round(width)} x ${Math.round(height)} px`;
+    placeholder.querySelector("span").textContent = sizeLabel;
+    placeholder.setAttribute("aria-label", `Billedpladsholder ${sizeLabel}`);
+  };
+
+  document.querySelectorAll("[data-product-section]").forEach((section) => {
+    const row = section.querySelector(".product-row");
+
+    if (!row || row.querySelector(".product-image-placeholder-card")) {
+      return;
+    }
+
+    const cards = Array.from(row.querySelectorAll(":scope > .product-card"));
+
+    if (cards.length < 2) {
+      return;
+    }
+
+    const placeholder = document.createElement("article");
+    placeholder.className = "product-image-placeholder-card";
+    placeholder.setAttribute("aria-label", "Billedpladsholder");
+    placeholder.innerHTML = '<span aria-hidden="true"></span>';
+
+    const insertIndex = 1 + Math.floor(Math.random() * (cards.length - 1));
+    cards[insertIndex].before(placeholder);
+
+    if ("ResizeObserver" in window) {
+      const placeholderObserver = new ResizeObserver(() => updatePlaceholderSize(placeholder));
+      placeholderObserver.observe(placeholder);
+    } else {
+      window.addEventListener("resize", () => updatePlaceholderSize(placeholder));
+    }
+
+    requestAnimationFrame(() => updatePlaceholderSize(placeholder));
+  });
+}
+
+function initializeImagePlaceholderSizes() {
+  const placeholders = document.querySelectorAll(
+    ".menu-dropdown-product-image, .mobile-menu-feature-image, .hero"
+  );
+
+  const updatePlaceholderSize = (placeholder) => {
+    const { width, height } = placeholder.getBoundingClientRect();
+
+    if (!width || !height) {
+      return;
+    }
+
+    let label = placeholder.querySelector(".image-placeholder-label");
+
+    if (!label) {
+      label = document.createElement("span");
+      label.className = "image-placeholder-label";
+      label.setAttribute("aria-hidden", "true");
+      placeholder.append(label);
+    }
+
+    label.textContent = `IMG\n${Math.round(width)} x ${Math.round(height)} px`;
+  };
+
+  placeholders.forEach((placeholder) => {
+    if ("ResizeObserver" in window) {
+      const placeholderObserver = new ResizeObserver(() => updatePlaceholderSize(placeholder));
+      placeholderObserver.observe(placeholder);
+    } else {
+      window.addEventListener("resize", () => updatePlaceholderSize(placeholder));
+    }
+
+    requestAnimationFrame(() => updatePlaceholderSize(placeholder));
+  });
+}
+
 function setProductFilter(filter) {
   productSections.forEach((section) => {
     const isVisible = filter === "all" || section.dataset.productSection === filter;
@@ -1152,6 +1268,8 @@ function centerActiveProductFilter() {
 normalizeStartPackageCards();
 normalizeProductCardSizes();
 organizeProductSets();
+insertProductImagePlaceholderCards();
+initializeImagePlaceholderSizes();
 
 if (productSections.length) {
   setProductFilter(document.body.dataset.productPageFilter || "all");
@@ -1322,7 +1440,7 @@ if (reviewSlider) {
 }
 
 function setupSliderIndicators(row, options = {}) {
-  const itemSelector = options.itemSelector || ".product-card, .product-promo-card";
+  const itemSelector = options.itemSelector || ".product-card, .product-promo-card, .product-image-placeholder-card";
   const label = options.label || "produktgruppe";
   const alwaysShow = Boolean(options.alwaysShow);
   const indicators = row.nextElementSibling;
@@ -1387,7 +1505,7 @@ function setupSliderIndicators(row, options = {}) {
 
 productRows.forEach((row) => {
   setupSliderIndicators(row, {
-    itemSelector: ".product-card, .product-promo-card",
+    itemSelector: ".product-card, .product-promo-card, .product-image-placeholder-card",
     label: "produktgruppe",
     alwaysShow: document.body.dataset.productPageFilter === "all",
   });
@@ -1781,7 +1899,8 @@ function getProductFromCard(card) {
 
 function cardMayHaveMultipleSizes(card, sizes = []) {
   const meta = Array.from(card.querySelectorAll(".product-meta span")).map((item) => item.textContent.trim());
-  return sizes.length > 1 || /^fra\b/i.test(meta[0] || "") || (meta[1] || "").includes("/");
+  const originalSizes = card.querySelector(".product-meta span:last-child")?.dataset.productSizes || meta[1] || "";
+  return sizes.length > 1 || /^fra\b/i.test(meta[0] || "") || originalSizes.includes("/");
 }
 
 function getProductFromCardVariant(card, variant) {
@@ -2890,20 +3009,6 @@ let quickAddSheet = null;
 let quickView = null;
 let lastQuickViewTrigger = null;
 
-function getSelectedQuickAddVariant(control) {
-  const selectedLabel = control.dataset.selectedSize || "";
-  return control.quickAddData?.sizes?.find((size) => size.label === selectedLabel) || null;
-}
-
-function updateQuickAddSelectedLabel(control) {
-  const label = control.querySelector(".quick-add-size-label");
-  const selectedVariant = getSelectedQuickAddVariant(control);
-
-  if (label) {
-    label.textContent = selectedVariant ? `✓ ${selectedVariant.label}` : "Vælg størrelse ▼";
-  }
-}
-
 function closeQuickAddDropdown(control = openQuickAddDropdown) {
   if (!control) {
     return;
@@ -2911,8 +3016,7 @@ function closeQuickAddDropdown(control = openQuickAddDropdown) {
 
   window.clearTimeout(control.quickAddCloseTimer);
   control.classList.remove("is-open");
-  control.classList.remove("needs-size");
-  control.querySelector(".quick-add-size-toggle")?.setAttribute("aria-expanded", "false");
+  control.querySelector(".quick-add-submit")?.setAttribute("aria-expanded", "false");
 
   const dropdown = control.querySelector(".quick-add-dropdown");
 
@@ -2929,7 +3033,7 @@ function closeQuickAddDropdown(control = openQuickAddDropdown) {
   }
 }
 
-function openQuickAddDropdownFor(control, showHelp = false) {
+function openQuickAddDropdownFor(control) {
   if (openQuickAddDropdown && openQuickAddDropdown !== control) {
     closeQuickAddDropdown(openQuickAddDropdown);
   }
@@ -2937,31 +3041,13 @@ function openQuickAddDropdownFor(control, showHelp = false) {
   const dropdown = control.querySelector(".quick-add-dropdown");
   window.clearTimeout(control.quickAddCloseTimer);
   control.classList.add("is-open");
-  control.classList.toggle("needs-size", showHelp);
-  control.querySelector(".quick-add-size-toggle")?.setAttribute("aria-expanded", "true");
+  control.querySelector(".quick-add-submit")?.setAttribute("aria-expanded", "true");
 
   if (dropdown) {
     dropdown.hidden = false;
   }
 
   openQuickAddDropdown = control;
-}
-
-function showQuickAddAddedState(control) {
-  const submit = control.querySelector(".quick-add-submit");
-
-  if (!submit) {
-    return;
-  }
-
-  window.clearTimeout(control.quickAddAddedTimer);
-  control.classList.add("is-added");
-  submit.textContent = "Tilføjet til kurv";
-
-  control.quickAddAddedTimer = window.setTimeout(() => {
-    control.classList.remove("is-added");
-    submit.textContent = "Tilføj til kurv";
-  }, 1800);
 }
 
 function renderQuickAddOptions(control, data) {
@@ -2979,11 +3065,7 @@ function renderQuickAddOptions(control, data) {
     button.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
-      control.dataset.selectedSize = size.label;
-      control.classList.remove("needs-size");
-      updateQuickAddSelectedLabel(control);
       closeQuickAddDropdown(control);
-      showQuickAddAddedState(control);
 
       if (control.quickAddCard) {
         addToCart(getProductFromCardVariant(control.quickAddCard, size));
@@ -3004,7 +3086,6 @@ function replaceCardAddButtonWithQuickAdd(card, data) {
   if (addButton.classList.contains("quick-add-control")) {
     addButton.quickAddData = data;
     renderQuickAddOptions(addButton, data);
-    updateQuickAddSelectedLabel(addButton);
     return;
   }
 
@@ -3018,13 +3099,11 @@ function replaceCardAddButtonWithQuickAdd(card, data) {
   control.innerHTML = `
     <div class="quick-add-menu">
       <div class="quick-add-dropdown" hidden>
+        <p class="quick-add-heading">Vælg størrelse</p>
         <div class="quick-add-options"></div>
       </div>
-      <button class="quick-add-size-toggle" type="button" aria-expanded="false">
-        <span class="quick-add-size-label">Vælg størrelse ▼</span>
-      </button>
+      <button class="quick-add-submit" type="button" aria-expanded="false">Tilføj til kurv</button>
     </div>
-    <button class="quick-add-submit" type="button">Tilføj til kurv</button>
   `;
 
   renderQuickAddOptions(control, data);
@@ -3033,7 +3112,7 @@ function replaceCardAddButtonWithQuickAdd(card, data) {
     event.stopPropagation();
     handleProductCardAdd(card, event);
   });
-  control.addEventListener("mouseleave", () => {
+  card.addEventListener("mouseleave", () => {
     closeQuickAddDropdown(control);
 
     if (control.contains(document.activeElement) && typeof document.activeElement.blur === "function") {
@@ -3047,6 +3126,8 @@ async function enhanceCardQuickAdd(card) {
   const data = getQuickAddData(card);
   const sizes = data.sizes.filter((size) => size.label);
 
+  updateProductCardSizeCount(card, sizes);
+
   if (cardMayHaveMultipleSizes(card, sizes)) {
     replaceCardAddButtonWithQuickAdd(card, data);
   }
@@ -3058,6 +3139,7 @@ async function enhanceCardQuickAdd(card) {
     return;
   }
 
+  updateProductCardSizeCount(card, enrichedData.sizes);
   replaceCardAddButtonWithQuickAdd(card, enrichedData);
 }
 
@@ -3069,12 +3151,14 @@ function createQuickAddSheet() {
     <div class="quick-add-sheet-backdrop" data-quick-add-close></div>
     <section class="quick-add-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="quick-add-sheet-title">
       <button class="quick-add-sheet-close" type="button" aria-label="Luk" data-quick-add-close>×</button>
-      <h2 id="quick-add-sheet-title">Vælg størrelse for at tilføje til kurv</h2>
+      <h2 id="quick-add-sheet-title">Vælg størrelse</h2>
       <div class="quick-add-sheet-options"></div>
     </section>
   `;
 
-  sheet.addEventListener("click", (event) => {
+  const panel = sheet.querySelector(".quick-add-sheet-panel");
+  sheet.quickAddPanel = panel;
+  const handleSheetClick = (event) => {
     if (event.target.closest("[data-quick-add-close]")) {
       closeQuickAddSheet();
       return;
@@ -3095,7 +3179,10 @@ function createQuickAddSheet() {
       addToCart(getProductFromCardVariant(sheet.quickAddCard, selectedVariant));
       return;
     }
-  });
+  };
+
+  sheet.addEventListener("click", handleSheetClick);
+  panel.addEventListener("click", handleSheetClick);
 
   document.body.append(sheet);
   return sheet;
@@ -3108,6 +3195,8 @@ function openQuickAddSheet(card, data) {
   sheet.quickAddData = data;
   sheet.dataset.selectedSize = "";
   sheet.classList.remove("show-help");
+  const panel = sheet.quickAddPanel;
+  const frame = getCardImageFrame(card);
 
   sheet.querySelector(".quick-add-sheet-options").replaceChildren(...data.sizes.filter((size) => size.label).map((size) => {
     const button = document.createElement("button");
@@ -3119,7 +3208,11 @@ function openQuickAddSheet(card, data) {
     return button;
   }));
 
+  card.scrollIntoView({ block: "nearest", inline: "nearest" });
   sheet.hidden = false;
+  panel.hidden = false;
+  card.classList.add("is-touch-quick-add-open");
+  (frame || card).append(panel);
   document.body.classList.add("is-quick-add-sheet-open");
 }
 
@@ -3128,8 +3221,22 @@ function closeQuickAddSheet() {
     return;
   }
 
+  const panel = quickAddSheet.quickAddPanel;
+  const card = quickAddSheet.quickAddCard;
+
+  if (panel) {
+    panel.hidden = true;
+    quickAddSheet.append(panel);
+  }
+
+  card?.classList.remove("is-touch-quick-add-open");
   quickAddSheet.hidden = true;
+  quickAddSheet.quickAddCard = null;
   document.body.classList.remove("is-quick-add-sheet-open");
+
+  if (document.activeElement && typeof document.activeElement.blur === "function") {
+    document.activeElement.blur();
+  }
 }
 
 function createQuickView() {
@@ -3281,27 +3388,14 @@ async function handleProductCardAdd(card, event) {
   const control = event.target.closest(".quick-add-control");
 
   if (control) {
-    if (event.target.closest(".quick-add-size-toggle")) {
+    if (event.target.closest(".quick-add-submit")) {
       if (control.classList.contains("is-open")) {
         closeQuickAddDropdown(control);
         return;
       }
 
-      openQuickAddDropdownFor(control, false);
+      openQuickAddDropdownFor(control);
       return;
-    }
-
-    if (event.target.closest(".quick-add-submit")) {
-      const selectedVariant = getSelectedQuickAddVariant(control);
-
-      if (!selectedVariant) {
-        openQuickAddDropdownFor(control, true);
-        return;
-      }
-
-      closeQuickAddDropdown(control);
-      showQuickAddAddedState(control);
-      addToCart(getProductFromCardVariant(card, selectedVariant));
     }
 
     return;
@@ -3319,7 +3413,7 @@ async function handleProductCardAdd(card, event) {
       const control = card.querySelector(".quick-add-control");
 
       if (control) {
-        openQuickAddDropdownFor(control, true);
+        openQuickAddDropdownFor(control);
       }
 
       return;
@@ -3335,6 +3429,16 @@ async function handleProductCardAdd(card, event) {
 document.addEventListener("click", (event) => {
   if (openQuickAddDropdown && !event.target.closest(".quick-add-control")) {
     closeQuickAddDropdown();
+  }
+
+  if (
+    quickAddSheet &&
+    !quickAddSheet.hidden &&
+    window.matchMedia("(max-width: 767px)").matches &&
+    !event.target.closest(".quick-add-sheet-panel") &&
+    !event.target.closest(".product-add-button")
+  ) {
+    closeQuickAddSheet();
   }
 });
 

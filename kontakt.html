@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- Filkommentar: kontakt.html indeholder HTML-strukturen for denne side. -->
 <html lang="da">
 <head>
@@ -155,13 +155,10 @@
             <a class="mobile-menu-link" href="behandlinger.html">Behandlinger</a>
           </li>
           <li class="mobile-menu-item">
-            <a class="mobile-menu-link" href="kroelleunivers.html">Krølleunivers</a>
-          </li>
-          <li class="mobile-menu-item">
-            <a class="mobile-menu-link" href="guides.html">Din guide til LOW og RICH</a>
-          </li>
-          <li class="mobile-menu-item">
-            <a class="mobile-menu-link" href="blog.html">Flere krølleguides og tips</a>
+            <button class="mobile-menu-link mobile-menu-link-curl" type="button">
+              Krølleunivers
+              <span class="mobile-menu-arrow" aria-hidden="true">›</span>
+            </button>
           </li>
           <li class="mobile-menu-item">
             <a class="mobile-menu-link" href="omos.html">Historien bag Hildebrandt</a>
@@ -215,6 +212,29 @@
         </div>
       </div>
     </div>
+    <div class="mobile-menu-panel mobile-menu-panel-curl" data-mobile-panel="curl">
+      <div class="mobile-menu-header">
+        <button class="mobile-menu-back" type="button" aria-label="Tilbage til menu">‹</button>
+        <p class="mobile-menu-title">Krølleunivers</p>
+      </div>
+
+      <div class="mobile-menu-scroll">
+        <!-- Navigation: links og menupunkter til resten af sitet. -->
+        <nav class="mobile-menu-nav" aria-label="Krølleuniversnavigation">
+          <ul class="mobile-menu-list mobile-menu-product-list">
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="kroelleunivers.html">Curl DNA fordi ingen krøller er ens</a>
+            </li>
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="guides.html">Din guide til LOW og RICH</a>
+            </li>
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="blog.html">Flere krølleguides og tips</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </div>
 
   <!-- Main: sidens primaere indhold starter her. -->
@@ -226,7 +246,7 @@
       <p>Har du spørgsmål til booking, produkter eller din hårtype?</p>
       <div class="kontakt-hero-knapper">
         <a class="button button-primary" href="https://salonbook.one/?henriksencopenhagen#/">Book tid</a>
-        <a class="button button-secondary" href="#kontakt-formular">Send en besked</a>
+        <a class="button button-secondary" href="omos.html"><span class="button-label">Lær mig at kende</span></a>
       </div>
     </section>
 
@@ -267,17 +287,17 @@
         <form class="kontakt-form" action="#" method="post">
           <div class="kontakt-form-felt">
             <label for="kontakt-navn">Navn</label>
-            <input id="kontakt-navn" name="navn" type="text" autocomplete="name">
+            <input id="kontakt-navn" name="navn" type="text" placeholder="Navn" autocomplete="name">
           </div>
 
           <div class="kontakt-form-felt">
             <label for="kontakt-email">E-mail</label>
-            <input id="kontakt-email" name="email" type="email" autocomplete="email">
+            <input id="kontakt-email" name="email" type="email" placeholder="E-mail" autocomplete="email">
           </div>
 
           <div class="kontakt-form-felt">
             <label for="kontakt-besked">Besked</label>
-            <textarea id="kontakt-besked" name="besked" rows="6"></textarea>
+            <textarea id="kontakt-besked" name="besked" rows="6" placeholder="Skriv din besked her"></textarea>
           </div>
 
           <button class="button button-secondary" type="submit">Send besked</button>
@@ -420,8 +440,7 @@
     <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
     <address class="footer-kontakt-adresse">
       <span class="footer-kontakt-brand">Hildebrandt Copenhagen x Mixly</span>
-      <span>Nørre Fasanvej 163</span><br>
-      <span class="footer-kontakt-city">2000 Frederiksberg</span>
+      <span>Nordre Fasanvej 163, 2000 Frederiksberg</span><br>
       <a href="tel:+4530741430">+45 30 74 14 30</a><br>
       <a href="mailto:hej@hildebrandtcopenhagen.dk">hej@hildebrandtcopenhagen.dk</a>
     </address>
@@ -519,4 +538,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-

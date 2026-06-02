@@ -1764,10 +1764,10 @@
 .guide-compare-rich .guide-compare-placeholder {
   position: absolute;
   top: auto;
-  right: -34px;
-  bottom: 34px;
-  width: clamp(210px, 18vw, 280px);
-  height: clamp(230px, 21vw, 310px);
+  right: -22px;
+  bottom: 8%;
+  width: 46%;
+  height: 68%;
   min-height: 0;
   margin-top: 0;
   pointer-events: none;
@@ -1775,7 +1775,7 @@
 
 .guide-compare-rich .guide-compare-placeholder {
   right: auto;
-  left: -34px;
+  left: -22px;
 }
 
 .guide-compare-placeholder img,
@@ -1862,15 +1862,15 @@
 
   .guide-compare-placeholder,
   .guide-compare-rich .guide-compare-placeholder {
-    right: 18px;
-    bottom: 22px;
-    width: 150px;
-    height: 150px;
+    right: -18px;
+    bottom: 6%;
+    width: 38%;
+    height: 35%;
   }
 
   .guide-compare-rich .guide-compare-placeholder {
     right: auto;
-    left: 18px;
+    left: -18px;
   }
 
   .guide-styling-block,
@@ -1913,10 +1913,10 @@
 
   .guide-compare-placeholder,
   .guide-compare-rich .guide-compare-placeholder {
-    right: 32px;
-    bottom: 18px;
-    width: 142px;
-    height: 118px;
+    right: 24px;
+    bottom: 8%;
+    width: 34%;
+    height: 28%;
   }
 
   .guide-compare-rich .guide-compare-placeholder {

@@ -512,6 +512,18 @@
   transform: rotate(180deg);
 }
 
+.produkt-skabelon-accordion-button span:last-child {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  background-color: currentColor;
+  font-size: 0;
+  -webkit-mask: var(--dropdown-arrow-icon) center / contain no-repeat;
+  mask: var(--dropdown-arrow-icon) center / contain no-repeat;
+  transition: transform 180ms ease;
+}
+
 /* Styling for .produkt-skabelon-accordion-panel. */
 .produkt-skabelon-accordion-panel {
   padding: 0 0 22px 40px;
@@ -975,7 +987,7 @@
 
 /* Styling for .quick-add-control. */
 .quick-add-control {
-  display: flex;
+  display: block;
   width: min(82%, 257px);
   padding: 0;
   background: transparent;
@@ -983,24 +995,13 @@
 }
 
 /* Styling for .quick-add-menu. */
-.quick-add-menu,
-.quick-add-submit {
+.quick-add-menu {
+  position: relative;
+  width: 100%;
   min-height: inherit;
 }
 
-/* Styling for .quick-add-menu. */
-.quick-add-menu {
-  position: relative;
-  width: 58%;
-}
-
-/* Styling for .quick-add-submit. */
-.quick-add-submit {
-  width: 42%;
-}
-
-/* Styling for .quick-add-size-toggle. */
-.quick-add-size-toggle,
+/* Styling for knapperne i quick-add-menuen. */
 .quick-add-submit,
 .quick-add-option {
   border: 0;
@@ -1012,43 +1013,41 @@
   text-transform: inherit;
 }
 
-/* Styling for .quick-add-size-toggle. */
-.quick-add-size-toggle,
+/* Styling for quick-add-knappen. */
 .quick-add-submit {
-  display: grid;
+  display: flex;
   width: 100%;
   height: 100%;
   min-height: inherit;
-  place-items: center;
-  padding: 0 10px;
-}
-
-/* Styling for .quick-add-size-toggle. */
-.quick-add-size-toggle {
-  background: var(--color-white);
-  color: var(--color-heading);
-  font-family: var(--font-body);
-  font-size: 12.5px;
-  letter-spacing: 0.01em;
-  line-height: 1.1;
-  text-transform: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
 }
 
 /* Styling for .quick-add-submit. */
 .quick-add-submit {
-  width: 42%;
+  border-radius: var(--button-radius);
   background: var(--color-heading);
   color: var(--color-white);
-  font-size: 13px;
-  letter-spacing: 0.12em;
+  font-family: var(--font-heading);
+  letter-spacing: 0.16em;
+  white-space: nowrap;
 }
 
-/* Styling for .quick-add-size-label. */
-.quick-add-size-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
+.quick-add-control.is-open .quick-add-submit {
+  border-radius: 0 0 var(--button-radius) var(--button-radius);
+}
+
+.quick-add-heading {
+  margin: 0;
+  padding: 11px 14px 9px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 /* Styling for .quick-add-dropdown. */
@@ -1060,10 +1059,12 @@
   z-index: 4;
   border: 1px solid var(--color-heading);
   border-bottom: 0;
+  border-radius: var(--button-radius) var(--button-radius) 0 0;
   background: var(--color-white);
   color: var(--color-heading);
   box-shadow: 0 -8px 18px rgba(51, 76, 86, 0.12);
   opacity: 0;
+  overflow: hidden;
   transform: translateY(8px);
   transition: opacity 180ms ease, transform 180ms ease;
 }
@@ -1072,16 +1073,6 @@
 .quick-add-control.is-open .quick-add-dropdown {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Styling for .quick-add-control.is-added. */
-.quick-add-control.is-added .quick-add-menu {
-  display: none;
-}
-
-/* Styling for .quick-add-control.is-added. */
-.quick-add-control.is-added .quick-add-submit {
-  width: 100%;
 }
 
 /* Styling for .quick-add-help. */
@@ -1100,8 +1091,8 @@
 .quick-add-option {
   display: block;
   width: 100%;
-  min-height: 38px;
-  padding: 0 12px;
+  min-height: 42px;
+  padding: 0 14px;
   color: var(--color-heading);
   font-size: 11px;
   letter-spacing: 0.04em;
@@ -1112,6 +1103,13 @@
 .quick-add-option:hover,
 .quick-add-option:focus-visible {
   background: var(--color-light-blue);
+}
+
+@media (hover: hover) and (min-width: 1181px) {
+  .produkt-skabelon-related-card:not(:hover) .product-add-button {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
 }
 
 /* Styling for .is-quick-add-sheet-open. */
@@ -1911,5 +1909,169 @@
   .produkt-skabelon-related-card:focus-within .product-add-button {
     opacity: 1;
     transform: translate(-50%, 0);
+  }
+}
+
+/* Tablet og mobil: stabil touch-knap og kortforankret stoerrelsesmenu. */
+@media (max-width: 1180px) {
+  .produkt-skabelon-related-card {
+    position: relative;
+  }
+
+  .produkt-skabelon-related-card .product-add-button {
+    top: 12px;
+    right: 12px;
+    bottom: auto;
+    left: auto;
+    display: grid;
+    width: 48px;
+    height: 48px;
+    min-height: 48px;
+    place-items: center;
+    padding: 0;
+    border-radius: var(--button-radius);
+    background: var(--color-heading);
+    box-shadow: 0 4px 14px rgba(51, 76, 86, 0.14);
+    opacity: 1;
+    transform: none;
+  }
+
+  .produkt-skabelon-related-card .product-add-button-text {
+    display: none;
+  }
+
+  .produkt-skabelon-related-card .product-add-button .product-add-button-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) saturate(100%) invert(93%) sepia(9%) saturate(626%) hue-rotate(164deg) brightness(103%) contrast(92%);
+  }
+
+  .produkt-skabelon-related-card:hover .product-add-button,
+  .produkt-skabelon-related-card:focus-within .product-add-button {
+    transform: none;
+  }
+
+  .quick-add-sheet-backdrop {
+    position: fixed;
+    z-index: 4090;
+    inset: 0;
+  }
+
+  .produkt-skabelon-related-card.is-touch-quick-add-open {
+    z-index: 4110;
+    overflow: visible;
+  }
+
+  .produkt-skabelon-related-card .quick-add-sheet-panel {
+    position: absolute;
+    z-index: 4111;
+    top: 68px;
+    right: 12px;
+    bottom: auto;
+    left: auto;
+    display: grid;
+    width: min(240px, calc(100% - 24px));
+    max-width: calc(100% - 24px);
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--color-heading);
+    border-radius: var(--button-radius);
+    background: var(--color-white);
+    box-shadow: 0 10px 24px rgba(51, 76, 86, 0.16);
+  }
+
+  .quick-add-sheet-close {
+    top: 4px;
+    right: 4px;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .quick-add-sheet-panel h2 {
+    padding-right: 40px;
+    font-size: var(--font-body-mobile);
+    line-height: 1.35;
+  }
+
+  .quick-add-sheet-option {
+    min-height: 44px;
+  }
+}
+
+/* Mobil: vis kun stoerrelsesvalget inde i det eksisterende produktkort. */
+@media (max-width: 767px) {
+  .is-quick-add-sheet-open {
+    overflow: auto;
+  }
+
+  .quick-add-sheet {
+    pointer-events: none;
+  }
+
+  .quick-add-sheet-backdrop {
+    display: none;
+  }
+
+  .produkt-skabelon-related-card .quick-add-sheet-panel {
+    top: 68px;
+    right: 12px;
+    width: calc(100% - 24px);
+    max-width: calc(100% - 24px);
+    gap: 6px;
+    padding: 10px;
+    border: 0;
+    border-radius: var(--button-radius);
+    background: var(--color-light-blue);
+    box-shadow: none;
+    pointer-events: auto;
+  }
+
+  .produkt-skabelon-related-card .quick-add-sheet-close {
+    top: 0;
+    right: 0;
+  }
+
+  .produkt-skabelon-related-card .quick-add-sheet-panel h2 {
+    min-height: 44px;
+    padding: 12px 44px 8px 4px;
+    font-size: var(--font-eyebrow-mobile);
+  }
+
+  .produkt-skabelon-related-card .quick-add-sheet-options {
+    gap: 4px;
+  }
+
+  .produkt-skabelon-related-card .quick-add-sheet-option {
+    min-height: 44px;
+    padding: 0 12px;
+    background: var(--color-white);
+    text-align: left;
+  }
+
+  .produkt-skabelon-related-card .product-badge {
+    top: 8px;
+    left: 4px;
+    min-height: 26px;
+    padding: 0 10px;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+
+  .produkt-skabelon-related-card .product-add-button {
+    top: 8px;
+    right: 8px;
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+  }
+
+  .produkt-skabelon-related-card .product-add-button .product-add-button-icon {
+    width: 20px;
+    height: 20px;
   }
 }
