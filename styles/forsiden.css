@@ -11,13 +11,16 @@
 .hero {
   position: relative;
   display: flex;
-  min-height: 430px;
+  min-height: 480px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 30px var(--content-gutter);
   color: #f7f7f7;
-  background: var(--color-text);
+  background-color: var(--color-text);
+  background-image: url("../img/salon/hero-desktop.jpg");
+  background-position: center;
+  background-size: cover;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 14px;
   letter-spacing: 0.08em;
@@ -29,13 +32,6 @@
 .hero > :not(.image-placeholder-label) {
   position: relative;
   z-index: 1;
-}
-
-.hero > .image-placeholder-label {
-  position: absolute;
-  inset: 50% auto auto 50%;
-  white-space: pre-line;
-  transform: translate(-50%, -50%);
 }
 
 /* Styling for .hero-title. */
@@ -601,6 +597,7 @@
   .hero {
     min-height: 320px;
     padding: 30px 34px;
+    background-image: url("../img/salon/hero-mobil.jpg");
   }
 
   .hero-title {
@@ -993,6 +990,7 @@
   .hero {
     min-height: 380px;
     padding: 30px var(--content-gutter);
+    background-image: url("../img/salon/hero-tablet.jpg");
   }
 
   .hero-title {

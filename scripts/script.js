@@ -1728,7 +1728,7 @@ function insertProductImagePlaceholderCards() {
 
 function initializeImagePlaceholderSizes() {
   const placeholders = document.querySelectorAll(
-    ".menu-dropdown-product-image, .mobile-menu-feature-image, .hero"
+    ".menu-dropdown-product-image, .mobile-menu-feature-image"
   );
 
   const updatePlaceholderSize = (placeholder) => {
