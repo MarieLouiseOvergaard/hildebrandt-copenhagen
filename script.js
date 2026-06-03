@@ -1,4 +1,4 @@
-const mobileMenu = document.querySelector(".mobile-menu");
+﻿const mobileMenu = document.querySelector(".mobile-menu");
 const menuToggle = document.querySelector(".menu-toggle");
 const menuClose = document.querySelector(".mobile-menu-close");
 const productsToggle = document.querySelector(".mobile-menu-link-products");
@@ -1673,7 +1673,12 @@ function insertProductImagePlaceholderCards() {
     }
 
     const sizeLabel = `${Math.round(width)} x ${Math.round(height)} px`;
-    placeholder.querySelector("span").textContent = sizeLabel;
+    const label = placeholder.querySelector("span");
+    if (!label) {
+      return;
+    }
+
+    label.textContent = sizeLabel;
     placeholder.setAttribute("aria-label", `Billedpladsholder ${sizeLabel}`);
   };
 
@@ -1691,9 +1696,15 @@ function insertProductImagePlaceholderCards() {
     }
 
     const placeholder = document.createElement("article");
+    const sectionImages = {
+      shampoo: "img/salon/produkter.styling.stemning2.jpg",
+      haarmasker: "img/salon/produkter.styling.stemning3.jpg",
+      styling: "img/salon/produkter.styling.stemning1.jpg",
+    };
+    const imageSrc = sectionImages[section.dataset.productSection] || "img/salon/produkter.styling.stemning1.jpg";
     placeholder.className = "product-image-placeholder-card";
-    placeholder.setAttribute("aria-label", "Billedpladsholder");
-    placeholder.innerHTML = '<span aria-hidden="true"></span>';
+    placeholder.setAttribute("aria-label", "Stemningsbillede til Mixly styling");
+    placeholder.innerHTML = `<img src="${imageSrc}" alt="Stemningsbillede til Mixly styling">`;
 
     const insertIndex = 1 + Math.floor(Math.random() * (cards.length - 1));
     cards[insertIndex].before(placeholder);
@@ -2241,20 +2252,6 @@ const quickAddCatalog = {
       ["Brug", "Fordel i længderne efter shampoo og skyl."],
       ["God til", "Tørre krøller der mangler fugt og ro."],
       ["Effekt", "Blødhed, glans og mindre frizz."],
-    ],
-  },
-  "low curly jojoba quench oil 30 ml": {
-    tags: ["Økologisk", "Vegansk", "Parfumefri", "Unisex"],
-    description:
-      "Let olie, der giver glans, blødhed og beskyttelse uden at tynge fine krøller og bølger.",
-    sizes: [
-      { label: "30 ml", price: "159 kr.", link: "products/styling/low-curly-jojoba-quench-oil.html" },
-    ],
-    fullLink: "products/styling/low-curly-jojoba-quench-oil.html",
-    guide: [
-      ["Brug", "Fordel få dråber i længder og spidser."],
-      ["God til", "Fine krøller og bølger, der ønsker en lettere olieoplevelse."],
-      ["Effekt", "Glans, blødhed, beskyttelse og mindre frizz."],
     ],
   },
 };
@@ -3374,7 +3371,6 @@ function updateSetContentForSize(title, label) {
 }
 
 const productPageTags = ["Økologisk", "Vegansk", "Parfumefri", "Unisex"];
-const jojobaQuenchProductPageTags = ["Økologisk", "Vegansk", "Unisex", "Parfumefri"];
 
 function ensureProductPageTags() {
   const summary = document.querySelector(".produkt-skabelon-summary");
@@ -3394,7 +3390,7 @@ function ensureProductPageTags() {
     heading?.before(tagList);
   }
 
-  const tags = normalizeProductTitle(title) === "low curly jojoba quench oil 30 ml" ? jojobaQuenchProductPageTags : productPageTags;
+  const tags = productPageTags;
   tagList.classList.toggle("produkt-skabelon-tags-all", tags.length > 4);
   tagList.replaceChildren(...tags.map((tag) => {
     const item = document.createElement("li");
