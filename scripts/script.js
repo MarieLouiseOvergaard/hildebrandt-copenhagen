@@ -4195,46 +4195,63 @@ if (relatedPostsContainer) {
       category: "Krølleviden",
       title: "Hvorfor krøllet og bølget hår kræver en anden tilgang end glat hår",
       href: "hvorfor-kroellet-og-bolget-har-kraever-en-anden-tilgang.html",
+      image: "img/salon/kroelleunivers.kursus.jpg",
+      imageAlt: "Naturlige krøller som inspiration til krølleviden",
     },
     {
       category: "Guides",
       title: "5 gode råd til at få det bedste ud af dine krøller og bølger",
       href: "5-gode-rad-til-dine-kroller-og-bolger.html",
+      image: "img/salon/haar.jpg",
+      imageAlt: "Krøller og bølger som inspiration til hårpleje",
     },
     {
       category: "Mixly",
       title: "Derfor virker dine krølleprodukter ikke og hvad du skal gøre i stedet",
       href: "derfor-virker-dine-krolleprodukter-ikke.html",
+      image: "img/salon/produkter.styling.stemning1.jpg",
+      imageAlt: "Mixly produkter til pleje af krøller og bølger",
     },
     {
       category: "Krølleviden",
       title: "Sådan får du dine naturlige krøller frem",
       href: "sadan-far-du-dine-naturlige-kroller-frem.html",
+      image: "img/salon/forside.behandling3-desktop.jpg",
+      imageAlt: "Styling og definition af naturlige krøller",
     },
     {
       category: "Guides",
       title: "Sådan får du dine skandinaviske krøller frem - uden spildte penge",
       href: "sadan-far-du-dine-skandinaviske-kroller-frem.html",
+      image: "img/salon/behandlinger.sektion3.stemning2.jpg",
+      imageAlt: "Skandinaviske krøller og bølger med naturligt fald",
     },
     {
       category: "Krølleviden",
       title: "5 vaner du bør undgå, hvis du har fint krøllet eller bølget hår",
       href: "5-vaner-du-bor-undga.html",
+      image: "img/salon/navigationsbar2.jpg",
+      imageAlt: "Fine krøller og bølger som inspiration til gode hårvaner",
     },
     {
       category: "Guides",
       title: "Sådan vælger du din Mixly startpakke - kom godt i gang",
       href: "sadan-vaelger-du-din-mixly-startpakke.html",
+      image: "img/produktbilleder/packs/Mixly-Pakke-1.png",
+      imageAlt: "Mixly startpakke til krøllet og bølget hår",
     },
     {
       category: "Mixly",
       title: "Sådan vil Mixlys ingredienser virke i dit fine krøllede eller bølgede hår",
       href: "sadan-virker-mixlys-ingredienser.html",
+      image: "img/ingredienser/packs/Ingredienser-Mixly-Pakke-1.png",
+      imageAlt: "Ingredienser i Mixly produkter til krøller og bølger",
     },
   ];
 
   const currentFile = window.location.pathname.split("/").pop();
   const isBlogFolderPage = window.location.pathname.includes("/blog/");
+  const getBlogAssetPath = (path) => `${isBlogFolderPage ? "../" : ""}${path}`;
   const currentPostIndex = blogPosts.findIndex((post) => post.href === currentFile);
   const orderedPosts = currentPostIndex === -1
     ? blogPosts
@@ -4249,8 +4266,17 @@ if (relatedPostsContainer) {
 
     const image = document.createElement("figure");
     image.className = "blog-card-image";
-    image.setAttribute("aria-label", "Illustration til produktsektionen");
-    image.append("IMG");
+    image.setAttribute("aria-label", "Illustration til indholdet");
+
+    const imageElement = document.createElement("img");
+    imageElement.src = getBlogAssetPath(post.image);
+    imageElement.alt = post.imageAlt;
+    image.append(imageElement);
+
+    const imageLabel = document.createElement("span");
+    imageLabel.className = "image-placeholder-label";
+    imageLabel.textContent = "IMG";
+    image.append(imageLabel);
 
     const imageSize = document.createElement("span");
     imageSize.textContent = "360 x 215";
