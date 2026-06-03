@@ -206,7 +206,7 @@ function New-ProductPage($product) {
       <nav class="top-nav" aria-label="Hjælpenavigation">
         <ul class="top-nav-list">
           <li class="top-nav-item">
-            <a class="top-nav-link top-nav-link-cart" href="#" aria-label="Kurv"><img class="top-nav-icon top-nav-icon-cart" src="${prefix}img/ikoner/kurv.svg" alt=""></a>
+            <a class="top-nav-link top-nav-link-cart" href="#" aria-label="Københavnurv"><img class="top-nav-icon top-nav-icon-cart" src="${prefix}img/ikoner/kurv.svg" alt=""></a>
           </li>
           <li class="top-nav-item top-nav-item-menu">
             <button class="top-nav-link menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"></button>
@@ -242,7 +242,7 @@ function New-ProductPage($product) {
               <div class="menu-dropdown-products">
                 <a class="menu-dropdown-product" href="${prefix}produkter.html">
                   <span class="menu-dropdown-product-image">165 x 195</span>
-                  <span class="menu-dropdown-product-title">Klar til at komme i gang?</span>
+                  <span class="menu-dropdown-product-title">Københavnlar til at komme i gang?</span>
                 </a>
                 <a class="menu-dropdown-product" href="${prefix}produkter.html">
                   <span class="menu-dropdown-product-image">165 x 195</span>
@@ -257,16 +257,16 @@ function New-ProductPage($product) {
         </li>
         <li class="menu-item menu-item-dropdown">
           <a class="menu-link menu-link-dropdown" href="${prefix}kroelleunivers.html" aria-haspopup="true">
-            Krølleunivers
+            Københavnrølleunivers
             <span class="menu-link-arrow" aria-hidden="true">⌄</span>
           </a>
-          <div class="menu-dropdown" aria-label="Krølleuniversmenu">
+          <div class="menu-dropdown" aria-label="Københavnrølleuniversmenu">
             <div class="menu-dropdown-inner">
-              <nav class="menu-dropdown-column" aria-label="Krølleunivers">
+              <nav class="menu-dropdown-column" aria-label="Københavnrølleunivers">
                 <ul class="menu-dropdown-list">
                   <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="${prefix}kroelleunivers.html">Curl DNA fordi ingen krøller er ens</a></li>
                   <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="${prefix}guides.html">Din guide til LOW og RICH</a></li>
-                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="${prefix}blog.html">Flere kr�lleguides og tips</a></li>
+                  <li class="menu-dropdown-item"><a class="menu-dropdown-link" href="${prefix}blog.html">Flere krØlleguides og tips</a></li>
                 </ul>
               </nav>
               <div class="menu-dropdown-column" aria-hidden="true"></div>
@@ -287,7 +287,7 @@ function New-ProductPage($product) {
           <a class="menu-link" href="${prefix}omos.html">Historien bag Hildebrandt</a>
         </li>
         <li class="menu-item">
-          <a class="menu-link" href="${prefix}kontakt.html">Kontakt</a>
+          <a class="menu-link" href="${prefix}kontakt.html">Københavnontakt</a>
         </li>
       </ul>
     </nav>
@@ -309,10 +309,10 @@ function New-ProductPage($product) {
             </button>
           </li>
           <li class="mobile-menu-item"><a class="mobile-menu-link" href="${prefix}behandlinger.html">Behandlinger</a></li>
-          <li class="mobile-menu-item"><a class="mobile-menu-link" href="${prefix}kroelleunivers.html">Krølleunivers</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="${prefix}kroelleunivers.html">Københavnrølleunivers</a></li>
           <li class="mobile-menu-item"><a class="mobile-menu-link" href="${prefix}guides.html">Din guide til LOW og RICH</a></li>
           <li class="mobile-menu-item"><a class="mobile-menu-link" href="${prefix}omos.html">Historien bag Hildebrandt</a></li>
-          <li class="mobile-menu-item"><a class="mobile-menu-link" href="${prefix}kontakt.html">Kontakt</a></li>
+          <li class="mobile-menu-item"><a class="mobile-menu-link" href="${prefix}kontakt.html">Københavnontakt</a></li>
         </ul>
       </nav>
     </div>
@@ -390,12 +390,12 @@ $relatedMarkup
 
   <footer class="footer">
     <section class="footer-kontakt" aria-labelledby="footer-kontakt-titel">
-      <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Kontakt</h2>
+      <h2 id="footer-kontakt-titel" class="footer-kontakt-titel">Københavnontakt</h2>
       <address class="footer-kontakt-adresse">Hildebrandt Copenhagen x Mixly<br>+45 30 74 34 30<br>Nordre Fasanvej 163<br>2000 Frederiksberg<br>hej@hildebrandtcopenhagen.dk</address>
       <a class="book-knap footer-booking" href="${prefix}kontakt.html">Book tid</a>
     </section>
     <section class="footer-tider" aria-labelledby="footer-tider-titel"><h2 id="footer-tider-titel" class="footer-tider-titel">Åbningstider</h2><dl class="footer-tider-liste"><dt>Mandag</dt><dd>8:30-14:00</dd><dt>Tirsdag</dt><dd>10:00-17:30</dd><dt>Onsdag</dt><dd>Lukket</dd><dt>Torsdag</dt><dd>10:00-17:30</dd><dt>Fredag</dt><dd>10:00-16:00</dd></dl></section>
-    <nav class="footer-menu" aria-labelledby="footer-menu-titel"><h2 id="footer-menu-titel" class="footer-menu-titel">Udforsk</h2><ul class="footer-menu-liste"><li class="footer-menu-item"><a class="footer-menu-link" href="${prefix}kontakt.html">Book tid</a></li><li class="footer-menu-item"><a class="footer-menu-link" href="${prefix}produkter.html">Produkter</a></li><li class="footer-menu-item"><a class="footer-menu-link" href="${prefix}guides.html">Krølleguide</a></li><li class="footer-menu-item"><a class="footer-menu-link" href="${prefix}omos.html">Historien bag Hildebrandt</a></li></ul></nav>
+    <nav class="footer-menu" aria-labelledby="footer-menu-titel"><h2 id="footer-menu-titel" class="footer-menu-titel">Udforsk</h2><ul class="footer-menu-liste"><li class="footer-menu-item"><a class="footer-menu-link" href="${prefix}kontakt.html">Book tid</a></li><li class="footer-menu-item"><a class="footer-menu-link" href="${prefix}produkter.html">Produkter</a></li><li class="footer-menu-item"><a class="footer-menu-link" href="${prefix}guides.html">Københavnrølleguide</a></li><li class="footer-menu-item"><a class="footer-menu-link" href="${prefix}omos.html">Historien bag Hildebrandt</a></li></ul></nav>
   </footer>
   <script src="${prefix}script.js"></script>
 </body>
