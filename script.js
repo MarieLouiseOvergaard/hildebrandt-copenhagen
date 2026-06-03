@@ -169,6 +169,91 @@ function setupCommunitySignup(formSelector, copySelector, successClass) {
 setupCommunitySignup(".blog-newsletter-form", ".blog-newsletter-copy", "blog-newsletter-success");
 setupCommunitySignup(".kroelle-form", ".kroelle-signup-copy", "kroelle-signup-success");
 
+function setupBlogBreadcrumbs() {
+  const main = document.querySelector(".blog-post-main");
+
+  if (!document.body.classList.contains("blog-post-page") || !main || main.querySelector(".indlaeg-breadcrumb")) {
+    return;
+  }
+
+  const isBlogFolderPage = window.location.pathname.includes("/blog/");
+  const pathPrefix = isBlogFolderPage ? "../" : "";
+  const currentTitle = main.querySelector("h1")?.textContent.trim() || "Blogindlæg";
+  const breadcrumb = document.createElement("nav");
+  const list = document.createElement("ol");
+  const homeItem = document.createElement("li");
+  const homeLink = document.createElement("a");
+  const blogItem = document.createElement("li");
+  const blogLink = document.createElement("a");
+  const currentItem = document.createElement("li");
+  const currentPage = document.createElement("span");
+
+  breadcrumb.className = "indlaeg-breadcrumb";
+  breadcrumb.setAttribute("aria-label", "Brødkrummesti");
+  list.className = "indlaeg-breadcrumb-list";
+  homeItem.className = "indlaeg-breadcrumb-item";
+  blogItem.className = "indlaeg-breadcrumb-item";
+  currentItem.className = "indlaeg-breadcrumb-item";
+  homeLink.className = "indlaeg-breadcrumb-link";
+  blogLink.className = "indlaeg-breadcrumb-link";
+  currentPage.className = "indlaeg-breadcrumb-current";
+
+  homeLink.href = `${pathPrefix}index.html`;
+  homeLink.textContent = "Forside";
+  blogLink.href = `${pathPrefix}blog.html`;
+  blogLink.textContent = "Blog";
+  currentPage.setAttribute("aria-current", "page");
+  currentPage.textContent = currentTitle;
+
+  homeItem.append(homeLink);
+  blogItem.append(blogLink);
+  currentItem.append(currentPage);
+  list.append(homeItem, blogItem, currentItem);
+  breadcrumb.append(list);
+
+  main.prepend(breadcrumb);
+}
+
+setupBlogBreadcrumbs();
+
+function setupBlogCardLinks(root = document) {
+  root.querySelectorAll(".blog-card").forEach((card) => {
+    const readLink = card.querySelector(".blog-card-link");
+    const href = readLink?.getAttribute("href");
+
+    if (!href) {
+      return;
+    }
+
+    const title = card.querySelector(".blog-card-title");
+    const titleText = title?.textContent.trim() || "Læs blogindlæg";
+    const image = card.querySelector(".blog-card-image");
+
+    if (image && !image.closest(".blog-card-media-link")) {
+      const imageLink = document.createElement("a");
+      imageLink.className = "blog-card-media-link";
+      imageLink.href = href;
+      imageLink.setAttribute("aria-label", titleText);
+      image.replaceWith(imageLink);
+      imageLink.append(image);
+    }
+
+    if (title && !title.querySelector("a")) {
+      const titleLink = document.createElement("a");
+      titleLink.className = "blog-card-title-link";
+      titleLink.href = href;
+
+      while (title.firstChild) {
+        titleLink.append(title.firstChild);
+      }
+
+      title.append(titleLink);
+    }
+  });
+}
+
+setupBlogCardLinks();
+
 function setupContactFormValidation() {
   document.querySelectorAll(".kontakt-form").forEach((form) => {
     const nameInput = form.querySelector("input[name='navn'], input[name='name']");
@@ -4138,7 +4223,7 @@ if (relatedPostsContainer) {
     : blogPosts.slice(currentPostIndex + 1).concat(blogPosts.slice(0, currentPostIndex));
   const relatedPosts = orderedPosts
     .filter((post) => post.href !== currentFile)
-    .slice(0, 3);
+    .slice(0, 2);
 
   relatedPostsContainer.replaceChildren(...relatedPosts.map((post) => {
     const card = document.createElement("article");
@@ -4169,6 +4254,8 @@ if (relatedPostsContainer) {
     card.append(image, category, title, link);
     return card;
   }));
+
+  setupBlogCardLinks(relatedPostsContainer);
 }
 
 

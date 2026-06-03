@@ -94,6 +94,24 @@
   cursor: pointer;
 }
 
+.blog-page .blog-filter .button-label {
+  padding-bottom: 0;
+  background-image: none;
+}
+
+.blog-page .blog-filter::after {
+  position: absolute;
+  right: 16px;
+  bottom: 7px;
+  left: 16px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 220ms ease;
+}
+
 /* Styling for .blog-page. */
 .blog-page .blog-filter:hover,
 .blog-page .blog-filter:focus-visible,
@@ -104,6 +122,15 @@
   border-color: var(--color-border);
   background: var(--color-white);
   color: var(--color-heading);
+}
+
+.blog-page .blog-filter:hover::after,
+.blog-page .blog-filter:focus-visible::after,
+.blog-page #blog-filter-all:checked ~ .blog-filters label[for="blog-filter-all"]::after,
+.blog-page #blog-filter-kroelleviden:checked ~ .blog-filters label[for="blog-filter-kroelleviden"]::after,
+.blog-page #blog-filter-guides:checked ~ .blog-filters label[for="blog-filter-guides"]::after,
+.blog-page #blog-filter-mixly:checked ~ .blog-filters label[for="blog-filter-mixly"]::after {
+  transform: scaleX(1);
 }
 
 /* Styling for .blog-page. */
@@ -170,6 +197,10 @@
   line-height: 1.05;
 }
 
+.blog-page .blog-card-media-link {
+  display: block;
+}
+
 /* Styling for .blog-page. */
 .blog-page .blog-card-image span {
   margin-top: 4px;
@@ -202,20 +233,35 @@
   text-transform: none;
 }
 
+.blog-page .blog-card-title-link {
+  color: inherit;
+}
+
 /* Styling for .blog-page. */
 .blog-page .blog-card-link {
+  display: inline-flex;
+  width: fit-content;
+  align-self: flex-start;
   margin-top: 10px;
   color: var(--color-primary);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 1px;
   font-family: var(--font-body);
   font-size: var(--font-body-desktop);
   line-height: 1.2;
+  transition: background-size 220ms ease;
+}
+
+.blog-page .blog-card-link:hover,
+.blog-page .blog-card-link:focus-visible {
+  background-size: 100% 1px;
 }
 
 /* Styling for .blog-page. */
 .blog-page .blog-card-link::after {
-  position: absolute;
-  inset: 0;
-  content: "";
+  content: none;
 }
 
 /* Styling for .blog-page. */
@@ -472,19 +518,20 @@
   }
 
   .blog-page .blog-filter {
-    min-height: auto;
+    min-height: 38px;
     flex: 0 0 auto;
-    padding: 24px 0 22px;
-    border: 0;
+    padding: 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--button-radius);
     background: transparent;
-    font-size: 15px;
-    letter-spacing: 0.02em;
-    line-height: 1;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
   }
 
   .blog-page .blog-filter::after {
     content: "";
-    display: none;
+    display: block;
   }
 
   .blog-page .blog-filter:hover,
@@ -493,7 +540,7 @@
   .blog-page #blog-filter-kroelleviden:checked ~ .blog-filters label[for="blog-filter-kroelleviden"],
   .blog-page #blog-filter-guides:checked ~ .blog-filters label[for="blog-filter-guides"],
   .blog-page #blog-filter-mixly:checked ~ .blog-filters label[for="blog-filter-mixly"] {
-    border: 0;
+    border: 1px solid var(--color-border);
     background: transparent;
     color: var(--color-heading);
     font-weight: 400;
@@ -505,7 +552,7 @@
   .blog-page #blog-filter-kroelleviden:checked ~ .blog-filters label[for="blog-filter-kroelleviden"]::after,
   .blog-page #blog-filter-guides:checked ~ .blog-filters label[for="blog-filter-guides"]::after,
   .blog-page #blog-filter-mixly:checked ~ .blog-filters label[for="blog-filter-mixly"]::after {
-    display: none;
+    display: block;
   }
 
   .blog-page .blog-grid {
