@@ -448,11 +448,18 @@
 }
 
 /* Styling for .menu-dropdown-product-image. */
-.menu-dropdown-product-image img {
-  display: none;
+.menu-dropdown-product:nth-child(2) .menu-dropdown-product-image {
+  background: var(--color-light-blue);
 }
 
-.menu-dropdown-product-image > .image-placeholder-label,
+/* Styling for .menu-dropdown-product-image. */
+.menu-dropdown-product-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .mobile-menu-feature-image > .image-placeholder-label {
   display: block !important;
 }
