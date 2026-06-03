@@ -76,22 +76,22 @@
 }
 
 /* Styling for .hero-image. */
-.om-belinda-billede img[src="#"],
-.mixly-introduktion-billede img[src="#"],
-.forside-behandling-kort-billede img[src="#"],
-.guide-sektion_-produkt img[src="#"],
-.guide-sektion-billede img[src="#"],
-.kort-sektion-billede img[src="#"] {
+.om-belinda-billede img[src=""],
+.mixly-introduktion-billede img[src=""],
+.forside-behandling-kort-billede img[src=""],
+.guide-sektion_-produkt img[src=""],
+.guide-sektion-billede img[src=""],
+.kort-sektion-billede img[src=""] {
   display: none;
 }
 
 /* Styling for .hero-image. */
-.om-belinda-billede:has(img:not([src="#"]))::before,
-.mixly-introduktion-billede:has(img:not([src="#"]))::before,
-.forside-behandling-kort-billede:has(img:not([src="#"]))::before,
-.guide-sektion_-produkt:has(img:not([src="#"]))::before,
-.guide-sektion-billede:has(img:not([src="#"]))::before,
-.kort-sektion-billede:has(img:not([src="#"]))::before {
+.om-belinda-billede:has(img[src]:not([src=""]))::before,
+.mixly-introduktion-billede:has(img[src]:not([src=""]))::before,
+.forside-behandling-kort-billede:has(img[src]:not([src=""]))::before,
+.guide-sektion_-produkt:has(img[src]:not([src=""]))::before,
+.guide-sektion-billede:has(img[src]:not([src=""]))::before,
+.kort-sektion-billede:has(img[src]:not([src=""]))::before {
   display: none;
 }
 
@@ -540,9 +540,9 @@
 
 /* Styling for .guide-sektion_-produkt. */
 .guide-sektion_-produkt img {
-  width: auto;
-  max-width: 100%;
-  height: 285px;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -956,7 +956,7 @@
   }
 
   .guide-sektion_-produkt img {
-    height: 195px;
+    height: 100%;
   }
 
   .guide-sektion-tekst {
@@ -1178,7 +1178,7 @@
   }
 
   .guide-sektion_-produkt img {
-    height: 240px;
+    height: 100%;
   }
 
   .guide-sektion-tekst {

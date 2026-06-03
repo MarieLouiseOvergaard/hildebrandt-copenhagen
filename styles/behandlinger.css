@@ -92,8 +92,18 @@
 }
 
 .behandlinger-hero-image img {
-  display: none;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+}
+
+.behandlinger-hero-image img[src=""] {
+  display: none;
+}
+
+.behandlinger-hero-image:has(img[src]:not([src=""]))::before {
+  display: none;
 }
 
 .behandlinger-hero-image::before {

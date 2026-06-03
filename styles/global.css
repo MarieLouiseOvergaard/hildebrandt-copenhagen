@@ -186,6 +186,7 @@ body {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 /* Styling for HTML-elementet figure. */
@@ -826,8 +827,12 @@ input[type="reset"],
   overflow: hidden;
 }
 
-.om-os-instagram .om-os-image-placeholder img,
+.om-os-instagram .om-os-image-placeholder img[src=""],
 .om-os-instagram .om-os-image-placeholder > span {
+  display: none;
+}
+
+.om-os-instagram .om-os-image-placeholder:has(img[src]:not([src=""]))::before {
   display: none;
 }
 

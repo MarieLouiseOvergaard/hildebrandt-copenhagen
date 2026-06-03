@@ -413,8 +413,12 @@
     text-align: center;
   }
 
-  .om-os-image-placeholder img,
+  .om-os-image-placeholder img[src=""],
   .om-os-image-placeholder > span {
+    display: none;
+  }
+
+  .om-os-image-placeholder:has(img[src]:not([src=""]))::before {
     display: none;
   }
 
@@ -803,8 +807,12 @@
     text-align: center;
   }
 
-  .om-os-image-placeholder img,
+  .om-os-image-placeholder img[src=""],
   .om-os-image-placeholder > span {
+    display: none;
+  }
+
+  .om-os-image-placeholder:has(img[src]:not([src=""]))::before {
     display: none;
   }
 

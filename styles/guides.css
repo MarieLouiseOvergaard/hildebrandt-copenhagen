@@ -1678,6 +1678,21 @@
 .guides-main .guide-hero-media img,
 .guides-main .guide-editorial-image img,
 .guides-main .guide-cta-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.guides-main .guide-hero-media img[src=""],
+.guides-main .guide-editorial-image img[src=""],
+.guides-main .guide-cta-image img[src=""] {
+  display: none;
+}
+
+.guides-main .guide-hero-media:has(img[src]:not([src=""]))::before,
+.guides-main .guide-editorial-image:has(img[src]:not([src=""]))::before,
+.guides-main .guide-cta-image:has(img[src]:not([src=""]))::before {
   display: none;
 }
 

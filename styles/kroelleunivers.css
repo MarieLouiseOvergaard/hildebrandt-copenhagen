@@ -111,8 +111,12 @@
   text-align: center;
 }
 
-.kroelle-placeholder img,
+.kroelle-placeholder img[src=""],
 .kroelle-placeholder .image-placeholder-label {
+  display: none;
+}
+
+.kroelle-placeholder:has(img[src]:not([src=""]))::before {
   display: none;
 }
 
