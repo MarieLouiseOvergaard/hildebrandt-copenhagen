@@ -243,11 +243,6 @@
   text-align: center;
 }
 
-/* Styling for .mixly-introduktion-billede-duplicate. */
-.mixly-introduktion-billede-duplicate {
-  display: none;
-}
-
 /* ------------------------------
    Citater
 -------------------------------- */
@@ -741,14 +736,14 @@
     grid-template-columns: none;
     align-self: stretch;
     gap: 5px;
-    width: 100%;
+    width: calc(300% + 10px);
     margin-top: 0;
-    animation: mixly-mobile-slider 60s linear infinite;
+    animation: mixly-mobile-slider 15s linear infinite;
     will-change: transform;
   }
 
   .mixly-introduktion-billede {
-    flex: 0 0 50%;
+    flex: 0 0 calc((100% - 10px) / 3);
     width: auto;
     height: 270px;
     min-height: 0;
@@ -757,10 +752,6 @@
 
   .mixly-introduktion-billede::before {
     content: none;
-  }
-
-  .mixly-introduktion-billede-duplicate {
-    display: grid;
   }
 
   .mixly-introduktion-billede img {
@@ -790,8 +781,28 @@
       transform: translateX(0);
     }
 
+    28% {
+      transform: translateX(0);
+    }
+
+    33% {
+      transform: translateX(calc(-33.333333% - 1.666667px));
+    }
+
+    61% {
+      transform: translateX(calc(-33.333333% - 1.666667px));
+    }
+
+    66% {
+      transform: translateX(calc(-66.666667% - 3.333333px));
+    }
+
+    99.99% {
+      transform: translateX(calc(-66.666667% - 3.333333px));
+    }
+
     100% {
-      transform: translateX(-150%);
+      transform: translateX(0);
     }
   }
 
@@ -1085,10 +1096,6 @@
     height: auto;
     min-height: 320px;
     flex: initial;
-  }
-
-  .mixly-introduktion-billede-duplicate {
-    display: none;
   }
 
   .mixly-introduktion-knapper,

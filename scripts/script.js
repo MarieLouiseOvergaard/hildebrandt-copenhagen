@@ -1671,58 +1671,71 @@ function organizeProductSets() {
 }
 
 function insertProductImagePlaceholderCards() {
-  const updatePlaceholderSize = (placeholder) => {
-    const { width, height } = placeholder.getBoundingClientRect();
+  const featureCardPositions = {
+    startpakker: 0,
+    saet: 1,
+    shampoo: 2,
+    conditioner: 3,
+    haarmasker: 1,
+    styling: 2,
+  };
+  const sectionImages = {
+    saet: {
+      src: "img/salon/produkter.styling.stemning2.jpg",
+      alt: "Stemningsbillede med Mixly produkter til krøllepleje",
+      label: "Stemningsbillede til Mixly sæt",
+    },
+    conditioner: {
+      src: "img/salon/produkter.styling.stemning3.jpg",
+      alt: "Stemningsbillede med Mixly conditioner til krøller og bølger",
+      label: "Stemningsbillede til Mixly conditioner",
+    },
+    haarmasker: {
+      src: "img/salon/produkter.styling.stemning4.jpg",
+      alt: "Stemningsbillede med Mixly hårmaske til krøller og bølger",
+      label: "Stemningsbillede til Mixly hårmasker",
+    },
+  };
 
-    if (!width || !height) {
+  const placeFeatureCard = (row, featureCard, sectionKey) => {
+    const cards = Array.from(row.querySelectorAll(":scope > .product-card"));
+    const insertAfterIndex = Math.min(featureCardPositions[sectionKey] ?? 1, cards.length - 1);
+
+    if (!cards.length) {
       return;
     }
 
-    const sizeLabel = `${Math.round(width)} x ${Math.round(height)} px`;
-    const label = placeholder.querySelector("span");
-    if (!label) {
-      return;
-    }
-
-    label.textContent = sizeLabel;
-    placeholder.setAttribute("aria-label", `Billedpladsholder ${sizeLabel}`);
+    cards[insertAfterIndex].after(featureCard);
   };
 
   document.querySelectorAll("[data-product-section]").forEach((section) => {
     const row = section.querySelector(".product-row");
 
-    if (!row || row.querySelector(".product-image-placeholder-card")) {
+    if (!row) {
+      return;
+    }
+
+    const sectionKey = section.dataset.productSection;
+    const existingFeatureCard = row.querySelector(".product-promo-card, .product-image-placeholder-card");
+
+    if (existingFeatureCard) {
+      placeFeatureCard(row, existingFeatureCard, sectionKey);
       return;
     }
 
     const cards = Array.from(row.querySelectorAll(":scope > .product-card"));
+    const image = sectionImages[sectionKey];
 
-    if (cards.length < 2) {
+    if (cards.length < 2 || !image) {
       return;
     }
 
     const placeholder = document.createElement("article");
-    const sectionImages = {
-      shampoo: "img/salon/produkter.styling.stemning2.jpg",
-      haarmasker: "img/salon/produkter.styling.stemning3.jpg",
-      styling: "img/salon/produkter.styling.stemning1.jpg",
-    };
-    const imageSrc = sectionImages[section.dataset.productSection] || "img/salon/produkter.styling.stemning1.jpg";
     placeholder.className = "product-image-placeholder-card";
-    placeholder.setAttribute("aria-label", "Stemningsbillede til Mixly styling");
-    placeholder.innerHTML = `<img src="${imageSrc}" alt="Stemningsbillede til Mixly styling">`;
+    placeholder.setAttribute("aria-label", image.label);
+    placeholder.innerHTML = `<img src="${image.src}" alt="${image.alt}">`;
 
-    const insertIndex = 1 + Math.floor(Math.random() * (cards.length - 1));
-    cards[insertIndex].before(placeholder);
-
-    if ("ResizeObserver" in window) {
-      const placeholderObserver = new ResizeObserver(() => updatePlaceholderSize(placeholder));
-      placeholderObserver.observe(placeholder);
-    } else {
-      window.addEventListener("resize", () => updatePlaceholderSize(placeholder));
-    }
-
-    requestAnimationFrame(() => updatePlaceholderSize(placeholder));
+    placeFeatureCard(row, placeholder, sectionKey);
   });
 }
 
