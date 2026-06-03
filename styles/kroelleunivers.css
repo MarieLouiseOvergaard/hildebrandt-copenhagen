@@ -354,19 +354,45 @@
   gap: 12px;
   margin-top: 16px;
   color: #777777;
+  cursor: pointer;
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.35;
 }
 
 .kroelle-checkbox input {
+  display: grid;
   flex: 0 0 24px;
+  place-items: center;
   width: 24px;
   height: 24px;
   margin: 0;
   appearance: none;
   border: 1px solid var(--color-heading);
   background: transparent;
+  cursor: pointer;
+}
+
+.kroelle-checkbox input:checked {
+  background: linear-gradient(135deg, transparent 45%, var(--color-heading) 45%, var(--color-heading) 55%, transparent 55%),
+    linear-gradient(45deg, transparent 45%, var(--color-heading) 45%, var(--color-heading) 55%, transparent 55%);
+}
+
+.kroelle-checkbox input:focus-visible {
+  outline: 1px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.community-signup-error {
+  margin: 8px 0 0;
+  color: #c98282;
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.community-signup-error[hidden] {
+  display: none;
 }
 
 .kroelle-signup-success {

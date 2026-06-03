@@ -45,22 +45,101 @@ function prepareButtonUnderlines() {
 prepareButtonUnderlines();
 
 function setupCommunitySignup(formSelector, copySelector, successClass) {
+  const errorMessages = {
+    name: "Du mangler at udfylde dit navn",
+    email: "Du mangler at udfylde din e-mail",
+    consent: "Du mangler at accepterer, at vi må gemme og dele min data jf. vores privatlivspolitik:",
+  };
+
   document.querySelectorAll(formSelector).forEach((form) => {
     const section = form.closest("section");
     const copy = section?.querySelector(copySelector);
     const nameInput = form.querySelector("input[name='name']");
     const emailInput = form.querySelector("input[type='email']");
+    const consentInput = form.querySelector("input[name='privacy'], input[name='consent']");
+    const fieldsGroup = form.querySelector(".kroelle-form-fields");
+
+    const getErrorElement = (field, anchor) => {
+      let errorElement = form.querySelector(`[data-community-signup-error="${field}"]`);
+
+      if (!errorElement) {
+        errorElement = document.createElement("p");
+        errorElement.className = "community-signup-error";
+        errorElement.dataset.communitySignupError = field;
+        errorElement.setAttribute("aria-live", "polite");
+        anchor?.insertAdjacentElement("afterend", errorElement);
+      }
+
+      return errorElement;
+    };
+
+    const showError = (field, message, anchor) => {
+      const errorElement = getErrorElement(field, anchor);
+      errorElement.textContent = message;
+      errorElement.hidden = false;
+    };
+
+    const clearError = (field) => {
+      const errorElement = form.querySelector(`[data-community-signup-error="${field}"]`);
+
+      if (errorElement) {
+        errorElement.textContent = "";
+        errorElement.hidden = true;
+      }
+    };
+
+    nameInput?.addEventListener("input", () => {
+      if (nameInput.value.trim()) {
+        clearError("name");
+      }
+    });
+
+    emailInput?.addEventListener("input", () => {
+      if (emailInput.value.trim()) {
+        clearError("email");
+      }
+    });
+
+    consentInput?.addEventListener("change", () => {
+      if (consentInput.checked) {
+        clearError("consent");
+      }
+    });
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      if (!nameInput?.value.trim()) {
-        nameInput?.focus();
-        return;
+      const missingName = !nameInput?.value.trim();
+      const missingEmail = !emailInput?.value.trim();
+      const missingConsent = Boolean(consentInput && !consentInput.checked);
+
+      if (missingName) {
+        showError("name", errorMessages.name, fieldsGroup || nameInput);
+      } else {
+        clearError("name");
       }
 
-      if (!emailInput?.value.trim()) {
-        emailInput?.focus();
+      if (missingEmail) {
+        showError("email", errorMessages.email, fieldsGroup || emailInput);
+      } else {
+        clearError("email");
+      }
+
+      if (missingConsent) {
+        showError("consent", errorMessages.consent, consentInput.closest("label"));
+      } else {
+        clearError("consent");
+      }
+
+      if (missingName || missingEmail || missingConsent) {
+        if (missingName) {
+          nameInput?.focus();
+        } else if (missingEmail) {
+          emailInput?.focus();
+        } else {
+          consentInput?.focus();
+        }
+
         return;
       }
 
@@ -89,6 +168,234 @@ function setupCommunitySignup(formSelector, copySelector, successClass) {
 
 setupCommunitySignup(".blog-newsletter-form", ".blog-newsletter-copy", "blog-newsletter-success");
 setupCommunitySignup(".kroelle-form", ".kroelle-signup-copy", "kroelle-signup-success");
+
+function setupContactFormValidation() {
+  document.querySelectorAll(".kontakt-form").forEach((form) => {
+    const nameInput = form.querySelector("input[name='navn'], input[name='name']");
+    const emailInput = form.querySelector("input[type='email']");
+    const messageInput = form.querySelector("textarea[name='besked'], textarea[name='message']");
+    const feedbackElement = document.createElement("p");
+    const errorMessages = {
+      name: "Du mangler at udfylde dit navn",
+      email: "Du mangler at udfylde din e-mail",
+      message: "Du mangler at skrive en besked",
+      invalidEmail: "Indtast en gyldig e-mail",
+    };
+
+    feedbackElement.className = "kontakt-form-feedback";
+    feedbackElement.setAttribute("aria-live", "polite");
+    feedbackElement.hidden = true;
+    form.append(feedbackElement);
+
+    const getErrorElement = (field, input) => {
+      const fieldWrapper = input?.closest(".kontakt-form-felt") || form;
+      let errorElement = fieldWrapper.querySelector(`[data-kontakt-form-error="${field}"]`);
+
+      if (!errorElement) {
+        errorElement = document.createElement("p");
+        errorElement.className = "kontakt-form-error";
+        errorElement.dataset.kontaktFormError = field;
+        errorElement.setAttribute("aria-live", "polite");
+        input?.insertAdjacentElement("afterend", errorElement);
+      }
+
+      return errorElement;
+    };
+
+    const showError = (field, input, message) => {
+      const errorElement = getErrorElement(field, input);
+      errorElement.textContent = message;
+      errorElement.hidden = false;
+      input?.closest(".kontakt-form-felt")?.classList.add("is-invalid");
+    };
+
+    const clearError = (field, input) => {
+      const errorElement = input?.closest(".kontakt-form-felt")?.querySelector(`[data-kontakt-form-error="${field}"]`);
+
+      if (errorElement) {
+        errorElement.textContent = "";
+        errorElement.hidden = true;
+      }
+
+      input?.closest(".kontakt-form-felt")?.classList.remove("is-invalid");
+    };
+
+    nameInput?.addEventListener("input", () => {
+      if (nameInput.value.trim()) {
+        clearError("name", nameInput);
+      }
+    });
+
+    emailInput?.addEventListener("input", () => {
+      if (emailInput.value.trim() && emailInput.checkValidity()) {
+        clearError("email", emailInput);
+      }
+    });
+
+    messageInput?.addEventListener("input", () => {
+      if (messageInput.value.trim()) {
+        clearError("message", messageInput);
+      }
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const missingName = !nameInput?.value.trim();
+      const missingEmail = !emailInput?.value.trim();
+      const invalidEmail = Boolean(emailInput?.value.trim() && !emailInput.checkValidity());
+      const missingMessage = !messageInput?.value.trim();
+
+      feedbackElement.hidden = true;
+      feedbackElement.textContent = "";
+      feedbackElement.classList.remove("kontakt-form-feedback-success");
+
+      if (missingName) {
+        showError("name", nameInput, errorMessages.name);
+      } else {
+        clearError("name", nameInput);
+      }
+
+      if (missingEmail) {
+        showError("email", emailInput, errorMessages.email);
+      } else if (invalidEmail) {
+        showError("email", emailInput, errorMessages.invalidEmail);
+      } else {
+        clearError("email", emailInput);
+      }
+
+      if (missingMessage) {
+        showError("message", messageInput, errorMessages.message);
+      } else {
+        clearError("message", messageInput);
+      }
+
+      if (missingName || missingEmail || invalidEmail || missingMessage) {
+        if (missingName) {
+          nameInput?.focus();
+        } else if (missingEmail || invalidEmail) {
+          emailInput?.focus();
+        } else {
+          messageInput?.focus();
+        }
+
+        return;
+      }
+
+      form.reset();
+      feedbackElement.textContent = "Dejligt at høre fra dig! Jeg vender tilbage hurtigst muligt.";
+      feedbackElement.hidden = false;
+      feedbackElement.classList.add("kontakt-form-feedback-success");
+    });
+  });
+}
+
+setupContactFormValidation();
+
+function setupFooterNewsletterSignup() {
+  const errorMessages = {
+    name: "Du mangler at udfylde dit navn",
+    email: "Du mangler at udfylde din e-mail",
+    consent: "Du mangler at accepterer, at vi må gemme og dele min data jf. vores privatlivspolitik:",
+  };
+
+  document.querySelectorAll(".footer-newsletter-form").forEach((form) => {
+    const nameInput = form.querySelector("input[name='name']");
+    const emailInput = form.querySelector("input[type='email']");
+    const consentInput = form.querySelector("input[name='consent']");
+
+    const getErrorElement = (field, anchor) => {
+      let errorElement = form.querySelector(`[data-footer-newsletter-error="${field}"]`);
+
+      if (!errorElement) {
+        errorElement = document.createElement("p");
+        errorElement.className = "footer-newsletter-error";
+        errorElement.dataset.footerNewsletterError = field;
+        errorElement.setAttribute("aria-live", "polite");
+        anchor?.insertAdjacentElement("afterend", errorElement);
+      }
+
+      return errorElement;
+    };
+
+    const showError = (field, message, anchor) => {
+      const errorElement = getErrorElement(field, anchor);
+      errorElement.textContent = message;
+      errorElement.hidden = false;
+    };
+
+    const clearError = (field) => {
+      const errorElement = form.querySelector(`[data-footer-newsletter-error="${field}"]`);
+
+      if (errorElement) {
+        errorElement.textContent = "";
+        errorElement.hidden = true;
+      }
+    };
+
+    nameInput?.addEventListener("input", () => {
+      if (nameInput.value.trim()) {
+        clearError("name");
+      }
+    });
+
+    emailInput?.addEventListener("input", () => {
+      if (emailInput.value.trim()) {
+        clearError("email");
+      }
+    });
+
+    consentInput?.addEventListener("change", () => {
+      if (consentInput.checked) {
+        clearError("consent");
+      }
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const missingName = !nameInput?.value.trim();
+      const missingEmail = !emailInput?.value.trim();
+      const missingConsent = !consentInput?.checked;
+
+      if (missingName) {
+        showError("name", errorMessages.name, nameInput);
+      } else {
+        clearError("name");
+      }
+
+      if (missingEmail) {
+        showError("email", errorMessages.email, emailInput);
+      } else {
+        clearError("email");
+      }
+
+      if (missingConsent) {
+        showError("consent", errorMessages.consent, consentInput?.closest(".footer-newsletter-consent"));
+      } else {
+        clearError("consent");
+      }
+
+      if (missingName || missingEmail || missingConsent) {
+        if (missingName) {
+          nameInput?.focus();
+        } else if (missingEmail) {
+          emailInput?.focus();
+        } else {
+          consentInput?.focus();
+        }
+
+        return;
+      }
+
+      form.reset();
+      form.classList.add("footer-newsletter-success");
+      form.innerHTML = "<p class=\"footer-newsletter-success-message\">Tak! Du er nu tilmeldt HCM Community.</p>";
+    });
+  });
+}
+
+setupFooterNewsletterSignup();
 
 const checkoutForm = document.querySelector("[data-checkout-form]");
 
@@ -306,6 +613,7 @@ if (checkoutForm) {
     input.addEventListener("change", () => {
       updateCheckoutOptionState(shippingOptions, input);
       checkoutForm.querySelector("[data-shipping-options]")?.classList.remove("is-invalid");
+      checkoutForm.querySelector('[data-checkout-field-error="shipping"]')?.remove();
       updateCheckoutTotals();
     });
   });
@@ -315,6 +623,7 @@ if (checkoutForm) {
     input.addEventListener("change", () => {
       updateCheckoutOptionState(paymentOptions, input);
       checkoutForm.querySelector("[data-payment-options]")?.classList.remove("is-invalid");
+      checkoutForm.querySelector('[data-checkout-field-error="payment"]')?.remove();
     });
   });
 
@@ -368,6 +677,98 @@ if (checkoutForm) {
     saveCheckoutCartItems(nextItems);
   });
 
+  function getCheckoutFieldMessage(field) {
+    if (field.name === "terms") {
+      return "Du mangler at acceptere vilkår og betingelser";
+    }
+
+    const label = field.closest(".checkout-field")?.querySelector(".checkout-field-label")?.textContent
+      .replace("*", "")
+      .trim()
+      .toLowerCase();
+
+    if (!field.value.trim()) {
+      return label ? `Du mangler at udfylde ${label}` : "Du mangler at udfylde et påkrævet felt";
+    }
+
+    if (field.type === "email" && !field.checkValidity()) {
+      return "Indtast en gyldig e-mailadresse";
+    }
+
+    return label ? `Tjek feltet ${label}` : "Tjek de markerede felter";
+  }
+
+  function clearCheckoutValidationMessages() {
+    checkoutForm.querySelectorAll("[data-checkout-field-error]").forEach((error) => error.remove());
+    checkoutForm.querySelectorAll("[data-checkout-original-placeholder]").forEach((field) => {
+      field.setAttribute("placeholder", field.dataset.checkoutOriginalPlaceholder || " ");
+      delete field.dataset.checkoutOriginalPlaceholder;
+    });
+  }
+
+  function showCheckoutInlineError(anchor, key, message) {
+    if (!anchor) {
+      return;
+    }
+
+    let errorElement = checkoutForm.querySelector(`[data-checkout-field-error="${key}"]`);
+
+    if (!errorElement) {
+      errorElement = document.createElement("p");
+      errorElement.className = "checkout-field-error";
+      errorElement.dataset.checkoutFieldError = key;
+      errorElement.setAttribute("aria-live", "polite");
+      anchor.insertAdjacentElement("afterend", errorElement);
+    }
+
+    errorElement.textContent = message;
+  }
+
+  function showCheckoutFieldError(field) {
+    const wrapper = field.closest(".checkout-field, .checkout-terms") || field;
+    const message = getCheckoutFieldMessage(field);
+
+    wrapper.classList.add("is-invalid");
+
+    if (field.matches("input:not([type='checkbox']), textarea") && !field.value.trim()) {
+      if (!field.dataset.checkoutOriginalPlaceholder) {
+        field.dataset.checkoutOriginalPlaceholder = field.getAttribute("placeholder") || " ";
+      }
+
+      field.setAttribute("placeholder", message);
+      return;
+    }
+
+    showCheckoutInlineError(wrapper, field.name || field.type, message);
+  }
+
+  checkoutForm.querySelectorAll("[required]").forEach((field) => {
+    field.addEventListener("input", () => {
+      if (!field.checkValidity()) {
+        return;
+      }
+
+      const wrapper = field.closest(".checkout-field, .checkout-terms") || field;
+      wrapper.classList.remove("is-invalid");
+      checkoutForm.querySelector(`[data-checkout-field-error="${field.name || field.type}"]`)?.remove();
+
+      if (field.dataset.checkoutOriginalPlaceholder) {
+        field.setAttribute("placeholder", field.dataset.checkoutOriginalPlaceholder || " ");
+        delete field.dataset.checkoutOriginalPlaceholder;
+      }
+    });
+
+    field.addEventListener("change", () => {
+      if (!field.checkValidity()) {
+        return;
+      }
+
+      const wrapper = field.closest(".checkout-field, .checkout-terms") || field;
+      wrapper.classList.remove("is-invalid");
+      checkoutForm.querySelector(`[data-checkout-field-error="${field.name || field.type}"]`)?.remove();
+    });
+  });
+
   checkoutForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -379,10 +780,10 @@ if (checkoutForm) {
     const paymentList = checkoutForm.querySelector("[data-payment-options]");
 
     checkoutForm.querySelectorAll(".is-invalid").forEach((field) => field.classList.remove("is-invalid"));
+    clearCheckoutValidationMessages();
 
     invalidFields.forEach((field) => {
-      const wrapper = field.closest(".checkout-field, .checkout-terms") || field;
-      wrapper.classList.add("is-invalid");
+      showCheckoutFieldError(field);
     });
 
     if (shippingList) {
@@ -397,6 +798,35 @@ if (checkoutForm) {
       checkoutError.textContent = invalidFields.length > 0 || !selectedShipping || !selectedPayment || cartIsEmpty
         ? "Udfyld de markerede felter, vælg levering og betalingsmetode, accepter vilkår og betingelser, og sørg for at der er produkter i kurven."
         : "";
+    }
+
+    if (checkoutError) {
+      const checkoutMessages = [
+        ...invalidFields.map(getCheckoutFieldMessage),
+        !selectedShipping ? "Du mangler at vælge levering" : "",
+        !selectedPayment ? "Du mangler at vælge betalingsmetode" : "",
+        cartIsEmpty ? "Din kurv er tom" : "",
+      ].filter(Boolean);
+
+      checkoutError.innerHTML = checkoutMessages.length
+        ? checkoutMessages.map((message) => `<span>${message}</span>`).join("")
+        : "";
+    }
+
+    if (!selectedShipping) {
+      showCheckoutInlineError(shippingList, "shipping", "Du mangler at vælge levering");
+    }
+
+    if (!selectedPayment) {
+      showCheckoutInlineError(paymentList, "payment", "Du mangler at vælge betalingsmetode");
+    }
+
+    if (cartIsEmpty) {
+      showCheckoutInlineError(checkoutCartItems, "cart", "Din kurv er tom");
+    }
+
+    if (checkoutError && (invalidFields.length > 0 || !selectedShipping || !selectedPayment || cartIsEmpty)) {
+      checkoutError.textContent = "";
     }
 
     if (cartIsEmpty) {

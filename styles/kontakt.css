@@ -158,6 +158,11 @@
   gap: 8px;
 }
 
+.kontakt-form-felt.is-invalid input,
+.kontakt-form-felt.is-invalid textarea {
+  border-color: #c98282;
+}
+
 /* Styling for .kontakt-form. */
 .kontakt-form label {
   position: absolute;
@@ -215,6 +220,32 @@
   color: #9b9b9b;
   font-size: 0.72rem;
   line-height: 1.4;
+}
+
+.kontakt-form-error {
+  margin: -2px 0 0;
+  color: #c98282;
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.kontakt-form-error[hidden],
+.kontakt-form-feedback[hidden] {
+  display: none;
+}
+
+.kontakt-form-feedback {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.kontakt-form-feedback-success {
+  color: var(--color-heading);
 }
 
 /* Åbningstider og kort */

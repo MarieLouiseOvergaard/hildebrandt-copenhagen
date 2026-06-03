@@ -752,7 +752,10 @@ input[type="reset"],
 ================================================== */
 /* Styling for .om-os-instagram. */
 .om-os-instagram {
-  padding: 0 0 70px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
 }
 
 /* Styling for .om-os-instagram-header. */
@@ -777,25 +780,31 @@ input[type="reset"],
   padding-bottom: 8px;
   color: #222222;
   font-size: 0.86rem;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.2;
 }
 
 /* Styling for .om-os-instagram-grid. */
 .om-os-instagram-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 5px;
+  width: 100%;
+  animation: om-os-instagram-desktop-slider 100s linear infinite;
+  will-change: transform;
 }
 
 /* Styling for .om-os-instagram-link. */
 .om-os-instagram-link {
   display: block;
+  flex: 0 0 calc((100% - 20px) / 5);
+  max-width: none;
+  width: auto;
 }
 
 /* Styling for .om-os-instagram-link-duplicate. */
 .om-os-instagram-link-duplicate {
-  display: none;
+  display: block;
 }
 
 /* Styling for .om-os-instagram-item. */
@@ -805,21 +814,31 @@ input[type="reset"],
 
 /* Styling for .om-os-instagram. */
 .om-os-instagram .om-os-image-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  display: grid;
+  place-items: center;
   width: 100%;
   color: #111111;
-  background: transparent;
+  background: var(--color-image-placeholder);
   font-family: var(--font-heading);
   font-weight: 400;
   line-height: 1.35;
+  text-align: center;
+  overflow: hidden;
+}
+
+.om-os-instagram .om-os-image-placeholder img,
+.om-os-instagram .om-os-image-placeholder > span {
+  display: none;
+}
+
+.om-os-instagram .om-os-image-placeholder::before {
+  content: "IMG\A 280 × 350";
+  white-space: pre-line;
 }
 
 /* Styling for .om-os-image-placeholder-instagram. */
 .om-os-image-placeholder-instagram {
-  aspect-ratio: 1 / 1.16;
+  aspect-ratio: 4 / 5;
 }
 
 /* Styling for .om-os-instagram. */
@@ -827,12 +846,22 @@ input[type="reset"],
   font-size: 1.85rem;
 }
 
+@keyframes om-os-instagram-desktop-slider {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-140%);
+  }
+}
+
 /* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
 @media (max-width: 767px) {
   .om-os-instagram {
     display: flex;
     flex-direction: column;
-    padding: 0 0 76px;
+    padding: 0;
     overflow: hidden;
   }
 
@@ -880,13 +909,17 @@ input[type="reset"],
   }
 
   .om-os-instagram-item {
-    height: 270px;
+    height: auto;
     overflow: hidden;
   }
 
   .om-os-image-placeholder-instagram {
-    height: 100%;
-    aspect-ratio: auto;
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .om-os-instagram .om-os-image-placeholder::before {
+    content: "IMG\A 160 × 200";
   }
 
   .om-os-instagram .om-os-image-placeholder span:first-child {
@@ -900,7 +933,7 @@ input[type="reset"],
     }
 
     100% {
-      transform: translateX(-250%);
+      transform: translateX(-350%);
     }
   }
 
@@ -919,6 +952,16 @@ input[type="reset"],
     .om-os-instagram-link {
       scroll-snap-align: start;
     }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .om-os-instagram {
+    padding-bottom: 0;
+  }
+
+  .om-os-instagram .om-os-image-placeholder::before {
+    content: "IMG\A 220 × 275";
   }
 }
 

@@ -120,7 +120,19 @@
   width: fit-content;
 }
 
-.footer-menu-link::after {
+.footer-menu-link,
+.footer-kontakt-adresse a,
+.footer-terms,
+.footer-social-link {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.footer-menu-link::after,
+.footer-kontakt-adresse a::after,
+.footer-terms::after,
+.footer-social-link::after {
   position: absolute;
   right: 0;
   bottom: 0.2em;
@@ -135,8 +147,18 @@
 
 .footer-menu-link:hover::after,
 .footer-menu-link:focus-visible::after,
-.footer-menu-link[aria-current="page"]::after {
+.footer-menu-link[aria-current="page"]::after,
+.footer-kontakt-adresse a:hover::after,
+.footer-kontakt-adresse a:focus-visible::after,
+.footer-terms:hover::after,
+.footer-terms:focus-visible::after,
+.footer-social-link:hover::after,
+.footer-social-link:focus-visible::after {
   transform: scaleX(1);
+}
+
+.footer-social-link::after {
+  bottom: -4px;
 }
 
 /* Styling for .footer-info. */
@@ -372,7 +394,7 @@
 /* Styling for .footer--frontpage. */
 .footer--frontpage .footer-kontakt-adresse a:hover,
 .footer--frontpage .footer-terms:hover {
-  color: var(--color-primary);
+  color: inherit;
 }
 
 /* Styling for .footer--frontpage. */
@@ -466,6 +488,7 @@
   gap: 8px;
   align-items: start;
   margin-top: 1px;
+  cursor: pointer;
   line-height: 1.45;
 }
 
@@ -476,11 +499,16 @@
 
 /* Styling for .footer-newsletter-checkbox. */
 .footer-newsletter-checkbox {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
   width: 19px;
   height: 19px;
   margin: 0;
   border: 1px solid var(--color-heading);
   border-radius: var(--button-radius);
+  background: transparent;
+  cursor: pointer;
   appearance: none;
 }
 
@@ -488,6 +516,34 @@
 .footer-newsletter-checkbox:checked {
   background: linear-gradient(135deg, transparent 45%, var(--color-heading) 45%, var(--color-heading) 55%, transparent 55%),
     linear-gradient(45deg, transparent 45%, var(--color-heading) 45%, var(--color-heading) 55%, transparent 55%);
+}
+
+.footer-newsletter-checkbox:focus-visible {
+  outline: 1px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.footer-newsletter-error {
+  margin: -8px 0 0;
+  color: #c98282;
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.footer-newsletter-error[hidden] {
+  display: none;
+}
+
+.footer-newsletter-success {
+  min-height: 51px;
+}
+
+.footer-newsletter-success-message {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 /* Styling for .footer-newsletter-submit. */

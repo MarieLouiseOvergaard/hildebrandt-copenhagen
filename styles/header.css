@@ -1,4 +1,4 @@
-﻿/* Filkommentar: styles/header.css indeholder styling og responsive regler for websitet. */
+/* Filkommentar: styles/header.css indeholder styling og responsive regler for websitet. */
 
 /* Header CSS: topbar, navigation, desktop-dropdown og mobilmenu. */
 /* ==================================================
@@ -121,6 +121,7 @@
   align-items: center;
   gap: 24px;
 }
+
 
 /* Styling for .top-nav-link. */
 .top-nav-link {

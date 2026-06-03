@@ -105,6 +105,7 @@
 
 /* Skjuler den interne label, naer feltet er aktivt eller udfyldt. */
 .checkout-field:focus-within .checkout-field-label,
+.checkout-field.is-invalid .checkout-field-label,
 .checkout-field:has(input:not(:placeholder-shown)) .checkout-field-label,
 .checkout-field:has(textarea:not(:placeholder-shown)) .checkout-field-label {
   display: none;
@@ -137,8 +138,15 @@
 
 /* Placeholderfarve i inputfelter. */
 .checkout-field input::placeholder,
+.checkout-field textarea::placeholder,
 .checkout-discount input::placeholder {
   color: #829198;
+}
+
+.checkout-field.is-invalid input::placeholder,
+.checkout-field.is-invalid textarea::placeholder {
+  color: #c98282;
+  opacity: 1;
 }
 
 /* Readonly-felter faer svag baggrund, sae de faeles laeste. */
@@ -673,6 +681,25 @@
   line-height: 1.45;
 }
 
+.checkout-error span {
+  display: block;
+}
+
+.checkout-field-error {
+  margin: 6px 0 12px;
+  color: #c98282;
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.checkout-option-list + .checkout-field-error,
+.checkout-payment-list + .checkout-field-error,
+.checkout-product-list + .checkout-field-error,
+.checkout-terms + .checkout-field-error {
+  color: #c98282;
+}
+
 /* Primaer submit-knap for hele checkouten. */
 .checkout-submit {
   width: 100%;
@@ -719,8 +746,30 @@
 
   /* Leveringskortet faer smallere ikonkolonne pae smae skaerme. */
   .checkout-option {
-    grid-template-columns: 42px 1fr;
-    padding-right: 40px;
+    grid-template-columns: 34px minmax(0, 1fr);
+    min-height: auto;
+    padding: 12px 12px;
+    gap: 10px;
+  }
+
+  .checkout-option-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+  }
+
+  .checkout-option-content {
+    gap: 2px;
+    min-width: 0;
+    font-size: 11px;
+    line-height: 1.32;
+  }
+
+  .checkout-option-title,
+  .checkout-option-content strong {
+    font-size: 12px;
+    line-height: 1.18;
   }
 
   /* Ordreoversigten faer mindre padding pae smae skaerme. */

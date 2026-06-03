@@ -22,8 +22,7 @@
 
       <!-- Navigation: links og menupunkter til resten af sitet. -->
       <nav class="top-nav" aria-label="Hjælpenavigation">
-        <ul class="top-nav-list">
-          <li class="top-nav-item">
+        <ul class="top-nav-list"><li class="top-nav-item">
             <a class="top-nav-link top-nav-link-cart" href="#" aria-label="Kurv"><img class="top-nav-icon top-nav-icon-cart" src="img/ikoner/kurv.svg" alt=""></a>
           </li>
           <li class="top-nav-item top-nav-item-menu">
@@ -38,7 +37,7 @@
       <ul class="menu-list">
         <li class="menu-item menu-item-dropdown">
           <a class="menu-link menu-link-dropdown" href="produkter.html" aria-haspopup="true">
-            Produkter
+            <span>Produkter</span>
             <span class="menu-link-arrow" aria-hidden="true">⌄</span>
           </a>
           <div class="menu-dropdown" aria-label="Produktmenu">
@@ -139,15 +138,14 @@
     <div class="mobile-menu-panel mobile-menu-panel-main" data-mobile-panel="main">
       <div class="mobile-menu-header">
         <p class="mobile-menu-title">Menu</p>
-        <button class="mobile-menu-close" type="button" aria-label="Luk menu">×</button>
+        <button class="mobile-menu-close" type="button" aria-label="Luk menu" >×</button>
       </div>
 
       <!-- Navigation: links og menupunkter til resten af sitet. -->
       <nav class="mobile-menu-nav" aria-label="Mobilnavigation">
-        <ul class="mobile-menu-list">
-          <li class="mobile-menu-item">
+        <ul class="mobile-menu-list"><li class="mobile-menu-item">
             <button class="mobile-menu-link mobile-menu-link-products" type="button">
-              Produkter
+              <span>Produkter</span>
               <span class="mobile-menu-arrow" aria-hidden="true">›</span>
             </button>
           </li>
@@ -172,7 +170,7 @@
 
     <div class="mobile-menu-panel mobile-menu-panel-products" data-mobile-panel="products">
       <div class="mobile-menu-header">
-        <button class="mobile-menu-back" type="button" aria-label="Tilbage til menu">‹</button>
+        <button class="mobile-menu-back" type="button" aria-label="Tilbage til menu" >‹</button>
         <p class="mobile-menu-title">Produkter</p>
       </div>
 
@@ -214,7 +212,7 @@
     </div>
     <div class="mobile-menu-panel mobile-menu-panel-curl" data-mobile-panel="curl">
       <div class="mobile-menu-header">
-        <button class="mobile-menu-back" type="button" aria-label="Tilbage til menu">‹</button>
+        <button class="mobile-menu-back" type="button" aria-label="Tilbage til menu" >‹</button>
         <p class="mobile-menu-title">Krølleunivers</p>
       </div>
 
@@ -241,17 +239,27 @@
   <main class="om-os-main">
     <!-- Sektion .om-os-hero: samlet indholdsblok paa siden. -->
     <section class="om-os-hero" aria-labelledby="om-os-hero-title">
-      <div class="om-os-hero-content">
-        <p class="eyebrow om-os-eyebrow">Belinda Hildebrandt</p>
-        <h1 id="om-os-hero-title" class="om-os-hero-title">Krøller fortjener en frisør, der forstår dem</h1>
-        <p>Jeg har arbejdet med krøller og bølger gennem hele mit liv, og min passion har altid været at forstå hårets naturlige bevægelse fremfor at kontrollere det. For mig handler hår ikke om at passe ind i én metode men om at finde den tilgang, der passer til det enkelte menneske og det hår, de kommer med.</p>
-        <p>Gennem mange års erfaring og klippeteknikker fra både ind og udland har jeg specialiseret mig i krøllet og bølget hår. I dag skræddersyer jeg hver klipning ud fra hårets struktur og naturlige flow, så resultatet føles personligt og nemmere at arbejde med i hverdagen.</p>
-        <p>Jeg har udviklet min egen Curl DNA teknik og skabt Mixly med ønsket om at gøre krøllepleje mere forståelig og tilpasset nordiske hårtyper. Mit mål er ikke perfekte krøller men at hjælpe dig med at forstå og holde af dit hår som det er.</p>
-        <a class="button button-primary om-os-hero-cta" href="https://salonbook.one/?henriksencopenhagen#/">Book tid</a>
+      <div class="om-os-hero-row om-os-hero-row-primary">
+        <div class="om-os-hero-content om-os-hero-primary-content">
+          <p class="eyebrow om-os-eyebrow">Belinda Hildebrandt</p>
+          <h1 id="om-os-hero-title" class="om-os-hero-title">Krøller fortjener en frisør, der forstår dem</h1>
+          <p>Jeg har arbejdet med krøller og bølger gennem hele mit liv, og min passion har altid været at forstå hårets naturlige bevægelse fremfor at kontrollere det. For mig handler hår ikke om at passe ind i én metode men om at finde den tilgang, der passer til det enkelte menneske og det hår, de kommer med.</p>
+          <a class="button button-primary om-os-hero-cta" href="https://salonbook.one/?henriksencopenhagen#/">Book tid</a>
+        </div>
+        <figure class="om-os-hero-figure om-os-hero-figure-primary">
+          <div class="om-os-image-placeholder om-os-image-placeholder-hero om-os-image-placeholder-hero-primary" aria-hidden="true"><img src="img/image/go-morgen-dk-og-bog.png" alt=""><span class="image-placeholder-label">IMG</span><span>670 x 370</span></div>
+        </figure>
       </div>
-      <figure class="om-os-hero-figure">
-        <div class="om-os-image-placeholder om-os-image-placeholder-hero" aria-hidden="true"><img src="img/image/go-morgen-dk-og-bog.png" alt=""><span class="image-placeholder-label">IMG</span><span>670 x 545</span></div>
-      </figure>
+      <div class="om-os-hero-row om-os-hero-row-secondary">
+        <figure class="om-os-hero-figure om-os-hero-figure-secondary">
+          <div class="om-os-image-placeholder om-os-image-placeholder-hero-secondary" aria-hidden="true"><img src="img/image/go-morgen-dk-og-bog.png" alt=""><span class="image-placeholder-label">IMG</span><span>520 x 360</span></div>
+          <div class="om-os-image-placeholder om-os-image-placeholder-hero-secondary" aria-hidden="true"><img src="img/image/go-morgen-dk-og-bog.png" alt=""><span class="image-placeholder-label">IMG</span><span>520 x 360</span></div>
+        </figure>
+        <div class="om-os-hero-secondary-content">
+          <p>Gennem mange års erfaring og klippeteknikker fra både ind og udland har jeg specialiseret mig i krøllet og bølget hår. I dag skræddersyer jeg hver klipning ud fra hårets struktur og naturlige flow, så resultatet føles personligt og nemmere at arbejde med i hverdagen.</p>
+          <p>Jeg har udviklet min egen Curl DNA teknik og skabt Mixly med ønsket om at gøre krøllepleje mere forståelig og tilpasset nordiske hårtyper. Mit mål er ikke perfekte krøller men at hjælpe dig med at forstå og holde af dit hår som det er.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Sektion .om-os-quote-section: samlet indholdsblok paa siden. -->
@@ -273,7 +281,6 @@
         <h2 id="om-os-mixly-title" class="om-os-section-title">Skabt ud for mange års arbejde med nordiske krøller</h2>
         <p>Mixly blev skabt ud fra et ønske om at gøre krøllepleje mere enkel, ærlig og tilpasset virkeligheden. Jeg oplevede, at mange produkter og rutiner blev for generelle eller for komplicerede – særligt til nordiske krøller og bølger.</p>
         <p>Derfor udviklede jeg Mixly som en serie, der arbejder med håret fremfor imod det. Produkterne er skabt til at understøtte hårets naturlige balance og gøre det lettere at forstå, pleje og style sine krøller i hverdagen.</p>
-        <p>For mig handler det ikke kun om produkter, men om at give mennesker en bedre relation til deres eget hår.</p>
         <div class="om-os-mixly-actions">
           <a class="button button-primary" href="produkter.html">Udforsk Mixly</a>
           <a class="button button-secondary" href="kroelleunivers.html">Læs om min krøllefilosofi</a>
@@ -285,55 +292,75 @@
     <section class="om-os-instagram" aria-labelledby="om-os-instagram-title">
       <div class="om-os-instagram-header">
         <h2 id="om-os-instagram-title" class="om-os-section-title">Følg med i krølleuniverset</h2>
-        <a class="om-os-instagram-handle" href="https://www.instagram.com/hildebrandtcopenhagen">@hildebrandtcopenhagen</a>
+        <a class="om-os-instagram-handle" href="https://www.instagram.com/hildebrandt_copenhagen/">@hildebrandt_copenhagen</a>
       </div>
       <div class="om-os-instagram-grid" aria-label="Instagram billeder">
-        <a class="om-os-instagram-link" href="#" aria-label="Instagram opslag 1">
+        <a class="om-os-instagram-link" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 1">
           <figure class="om-os-instagram-item">
             <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
           </figure>
         </a>
-        <a class="om-os-instagram-link" href="#" aria-label="Instagram opslag 2">
+        <a class="om-os-instagram-link" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 2">
           <figure class="om-os-instagram-item">
             <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
           </figure>
         </a>
-        <a class="om-os-instagram-link" href="#" aria-label="Instagram opslag 3">
+        <a class="om-os-instagram-link" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 3">
           <figure class="om-os-instagram-item">
             <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
           </figure>
         </a>
-        <a class="om-os-instagram-link" href="#" aria-label="Instagram opslag 4">
+        <a class="om-os-instagram-link" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 4">
           <figure class="om-os-instagram-item">
             <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
           </figure>
         </a>
-        <a class="om-os-instagram-link" href="#" aria-label="Instagram opslag 5">
+        <a class="om-os-instagram-link" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 5">
           <figure class="om-os-instagram-item">
             <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
           </figure>
         </a>
-        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="#" aria-label="Instagram opslag 1" aria-hidden="true" tabindex="-1">
+        <a class="om-os-instagram-link" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 6">
           <figure class="om-os-instagram-item">
             <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
           </figure>
         </a>
-        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="#" aria-label="Instagram opslag 2" aria-hidden="true" tabindex="-1">
+        <a class="om-os-instagram-link" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 7">
           <figure class="om-os-instagram-item">
             <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
           </figure>
         </a>
-        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="#" aria-label="Instagram opslag 3" aria-hidden="true" tabindex="-1">
+        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 1" aria-hidden="true" tabindex="-1">
           <figure class="om-os-instagram-item">
             <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
           </figure>
         </a>
-        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="#" aria-label="Instagram opslag 4" aria-hidden="true" tabindex="-1">
+        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 2" aria-hidden="true" tabindex="-1">
           <figure class="om-os-instagram-item">
             <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
           </figure>
         </a>
-        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="#" aria-label="Instagram opslag 5" aria-hidden="true" tabindex="-1">
+        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 3" aria-hidden="true" tabindex="-1">
+          <figure class="om-os-instagram-item">
+            <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
+          </figure>
+        </a>
+        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 4" aria-hidden="true" tabindex="-1">
+          <figure class="om-os-instagram-item">
+            <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
+          </figure>
+        </a>
+        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 5" aria-hidden="true" tabindex="-1">
+          <figure class="om-os-instagram-item">
+            <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
+          </figure>
+        </a>
+        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 6" aria-hidden="true" tabindex="-1">
+          <figure class="om-os-instagram-item">
+            <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
+          </figure>
+        </a>
+        <a class="om-os-instagram-link om-os-instagram-link-duplicate" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram opslag 7" aria-hidden="true" tabindex="-1">
           <figure class="om-os-instagram-item">
             <div class="om-os-image-placeholder om-os-image-placeholder-instagram" aria-hidden="true"><img src="" alt=""><span class="image-placeholder-label">IMG</span></div>
           </figure>
@@ -423,7 +450,7 @@
     </div>
     <ul class="footer-socials" aria-label="Sociale medier">
       <li class="footer-socials-item">
-        <a class="footer-social-link" href="#" aria-label="Instagram">
+        <a class="footer-social-link" href="https://www.instagram.com/hildebrandt_copenhagen/" aria-label="Instagram @hildebrandt_copenhagen">
           <svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <rect x="5" y="5" width="14" height="14" rx="4"></rect>
             <circle cx="12" cy="12" r="3.2"></circle>
