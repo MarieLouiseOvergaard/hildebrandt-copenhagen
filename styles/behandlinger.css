@@ -28,7 +28,8 @@
   background: var(--color-image-placeholder);
 }
 
-.behandlinger-image img {
+.behandlinger-image img,
+.behandlinger-image video {
   display: block;
   width: 100%;
   height: 100%;
