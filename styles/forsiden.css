@@ -61,6 +61,7 @@
 .mixly-introduktion-billede img,
 .forside-behandling-kort-billede img,
 .guide-sektion_-produkt img,
+.guide-sektion-billede picture,
 .guide-sektion-billede img,
 .kort-sektion-billede img {
   display: block;
@@ -527,6 +528,10 @@
   display: none;
 }
 
+.guide-sektion_-produkt:has(img[src=""]) {
+  display: none;
+}
+
 /* Styling for .guide-sektion_-produkt. */
 .guide-sektion_-produkt img {
   display: block;
@@ -966,11 +971,32 @@
   }
 
   .guide-sektion-tekst {
-    order: 2;
+    display: contents;
+  }
+
+  .guide-sektion-tekst .eyebrow {
+    order: 1;
+    width: 100%;
     padding: 46px var(--page-gutter) 0;
   }
 
+  .guide-sektion-titel {
+    order: 2;
+    width: 100%;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
+  }
+
+  .guide-sektion-tekst p:not(.eyebrow) {
+    order: 3;
+    width: 100%;
+    padding-right: var(--page-gutter);
+    padding-left: var(--page-gutter);
+    margin-top: 13px;
+  }
+
   .guide-sektion-knapper {
+    order: 5;
     width: 324px;
     max-width: 100%;
     flex-direction: column;
@@ -1166,9 +1192,9 @@
   }
 
   .guide-sektion {
-    grid-template-columns: minmax(0, 1fr) minmax(88px, 120px);
+    grid-template-columns: 1fr;
     align-items: start;
-    gap: 18px;
+    gap: 34px;
     padding: 64px var(--page-gutter) 76px;
     overflow: hidden;
   }
@@ -1185,9 +1211,9 @@
   }
 
   .guide-sektion-tekst {
-    order: 0;
+    order: 1;
     width: 100%;
-    max-width: 430px;
+    max-width: none;
     padding: 0;
   }
 
