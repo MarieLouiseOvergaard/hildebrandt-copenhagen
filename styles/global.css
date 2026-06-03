@@ -791,7 +791,7 @@ input[type="reset"],
   flex-wrap: nowrap;
   gap: 5px;
   width: 100%;
-  animation: om-os-instagram-desktop-slider 100s linear infinite;
+  animation: om-os-instagram-desktop-slider 140s linear infinite;
   will-change: transform;
 }
 
@@ -843,7 +843,7 @@ input[type="reset"],
 
 /* Styling for .om-os-image-placeholder-instagram. */
 .om-os-image-placeholder-instagram {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
 }
 
 /* Styling for .om-os-instagram. */
@@ -900,7 +900,7 @@ input[type="reset"],
     margin-right: 0;
     margin-left: 0;
     padding: 0;
-    animation: om-os-instagram-mobile-slider 100s linear infinite;
+    animation: om-os-instagram-mobile-slider 140s linear infinite;
     will-change: transform;
   }
 
@@ -920,7 +920,7 @@ input[type="reset"],
 
   .om-os-image-placeholder-instagram {
     height: auto;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
   }
 
   .om-os-instagram .om-os-image-placeholder::before {

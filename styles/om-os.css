@@ -80,6 +80,24 @@
 }
 
 /* Styling for .om-os-image-placeholder. */
+.om-os-image-placeholder > picture,
+.om-os-image-placeholder > picture > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Styling for .om-os-image-placeholder. */
+.om-os-image-placeholder > picture > img {
+  object-fit: cover;
+}
+
+/* Styling for .om-os-image-placeholder. */
+.om-os-image-placeholder:has(> picture img[src]:not([src=""])) > :not(picture) {
+  display: none;
+}
+
+/* Styling for .om-os-image-placeholder. */
 .om-os-image-placeholder span:first-child {
   font-size: 1.85rem;
 }
@@ -477,7 +495,7 @@
     gap: 5px;
     justify-content: flex-start;
     overflow: visible;
-    animation: om-os-instagram-desktop-slider 100s linear infinite;
+    animation: om-os-instagram-desktop-slider 140s linear infinite;
     will-change: transform;
   }
 
@@ -494,7 +512,7 @@
 
   .om-os-image-placeholder-instagram {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
   }
 
   .om-os-image-placeholder-instagram::before {
@@ -537,7 +555,7 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     gap: 5px;
-    animation: om-os-instagram-tablet-slider 100s linear infinite;
+    animation: om-os-instagram-tablet-slider 140s linear infinite;
     will-change: transform;
   }
 
@@ -676,7 +694,7 @@
 
   .om-os-image-placeholder-hero-secondary {
     width: 100%;
-    aspect-ratio: 320 / 220;
+    aspect-ratio: 320 / 290;
   }
 
   .om-os-mixly {
@@ -732,7 +750,7 @@
     flex-wrap: nowrap;
     gap: 5px;
     width: 100%;
-    animation: om-os-instagram-tablet-slider 100s linear infinite;
+    animation: om-os-instagram-tablet-slider 140s linear infinite;
     will-change: transform;
   }
 
@@ -753,7 +771,7 @@
 
   .om-os-image-placeholder-instagram {
     height: auto;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
   }
 }
 
@@ -903,7 +921,7 @@
     gap: 5px;
     width: 100%;
     overflow: visible;
-    animation: om-os-instagram-mobile-slider 100s linear infinite;
+    animation: om-os-instagram-mobile-slider 140s linear infinite;
     will-change: transform;
   }
 
@@ -925,7 +943,7 @@
   .om-os-image-placeholder-instagram {
     width: 100%;
     height: auto;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
   }
 
   .om-os-image-placeholder-instagram::before {
