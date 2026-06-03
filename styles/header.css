@@ -1,10 +1,8 @@
-/* Filkommentar: styles/header.css indeholder styling og responsive regler for websitet. */
-
 /* Header CSS: topbar, navigation, desktop-dropdown og mobilmenu. */
 /* ==================================================
    4. HEADER, NAVIGATION OG DROPDOWN
 ================================================== */
-/* Styling for .header. */
+/* Header */
 .header {
   position: fixed;
   z-index: 1000;
@@ -65,7 +63,7 @@
   transform: scale(0.82);
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (max-width: 1180px) {
   .top-menu-logo {
     position: absolute;
@@ -101,7 +99,7 @@
   }
 }
 
-/* Styling for .top-menu. */
+/* Top menu */
 .top-menu {
   display: flex;
   align-items: center;
@@ -122,7 +120,6 @@
   gap: 24px;
 }
 
-
 /* Styling for .top-nav-link. */
 .top-nav-link {
   position: relative;
@@ -139,7 +136,7 @@
   overflow: visible;
 }
 
-/* Styling for .cart-badge. */
+/* Cart badge */
 .cart-badge {
   position: absolute;
   top: -7px;
@@ -160,7 +157,7 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
 }
 
-/* Styling for .cart-badge. */
+/* Cart badge */
 .cart-badge[hidden] {
   display: none;
 }
@@ -178,7 +175,7 @@
   display: none;
 }
 
-/* Styling for .top-menu. */
+/* Top menu */
 .top-menu > .book-knap {
   font-size: clamp(11px, 1.25vw, 20px);
 }
@@ -202,7 +199,7 @@
   }
 }
 
-/* Styling for .menu. */
+/* Desktop navigation */
 .menu {
   display: flex;
   justify-content: center;
@@ -430,7 +427,7 @@
   gap: 18px;
 }
 
-/* Styling for .menu-dropdown-product-image. */
+/* Image placeholders */
 .menu-dropdown-product-image {
   display: grid;
   width: 230px;
@@ -447,12 +444,12 @@
   text-transform: uppercase;
 }
 
-/* Styling for .menu-dropdown-product-image. */
+/* Image placeholders */
 .menu-dropdown-product:nth-child(2) .menu-dropdown-product-image {
   background: var(--color-light-blue);
 }
 
-/* Styling for .menu-dropdown-product-image. */
+/* Image placeholders */
 .menu-dropdown-product-image img {
   display: block;
   width: 100%;
@@ -464,18 +461,18 @@
   display: block !important;
 }
 
-/* Styling for .menu-dropdown-product-image. */
+/* Image placeholders */
 .menu-dropdown-product-image .image-placeholder-label {
   font-size: 12px;
   white-space: pre-line;
 }
 
-/* Styling for .menu-dropdown-product-image. */
+/* Image placeholders */
 .menu-dropdown-product-image .image-placeholder-label::before {
   content: none;
 }
 
-/* Styling for .menu-dropdown-product-image. */
+/* Image placeholders */
 .menu-dropdown-product-image .image-placeholder-label::after {
   content: none;
 }
@@ -514,7 +511,7 @@
   background-size: 100% 1px;
 }
 
-/* Styling for .mobile-menu. */
+/* Mobile menu */
 .mobile-menu {
   display: none;
 }

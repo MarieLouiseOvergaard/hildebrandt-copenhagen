@@ -1,5 +1,3 @@
-﻿/* Filkommentar: styles/global.css indeholder styling og responsive regler for websitet. */
-
 /* Global CSS: fonte, farver, reset, base-typografi og fælles komponenter. */
 @import url("https://fonts.googleapis.com/css2?family=Amiri:ital@1&family=DM+Sans:opsz,wght@9..40,400&family=Montserrat:wght@100;300;400&display=swap");
 
@@ -18,7 +16,7 @@
    1. DESIGN TOKENS
    Farver, fonte og desktop-typografi samlet øverst.
 ================================================== */
-/* Globale variabler: farver, fonte og storrelser, der genbruges paa sitet. */
+/* Design tokens */
 :root {
   --dropdown-arrow-icon: url("../img/ikoner/dropdown-arrow.svg");
   --color-primary: #C27F33;
@@ -95,7 +93,7 @@
   overflow: hidden;
 }
 
-/* Styling for .menu-dropdown-product-image. */
+/* Image placeholders */
 .menu-dropdown-product-image > img,
 .mobile-menu-feature-image > img,
 .behandlinger-placeholder > img,
@@ -118,7 +116,7 @@
   object-fit: cover;
 }
 
-/* Styling for .menu-dropdown-product-image. */
+/* Image placeholders */
 .menu-dropdown-product-image > img[src=""],
 .mobile-menu-feature-image > img[src=""],
 .behandlinger-placeholder > img[src=""],
@@ -137,7 +135,7 @@
   display: none;
 }
 
-/* Styling for .menu-dropdown-product-image. */
+/* Image placeholders */
 .menu-dropdown-product-image:has(> img[src]:not([src=""])) > :not(img),
 .mobile-menu-feature-image:has(> img[src]:not([src=""])) > :not(img),
 .behandlinger-placeholder:has(> img[src]:not([src=""])) > :not(img),
@@ -160,13 +158,13 @@
    2. RESET OG BASE
    Ens udgangspunkt på tværs af browsere.
 ================================================== */
-/* Stylingregel: styrer udseende, spacing eller layout for elementerne nedenfor. */
+/* Reset */
 * {
   box-sizing: border-box;
 }
 
 
-/* Styling for HTML-elementet html. */
+/* Base */
 html {
   color: var(--color-text);
   background: var(--color-white);
@@ -174,7 +172,7 @@ html {
   font-size: 16px;
 }
 
-/* Styling for HTML-elementet body. */
+
 body {
   margin: 0;
   padding-top: 113px;
@@ -182,14 +180,14 @@ body {
   overflow-x: clip;
 }
 
-/* Styling for HTML-elementet img. */
+/* Media defaults */
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-/* Styling for HTML-elementet figure. */
+/* Margin reset */
 figure,
 blockquote,
 p,
@@ -203,7 +201,7 @@ dd {
 }
 
 
-/* Styling for HTML-elementet ul. */
+/* Lists */
 ul {
   margin: 0;
   padding: 0;
@@ -215,7 +213,7 @@ ul {
    3. TYPOGRAFI
    Globale desktop-størrelser. Mobil overrides nederst.
 ================================================== */
-/* Styling for HTML-elementet a. */
+/* Links */
 a {
   color: inherit;
   text-decoration: none;
@@ -467,7 +465,7 @@ blockquote footer {
   background: transparent;
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (prefers-reduced-motion: reduce) {
   .button-label::after {
     transition: none;
@@ -718,14 +716,14 @@ input[type="reset"],
   white-space: nowrap;
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (max-width: 767px) {
   .product-hover-eye {
     display: none;
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (max-width: 767px) {
   .quick-view-panel {
     width: 100%;
@@ -861,7 +859,7 @@ input[type="reset"],
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (max-width: 767px) {
   .om-os-instagram {
     display: flex;
@@ -942,7 +940,7 @@ input[type="reset"],
     }
   }
 
-  /* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+  /* Responsive */
   @media (prefers-reduced-motion: reduce) {
     .om-os-instagram {
       overflow: visible;
@@ -1049,7 +1047,7 @@ input[type="reset"],
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 768px) and (max-width: 1023px) {
   h1 {
     font-size: var(--font-h1-tablet);

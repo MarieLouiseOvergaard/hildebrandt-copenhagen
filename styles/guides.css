@@ -1,5 +1,3 @@
-﻿/* Filkommentar: styles/guides.css indeholder styling og responsive regler for websitet. */
-
 /* Guides CSS: editorial krølleunivers, guides og produkt-rækker. */
 
 .guides-main {
@@ -586,7 +584,7 @@
   margin-top: 12px;
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 1024px) {
   .guide-steps-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -631,7 +629,7 @@
 
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 1024px) {
   .guide-section {
     padding: 82px var(--page-gutter);
@@ -652,7 +650,7 @@
 
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 1024px) {
   .guide-styling-block {
     max-width: var(--container-max);
@@ -663,7 +661,7 @@
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (max-width: 767px) {
   .guide-hero {
     grid-template-columns: minmax(340px, 0.95fr) minmax(360px, 1.05fr);
@@ -692,7 +690,7 @@
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (max-width: 767px) {
   .guide-hero {
     display: flex;
@@ -1009,7 +1007,7 @@
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 768px) and (max-width: 1023px) {
   .guide-hero {
     display: grid;

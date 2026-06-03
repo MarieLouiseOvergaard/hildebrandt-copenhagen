@@ -1,5 +1,3 @@
-﻿/* Filkommentar: styles/produkter.css indeholder styling og responsive regler for websitet. */
-
 /* Produkter CSS: produktside, produktkort og horisontale produkt-rækker. */
 
 .produkter-main {
@@ -110,7 +108,7 @@ body[data-product-page-filter="styling"] [data-product-filter="styling"]::after 
   color: var(--color-heading);
 }
 
-/* Styling for HTML-elementet body. */
+
 body[data-product-page-filter="all"] [data-product-filter="all"],
 body[data-product-page-filter="startpakker"] [data-product-filter="startpakker"],
 body[data-product-page-filter="saet"] [data-product-filter="saet"],
@@ -139,7 +137,7 @@ body[data-product-page-filter="styling"] [data-product-filter="styling"]::after 
   display: none;
 }
 
-/* Styling for HTML-elementet body. */
+
 body[data-product-page-filter="startpakker"] .product-section,
 body[data-product-page-filter="saet"] .product-section,
 body[data-product-page-filter="shampoo"] .product-section,
@@ -149,7 +147,7 @@ body[data-product-page-filter="styling"] .product-section {
   display: none;
 }
 
-/* Styling for HTML-elementet body. */
+
 body[data-product-page-filter="startpakker"] [data-product-section="startpakker"],
 body[data-product-page-filter="saet"] [data-product-section="saet"],
 body[data-product-page-filter="shampoo"] [data-product-section="shampoo"],
@@ -203,7 +201,7 @@ body:not([data-product-page-filter="all"]) .product-row {
   flex: 1 1 280px;
 }
 
-/* Styling for HTML-elementet body. */
+
 body[data-product-page-filter="all"] .product-row {
   display: flex;
   flex-wrap: nowrap;
@@ -214,18 +212,18 @@ body[data-product-page-filter="all"] .product-row {
   scrollbar-width: none;
 }
 
-/* Styling for HTML-elementet body. */
+
 body[data-product-page-filter="all"] .product-row::-webkit-scrollbar {
   display: none;
 }
 
-/* Styling for HTML-elementet body. */
+
 body[data-product-page-filter="all"] .product-row::after {
   flex: 0 0 24px;
   content: "";
 }
 
-/* Styling for HTML-elementet body. */
+
 body[data-product-page-filter="all"] .slider-indicators {
   display: flex;
 }
@@ -282,7 +280,7 @@ body:not([data-product-page-filter="all"]) .slider-indicators {
   min-width: 0;
 }
 
-/* Styling for HTML-elementet body. */
+
 body[data-product-page-filter="all"] .product-card,
 body[data-product-page-filter="all"] .product-promo-card,
 body[data-product-page-filter="all"] .product-image-placeholder-card {
@@ -672,7 +670,7 @@ body[data-product-page-filter="all"] .product-image-placeholder-card {
   content: none;
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 1024px) {
   .product-add-button {
     right: 0;
@@ -717,7 +715,7 @@ body[data-product-page-filter="all"] .product-image-placeholder-card {
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (hover: none) {
   .product-add-button {
     opacity: 1;
@@ -725,7 +723,7 @@ body[data-product-page-filter="all"] .product-image-placeholder-card {
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (max-width: 767px) {
   .product-add-button {
     right: 14px;
@@ -761,7 +759,7 @@ body[data-product-page-filter="all"] .product-image-placeholder-card {
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (max-width: 767px) {
   .product-add-button {
     top: 14px;
@@ -776,7 +774,7 @@ body[data-product-page-filter="all"] .product-image-placeholder-card {
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (max-width: 767px) {
   .product-row {
     flex-wrap: wrap;
@@ -1219,7 +1217,7 @@ body[data-product-page-filter="all"] .product-image-placeholder-card {
 
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 768px) and (max-width: 1023px) {
   .products-hero {
     padding: 72px var(--page-gutter) 40px;
@@ -1300,7 +1298,7 @@ body[data-product-page-filter="all"] .product-image-placeholder-card {
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (hover: hover) and (min-width: 768px) and (max-width: 1023px) {
   .product-add-button {
     opacity: 1;

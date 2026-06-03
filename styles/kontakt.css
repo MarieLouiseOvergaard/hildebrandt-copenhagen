@@ -1,5 +1,3 @@
-﻿/* Filkommentar: styles/kontakt.css indeholder styling og responsive regler for websitet. */
-
 /* Kontakt CSS: styling til kontaktsiden. */
 
 .kontakt-main {
@@ -526,7 +524,7 @@
 
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 768px) and (max-width: 1023px) {
   .kontakt-hero {
     min-height: 340px;

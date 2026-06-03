@@ -1,5 +1,3 @@
-﻿/* Filkommentar: styles/forsiden.css indeholder styling og responsive regler for websitet. */
-
 /* Forsiden CSS: hero, forside-sektioner, citater, previews og forside-responsive regler. */
 /* ==================================================
    5. FORSIDENS SEKTIONER
@@ -191,7 +189,7 @@
   padding: 52px var(--page-gutter) 64px;
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 1024px) {
   .mixly-introduktion-indhold {
     max-width: var(--container-max);
@@ -476,7 +474,7 @@
   letter-spacing: 0.12em;
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (prefers-reduced-motion: reduce) {
   .anmeldelser-track {
     transition: none;
@@ -589,7 +587,7 @@
   text-align: center;
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 1024px) {
   .kort-sektion-billede {
     max-width: var(--container-max);
@@ -800,7 +798,7 @@
     }
   }
 
-  /* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+  /* Responsive */
   @media (prefers-reduced-motion: reduce) {
     .mixly-introduktion-slider {
       overflow-x: auto;
@@ -990,7 +988,7 @@
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero {
     min-height: 380px;

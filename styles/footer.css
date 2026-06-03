@@ -1,10 +1,8 @@
-﻿/* Filkommentar: styles/footer.css indeholder styling og responsive regler for websitet. */
-
 /* Footer CSS: footer-layout, kontaktinfo, åbningstider, navigation og betalingsikoner. */
 /* ==================================================
    6. FOOTER
 ================================================== */
-/* Styling for .footer. */
+/* Footer */
 .footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -14,7 +12,7 @@
   background: var(--color-light-blue);
 }
 
-/* Styling for .footer. */
+/* Footer */
 .footer h2 {
   margin-bottom: 26px;
   color: #6f7f85;
@@ -46,7 +44,7 @@
   color: #8a979b;
 }
 
-/* Styling for .footer. */
+/* Footer */
 .footer .kontakt-status {
   position: relative;
   display: flex;
@@ -64,17 +62,17 @@
   text-transform: uppercase;
 }
 
-/* Styling for .footer. */
+/* Footer */
 .footer .kontakt-status--open {
   color: #3f9f58;
 }
 
-/* Styling for .footer. */
+/* Footer */
 .footer .kontakt-status--closed {
   color: #c94f45;
 }
 
-/* Styling for .footer. */
+/* Footer */
 .footer .kontakt-status::before {
   position: absolute;
   top: 0.55em;
@@ -87,17 +85,17 @@
   transform: translateY(-50%);
 }
 
-/* Styling for .footer. */
+/* Footer */
 .footer .kontakt-status--open::before {
   background: #3f9f58;
 }
 
-/* Styling for .footer. */
+/* Footer */
 .footer .kontakt-status--closed::before {
   background: #c94f45;
 }
 
-/* Styling for .footer. */
+/* Footer */
 .footer .kontakt-status-detail {
   color: #8a979b;
   font-family: var(--font-body);
@@ -711,7 +709,7 @@
   letter-spacing: 3px;
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (max-width: 1180px) {
   .footer--frontpage {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -719,7 +717,7 @@
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (max-width: 1180px) {
   html {
     background: var(--color-white);
@@ -817,7 +815,7 @@
   }
 }
 
-/* Breakpoint: reglerne her justerer layoutet paa bestemte skaermstoerrelser. */
+/* Responsive */
 @media (min-width: 768px) and (max-width: 1180px) {
   .footer {
     grid-template-columns: repeat(3, 1fr);

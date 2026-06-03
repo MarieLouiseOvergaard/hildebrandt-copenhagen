@@ -1,2 +1,0 @@
-﻿# hildebrandt-copenhagen
-
