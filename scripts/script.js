@@ -1520,7 +1520,7 @@ const productCardSizeUpdates = {
   "products/shampoo/curly-charcoal-calm-shampoo.html": "50 ml / 200 ml",
   "products/conditioner/rich-deep-drink-conditioner.html": "200 ml / 1000 ml",
   "products/conditioner/mixly-low-conditioner.html": "200 ml / 1000 ml",
-  "products/haarmasker/rich-intensive-care-for-curly-ends.html": "30 ml / 50 ml",
+  "products/haarmasker/rich-intensive-care-for-curly-ends.html": "50 ml",
   "products/saet/rich-low-shampoo.html": "2 × 100 ml / 2 × 1000 ml",
   "products/saet/low-rich-conditioner.html": "2 × 200 ml / 2 × 1000 ml",
 };
@@ -4249,7 +4249,7 @@ if (relatedPostsContainer) {
 
     const image = document.createElement("figure");
     image.className = "blog-card-image";
-    image.setAttribute("aria-label", "Placeholder billede");
+    image.setAttribute("aria-label", "Illustration til produktsektionen");
     image.append("IMG");
 
     const imageSize = document.createElement("span");

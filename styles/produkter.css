@@ -841,6 +841,48 @@ body[data-product-page-filter="all"] .product-image-placeholder-card {
 }
 
 @media (hover: hover) and (min-width: 1181px) {
+  .product-card .product-add-button {
+    top: calc(1.2em * 2 + 20px);
+    right: 0;
+    bottom: auto;
+    left: 0;
+    display: inline-flex;
+    width: min(82%, 257px);
+    height: 52px;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 22px;
+    border-radius: var(--button-radius);
+    background: var(--color-heading);
+    color: var(--color-white);
+    box-shadow: none;
+    font-family: var(--font-heading);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .product-card .quick-add-control {
+    padding: 0;
+    background: transparent;
+  }
+
+  .product-card .quick-add-menu,
+  .product-card .quick-add-submit {
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+  }
+
+  .product-card .quick-add-submit {
+    border-radius: inherit;
+    background: var(--color-heading);
+    color: var(--color-white);
+  }
+
   .product-card:not(:hover) .product-add-button,
   .product-card:not(:hover) .product-content::after {
     opacity: 0;

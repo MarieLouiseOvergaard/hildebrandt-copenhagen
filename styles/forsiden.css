@@ -583,6 +583,58 @@
   text-align: center;
 }
 
+@media (min-width: 1200px) {
+  .guide-sektion {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 60px;
+    align-items: start;
+    row-gap: 0;
+  }
+
+  .guide-sektion-tekst {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    width: 100%;
+    max-width: none;
+  }
+
+  .guide-sektion-billede {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 710 / 370;
+    align-self: start;
+    justify-self: stretch;
+    overflow: hidden;
+  }
+
+  .guide-sektion_-produkt {
+    display: none;
+  }
+
+  .guide-sektion-billede {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .guide-sektion-billede::before {
+    content: none;
+  }
+
+  .guide-sektion-billede picture,
+  .guide-sektion-billede img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 1010px) and (max-width: 1198px) {
+  .guide-sektion-billede {
+    display: none;
+  }
+}
+
 /* Responsive */
 @media (min-width: 1024px) {
   .kort-sektion-billede {
