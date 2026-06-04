@@ -74,7 +74,9 @@
 .guide-hero-media img,
 .guide-hero-media picture,
 .guide-placeholder img,
+.guide-placeholder picture,
 .guide-editorial-image img,
+.guide-editorial-image picture,
 .guide-cta-image img,
 .guide-compare-placeholder img,
 .guide-styling-placeholder img,
@@ -203,6 +205,8 @@
 
 .guide-compare-card h2 {
   margin-bottom: 22px;
+  padding-right: var(--page-gutter);
+  padding-left: var(--page-gutter);
   color: var(--color-heading);
 }
 
@@ -689,10 +693,13 @@
     padding-left: 0;
   }
 
-  .guide-hero-media,
+  .guide-hero-media {
+    aspect-ratio: 4 / 5;
+  }
+
   .guide-editorial-image,
   .guide-cta-image {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1.8 / 1;
   }
 
   .guide-compare-grid {
@@ -703,7 +710,7 @@
   .guide-compare-card {
     --guide-compare-product-width: clamp(250px, 31vw, 330px);
     --guide-compare-product-height: clamp(310px, 40vw, 410px);
-    width: calc(100vw - var(--page-gutter));
+    width: min(70vw, 620px);
     max-width: none;
   }
 
