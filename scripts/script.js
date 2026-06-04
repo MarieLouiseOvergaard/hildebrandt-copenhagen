@@ -1399,6 +1399,7 @@ if (postMenu) {
 
 const productRows = document.querySelectorAll(".product-row");
 const treatmentRows = document.querySelectorAll(".behandlinger-sektion-liste");
+const guideStepRows = document.querySelectorAll(".guide-steps-grid");
 const productCards = document.querySelectorAll(".product-card");
 const relatedProductCards = document.querySelectorAll(".produkt-skabelon-related-card");
 const reviewSlider = document.querySelector("[data-anmeldelser-slider]");
@@ -2067,6 +2068,13 @@ treatmentRows.forEach((row) => {
   setupSliderIndicators(row, {
     itemSelector: ".forside-behandling-kort",
     label: "behandling",
+  });
+});
+
+guideStepRows.forEach((row) => {
+  setupSliderIndicators(row, {
+    itemSelector: ".guide-step-card",
+    label: "step",
   });
 });
 
