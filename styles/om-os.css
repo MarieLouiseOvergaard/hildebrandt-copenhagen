@@ -4,7 +4,6 @@
   background: var(--color-white);
 }
 
-/* Styling for .om-os-hero. */
 .om-os-hero {
   display: grid;
   grid-template-columns: minmax(360px, 0.75fr) minmax(520px, 1.45fr);
@@ -16,7 +15,6 @@
   padding: 58px var(--page-gutter) 96px;
 }
 
-/* Styling for .om-os-hero-content. */
 .om-os-hero-content {
   display: flex;
   flex-direction: column;
@@ -24,46 +22,39 @@
   padding-top: 2px;
 }
 
-/* Styling for .om-os-hero-title. */
 .om-os-hero-title,
 .om-os-section-title {
   letter-spacing: 0.04em;
 }
 
-/* Styling for .om-os-hero-title. */
 .om-os-hero-title {
   max-width: 560px;
   margin-bottom: 32px;
   line-height: 1.18;
 }
 
-/* Styling for .om-os-hero-content. */
 .om-os-hero-content p:not(.eyebrow),
 .om-os-mixly-content p {
   max-width: 470px;
 }
 
-/* Styling for .om-os-hero-content. */
 .om-os-hero-content p:not(.eyebrow) + p,
 .om-os-mixly-content p + p {
   margin-top: 22px;
 }
 
-/* Styling for .om-os-hero-content. */
 .om-os-hero-content p:last-of-type,
 .om-os-mixly-content p:last-of-type {
   margin-bottom: 50px;
 }
 
 
-/* Styling for .om-os-hero-figure. */
 .om-os-hero-figure,
 .om-os-mixly-figure,
 .om-os-instagram-item {
   margin: 0;
 }
 
-/* Styling for .om-os-image-placeholder. */
 .om-os-image-placeholder {
   display: flex;
   align-items: center;
@@ -77,7 +68,6 @@
   line-height: 1.35;
 }
 
-/* Styling for .om-os-image-placeholder. */
 .om-os-image-placeholder > picture,
 .om-os-image-placeholder > picture > img {
   display: block;
@@ -85,33 +75,34 @@
   height: 100%;
 }
 
-/* Styling for .om-os-image-placeholder. */
 .om-os-image-placeholder > picture > img {
   object-fit: cover;
 }
 
-/* Styling for .om-os-image-placeholder. */
 .om-os-image-placeholder:has(> picture img[src]:not([src=""])) > :not(picture) {
   display: none;
 }
 
-/* Styling for .om-os-image-placeholder. */
 .om-os-image-placeholder span:first-child {
   font-size: 1.85rem;
 }
 
-/* Styling for .om-os-image-placeholder. */
 .om-os-image-placeholder span + span {
   margin-top: 4px;
   font-size: 0.95rem;
 }
 
-/* Styling for .om-os-image-placeholder-hero. */
 .om-os-image-placeholder-hero {
   aspect-ratio: 670 / 545;
 }
 
-/* Styling for .om-os-quote-section. */
+.om-os-image-placeholder-hero-primary,
+.om-os-image-placeholder-hero-primary > picture,
+.om-os-image-placeholder-hero-primary > picture > img {
+  height: auto;
+  aspect-ratio: auto;
+}
+
 .om-os-quote-section {
   display: grid;
   min-height: 345px;
@@ -121,19 +112,16 @@
   text-align: center;
 }
 
-/* Styling for .om-os-quote. */
 .om-os-quote {
   max-width: 1120px;
 }
 
-/* Styling for .om-os-quote. */
 .om-os-quote p {
   color: var(--color-light-blue);
   font-size: clamp(22px, 1.9vw, var(--font-quote-desktop));
   line-height: 1.3;
 }
 
-/* Styling for .om-os-quote. */
 .om-os-quote footer {
   margin-top: 34px;
   color: var(--color-light-blue);
@@ -141,7 +129,6 @@
   letter-spacing: 0.16em;
 }
 
-/* Styling for .om-os-mixly. */
 .om-os-mixly {
   display: grid;
   grid-template-columns: minmax(520px, 1.45fr) minmax(360px, 0.75fr);
@@ -153,13 +140,11 @@
   padding: 86px var(--page-gutter) 112px;
 }
 
-/* Styling for .om-os-image-placeholder-mixly. */
 .om-os-image-placeholder-mixly {
   height: 100%;
   aspect-ratio: 550 / 450;
 }
 
-/* Styling for .om-os-mixly-content. */
 .om-os-mixly-content {
   display: flex;
   min-height: auto;
@@ -167,18 +152,15 @@
   align-items: flex-start;
 }
 
-/* Styling for .om-os-section-title. */
 .om-os-section-title {
   line-height: 1.18;
 }
 
-/* Styling for .om-os-mixly-content. */
 .om-os-mixly-content .om-os-section-title {
   max-width: 640px;
   margin-bottom: 34px;
 }
 
-/* Styling for .om-os-mixly-actions. */
 .om-os-mixly-actions {
   display: flex;
   align-items: center;
@@ -318,8 +300,6 @@
   }
 
 }
-
-/* Responsive */
 @media (min-width: 768px) and (max-width: 1023px) {
   .om-os-hero {
     display: grid;
@@ -626,7 +606,7 @@
 
   .om-os-image-placeholder-hero-primary {
     width: min(100%, 670px);
-    aspect-ratio: 670 / 370;
+    aspect-ratio: auto;
     justify-self: end;
   }
 
@@ -672,53 +652,47 @@
 
 @media (min-width: 768px) and (max-width: 1199px) {
   .om-os-hero {
-    gap: 44px;
+    gap: clamp(48px, 5vw, 72px);
   }
 
-  .om-os-hero-row-primary,
-  .om-os-hero-row-secondary {
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 36px;
+  .om-os-hero-row-primary {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   }
 
   .om-os-hero-row-secondary {
-    grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  }
+
+  .om-os-hero-secondary-content,
+  .om-os-hero-secondary-content p {
+    width: 100%;
+    max-width: none;
   }
 
   .om-os-image-placeholder-hero-primary {
-    width: 320px;
-    aspect-ratio: 320 / 360;
+    width: min(100%, 670px);
+    aspect-ratio: auto;
   }
 
   .om-os-image-placeholder-hero-secondary {
     width: 100%;
-    aspect-ratio: 320 / 290;
+    aspect-ratio: 337 / 380;
   }
 
   .om-os-mixly {
-    grid-template-columns: 360px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(52px, 5vw, 76px);
   }
 
   .om-os-image-placeholder-mixly {
-    width: 360px;
-    aspect-ratio: 360 / 330;
-  }
-
-  .om-os-hero-row-secondary {
-    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+    width: min(100%, 670px);
+    aspect-ratio: 670 / 460;
   }
 
   .om-os-hero-figure-secondary {
-    display: block;
-  }
-
-  .om-os-hero-figure-secondary .om-os-image-placeholder-hero-secondary + .om-os-image-placeholder-hero-secondary {
-    display: none;
-  }
-
-  .om-os-mixly {
-    grid-template-columns: 1fr;
-    gap: 34px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
   }
 
   .om-os-mixly-figure,
@@ -726,14 +700,8 @@
     width: 100%;
   }
 
-  .om-os-image-placeholder-mixly {
-    width: 100%;
-    aspect-ratio: 720 / 360;
-  }
-
-  .om-os-mixly-content .om-os-section-title,
   .om-os-mixly-content p {
-    max-width: 100%;
+    max-width: 470px;
   }
 
   .om-os-instagram {
@@ -748,12 +716,12 @@
     flex-wrap: nowrap;
     gap: 5px;
     width: 100%;
-    animation: om-os-instagram-tablet-slider 140s linear infinite;
+    animation: om-os-instagram-desktop-slider 140s linear infinite;
     will-change: transform;
   }
 
   .om-os-instagram-link {
-    flex: 0 0 28%;
+    flex: 0 0 calc((100% - 20px) / 5);
     max-width: none;
     width: auto;
   }
@@ -848,7 +816,7 @@
 
   .om-os-image-placeholder-hero-primary {
     width: 100%;
-    aspect-ratio: 363 / 225;
+    aspect-ratio: auto;
   }
 
   .om-os-image-placeholder-hero-primary::before {
