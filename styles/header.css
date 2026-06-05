@@ -1402,7 +1402,7 @@
     height: 328px;
     place-items: center;
     color: #111111;
-    background: #d9d9d9;
+    background: var(--color-light-blue);
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     font-size: 12px;
     letter-spacing: 0.08em;
@@ -1412,10 +1412,13 @@
   }
 
   .mobile-menu-feature-image img {
-    display: none;
+    display: block;
+    width: min(72%, 250px);
+    height: auto;
+    object-fit: contain;
   }
 
   .mobile-menu-feature-image .image-placeholder-label {
-    white-space: pre-line;
+    display: none !important;
   }
 }
