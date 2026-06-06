@@ -988,6 +988,72 @@ function setActiveMainNavigation() {
 
 setActiveMainNavigation();
 
+document.querySelectorAll(".om-os-instagram-grid").forEach((grid) => {
+  if (grid.querySelector(".om-os-instagram-link-duplicate")) {
+    return;
+  }
+
+  Array.from(grid.children).forEach((link) => {
+    const duplicate = link.cloneNode(true);
+    duplicate.classList.add("om-os-instagram-link-duplicate");
+    duplicate.setAttribute("aria-hidden", "true");
+    duplicate.setAttribute("tabindex", "-1");
+    grid.appendChild(duplicate);
+  });
+});
+
+const tabletDropdownMedia = window.matchMedia("(min-width: 768px) and (max-width: 1199px)");
+const tabletDropdownItems = Array.from(document.querySelectorAll(".menu-item-dropdown"));
+
+function closeTabletDropdowns(exceptItem = null) {
+  tabletDropdownItems.forEach((item) => {
+    if (item === exceptItem) {
+      return;
+    }
+
+    item.classList.remove("is-tablet-dropdown-open");
+    item.querySelector(".menu-link-dropdown")?.setAttribute("aria-expanded", "false");
+  });
+}
+
+tabletDropdownItems.forEach((item) => {
+  const trigger = item.querySelector(".menu-link-dropdown");
+
+  if (!trigger) {
+    return;
+  }
+
+  trigger.setAttribute("aria-expanded", "false");
+  trigger.addEventListener("click", (event) => {
+    if (!tabletDropdownMedia.matches) {
+      return;
+    }
+
+    event.preventDefault();
+    const shouldOpen = !item.classList.contains("is-tablet-dropdown-open");
+    closeTabletDropdowns(item);
+    item.classList.toggle("is-tablet-dropdown-open", shouldOpen);
+    trigger.setAttribute("aria-expanded", String(shouldOpen));
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (tabletDropdownMedia.matches && !event.target.closest(".menu-item-dropdown")) {
+    closeTabletDropdowns();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && tabletDropdownMedia.matches) {
+    closeTabletDropdowns();
+    document.activeElement?.blur();
+  }
+});
+
+tabletDropdownMedia.addEventListener("change", () => {
+  closeTabletDropdowns();
+});
+
 function openMobileMenu(event) {
   mobileMenu.classList.add("is-open");
   mobileMenu.classList.remove("is-products", "is-curl");
